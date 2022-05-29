@@ -1,4 +1,4 @@
-package com.cursojava.curso.models;
+package com.cursojava.curso.model;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "usuarios")
 @ToString @EqualsAndHashCode
-public class Usuario {
+public class Usuario88 {
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

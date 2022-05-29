@@ -1,7 +1,7 @@
 package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.dao.UsuarioDao;
-import com.cursojava.curso.models.Usuario;
+import com.cursojava.curso.model.Usuario88;
 import com.cursojava.curso.utils.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,9 +19,9 @@ public class AuthController {
     private JWTUtil jwtUtil;
 
     @RequestMapping(value = "api/login", method = RequestMethod.POST)
-    public String login(@RequestBody Usuario usuario) {
+    public String login(@RequestBody Usuario88 usuario) {
 
-        Usuario usuarioLogueado = usuarioDao.obtenerUsuarioPorCredenciales(usuario);
+        Usuario88 usuarioLogueado = usuarioDao.obtenerUsuarioPorCredenciales(usuario);
         if (usuarioLogueado != null) {
             String tokenJwt = jwtUtil.create(String.valueOf(usuarioLogueado.getId()), usuarioLogueado.getEmail());
             return tokenJwt;
