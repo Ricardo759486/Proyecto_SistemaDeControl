@@ -9,12 +9,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TipoDocumentoServiceImpl extends GenericServiceImpl<TipoDocumento, Long> implements TipoDocumentoServiceAPI {
+public class TipoDocumentoServiceImpl extends GenericServiceImpl<TipoDocumento, Integer> implements TipoDocumentoServiceAPI {
     @Autowired
     private TipoDocumentoRepository tipoDocumentoDaoAPI;
 
     @Override
-    public CrudRepository<TipoDocumento, Long> getDao(){
+    public CrudRepository<TipoDocumento, Integer> getDao(){
         return tipoDocumentoDaoAPI;
     }
 }
