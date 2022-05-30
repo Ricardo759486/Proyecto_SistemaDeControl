@@ -19,4 +19,8 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Long> implem
     public CrudRepository<Usuario, Long> getDao(){
         return usuarioDaoAPI;
     }
+    @Override
+    public void buscarCorreo (){
+        System.out.println("zsd");
+    }
 }

@@ -2,6 +2,9 @@ package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Usuario;
 import com.cursojava.curso.service.UsuarioServiceAPI;
+import com.cursojava.curso.utils.JWTUtil;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +26,9 @@ public class UsuarioRestController {
 
     @PostMapping(value = "/saveUsuario")
     public ResponseEntity<Usuario> save(@RequestBody Usuario usuario){
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        String hash = argon2.hash(1, 1024, 1, usuario.getClave());
+        usuario.setClave(hash);
         Usuario objeto = usuarioServiceAPI.save(usuario);
 
         return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
@@ -38,4 +44,5 @@ public class UsuarioRestController {
         }
         return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
     }
+
 }

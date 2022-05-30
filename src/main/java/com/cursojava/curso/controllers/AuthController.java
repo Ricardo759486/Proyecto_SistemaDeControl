@@ -1,34 +1,24 @@
 package com.cursojava.curso.controllers;
 
-import com.cursojava.curso.dao.UsuarioDao;
 import com.cursojava.curso.model.Usuario;
-import com.cursojava.curso.utils.JWTUtil;
+import com.cursojava.curso.service.UsuarioServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class AuthController {
 
     @Autowired
-    private UsuarioDao usuarioDao;
+    private UsuarioServiceAPI usuarioServiceAPI;
+    // private AuditoriaDao auditoDao;
 
-    @Autowired
-    private JWTUtil jwtUtil;
-
-    @RequestMapping(value = "api/login", method = RequestMethod.POST)
-    public String login(@RequestBody Usuario usuario) {
-
-        Usuario usuarioLogueado = usuarioDao.obtenerUsuarioDatos(usuario);
-        if (usuarioLogueado != null) {
-
-            String contrasenia = jwtUtil.create(String.valueOf(usuarioLogueado.getIdUsuario()), usuarioLogueado.getLogin());
-
-            return contrasenia;
-        }
-        return "ERROR: Login fallido";
+    @GetMapping(value = "/validar")
+    public List<Usuario> getAll(){
+        usuarioServiceAPI.buscarCorreo();
+        return usuarioServiceAPI.getAll();
     }
-
 }
