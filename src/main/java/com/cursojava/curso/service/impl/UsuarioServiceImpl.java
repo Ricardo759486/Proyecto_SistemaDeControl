@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Service
-public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Long> implements UsuarioServiceAPI {
+public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> implements UsuarioServiceAPI {
     
     @Autowired
     private UsuarioRepository usuarioDaoAPI;
@@ -25,7 +25,7 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Long> implem
     EntityManager entityManager;
 
     @Override
-    public CrudRepository<Usuario, Long> getDao(){
+    public CrudRepository<Usuario, Integer> getDao(){
         return usuarioDaoAPI;
     }
     @Override

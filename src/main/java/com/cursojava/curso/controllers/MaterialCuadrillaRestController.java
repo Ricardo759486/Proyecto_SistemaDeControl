@@ -22,35 +22,35 @@ public class MaterialCuadrillaRestController {
     }
 
     @PostMapping(value = "/saveMaterialCuadrilla")
-    public ResponseEntity<MaterialCuadrilla> save(@RequestBody MaterialCuadrilla tipoDocumento){
-        MaterialCuadrilla objeto = materialCuadrillaServiceAPI.save(tipoDocumento);
+    public ResponseEntity<MaterialCuadrilla> save(@RequestBody MaterialCuadrilla materialCuadrilla){
+        MaterialCuadrilla objeto = materialCuadrillaServiceAPI.save(materialCuadrilla);
 
         return new ResponseEntity<MaterialCuadrilla>(objeto, HttpStatus.OK);
     }
 
     @PutMapping(value = "/updateMaterialCuadrilla/{id}")
-    public ResponseEntity<MaterialCuadrilla> update(@RequestBody MaterialCuadrilla tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<MaterialCuadrilla> update(@RequestBody MaterialCuadrilla materialCuadrilla, @PathVariable(value = "id") int id){
 
-        MaterialCuadrilla objeto = materialCuadrillaServiceAPI.get(id_documento);
+        MaterialCuadrilla objeto = materialCuadrillaServiceAPI.get(id);
         if (objeto != null){
-            objeto.setCuadrilla(tipoDocumento.getCuadrilla());
-            objeto.setMaterial(tipoDocumento.getMaterial());
-            objeto.setCantidad(tipoDocumento.getCantidad());
+            objeto.setCuadrilla(materialCuadrilla.getCuadrilla());
+            objeto.setMaterial(materialCuadrilla.getMaterial());
+            objeto.setCantidad(materialCuadrilla.getCantidad());
             materialCuadrillaServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<MaterialCuadrilla>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<MaterialCuadrilla>(materialCuadrilla, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<MaterialCuadrilla>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteMaterialCuadrilla/{id}")
     public ResponseEntity<MaterialCuadrilla> delete(@PathVariable int id){
-        MaterialCuadrilla tipoDocumento = materialCuadrillaServiceAPI.get(id);
-        if (tipoDocumento != null){
+        MaterialCuadrilla materialCuadrilla = materialCuadrillaServiceAPI.get(id);
+        if (materialCuadrilla != null){
             materialCuadrillaServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<MaterialCuadrilla>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<MaterialCuadrilla>(materialCuadrilla, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<MaterialCuadrilla>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<MaterialCuadrilla>(materialCuadrilla, HttpStatus.OK);
     }
 }

@@ -22,37 +22,37 @@ public class ParametroRestController {
     }
 
     @PostMapping(value = "/saveParametro")
-    public ResponseEntity<Parametro> save(@RequestBody Parametro tipoDocumento){
-        Parametro objeto = parametroServiceAPI.save(tipoDocumento);
+    public ResponseEntity<Parametro> save(@RequestBody Parametro parametro){
+        Parametro objeto = parametroServiceAPI.save(parametro);
 
         return new ResponseEntity<Parametro>(objeto, HttpStatus.OK);
     }
 
     @PutMapping(value = "/updateParametro/{id}")
-    public ResponseEntity<Parametro> update(@RequestBody Parametro tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<Parametro> update(@RequestBody Parametro parametro, @PathVariable(value = "id") int id){
 
-        Parametro objeto = parametroServiceAPI.get(id_documento);
+        Parametro objeto = parametroServiceAPI.get(id);
         if (objeto != null){
-            objeto.setTipo(tipoDocumento.getTipo());
-            objeto.setDescripcion(tipoDocumento.getDescripcion());
-            objeto.setValorNum(tipoDocumento.getValorNum());
-            objeto.setValorTexto(tipoDocumento.getValorTexto());
-            objeto.setValorFecha(tipoDocumento.getValorFecha());
+            objeto.setTipo(parametro.getTipo());
+            objeto.setDescripcion(parametro.getDescripcion());
+            objeto.setValorNum(parametro.getValorNum());
+            objeto.setValorTexto(parametro.getValorTexto());
+            objeto.setValorFecha(parametro.getValorFecha());
             parametroServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Parametro>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Parametro>(parametro, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Parametro>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteParametro/{id}")
     public ResponseEntity<Parametro> delete(@PathVariable int id){
-        Parametro tipoDocumento = parametroServiceAPI.get(id);
-        if (tipoDocumento != null){
+        Parametro parametro = parametroServiceAPI.get(id);
+        if (parametro != null){
             parametroServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Parametro>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Parametro>(parametro, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<Parametro>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<Parametro>(parametro, HttpStatus.OK);
     }
 }

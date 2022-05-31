@@ -22,37 +22,37 @@ public class OrdenTrabajoRestController {
     }
 
     @PostMapping(value = "/saveOrdenTrabajo")
-    public ResponseEntity<OrdenTrabajo> save(@RequestBody OrdenTrabajo tipoDocumento){
-        OrdenTrabajo objeto = ordenTrabajoServiceAPI.save(tipoDocumento);
+    public ResponseEntity<OrdenTrabajo> save(@RequestBody OrdenTrabajo ordenTrabajo){
+        OrdenTrabajo objeto = ordenTrabajoServiceAPI.save(ordenTrabajo);
 
         return new ResponseEntity<OrdenTrabajo>(objeto, HttpStatus.OK);
     }
 
     @PutMapping(value = "/updateOrdenTrabajo/{id}")
-    public ResponseEntity<OrdenTrabajo> update(@RequestBody OrdenTrabajo tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<OrdenTrabajo> update(@RequestBody OrdenTrabajo ordenTrabajo, @PathVariable(value = "id") int id){
 
-        OrdenTrabajo objeto = ordenTrabajoServiceAPI.get(id_documento);
+        OrdenTrabajo objeto = ordenTrabajoServiceAPI.get(id);
         if (objeto != null){
-            objeto.setCliente(tipoDocumento.getCliente());
-            objeto.setCuadrilla(tipoDocumento.getCuadrilla());
-            objeto.setTipoServicio(tipoDocumento.getTipoServicio());
-            objeto.setDescripcion(tipoDocumento.getDescripcion());
-            objeto.setEstado(tipoDocumento.getEstado());
+            objeto.setCliente(ordenTrabajo.getCliente());
+            objeto.setCuadrilla(ordenTrabajo.getCuadrilla());
+            objeto.setTipoServicio(ordenTrabajo.getTipoServicio());
+            objeto.setDescripcion(ordenTrabajo.getDescripcion());
+            objeto.setEstado(ordenTrabajo.getEstado());
             ordenTrabajoServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<OrdenTrabajo>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<OrdenTrabajo>(ordenTrabajo, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<OrdenTrabajo>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteOrdenTrabajo/{id}")
     public ResponseEntity<OrdenTrabajo> delete(@PathVariable int id){
-        OrdenTrabajo tipoDocumento = ordenTrabajoServiceAPI.get(id);
-        if (tipoDocumento != null){
+        OrdenTrabajo ordenTrabajo = ordenTrabajoServiceAPI.get(id);
+        if (ordenTrabajo != null){
             ordenTrabajoServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<OrdenTrabajo>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<OrdenTrabajo>(ordenTrabajo, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<OrdenTrabajo>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<OrdenTrabajo>(ordenTrabajo, HttpStatus.OK);
     }
 }

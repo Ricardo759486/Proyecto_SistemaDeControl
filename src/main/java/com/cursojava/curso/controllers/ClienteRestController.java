@@ -22,37 +22,37 @@ public class ClienteRestController {
     }
 
     @PostMapping(value = "/saveCliente")
-    public ResponseEntity<Cliente> save(@RequestBody Cliente tipoDocumento){
-        Cliente objeto = clienteServiceAPI.save(tipoDocumento);
+    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente){
+        Cliente objeto = clienteServiceAPI.save(cliente);
 
         return new ResponseEntity<Cliente>(objeto, HttpStatus.OK);
     }
 
     @PutMapping(value = "/updateCliente/{id}")
-    public ResponseEntity<Cliente> update(@RequestBody Cliente tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<Cliente> update(@RequestBody Cliente cliente, @PathVariable(value = "id") int id){
 
-        Cliente objeto = clienteServiceAPI.get(id_documento);
+        Cliente objeto = clienteServiceAPI.get(id);
         if (objeto != null){
-            objeto.setCedula(tipoDocumento.getCedula());
-            objeto.setDireccion(tipoDocumento.getDireccion());
-            objeto.setTelefono(tipoDocumento.getTelefono());
-            objeto.setTipoDocumento(tipoDocumento.getTipoDocumento());
-            objeto.setEstado(tipoDocumento.getEstado());
+            objeto.setCedula(cliente.getCedula());
+            objeto.setDireccion(cliente.getDireccion());
+            objeto.setTelefono(cliente.getTelefono());
+            objeto.setTipoDocumento(cliente.getTipoDocumento());
+            objeto.setEstado(cliente.getEstado());
             clienteServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Cliente>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Cliente>(cliente, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Cliente>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteCliente/{id}")
     public ResponseEntity<Cliente> delete(@PathVariable int id){
-        Cliente tipoDocumento = clienteServiceAPI.get(id);
-        if (tipoDocumento != null){
+        Cliente cliente = clienteServiceAPI.get(id);
+        if (cliente != null){
             clienteServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Cliente>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Cliente>(cliente, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<Cliente>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
     }
 }

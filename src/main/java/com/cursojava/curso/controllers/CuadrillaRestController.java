@@ -22,36 +22,36 @@ public class CuadrillaRestController {
     }
 
     @PostMapping(value = "/saveCuadrilla")
-    public ResponseEntity<Cuadrilla> save(@RequestBody Cuadrilla tipoDocumento){
-        Cuadrilla objeto = cuadrillaServiceAPI.save(tipoDocumento);
+    public ResponseEntity<Cuadrilla> save(@RequestBody Cuadrilla cuadrilla){
+        Cuadrilla objeto = cuadrillaServiceAPI.save(cuadrilla);
 
         return new ResponseEntity<Cuadrilla>(objeto, HttpStatus.OK);
     }
 
     @PutMapping(value = "/updateCuadrilla/{id}")
-    public ResponseEntity<Cuadrilla> update(@RequestBody Cuadrilla tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<Cuadrilla> update(@RequestBody Cuadrilla cuadrilla, @PathVariable(value = "id") int id){
 
-        Cuadrilla objeto = cuadrillaServiceAPI.get(id_documento);
+        Cuadrilla objeto = cuadrillaServiceAPI.get(id);
         if (objeto != null){
-            objeto.setZona(tipoDocumento.getZona());
-            objeto.setMovilAsociado(tipoDocumento.getMovilAsociado());
-            objeto.setProveedor(tipoDocumento.getProveedor());
-            objeto.setEstado(tipoDocumento.getEstado());
+            objeto.setZona(cuadrilla.getZona());
+            objeto.setMovilAsociado(cuadrilla.getMovilAsociado());
+            objeto.setProveedor(cuadrilla.getProveedor());
+            objeto.setEstado(cuadrilla.getEstado());
             cuadrillaServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Cuadrilla>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Cuadrilla>(cuadrilla, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Cuadrilla>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteCuadrilla/{id}")
     public ResponseEntity<Cuadrilla> delete(@PathVariable int id){
-        Cuadrilla tipoDocumento = cuadrillaServiceAPI.get(id);
-        if (tipoDocumento != null){
+        Cuadrilla cuadrilla = cuadrillaServiceAPI.get(id);
+        if (cuadrilla != null){
             cuadrillaServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Cuadrilla>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Cuadrilla>(cuadrilla, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<Cuadrilla>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<Cuadrilla>(cuadrilla, HttpStatus.OK);
     }
 }

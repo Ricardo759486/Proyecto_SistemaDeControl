@@ -22,34 +22,34 @@ public class TelefonoProveedorRestController {
     }
 
     @PostMapping(value = "/saveTelefonoProveedor")
-    public ResponseEntity<TelefonoProveedor> save(@RequestBody TelefonoProveedor tipoDocumento){
-        TelefonoProveedor objeto = telefonoProveedorServiceAPI.save(tipoDocumento);
+    public ResponseEntity<TelefonoProveedor> save(@RequestBody TelefonoProveedor telefonoProveedor){
+        TelefonoProveedor objeto = telefonoProveedorServiceAPI.save(telefonoProveedor);
 
         return new ResponseEntity<TelefonoProveedor>(objeto, HttpStatus.OK);
     }
 
     @PutMapping(value = "/updateTelefonoProveedor/{id}")
-    public ResponseEntity<TelefonoProveedor> update(@RequestBody TelefonoProveedor tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<TelefonoProveedor> update(@RequestBody TelefonoProveedor telefonoProveedor, @PathVariable(value = "id") int id){
 
-        TelefonoProveedor objeto = telefonoProveedorServiceAPI.get(id_documento);
+        TelefonoProveedor objeto = telefonoProveedorServiceAPI.get(id);
         if (objeto != null){
-            objeto.setProveedor(tipoDocumento.getProveedor());
-            objeto.setNumeroTelefono(tipoDocumento.getNumeroTelefono());
+            objeto.setProveedor(telefonoProveedor.getProveedor());
+            objeto.setNumeroTelefono(telefonoProveedor.getNumeroTelefono());
             telefonoProveedorServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<TelefonoProveedor>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<TelefonoProveedor>(telefonoProveedor, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<TelefonoProveedor>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteTelefonoProveedor/{id}")
     public ResponseEntity<TelefonoProveedor> delete(@PathVariable int id){
-        TelefonoProveedor tipoDocumento = telefonoProveedorServiceAPI.get(id);
-        if (tipoDocumento != null){
+        TelefonoProveedor telefonoProveedor = telefonoProveedorServiceAPI.get(id);
+        if (telefonoProveedor != null){
             telefonoProveedorServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<TelefonoProveedor>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<TelefonoProveedor>(telefonoProveedor, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<TelefonoProveedor>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<TelefonoProveedor>(telefonoProveedor, HttpStatus.OK);
     }
 }

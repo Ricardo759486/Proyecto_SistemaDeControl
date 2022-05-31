@@ -2,7 +2,6 @@ package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Usuario;
 import com.cursojava.curso.service.UsuarioServiceAPI;
-import com.cursojava.curso.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +33,28 @@ public class UsuarioRestController {
         return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
     }
 
+    @PutMapping(value = "/updateUsuario/{id}")
+    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable(value = "id") int id){
+
+        Usuario objeto = usuarioServiceAPI.get(id);
+        if (objeto != null){
+            objeto.setRol(usuario.getRol());
+            objeto.setLogin(usuario.getLogin());
+            objeto.setClave(usuario.getClave());
+            objeto.setDireccion(usuario.getDireccion());
+            objeto.setIdentificacion(usuario.getIdentificacion());
+            objeto.setTipoDocumento(usuario.getTipoDocumento());
+            objeto.setCuadrilla(usuario.getCuadrilla());
+            objeto.setEstado(usuario.getEstado());
+            usuarioServiceAPI.save(objeto);
+        }else{
+            return new ResponseEntity<Usuario>(usuario, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/deleteUsuario/{id}")
-    public ResponseEntity<Usuario> delete(@PathVariable Long id){
+    public ResponseEntity<Usuario> delete(@PathVariable int id){
         Usuario usuario = usuarioServiceAPI.get(id);
         if (usuario != null){
             usuarioServiceAPI.delete(id);

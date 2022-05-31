@@ -22,36 +22,36 @@ public class MaterialRestController {
     }
 
     @PostMapping(value = "/saveMaterial")
-    public ResponseEntity<Material> save(@RequestBody Material tipoDocumento){
-        Material objeto = materialServiceAPI.save(tipoDocumento);
+    public ResponseEntity<Material> save(@RequestBody Material material){
+        Material objeto = materialServiceAPI.save(material);
 
         return new ResponseEntity<Material>(objeto, HttpStatus.OK);
     }
 
     @PutMapping(value = "/updateMaterial/{id}")
-    public ResponseEntity<Material> update(@RequestBody Material tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<Material> update(@RequestBody Material material, @PathVariable(value = "id") int id){
 
-        Material objeto = materialServiceAPI.get(id_documento);
+        Material objeto = materialServiceAPI.get(id);
         if (objeto != null){
-            objeto.setNombreMaterial(tipoDocumento.getNombreMaterial());
-            objeto.setCantidad(tipoDocumento.getCantidad());
-            objeto.setCosto(tipoDocumento.getCosto());
-            objeto.setEstado(tipoDocumento.getEstado());
+            objeto.setNombreMaterial(material.getNombreMaterial());
+            objeto.setCantidad(material.getCantidad());
+            objeto.setCosto(material.getCosto());
+            objeto.setEstado(material.getEstado());
             materialServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Material>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Material>(material, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Material>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteMaterial/{id}")
     public ResponseEntity<Material> delete(@PathVariable int id){
-        Material tipoDocumento = materialServiceAPI.get(id);
-        if (tipoDocumento != null){
+        Material material = materialServiceAPI.get(id);
+        if (material != null){
             materialServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Material>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Material>(material, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<Material>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<Material>(material, HttpStatus.OK);
     }
 }

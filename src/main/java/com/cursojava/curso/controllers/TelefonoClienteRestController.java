@@ -22,34 +22,34 @@ public class TelefonoClienteRestController {
     }
 
     @PostMapping(value = "/saveTelefonoCliente")
-    public ResponseEntity<TelefonoCliente> save(@RequestBody TelefonoCliente tipoDocumento){
-        TelefonoCliente objeto = telefonoClienteServiceAPI.save(tipoDocumento);
+    public ResponseEntity<TelefonoCliente> save(@RequestBody TelefonoCliente telefonoCliente){
+        TelefonoCliente objeto = telefonoClienteServiceAPI.save(telefonoCliente);
 
         return new ResponseEntity<TelefonoCliente>(objeto, HttpStatus.OK);
     }
 
     @PutMapping(value = "/updateTelefonoCliente/{id}")
-    public ResponseEntity<TelefonoCliente> update(@RequestBody TelefonoCliente tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<TelefonoCliente> update(@RequestBody TelefonoCliente telefonoCliente, @PathVariable(value = "id") int id){
 
-        TelefonoCliente objeto = telefonoClienteServiceAPI.get(id_documento);
+        TelefonoCliente objeto = telefonoClienteServiceAPI.get(id);
         if (objeto != null){
-            objeto.setCliente(tipoDocumento.getCliente());
-            objeto.setNumeroTelefono(tipoDocumento.getNumeroTelefono());
+            objeto.setCliente(telefonoCliente.getCliente());
+            objeto.setNumeroTelefono(telefonoCliente.getNumeroTelefono());
             telefonoClienteServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<TelefonoCliente>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<TelefonoCliente>(telefonoCliente, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<TelefonoCliente>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteTelefonoCliente/{id}")
     public ResponseEntity<TelefonoCliente> delete(@PathVariable int id){
-        TelefonoCliente tipoDocumento = telefonoClienteServiceAPI.get(id);
-        if (tipoDocumento != null){
+        TelefonoCliente telefonoCliente = telefonoClienteServiceAPI.get(id);
+        if (telefonoCliente != null){
             telefonoClienteServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<TelefonoCliente>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<TelefonoCliente>(telefonoCliente, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<TelefonoCliente>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<TelefonoCliente>(telefonoCliente, HttpStatus.OK);
     }
 }
