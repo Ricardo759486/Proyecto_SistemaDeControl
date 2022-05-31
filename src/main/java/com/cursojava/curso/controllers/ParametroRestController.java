@@ -1,5 +1,6 @@
 package com.cursojava.curso.controllers;
 
+import com.cursojava.curso.model.Parametro;
 import com.cursojava.curso.service.ParametroServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
