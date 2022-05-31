@@ -14,11 +14,23 @@ public class AuthController {
 
     @Autowired
     private UsuarioServiceAPI usuarioServiceAPI;
-    // private AuditoriaDao auditoDao;
+    // private AuditoriaServiceAPI auditoAPI;
 
-    @GetMapping(value = "/validar")
-    public List<Usuario> getAll(){
-        usuarioServiceAPI.buscarCorreo();
-        return usuarioServiceAPI.getAll();
+    @GetMapping(value = "/validarLogin")
+    public String login(String correo, String clave){
+       Usuario usComprob =  usuarioServiceAPI.login(correo, clave);
+       if(usComprob != null){
+           // auditoAPI.verificartiempo;
+          if(usuarioServiceAPI.validarEstado(usComprob)){
+
+          }
+           return "Sesión iniciada con exito";
+       }
+       return "Login fallido";
     }
+    /**
+     * public void verificarTiempo(Usuario u){
+     *
+     * }
+     */
 }

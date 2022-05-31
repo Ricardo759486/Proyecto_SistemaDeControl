@@ -4,5 +4,8 @@ import com.cursojava.curso.commons.GenericServiceAPI;
 import com.cursojava.curso.model.Usuario;
 
 public interface UsuarioServiceAPI extends GenericServiceAPI<Usuario, Long> {
-    void buscarCorreo();
+
+    Usuario login(String correo, String clave);
+
+    boolean validarEstado(Usuario usuario);
 }
