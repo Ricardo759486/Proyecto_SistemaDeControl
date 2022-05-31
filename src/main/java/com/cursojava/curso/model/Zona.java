@@ -13,7 +13,7 @@ public class Zona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Getter @Setter @Column(name="id_zona")
 	private int idZona;
 
@@ -23,11 +23,11 @@ public class Zona implements Serializable {
 	@Getter @Setter @Column(name = "coordenadas")
 	private String coordenadas;
 
-	@Getter @Setter @Column(name = "estado")
-	private String estado;
-
 	@Getter @Setter @Column(name = "localidad")
 	private String localidad;
+
+	@Getter @Setter @Column(name = "estado")
+	private String estado;
 
 	//bi-directional many-to-one association to Cuadrilla
 	@Getter @Setter @OneToMany(mappedBy="zona")

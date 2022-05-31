@@ -14,7 +14,7 @@ public class TipoServicio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Getter @Setter @Column(name="id_servicio")
 	private int idServicio;
 

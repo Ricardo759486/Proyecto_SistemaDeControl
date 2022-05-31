@@ -17,7 +17,6 @@ public class Proveedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Getter @Setter @Column(name="nit_proveedor")
 	private int nitProveedor;
 
@@ -27,11 +26,11 @@ public class Proveedor implements Serializable {
 	@Getter @Setter @Column(name = "email")
 	private String email;
 
-	@Getter @Setter @Column(name = "estado")
-	private String estado;
-
 	@Getter @Setter @Column(name = "nombre")
 	private String nombre;
+
+	@Getter @Setter @Column(name = "estado")
+	private String estado;
 
 	//bi-directional many-to-one association to Cuadrilla
 	@Getter @Setter @OneToMany(mappedBy="proveedor")
