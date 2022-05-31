@@ -29,29 +29,29 @@ public class AuditoriaRestController {
     }
 
     @PutMapping(value = "/updateAuditoria/{id}")
-    public ResponseEntity<Auditoria> update(@RequestBody Auditoria tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<Auditoria> update(@RequestBody Auditoria auditoria, @PathVariable(value = "id") int id){
 
-        Auditoria objeto = auditoriaServiceAPI.get(id_documento);
+        Auditoria objeto = auditoriaServiceAPI.get(id);
         if (objeto != null){
-            objeto.setUsuario(tipoDocumento.getUsuario());
-            objeto.setFechaHora(tipoDocumento.getFechaHora());
-            objeto.setEvento(tipoDocumento.getEvento());
-            objeto.setTabla(tipoDocumento.getTabla());
+            objeto.setUsuario(auditoria.getUsuario());
+            objeto.setFechaHora(auditoria.getFechaHora());
+            objeto.setEvento(auditoria.getEvento());
+            objeto.setTabla(auditoria.getTabla());
             auditoriaServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Auditoria>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Auditoria>(auditoria, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Auditoria>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteAuditoria/{id}")
     public ResponseEntity<Auditoria> delete(@PathVariable int id){
-        Auditoria tipoDocumento = auditoriaServiceAPI.get(id);
-        if (tipoDocumento != null){
+        Auditoria auditoria = auditoriaServiceAPI.get(id);
+        if (auditoria != null){
             auditoriaServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Auditoria>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Auditoria>(auditoria, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<Auditoria>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<Auditoria>(auditoria, HttpStatus.OK);
     }
 }
