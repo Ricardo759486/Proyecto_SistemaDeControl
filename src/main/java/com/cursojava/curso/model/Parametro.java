@@ -32,8 +32,8 @@ public class Parametro implements Serializable {
 	@Getter @Setter @Column(name="valor_num")
 	private String valorNum;
 
-	@Getter @Setter @Column(name="vaor_texto")
-	private String vaorTexto;
+	@Getter @Setter @Column(name="valor_texto")
+	private String valorTexto;
 
 	public Parametro() {
 	}

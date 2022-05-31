@@ -29,30 +29,30 @@ public class ZonaRestController {
     }
 
     @PutMapping(value = "/updateZona/{id}")
-    public ResponseEntity<Zona> update(@RequestBody Zona tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<Zona> update(@RequestBody Zona zona, @PathVariable(value = "id") int id){
 
-        Zona objeto = zonaServiceAPI.get(id_documento);
+        Zona objeto = zonaServiceAPI.get(id);
         if (objeto != null){
-            objeto.setCoordenadas(tipoDocumento.getCoordenadas());
-            objeto.setCiudad(tipoDocumento.getCiudad());
-            objeto.setLocalidad(tipoDocumento.getLocalidad());
-            objeto.setEstado(tipoDocumento.getEstado());
+            objeto.setCoordenadas(zona.getCoordenadas());
+            objeto.setCiudad(zona.getCiudad());
+            objeto.setLocalidad(zona.getLocalidad());
+            objeto.setEstado(zona.getEstado());
             zonaServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Zona>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Zona>(zona, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Zona>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteZona/{id}")
     public ResponseEntity<Zona> delete(@PathVariable int id){
-        Zona tipoDocumento = zonaServiceAPI.get(id);
-        if (tipoDocumento != null){
+        Zona zona = zonaServiceAPI.get(id);
+        if (zona != null){
             zonaServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Zona>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<Zona>(zona, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<Zona>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<Zona>(zona, HttpStatus.OK);
     }
 }
 

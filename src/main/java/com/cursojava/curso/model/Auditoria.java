@@ -27,7 +27,7 @@ public class Auditoria implements Serializable {
 	private String fechaHora;
 
 	@Getter @Setter
-	private String tabal;
+	private String tabla;
 
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
