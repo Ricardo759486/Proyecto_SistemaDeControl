@@ -7,11 +7,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
-/**
- * The persistent class for the tipo_servicio database table.
- * 
- */
 @Entity
 @Table(name="tipo_servicio")
 @NamedQuery(name="TipoServicio.findAll", query="SELECT t FROM TipoServicio t")
@@ -34,19 +29,4 @@ public class TipoServicio implements Serializable {
 
 	public TipoServicio() {
 	}
-
-	public OrdenTrabajo addOrdenTrabajo(OrdenTrabajo ordenTrabajo) {
-		getOrdenTrabajos().add(ordenTrabajo);
-		ordenTrabajo.setTipoServicio(this);
-
-		return ordenTrabajo;
-	}
-
-	public OrdenTrabajo removeOrdenTrabajo(OrdenTrabajo ordenTrabajo) {
-		getOrdenTrabajos().remove(ordenTrabajo);
-		ordenTrabajo.setTipoServicio(null);
-
-		return ordenTrabajo;
-	}
-
 }

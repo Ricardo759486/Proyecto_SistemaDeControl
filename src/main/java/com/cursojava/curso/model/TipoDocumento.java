@@ -9,11 +9,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
-/**
- * The persistent class for the tipo_documento database table.
- * 
- */
 @Entity
 @Table(name="tipo_documento")
 @NamedQuery(name="TipoDocumento.findAll", query="SELECT t FROM TipoDocumento t")

@@ -32,7 +32,6 @@ public class TipoDocumentoRestController {
     public ResponseEntity<TipoDocumento> update(@RequestBody TipoDocumento tipoDocumento, @PathVariable(value = "id") int id_documento){
 
         TipoDocumento objeto = tipoDocumentoServiceAPI.get(id_documento);
-        System.out.println(id_documento);
         if (objeto != null){
             objeto.setDescripcion(tipoDocumento.getDescripcion());
             objeto.setEstado(tipoDocumento.getEstado());

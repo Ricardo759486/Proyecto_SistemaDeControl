@@ -7,11 +7,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
-/**
- * The persistent class for the zona database table.
- * 
- */
 @Entity
 @NamedQuery(name="Zona.findAll", query="SELECT z FROM Zona z")
 public class Zona implements Serializable {
@@ -39,19 +34,4 @@ public class Zona implements Serializable {
 
 	public Zona() {
 	}
-
-	public Cuadrilla addCuadrilla(Cuadrilla cuadrilla) {
-		getCuadrillas().add(cuadrilla);
-		cuadrilla.setZona(this);
-
-		return cuadrilla;
-	}
-
-	public Cuadrilla removeCuadrilla(Cuadrilla cuadrilla) {
-		getCuadrillas().remove(cuadrilla);
-		cuadrilla.setZona(null);
-
-		return cuadrilla;
-	}
-
 }
