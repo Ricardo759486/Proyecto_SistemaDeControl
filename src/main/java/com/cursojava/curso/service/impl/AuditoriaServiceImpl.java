@@ -14,7 +14,5 @@ public class AuditoriaServiceImpl extends GenericServiceImpl<Auditoria, Integer>
     private AuditoriaRepository auditoriaDaoAPI;
 
     @Override
-    public CrudRepository<Auditoria, Integer> getDao(){
-        return auditoriaDaoAPI;
-    }
+    public CrudRepository<Auditoria, Integer> getDao(){ return auditoriaDaoAPI; }
 }

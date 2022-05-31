@@ -1,7 +1,6 @@
 package com.cursojava.curso.service.impl;
 
 import com.cursojava.curso.commons.GenericServiceImpl;
-import com.cursojava.curso.model.Parametro;
 import com.cursojava.curso.repository.ParametroRepository;
 import com.cursojava.curso.service.ParametroServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;

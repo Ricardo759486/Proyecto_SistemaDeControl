@@ -1,6 +1,5 @@
 package com.cursojava.curso.controllers;
 
-import com.cursojava.curso.model.Proveedor;
 import com.cursojava.curso.service.ProveedorServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
