@@ -1,5 +1,6 @@
 package com.cursojava.curso.controllers;
 
+import com.cursojava.curso.model.Auditoria;
 import com.cursojava.curso.service.AuditoriaServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,8 +22,8 @@ public class AuditoriaRestController {
     }
 
     @PostMapping(value = "/saveAuditoria")
-    public ResponseEntity<Auditoria> save(@RequestBody Auditoria tipoDocumento){
-        Auditoria objeto = auditoriaServiceAPI.save(tipoDocumento);
+    public ResponseEntity<Auditoria> save(@RequestBody Auditoria auditoria){
+        Auditoria objeto = auditoriaServiceAPI.save(auditoria);
 
         return new ResponseEntity<Auditoria>(objeto, HttpStatus.OK);
     }

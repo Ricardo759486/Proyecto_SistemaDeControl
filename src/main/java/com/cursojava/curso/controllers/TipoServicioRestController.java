@@ -22,34 +22,34 @@ public class TipoServicioRestController {
     }
 
     @PostMapping(value = "/saveTipoServicio")
-    public ResponseEntity<TipoServicio> save(@RequestBody TipoServicio tipoDocumento){
-        TipoServicio objeto = tipoServicioServiceAPI.save(tipoDocumento);
+    public ResponseEntity<TipoServicio> save(@RequestBody TipoServicio tipoServicio){
+        TipoServicio objeto = tipoServicioServiceAPI.save(tipoServicio);
 
         return new ResponseEntity<TipoServicio>(objeto, HttpStatus.OK);
     }
 
     @PutMapping(value = "/updateTipoServicio/{id}")
-    public ResponseEntity<TipoServicio> update(@RequestBody TipoServicio tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public ResponseEntity<TipoServicio> update(@RequestBody TipoServicio tipoServicio, @PathVariable(value = "id") int id){
 
-        TipoServicio objeto = tipoServicioServiceAPI.get(id_documento);
+        TipoServicio objeto = tipoServicioServiceAPI.get(id);
         if (objeto != null){
-            objeto.setDescripcion(tipoDocumento.getDescripcion());
-            objeto.setEstado(tipoDocumento.getEstado());
+            objeto.setDescripcion(tipoServicio.getDescripcion());
+            objeto.setEstado(tipoServicio.getEstado());
             tipoServicioServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<TipoServicio>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<TipoServicio>(tipoServicio, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<TipoServicio>(objeto, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteTipoServicio/{id}")
     public ResponseEntity<TipoServicio> delete(@PathVariable int id){
-        TipoServicio tipoDocumento = tipoServicioServiceAPI.get(id);
-        if (tipoDocumento != null){
+        TipoServicio tipoServicio = tipoServicioServiceAPI.get(id);
+        if (tipoServicio != null){
             tipoServicioServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<TipoServicio>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<TipoServicio>(tipoServicio, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<TipoServicio>(tipoDocumento, HttpStatus.OK);
+        return new ResponseEntity<TipoServicio>(tipoServicio, HttpStatus.OK);
     }
 }

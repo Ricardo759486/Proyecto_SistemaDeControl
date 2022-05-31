@@ -22,8 +22,8 @@ public class ZonaRestController {
     }
 
     @PostMapping(value = "/saveZona")
-    public ResponseEntity<Zona> save(@RequestBody Zona tipoDocumento){
-        Zona objeto = zonaServiceAPI.save(tipoDocumento);
+    public ResponseEntity<Zona> save(@RequestBody Zona zona){
+        Zona objeto = zonaServiceAPI.save(zona);
 
         return new ResponseEntity<Zona>(objeto, HttpStatus.OK);
     }
