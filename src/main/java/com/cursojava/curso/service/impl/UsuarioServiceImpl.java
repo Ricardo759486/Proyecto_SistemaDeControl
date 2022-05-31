@@ -48,11 +48,4 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
         }
         return false;
     }
-    @Override
-    public boolean validarEstado(Usuario usuario){
-        if(usuario.getEstado().equals("A")){
-            return true;
-        }
-        return false;
-    }
 }

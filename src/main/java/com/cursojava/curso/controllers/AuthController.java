@@ -4,6 +4,8 @@ import com.cursojava.curso.model.Usuario;
 import com.cursojava.curso.service.AuditoriaServiceAPI;
 import com.cursojava.curso.service.UsuarioServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,14 +18,20 @@ public class AuthController {
     private AuditoriaServiceAPI auditoAPI;
 
     @GetMapping(value = "/validarLogin")
-    public String login(String correo, String clave){
+
+    public ResponseEntity<Usuario> login(String correo, String clave){
        Usuario usComprob =  usuarioServiceAPI.login(correo, clave);
        if(usComprob != null){
            if(auditoAPI.revisionFecha(usComprob)){
-               return "Sesión iniciada con exito";
+               return new ResponseEntity<Usuario>(usComprob, HttpStatus.OK);
+               //"Sesión iniciada con exito"
            }
-           return "La contrasenia debe ser cambiada";
+           return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+           //"La contrasenia debe ser cambiada"
        }
-       return "Login fallido";
+        return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+       //"Login fallido"
     }
+
+
 }

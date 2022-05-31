@@ -25,9 +25,8 @@ public class UsuarioRestController {
 
     @PostMapping(value = "/saveUsuario")
     public ResponseEntity<Usuario> save(@RequestBody Usuario usuario){
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-        String hash = argon2.hash(1, 1024, 1, usuario.getClave());
-        usuario.setClave(hash);
+
+        usuario.setClave(hashearContra(usuario.getClave()));
         Usuario objeto = usuarioServiceAPI.save(usuario);
 
         return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
@@ -53,6 +52,12 @@ public class UsuarioRestController {
         return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
     }
 
+    @PutMapping(value = "/cambiarContrasenia")
+    public ResponseEntity<Usuario> cambiarContra(Usuario u, String contra){
+        u.setClave(hashearContra(contra));
+        return new ResponseEntity<Usuario>(u, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/deleteUsuario/{id}")
     public ResponseEntity<Usuario> delete(@PathVariable int id){
         Usuario usuario = usuarioServiceAPI.get(id);
@@ -62,6 +67,11 @@ public class UsuarioRestController {
             return new ResponseEntity<Usuario>(usuario, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+    }
+
+    public String hashearContra(String contra){
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        return argon2.hash(1, 1024, 1, contra);
     }
 
 }

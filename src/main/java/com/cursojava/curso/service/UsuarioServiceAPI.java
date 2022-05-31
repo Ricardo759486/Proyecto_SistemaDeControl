@@ -7,5 +7,4 @@ public interface UsuarioServiceAPI extends GenericServiceAPI<Usuario, Integer> {
 
     Usuario login(String correo, String clave);
 
-    boolean validarEstado(Usuario usuario);
 }
