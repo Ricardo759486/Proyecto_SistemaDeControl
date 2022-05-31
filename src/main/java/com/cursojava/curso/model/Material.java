@@ -7,7 +7,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the material database table.
  * 
@@ -18,16 +17,17 @@ public class Material implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Getter @Setter @Column(name="id_inventario")
 	private int idInventario;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "cantidad")
 	private int cantidad;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "costo")
 	private int costo;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "estado")
 	private String estado;
 
 	@Getter @Setter @Column(name="nombre_material")

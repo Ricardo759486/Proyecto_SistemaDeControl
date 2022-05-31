@@ -7,7 +7,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the auditoria database table.
  * 
@@ -22,14 +21,14 @@ public class Auditoria implements Serializable {
 	@Getter @Setter @Column(name="id_informe")
 	private int idInforme;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "evento")
 	private String evento;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Getter @Setter @Column(name="fecha_hora")
 	private Date fechaHora;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "tabla")
 	private String tabla;
 
 	//bi-directional many-to-one association to Usuario

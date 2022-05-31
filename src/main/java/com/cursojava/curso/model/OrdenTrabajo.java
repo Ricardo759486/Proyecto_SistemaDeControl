@@ -6,7 +6,6 @@ import lombok.Setter;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the orden_trabajo database table.
  * 
@@ -18,13 +17,14 @@ public class OrdenTrabajo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Getter @Setter@Column(name="id_orden_trabajo")
 	private int idOrdenTrabajo;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "descripcion")
 	private String descripcion;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "estado")
 	private String estado;
 
 	//bi-directional many-to-one association to Cliente

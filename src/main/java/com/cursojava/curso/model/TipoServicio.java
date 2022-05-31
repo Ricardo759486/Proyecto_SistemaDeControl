@@ -14,13 +14,14 @@ public class TipoServicio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Getter @Setter @Column(name="id_servicio")
 	private int idServicio;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "descripcion")
 	private String descripcion;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "estado")
 	private String estado;
 
 	//bi-directional many-to-one association to OrdenTrabajo

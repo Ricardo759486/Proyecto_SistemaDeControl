@@ -18,10 +18,11 @@ public class Cuadrilla implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Getter @Setter @Column(name="id_cuadrilla")
 	private int idCuadrilla;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "estado")
 	private String estado;
 
 	@Getter @Setter @Column(name="movil_asociado")

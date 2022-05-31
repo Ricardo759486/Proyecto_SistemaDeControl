@@ -7,7 +7,6 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-
 /**
  * The persistent class for the cliente database table.
  * 
@@ -18,19 +17,20 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Getter @Setter @Column(name="id_cliente")
 	private int idCliente;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "cedula")
 	private String cedula;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "direccion")
 	private String direccion;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "estado")
 	private String estado;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "telefono")
 	private String telefono;
 
 	//bi-directional many-to-one association to TipoDocumento

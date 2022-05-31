@@ -18,10 +18,11 @@ public class MaterialCuadrilla implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Getter @Setter @Column(name="id_registro")
 	private int idRegistro;
 
-	@Getter @Setter
+	@Getter @Setter @Column(name = "cantidad")
 	private int cantidad;
 
 	//bi-directional many-to-one association to Cuadrilla
