@@ -18,7 +18,6 @@ public class MaterialCuadrilla implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Getter @Setter @Column(name="id_registro")
 	private int idRegistro;
 

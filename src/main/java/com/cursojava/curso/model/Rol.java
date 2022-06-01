@@ -18,9 +18,8 @@ public class Rol implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Getter @Setter @Column(name="id_rol")
-	private int idRol;
+	private Integer idRol;
 
 	@Getter @Setter @Column(name="tipo_rol")
 	private String tipoRol;

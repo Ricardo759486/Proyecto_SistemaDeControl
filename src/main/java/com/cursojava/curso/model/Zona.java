@@ -8,12 +8,11 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@NamedQuery(name="Zona.findAll", query="SELECT z FROM Zona z")
+@Table(name = "zona")
 public class Zona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Getter @Setter @Column(name="id_zona")
 	private int idZona;
 

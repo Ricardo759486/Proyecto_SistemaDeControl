@@ -17,7 +17,6 @@ public class TipoDocumento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Getter @Setter @Column(name="id_documento")
 	private int idDocumento;
 
@@ -54,14 +53,14 @@ public class TipoDocumento implements Serializable {
 
 	public Usuario addUsuario(Usuario usuario) {
 		getUsuarios().add(usuario);
-		usuario.setTipoDocumento(this);
+		usuario.setIdentificacion(String.valueOf(this));
 
 		return usuario;
 	}
 
 	public Usuario removeUsuario(Usuario usuario) {
 		getUsuarios().remove(usuario);
-		usuario.setTipoDocumento(null);
+		usuario.setIdentificacion(null);
 
 		return usuario;
 	}

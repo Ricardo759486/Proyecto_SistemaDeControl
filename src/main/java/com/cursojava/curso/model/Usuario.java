@@ -7,7 +7,9 @@ import lombok.ToString;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
+
 
 /**
  * The persistent class for the usuario database table.
@@ -20,7 +22,6 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Getter @Setter @Column(name="id_usuario")
 	private int idUsuario;
 
@@ -33,18 +34,27 @@ public class Usuario implements Serializable {
 	@Getter @Setter @Column(name = "estado")
 	private String estado;
 
+	@Temporal(TemporalType.DATE)
+	@Getter @Setter @Column(name = "fecha_ultimaContra")
+	private Date fecha_ultimaContra;
+
 	@Getter @Setter @Column(name = "identificacion")
 	private String identificacion;
+
+	@Getter @Setter @Column(name = "intentos")
+	private int intentos;
 
 	@Getter @Setter @Column(name = "login")
 	private String login;
 
 	//bi-directional many-to-one association to Auditoria
-	@Getter @Setter @OneToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="usuario")
+	@Getter @Setter
 	private List<Auditoria> auditorias;
 
 	//bi-directional many-to-one association to TelefonoUsuario
-	@Getter @Setter @OneToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="usuario")
+	@Getter @Setter
 	private List<TelefonoUsuario> telefonoUsuarios;
 
 	//bi-directional many-to-one association to Cuadrilla
@@ -63,34 +73,6 @@ public class Usuario implements Serializable {
 	private TipoDocumento tipoDocumento;
 
 	public Usuario() {
-	}
-
-	public Auditoria addAuditoria(Auditoria auditoria) {
-		getAuditorias().add(auditoria);
-		auditoria.setUsuario(this);
-
-		return auditoria;
-	}
-
-	public Auditoria removeAuditoria(Auditoria auditoria) {
-		getAuditorias().remove(auditoria);
-		auditoria.setUsuario(null);
-
-		return auditoria;
-	}
-
-	public TelefonoUsuario addTelefonoUsuario(TelefonoUsuario telefonoUsuario) {
-		getTelefonoUsuarios().add(telefonoUsuario);
-		telefonoUsuario.setUsuario(this);
-
-		return telefonoUsuario;
-	}
-
-	public TelefonoUsuario removeTelefonoUsuario(TelefonoUsuario telefonoUsuario) {
-		getTelefonoUsuarios().remove(telefonoUsuario);
-		telefonoUsuario.setUsuario(null);
-
-		return telefonoUsuario;
 	}
 
 }
