@@ -1,6 +1,5 @@
 package com.cursojava.curso.service.impl;
 
-import com.cursojava.curso.model.Auditoria;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,8 +45,7 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
         return null;
     }
     public boolean validarContra(String contraValidar, Usuario u){
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-        String contraHash = argon2.hash(1, 1024, 1, contraValidar);
+        String contraHash = hashearContra(contraValidar);
         if(contraHash.equals(u.getClave())){
             u.setIntentos(0);
             return true;
@@ -90,4 +88,12 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
         Date date = Date .from(myObj.atStartOfDay(defaultZoneId).toInstant());
         return date;
     }
+
+    @Override
+    public String hashearContra(String contra){
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+        return argon2.hash(1, 1024, 1, contra);
+    }
+
+
 }

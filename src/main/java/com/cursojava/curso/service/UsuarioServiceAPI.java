@@ -9,6 +9,7 @@ public interface UsuarioServiceAPI extends GenericServiceAPI<Usuario, Integer> {
 
     boolean validarEstado(Usuario u);
 
-
     boolean revisionFecha(Usuario u);
+
+    String hashearContra(String contra);
 }

@@ -47,7 +47,7 @@ public class UsuarioRestController {
         usuario.setTipoDocumento(identificacion);
         usuario.setCuadrilla(cuadrilla);
         usuario.setRol(rol);
-        usuario.setClave(hashearContra(usuario.getClave()));
+        usuario.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
         Usuario objeto = usuarioServiceAPI.save(usuario);
 
         return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
@@ -75,7 +75,7 @@ public class UsuarioRestController {
 
     @PutMapping(value = "/cambiarContrasenia")
     public ResponseEntity<Usuario> cambiarContra(Usuario u, String contra){
-        u.setClave(hashearContra(contra));
+        u.setClave(usuarioServiceAPI.hashearContra(contra));
         return new ResponseEntity<Usuario>(u, HttpStatus.OK);
     }
 
@@ -89,10 +89,4 @@ public class UsuarioRestController {
         }
         return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
     }
-
-    public String hashearContra(String contra){
-        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
-        return argon2.hash(1, 1024, 1, contra);
-    }
-
 }
