@@ -1,7 +1,9 @@
 package com.cursojava.curso.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -14,10 +16,13 @@ import java.util.List;
  */
 @Entity
 @NamedQuery(name="Rol.findAll", query="SELECT r FROM Rol r")
+@ToString
+@EqualsAndHashCode
 public class Rol implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Getter @Setter @Column(name="id_rol")
 	private Integer idRol;
 

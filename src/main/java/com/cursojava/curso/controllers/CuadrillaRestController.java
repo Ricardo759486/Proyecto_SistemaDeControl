@@ -1,7 +1,11 @@
 package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Cuadrilla;
+import com.cursojava.curso.model.Proveedor;
+import com.cursojava.curso.model.Zona;
 import com.cursojava.curso.service.CuadrillaServiceAPI;
+import com.cursojava.curso.service.ProveedorServiceAPI;
+import com.cursojava.curso.service.ZonaServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +20,24 @@ public class CuadrillaRestController {
     @Autowired
     private CuadrillaServiceAPI cuadrillaServiceAPI;
 
+    @Autowired
+    private ZonaServiceAPI zonaServiceAPI;
+
+    @Autowired
+    private ProveedorServiceAPI proveedorServiceAPI;
+
     @GetMapping(value = "/getAll")
     public List<Cuadrilla> getAll(){
         return cuadrillaServiceAPI.getAll();
     }
 
-    @PostMapping(value = "/saveCuadrilla")
-    public ResponseEntity<Cuadrilla> save(@RequestBody Cuadrilla cuadrilla){
+    @PostMapping(value = "/saveCuadrilla/{idZona}/{nitProveedor}")
+    public ResponseEntity<Cuadrilla> save(@RequestBody Cuadrilla cuadrilla, @PathVariable(value = "idZona") int idZona,
+                                          @PathVariable(value = "nitProveedor") int nitProveedor){
+        Zona zona = zonaServiceAPI.get(idZona);
+        Proveedor proveedor = proveedorServiceAPI.get(nitProveedor);
+        cuadrilla.setZona(zona);
+        cuadrilla.setProveedor(proveedor);
         Cuadrilla objeto = cuadrillaServiceAPI.save(cuadrilla);
 
         return new ResponseEntity<Cuadrilla>(objeto, HttpStatus.OK);
