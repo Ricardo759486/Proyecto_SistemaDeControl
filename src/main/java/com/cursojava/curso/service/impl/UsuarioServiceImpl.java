@@ -1,5 +1,6 @@
 package com.cursojava.curso.service.impl;
 
+import com.cursojava.curso.model.Auditoria;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,11 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> implements UsuarioServiceAPI {
@@ -63,5 +68,26 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
         if(u.getIntentos() > 3){
             u.setEstado("D");
         }
+    }
+    @Override
+    public boolean revisionFecha(Usuario u){
+        Date fecha_creacion = u.getFecha_ultimaContra();
+        Date fecha_actual = calTiempoActual();
+
+        long rest = fecha_actual.getTime() - fecha_creacion.getTime();
+        TimeUnit time = TimeUnit.DAYS;
+        long dias_dif = time.convert(rest, TimeUnit.MILLISECONDS);
+
+        if(dias_dif <= 7){
+            return true;
+        }
+        return false;
+    }
+
+    public Date calTiempoActual(){
+        LocalDate myObj = LocalDate.now();
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        Date date = Date .from(myObj.atStartOfDay(defaultZoneId).toInstant());
+        return date;
     }
 }

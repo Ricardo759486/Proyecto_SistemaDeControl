@@ -15,7 +15,6 @@ public class AuthController {
 
     @Autowired
     private UsuarioServiceAPI usuarioServiceAPI;
-    private AuditoriaServiceAPI auditoAPI;
 
     @GetMapping(value = "/validarLogin")
     public ResponseEntity<Usuario> login(String correo, String clave){
@@ -46,7 +45,7 @@ public class AuthController {
                 return 0;
                 // "Estado inactivo"
             }
-            if(auditoAPI.revisionFecha(u)){
+            if(usuarioServiceAPI.revisionFecha(u)){
                 return 1;
                 //"Sesión iniciada con exito"
             }
