@@ -1,6 +1,12 @@
 package com.cursojava.curso.controllers;
 
+import com.cursojava.curso.model.Cuadrilla;
+import com.cursojava.curso.model.Rol;
+import com.cursojava.curso.model.TipoDocumento;
 import com.cursojava.curso.model.Usuario;
+import com.cursojava.curso.service.CuadrillaServiceAPI;
+import com.cursojava.curso.service.RolServiceAPI;
+import com.cursojava.curso.service.TipoDocumentoServiceAPI;
 import com.cursojava.curso.service.UsuarioServiceAPI;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
@@ -17,15 +23,30 @@ public class UsuarioRestController {
 
     @Autowired
     private UsuarioServiceAPI usuarioServiceAPI;
+    @Autowired
+    private TipoDocumentoServiceAPI tipoDocumentoServiceAPI;
+    @Autowired
+    private CuadrillaServiceAPI cuadrillaServiceAPI;
+    @Autowired
+    private RolServiceAPI rolServiceAPI;
 
     @GetMapping(value = "/getAll")
     public List<Usuario> getAll(){
         return usuarioServiceAPI.getAll();
     }
 
-    @PostMapping(value = "/saveUsuario")
-    public ResponseEntity<Usuario> save(@RequestBody Usuario usuario){
+    @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}/{idRol}")
+    public ResponseEntity<Usuario> save(@RequestBody Usuario usuario,
+                                        @PathVariable(value = "idIdentificacion") int idIdentificacion,
+                                        @PathVariable(value = "idCuadrilla") int idCuadrilla,
+                                        @PathVariable(value = "idRol") int idRol){
 
+        TipoDocumento identificacion = tipoDocumentoServiceAPI.get(idIdentificacion);
+        Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
+        Rol rol = rolServiceAPI.get(idRol);
+        usuario.setTipoDocumento(identificacion);
+        usuario.setCuadrilla(cuadrilla);
+        usuario.setRol(rol);
         usuario.setClave(hashearContra(usuario.getClave()));
         Usuario objeto = usuarioServiceAPI.save(usuario);
 
