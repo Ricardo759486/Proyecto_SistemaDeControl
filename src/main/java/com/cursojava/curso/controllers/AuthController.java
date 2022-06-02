@@ -18,20 +18,43 @@ public class AuthController {
     private AuditoriaServiceAPI auditoAPI;
 
     @GetMapping(value = "/validarLogin")
-
     public ResponseEntity<Usuario> login(String correo, String clave){
        Usuario usComprob =  usuarioServiceAPI.login(correo, clave);
-       if(usComprob != null){
-           if(auditoAPI.revisionFecha(usComprob)){
-               return new ResponseEntity<Usuario>(usComprob, HttpStatus.OK);
-               //"Sesión iniciada con exito"
-           }
-           return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
-           //"La contrasenia debe ser cambiada"
-       }
-        return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
-       //"Login fallido"
+       int val = comprobacion(usComprob);
+        switch(val) {
+            case 0:
+                System.out.println("Usuario bloqueado");
+                return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+            case 1:
+                System.out.println("Sesion iniciada con exito");
+                return new ResponseEntity<Usuario>(usComprob, HttpStatus.OK);
+            case 2:
+                System.out.println("La contrasenia debe ser cambiada");
+                return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+            case 3:
+                System.out.println("Login fallido");
+                return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+            default:
+                System.out.println("Se peto");
+                return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
-
-
+    public int comprobacion(Usuario u){
+        int resultado = -1;
+        if(u != null){
+            if(usuarioServiceAPI.validarEstado(u)){
+                return 0;
+                // "Estado inactivo"
+            }
+            if(auditoAPI.revisionFecha(u)){
+                return 1;
+                //"Sesión iniciada con exito"
+            }
+            return 2;
+            //"La contrasenia debe ser cambiada"
+        }else{
+            return 3;
+            //"Login fallido"
+        }
+    }
 }
