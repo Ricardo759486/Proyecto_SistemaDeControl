@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {RegisterService}  from "../../../shared/services/auth/register.service";
+
 
 @Component({
   selector: 'app-register',
@@ -10,12 +12,31 @@ export class RegisterComponent implements OnInit {
 
   loading: boolean =false;
   user: any={};
-  constructor() { }
+  errorRegister: boolean= false;
+  mensajeError: any="Revisa los campos";
+  constructor(private registerscv:RegisterService) { }
 
   ngOnInit(): void {
   }
 
   register() {
-      console.log(this.user);
+    let formulary : any = document.getElementById("register");
+    let formularyValid:boolean = formulary.reportValidity();
+    if (formularyValid){
+      this.loading=true;
+      this.registerscv.registerService(this.user).subscribe(
+        data => {
+          this.confirmar(data);
+        })
+    }
+  }
+  confirmar(resultant:any){
+    this.loading=false;
+    if(resultant){
+      alert("Usuario registrado");
+      this.user={};
+    }else{
+      this.errorRegister=true;
+    }
   }
 }

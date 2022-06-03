@@ -11,10 +11,10 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     // @ts-ignore
-    this.user = JSON.parse(localStorage.getItem("user"));
+    /**this.user = JSON.parse(localStorage.getItem("user"));
     if(!this.user){
       location.href = "/";
-    }
+    }**/
   }
   logout(){
     localStorage.removeItem("user");

@@ -6,7 +6,7 @@ import { LoginComponent } from './login.component';
 import {FormsModule} from "@angular/forms";
 import {HomeModule} from "../../pages/home/home.module";
 import {HttpClientModule} from "@angular/common/http";
-import {LoginService} from "../../../shared/services/auth/login.service";
+
 
 @NgModule({
   declarations: [

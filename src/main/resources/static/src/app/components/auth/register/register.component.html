@@ -7,9 +7,10 @@
         <span class="sr-only">Loading...</span>
       </div>
     </div>
-
   </div>
-  <form class="custom-form" method="post">
+
+
+  <form class="custom-form" method="post" (ngSubmit)="register()" id="register">
     <h1>Register</h1>
     <input
       type="email"
@@ -32,6 +33,13 @@
       placeholder="Repeat the password"
       required="required"
     />
-    <button type="submit" (click)="register()">Register</button>
+    <button type="submit" >Register</button>
+    <div class="row" *ngIf="errorRegister">
+      <div class="col-md-12">
+        <div class="alert alert-danger" role="alert">
+          <strong>Error: </strong> {{mensajeError}}
+        </div>
+      </div>
+    </div>
   </form>
 </div>

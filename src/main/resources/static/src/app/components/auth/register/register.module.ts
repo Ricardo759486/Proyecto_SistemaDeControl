@@ -5,7 +5,7 @@ import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 import {FormsModule} from "@angular/forms";
 import {HomeModule} from "../../pages/home/home.module";
-
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,8 @@ import {HomeModule} from "../../pages/home/home.module";
     CommonModule,
     RegisterRoutingModule,
     FormsModule,
-    HomeModule
+    HomeModule,
+    HttpClientModule,
   ]
 })
 export class RegisterModule { }

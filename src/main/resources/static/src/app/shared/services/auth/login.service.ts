@@ -17,7 +17,7 @@ export class LoginService {
         contentType: 'application/json'
       })
     };
-    return this.http.post('http://localhost:8080/api/login',user, httpOptions);
+    return this.http.post('http://localhost:8080/validarLogin',user, httpOptions);
   }
 
 }
