@@ -1,6 +1,7 @@
 package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Zona;
+import com.cursojava.curso.service.AuditoriaServiceAPI;
 import com.cursojava.curso.service.ZonaServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,9 @@ public class ZonaRestController {
 
     @Autowired
     private ZonaServiceAPI zonaServiceAPI;
+
+    @Autowired
+    private AuditoriaServiceAPI auditoriaServiceAPI;
 
     @GetMapping(value = "/getAll")
     public List<Zona> getAll(){
@@ -53,6 +57,10 @@ public class ZonaRestController {
             return new ResponseEntity<Zona>(zona, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<Zona>(zona, HttpStatus.OK);
+    }
+
+    public void insercionAudo(){
+
     }
 }
 

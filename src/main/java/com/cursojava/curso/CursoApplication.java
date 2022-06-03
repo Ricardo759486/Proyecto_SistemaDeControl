@@ -9,15 +9,8 @@ import org.springframework.context.event.EventListener;
 
 @SpringBootApplication
 public class CursoApplication {
-	@Autowired
-	private EnvioCorreoImpl correoServ;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursoApplication.class, args);
-	}
-
-	@EventListener(ApplicationReadyEvent.class)
-	public void envioCorreo() {
-		correoServ.enviarCorreo("dfmejiar@unbosque.edu.co", "Prueba Envio", "Bienvenido a la empresa");
 	}
 }
