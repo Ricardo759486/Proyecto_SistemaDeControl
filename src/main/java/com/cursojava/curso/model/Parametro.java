@@ -25,14 +25,8 @@ public class Parametro implements Serializable {
 	@Getter @Setter @Column(name="tipo")
 	private String tipo;
 
-	@Getter @Setter @Column(name="valor_fecha")
-	private String valorFecha;
-
-	@Getter @Setter @Column(name="valor_num")
-	private String valorNum;
-
-	@Getter @Setter @Column(name="valor_texto")
-	private String valorTexto;
+	@Getter @Setter @Column(name="valor")
+	private String valor;
 
 	public Parametro() {
 	}

@@ -32,6 +32,11 @@ public class Cuadrilla implements Serializable {
 	@Getter @Setter @JoinColumn(name="nit_proveedor")
 	private Proveedor proveedor;
 
+	//bi-directional many-to-one association to TurnoTrabajo
+	@ManyToOne
+	@Getter @Setter @JoinColumn(name="turno_trabajo")
+	private TurnoTrabajo turnoTrabajoBean;
+
 	//bi-directional many-to-one association to Zona
 	@ManyToOne
 	@Getter @Setter @JoinColumn(name="id_zona")

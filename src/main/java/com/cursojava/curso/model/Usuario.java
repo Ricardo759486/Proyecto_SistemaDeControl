@@ -52,10 +52,10 @@ public class Usuario implements Serializable {
 	@Getter @Setter
 	private List<Auditoria> auditorias;
 
-	//bi-directional many-to-one association to TelefonoUsuario
+	//bi-directional many-to-one association to Telefono
 	@OneToMany(mappedBy="usuario")
 	@Getter @Setter
-	private List<TelefonoUsuario> telefonoUsuarios;
+	private List<Telefono> telefonos;
 
 	//bi-directional many-to-one association to Cuadrilla
 	@ManyToOne
@@ -73,6 +73,34 @@ public class Usuario implements Serializable {
 	private TipoDocumento tipoDocumento;
 
 	public Usuario() {
+	}
+
+	public Auditoria addAuditoria(Auditoria auditoria) {
+		getAuditorias().add(auditoria);
+		auditoria.setUsuario(this);
+
+		return auditoria;
+	}
+
+	public Auditoria removeAuditoria(Auditoria auditoria) {
+		getAuditorias().remove(auditoria);
+		auditoria.setUsuario(null);
+
+		return auditoria;
+	}
+
+	public Telefono addTelefono(Telefono telefono) {
+		getTelefonos().add(telefono);
+		telefono.setUsuario(this);
+
+		return telefono;
+	}
+
+	public Telefono removeTelefono(Telefono telefono) {
+		getTelefonos().remove(telefono);
+		telefono.setUsuario(null);
+
+		return telefono;
 	}
 
 }

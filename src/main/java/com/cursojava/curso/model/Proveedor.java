@@ -36,9 +36,9 @@ public class Proveedor implements Serializable {
 	@Getter @Setter @OneToMany(mappedBy="proveedor")
 	private List<Cuadrilla> cuadrillas;
 
-	//bi-directional many-to-one association to TelefonoProveedor
+	//bi-directional many-to-one association to Telefono
 	@Getter @Setter @OneToMany(mappedBy="proveedor")
-	private List<TelefonoProveedor> telefonoProveedors;
+	private List<Telefono> telefonos;
 
 	public Proveedor() {
 	}
@@ -57,18 +57,18 @@ public class Proveedor implements Serializable {
 		return cuadrilla;
 	}
 
-	public TelefonoProveedor addTelefonoProveedor(TelefonoProveedor telefonoProveedor) {
-		getTelefonoProveedors().add(telefonoProveedor);
-		telefonoProveedor.setProveedor(this);
+	public Telefono addTelefono(Telefono telefono) {
+		getTelefonos().add(telefono);
+		telefono.setProveedor(this);
 
-		return telefonoProveedor;
+		return telefono;
 	}
 
-	public TelefonoProveedor removeTelefonoProveedor(TelefonoProveedor telefonoProveedor) {
-		getTelefonoProveedors().remove(telefonoProveedor);
-		telefonoProveedor.setProveedor(null);
+	public Telefono removeTelefono(Telefono telefono) {
+		getTelefonos().remove(telefono);
+		telefono.setProveedor(null);
 
-		return telefonoProveedor;
+		return telefono;
 	}
 
 }

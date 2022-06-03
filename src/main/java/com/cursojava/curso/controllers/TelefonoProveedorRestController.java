@@ -1,6 +1,5 @@
 package com.cursojava.curso.controllers;
 
-import com.cursojava.curso.model.TelefonoProveedor;
 import com.cursojava.curso.service.TelefonoProveedorServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
