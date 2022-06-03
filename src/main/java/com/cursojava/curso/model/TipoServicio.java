@@ -29,4 +29,17 @@ public class TipoServicio implements Serializable {
 
 	public TipoServicio() {
 	}
+	public OrdenTrabajo addOrdenTrabajo(OrdenTrabajo ordenTrabajo) {
+		getOrdenTrabajos().add(ordenTrabajo);
+		ordenTrabajo.setTipoServicio(this);
+
+		return ordenTrabajo;
+	}
+
+	public OrdenTrabajo removeOrdenTrabajo(OrdenTrabajo ordenTrabajo) {
+		getOrdenTrabajos().remove(ordenTrabajo);
+		ordenTrabajo.setTipoServicio(null);
+
+		return ordenTrabajo;
+	}
 }

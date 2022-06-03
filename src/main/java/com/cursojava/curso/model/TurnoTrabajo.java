@@ -7,45 +7,45 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
+
+/**
+ * The persistent class for the turno_trabajo database table.
+ * 
+ */
 @Entity
-@Table(name = "zona")
-public class Zona implements Serializable {
+@Table(name="turno_trabajo")
+@NamedQuery(name="TurnoTrabajo.findAll", query="SELECT t FROM TurnoTrabajo t")
+public class TurnoTrabajo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Getter @Setter @Column(name="id_zona")
-	private int idZona;
-
-	@Getter @Setter @Column(name = "ciudad")
-	private String ciudad;
-
-	@Getter @Setter @Column(name = "coordenadas")
-	private String coordenadas;
-
-	@Getter @Setter @Column(name = "localidad")
-	private String localidad;
+	@Getter @Setter @Column(name="id_turno")
+	private int idTurno;
+	@Getter @Setter @Column(name = "descripcion")
+	private String descripcion;
 
 	@Getter @Setter @Column(name = "estado")
 	private String estado;
 
 	//bi-directional many-to-one association to Cuadrilla
-	@Getter @Setter @OneToMany(mappedBy="zona")
+	@Getter @Setter @OneToMany(mappedBy="turnoTrabajoBean")
 	private List<Cuadrilla> cuadrillas;
 
-	public Zona() {
+	public TurnoTrabajo() {
 	}
 
 	public Cuadrilla addCuadrilla(Cuadrilla cuadrilla) {
 		getCuadrillas().add(cuadrilla);
-		cuadrilla.setZona(this);
+		cuadrilla.setTurnoTrabajoBean(this);
 
 		return cuadrilla;
 	}
 
 	public Cuadrilla removeCuadrilla(Cuadrilla cuadrilla) {
 		getCuadrillas().remove(cuadrilla);
-		cuadrilla.setZona(null);
+		cuadrilla.setTurnoTrabajoBean(null);
 
 		return cuadrilla;
 	}
+
 }

@@ -1,7 +1,6 @@
 package com.cursojava.curso.service.impl;
 
 import com.cursojava.curso.commons.GenericServiceImpl;
-import com.cursojava.curso.model.TelefonoProveedor;
 import com.cursojava.curso.repository.TelefonoProveedorRepository;
 import com.cursojava.curso.service.TelefonoProveedorServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;

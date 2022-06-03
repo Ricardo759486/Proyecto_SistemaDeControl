@@ -29,9 +29,6 @@ public class Cliente implements Serializable {
 	@Getter @Setter @Column(name = "estado")
 	private String estado;
 
-	@Getter @Setter @Column(name = "telefono")
-	private String telefono;
-
 	//bi-directional many-to-one association to TipoDocumento
 	@ManyToOne
 	@Getter @Setter @JoinColumn(name="tipo_identificacion")
@@ -41,9 +38,9 @@ public class Cliente implements Serializable {
 	@Getter @Setter @OneToMany(mappedBy="cliente")
 	private List<OrdenTrabajo> ordenTrabajos;
 
-	//bi-directional many-to-one association to TelefonoCliente
+	//bi-directional many-to-one association to Telefono
 	@Getter @Setter @OneToMany(mappedBy="cliente")
-	private List<TelefonoCliente> telefonoClientes;
+	private List<Telefono> telefonos;
 
 	public Cliente() {
 	}
@@ -62,18 +59,18 @@ public class Cliente implements Serializable {
 		return ordenTrabajo;
 	}
 
-	public TelefonoCliente addTelefonoCliente(TelefonoCliente telefonoCliente) {
-		getTelefonoClientes().add(telefonoCliente);
-		telefonoCliente.setCliente(this);
+	public Telefono addTelefono(Telefono telefono) {
+		getTelefonos().add(telefono);
+		telefono.setCliente(this);
 
-		return telefonoCliente;
+		return telefono;
 	}
 
-	public TelefonoCliente removeTelefonoCliente(TelefonoCliente telefonoCliente) {
-		getTelefonoClientes().remove(telefonoCliente);
-		telefonoCliente.setCliente(null);
+	public Telefono removeTelefono(Telefono telefono) {
+		getTelefonos().remove(telefono);
+		telefono.setCliente(null);
 
-		return telefonoCliente;
+		return telefono;
 	}
 
 }
