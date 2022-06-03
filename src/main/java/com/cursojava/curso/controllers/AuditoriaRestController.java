@@ -35,6 +35,8 @@ public class AuditoriaRestController {
         if (objeto != null){
             objeto.setUsuario(auditoria.getUsuario());
             objeto.setFechaHora(auditoria.getFechaHora());
+            objeto.setIpUsuario(auditoria.getIpUsuario());
+            objeto.setOperacionCrud(auditoria.getOperacionCrud());
             objeto.setTabla(auditoria.getTabla());
             auditoriaServiceAPI.save(objeto);
         }else{

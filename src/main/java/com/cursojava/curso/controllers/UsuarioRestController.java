@@ -65,6 +65,8 @@ public class UsuarioRestController {
             objeto.setIdentificacion(usuario.getIdentificacion());
             objeto.setTipoDocumento(usuario.getTipoDocumento());
             objeto.setCuadrilla(usuario.getCuadrilla());
+            objeto.setIntentos(usuario.getIntentos());
+            objeto.setFecha_ultimaContra(usuario.getFecha_ultimaContra());
             objeto.setEstado(usuario.getEstado());
             usuarioServiceAPI.save(objeto);
         }else{

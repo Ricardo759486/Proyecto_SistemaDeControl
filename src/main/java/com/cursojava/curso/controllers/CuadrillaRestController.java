@@ -51,6 +51,7 @@ public class CuadrillaRestController {
             objeto.setZona(cuadrilla.getZona());
             objeto.setMovilAsociado(cuadrilla.getMovilAsociado());
             objeto.setProveedor(cuadrilla.getProveedor());
+            objeto.setTurnoTrabajoBean(cuadrilla.getTurnoTrabajoBean());
             objeto.setEstado(cuadrilla.getEstado());
             cuadrillaServiceAPI.save(objeto);
         }else{

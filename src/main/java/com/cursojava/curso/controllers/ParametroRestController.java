@@ -35,9 +35,7 @@ public class ParametroRestController {
         if (objeto != null){
             objeto.setTipo(parametro.getTipo());
             objeto.setDescripcion(parametro.getDescripcion());
-            objeto.setValorNum(parametro.getValorNum());
-            objeto.setValorTexto(parametro.getValorTexto());
-            objeto.setValorFecha(parametro.getValorFecha());
+            objeto.setValor(parametro.getValor());
             parametroServiceAPI.save(objeto);
         }else{
             return new ResponseEntity<Parametro>(parametro, HttpStatus.INTERNAL_SERVER_ERROR);
