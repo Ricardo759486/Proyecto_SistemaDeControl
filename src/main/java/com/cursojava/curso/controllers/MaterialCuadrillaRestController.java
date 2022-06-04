@@ -1,7 +1,11 @@
 package com.cursojava.curso.controllers;
 
+import com.cursojava.curso.model.Cuadrilla;
+import com.cursojava.curso.model.Material;
 import com.cursojava.curso.model.MaterialCuadrilla;
+import com.cursojava.curso.service.CuadrillaServiceAPI;
 import com.cursojava.curso.service.MaterialCuadrillaServiceAPI;
+import com.cursojava.curso.service.MaterialServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +20,26 @@ public class MaterialCuadrillaRestController {
     @Autowired
     private MaterialCuadrillaServiceAPI materialCuadrillaServiceAPI;
 
+    @Autowired
+    private CuadrillaServiceAPI cuadrillaServiceAPI;
+
+    @Autowired
+    private MaterialServiceAPI materialServiceAPI;
+
     @GetMapping(value = "/getAll")
     public List<MaterialCuadrilla> getAll(){
         return materialCuadrillaServiceAPI.getAll();
     }
 
-    @PostMapping(value = "/saveMaterialCuadrilla")
-    public ResponseEntity<MaterialCuadrilla> save(@RequestBody MaterialCuadrilla materialCuadrilla){
+    @PostMapping(value = "/saveMaterialCuadrilla/{idCuadrilla}/{idInventario}")
+    public ResponseEntity<MaterialCuadrilla> save(@RequestBody MaterialCuadrilla materialCuadrilla,
+                                                  @PathVariable(value = "idCuadrilla") int idCuadrilla,
+                                                  @PathVariable(value = "idInventario") int idInventario){
+        Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
+        Material material = materialServiceAPI.get(idInventario);
+        materialCuadrilla.setMaterial(material);
+        materialCuadrilla.setCuadrilla(cuadrilla);
         MaterialCuadrilla objeto = materialCuadrillaServiceAPI.save(materialCuadrilla);
-
         return new ResponseEntity<MaterialCuadrilla>(objeto, HttpStatus.OK);
     }
 

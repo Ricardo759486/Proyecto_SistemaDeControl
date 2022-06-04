@@ -8,13 +8,12 @@ import com.cursojava.curso.service.CuadrillaServiceAPI;
 import com.cursojava.curso.service.RolServiceAPI;
 import com.cursojava.curso.service.TipoDocumentoServiceAPI;
 import com.cursojava.curso.service.UsuarioServiceAPI;
-import de.mkammerer.argon2.Argon2;
-import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -47,7 +46,7 @@ public class UsuarioRestController {
         usuario.setTipoDocumento(identificacion);
         usuario.setCuadrilla(cuadrilla);
         usuario.setRol(rol);
-        usuario.setFecha_ultima_contra(usuarioServiceAPI.calTiempoActual());
+        usuario.setFecha_ultima_contra(new Date());
         usuario.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
         Usuario objeto = usuarioServiceAPI.save(usuario);
 

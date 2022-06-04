@@ -1,7 +1,9 @@
 package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Cliente;
+import com.cursojava.curso.model.TipoDocumento;
 import com.cursojava.curso.service.ClienteServiceAPI;
+import com.cursojava.curso.service.TipoDocumentoServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +18,20 @@ public class ClienteRestController {
     @Autowired
     private ClienteServiceAPI clienteServiceAPI;
 
+    @Autowired
+    private TipoDocumentoServiceAPI tipoDocumentoServiceAPI;
+
     @GetMapping(value = "/getAll")
     public List<Cliente> getAll(){
         return clienteServiceAPI.getAll();
     }
 
-    @PostMapping(value = "/saveCliente")
-    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente){
-        Cliente objeto = clienteServiceAPI.save(cliente);
+    @PostMapping(value = "/saveCliente/{idDocumento}")
+    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente, @PathVariable(value = "idDocumento") int idDocumento){
 
+        TipoDocumento tipoDocumento = tipoDocumentoServiceAPI.get(idDocumento);
+        cliente.setTipoDocumento(tipoDocumento);
+        Cliente objeto = clienteServiceAPI.save(cliente);
         return new ResponseEntity<Cliente>(objeto, HttpStatus.OK);
     }
 

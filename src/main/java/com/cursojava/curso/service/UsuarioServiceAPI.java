@@ -13,7 +13,5 @@ public interface UsuarioServiceAPI extends GenericServiceAPI<Usuario, Integer> {
 
     boolean revisionFecha(Usuario u);
 
-    Date calTiempoActual();
-
     String hashearContra(String contra);
 }

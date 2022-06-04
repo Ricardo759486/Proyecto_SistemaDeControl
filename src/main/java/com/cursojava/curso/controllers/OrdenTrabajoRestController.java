@@ -1,7 +1,10 @@
 package com.cursojava.curso.controllers;
 
-import com.cursojava.curso.model.OrdenTrabajo;
+import com.cursojava.curso.model.*;
+import com.cursojava.curso.service.ClienteServiceAPI;
+import com.cursojava.curso.service.CuadrillaServiceAPI;
 import com.cursojava.curso.service.OrdenTrabajoServiceAPI;
+import com.cursojava.curso.service.TipoServicioServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +19,31 @@ public class OrdenTrabajoRestController {
     @Autowired
     private OrdenTrabajoServiceAPI ordenTrabajoServiceAPI;
 
+    @Autowired
+    private CuadrillaServiceAPI cuadrillaServiceAPI;
+
+    @Autowired
+    private ClienteServiceAPI clienteServiceAPI;
+
+    @Autowired
+    private TipoServicioServiceAPI tipoServicioServiceAPI;
+
     @GetMapping(value = "/getAll")
     public List<OrdenTrabajo> getAll(){
         return ordenTrabajoServiceAPI.getAll();
     }
 
-    @PostMapping(value = "/saveOrdenTrabajo")
-    public ResponseEntity<OrdenTrabajo> save(@RequestBody OrdenTrabajo ordenTrabajo){
+    @PostMapping(value = "/saveOrdenTrabajo/{idCuadrilla}/{idCliente}/{idTipoServicio}")
+    public ResponseEntity<OrdenTrabajo> save(@RequestBody OrdenTrabajo ordenTrabajo, @PathVariable(value = "idCuadrilla") int idCuadrilla,
+                                             @PathVariable(value = "idCliente") int idCliente,
+                                             @PathVariable(value = "idTipoServicio") int idTipoServicio){
+        Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
+        Cliente cliente = clienteServiceAPI.get(idCliente);
+        TipoServicio tipoServicio = tipoServicioServiceAPI.get(idTipoServicio);
+        ordenTrabajo.setCuadrilla(cuadrilla);
+        ordenTrabajo.setCliente(cliente);
+        ordenTrabajo.setTipoServicio(tipoServicio);
         OrdenTrabajo objeto = ordenTrabajoServiceAPI.save(ordenTrabajo);
-
         return new ResponseEntity<OrdenTrabajo>(objeto, HttpStatus.OK);
     }
 

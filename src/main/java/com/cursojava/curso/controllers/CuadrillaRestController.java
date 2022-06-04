@@ -2,9 +2,11 @@ package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Cuadrilla;
 import com.cursojava.curso.model.Proveedor;
+import com.cursojava.curso.model.TurnoTrabajo;
 import com.cursojava.curso.model.Zona;
 import com.cursojava.curso.service.CuadrillaServiceAPI;
 import com.cursojava.curso.service.ProveedorServiceAPI;
+import com.cursojava.curso.service.TurnoTrabajoServiceAPI;
 import com.cursojava.curso.service.ZonaServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,18 +28,24 @@ public class CuadrillaRestController {
     @Autowired
     private ProveedorServiceAPI proveedorServiceAPI;
 
+    @Autowired
+    private TurnoTrabajoServiceAPI turnoTrabajoServiceAPI;
+
     @GetMapping(value = "/getAll")
     public List<Cuadrilla> getAll(){
         return cuadrillaServiceAPI.getAll();
     }
 
-    @PostMapping(value = "/saveCuadrilla/{idZona}/{nitProveedor}")
+    @PostMapping(value = "/saveCuadrilla/{idZona}/{idProveedor}/{turnoTrabajo}")
     public ResponseEntity<Cuadrilla> save(@RequestBody Cuadrilla cuadrilla, @PathVariable(value = "idZona") int idZona,
-                                          @PathVariable(value = "nitProveedor") int nitProveedor){
+                                          @PathVariable(value = "idProveedor") int idProveedor,
+                                          @PathVariable(value = "turnoTrabajo") int idTurno){
         Zona zona = zonaServiceAPI.get(idZona);
-        Proveedor proveedor = proveedorServiceAPI.get(nitProveedor);
+        Proveedor proveedor = proveedorServiceAPI.get(idProveedor);
+        TurnoTrabajo turno = turnoTrabajoServiceAPI.get(idTurno);
         cuadrilla.setZona(zona);
         cuadrilla.setProveedor(proveedor);
+        cuadrilla.setTurnoTrabajoBean(turno);
         Cuadrilla objeto = cuadrillaServiceAPI.save(cuadrilla);
 
         return new ResponseEntity<Cuadrilla>(objeto, HttpStatus.OK);
