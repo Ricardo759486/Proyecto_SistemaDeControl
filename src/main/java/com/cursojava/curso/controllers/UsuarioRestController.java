@@ -65,10 +65,9 @@ public class UsuarioRestController {
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
         Rol rol = rolServiceAPI.get(idRol);
         if (objeto != null){
-
             objeto.setRol(rol);
             objeto.setLogin(usuario.getLogin());
-            objeto.setClave(usuario.getClave());
+            objeto.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
             objeto.setDireccion(usuario.getDireccion());
             objeto.setIdentificacion(usuario.getIdentificacion());
             objeto.setTipoDocumento(identificacion);
@@ -83,10 +82,11 @@ public class UsuarioRestController {
         return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/cambiarContrasenia")
-    public ResponseEntity<Usuario> cambiarContra(Usuario u, String contra){
-        u.setClave(usuarioServiceAPI.hashearContra(contra));
-        return new ResponseEntity<Usuario>(u, HttpStatus.OK);
+    @PutMapping(value = "/cambiarContrasenia/{id}/{contra}")
+    public ResponseEntity<Usuario> cambiarContra(@RequestBody Usuario usuario,
+                                                 @PathVariable(value = "contra") String contra){
+        usuario.setClave(usuarioServiceAPI.hashearContra(contra));
+        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
     }
 
     @GetMapping(value = "/deleteUsuario/{id}")
@@ -99,4 +99,6 @@ public class UsuarioRestController {
         }
         return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
     }
+
+
 }

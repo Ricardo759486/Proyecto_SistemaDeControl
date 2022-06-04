@@ -23,7 +23,6 @@ public class AuthController {
 
     @EventListener(ApplicationReadyEvent.class)
     public void envioCorreo() {
-        //correoService.enviarCorreo("dfmejiar@unbosque.edu.co", "Prueba Envio", "Bienvenido a la empresa");
         System.out.println("----- Iniciado");
     }
 

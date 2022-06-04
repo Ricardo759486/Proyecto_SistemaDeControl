@@ -1,5 +1,7 @@
 package com.cursojava.curso.service.impl;
 
+import com.cursojava.curso.repository.ParametroRepository;
+import com.cursojava.curso.service.ParametroServiceAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 
@@ -9,6 +11,7 @@ import com.cursojava.curso.commons.GenericServiceImpl;
 import com.cursojava.curso.service.UsuarioServiceAPI;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.security.MessageDigest;
@@ -24,6 +27,9 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
     
     @Autowired
     private UsuarioRepository usuarioDaoAPI;
+
+    @Autowired
+    private ParametroServiceAPI parametroServiceAPI;
 
     @PersistenceContext
     EntityManager entityManager;
@@ -45,6 +51,8 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
                 return lista.get(0);
             }else {
                 System.out.println("Clave incorrecta");
+                int intentos = encontrado.getIntentos() +1;
+                encontrado.setIntentos(intentos);
                 return null;
             }
         }else{
@@ -54,17 +62,17 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
     }
     public boolean validarContra(String contraValidar, Usuario u){
         String contraHash = hashearContra(contraValidar);
-        System.out.println(contraHash);
         if(contraHash.equals(u.getClave())){
             System.out.println("Contraseña igual");
+            System.out.println(u.getIntentos());
             u.setIntentos(0);
+            System.out.println(u.getIntentos());
+            save(u);
             return true;
         }
         System.out.println("Contraseña diferente");
-        int intentos = u.getIntentos() +1;
-        System.out.println(u.getIntentos());
-        System.out.println(intentos);
-        u.setIntentos(intentos);
+        u.setIntentos(u.getIntentos()+1);
+        save(u);
         validarIntentos(u);
         return false;
     }
@@ -73,17 +81,20 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
       if(u.getEstado().equals("A")){
           System.out.println("Estado activo");
           return true;
+      }else{
+          System.out.println("Estado desactivado");
+          return false;
       }
-        System.out.println("Estado desactivado");
-      return false;
     }
 
     public void validarIntentos(Usuario u){
-        if(u.getIntentos() > 3){
+        if(u.getIntentos() > parametroServiceAPI.intentosPermitidos()){
             System.out.println("Usuario con mas de tres intentos bloquear");
             u.setEstado("D");
+            save(u);
+        }else{
+            System.out.println("Intentos permitidos");
         }
-        System.out.println("Intentos permitidos");
     }
     @Override
     public boolean revisionFecha(Usuario u){
@@ -94,7 +105,7 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
         TimeUnit time = TimeUnit.DAYS;
         long dias_dif = time.convert(rest, TimeUnit.MILLISECONDS);
 
-        if(dias_dif <= 7){
+        if(dias_dif <= parametroServiceAPI.paraCantDias()){
             System.out.println("Fecha correcta");
             return true;
         }
