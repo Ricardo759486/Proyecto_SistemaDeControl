@@ -22,9 +22,11 @@ public class AuthController {
     private UsuarioServiceAPI usuarioServiceAPI;
     @Autowired
     private EnvioCorreoImpl correoService;
+
     @EventListener(ApplicationReadyEvent.class)
     public void envioCorreo() {
-        correoService.enviarCorreo("dfmejiar@unbosque.edu.co", "Prueba Envio", "Bienvenido a la empresa");
+        //correoService.enviarCorreo("dfmejiar@unbosque.edu.co", "Prueba Envio", "Bienvenido a la empresa");
+        System.out.println("----- Iniciado");
     }
 
     @PutMapping(value = "/validarLogin/{correo}/{clave}")

@@ -29,8 +29,9 @@ public class Cuadrilla implements Serializable {
 
 	//bi-directional many-to-one association to Proveedor
 	@ManyToOne
-	@Getter @Setter @JoinColumn(name="nit_proveedor")
+	@Getter @Setter @JoinColumn(name="id_prov")
 	private Proveedor proveedor;
+
 
 	//bi-directional many-to-one association to TurnoTrabajo
 	@ManyToOne

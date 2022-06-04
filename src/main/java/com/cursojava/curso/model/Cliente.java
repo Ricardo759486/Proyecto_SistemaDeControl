@@ -20,11 +20,11 @@ public class Cliente implements Serializable {
 	@Getter @Setter @Column(name="id_cliente")
 	private int idCliente;
 
-	@Getter @Setter @Column(name = "cedula")
-	private String cedula;
-
 	@Getter @Setter @Column(name = "direccion")
 	private String direccion;
+
+	@Getter @Setter @Column(name = "num_documento")
+	private String numDocumento;
 
 	@Getter @Setter @Column(name = "estado")
 	private String estado;

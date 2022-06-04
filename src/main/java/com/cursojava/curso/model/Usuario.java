@@ -34,10 +34,6 @@ public class Usuario implements Serializable {
 	@Getter @Setter @Column(name = "estado")
 	private String estado;
 
-	@Temporal(TemporalType.DATE)
-	@Getter @Setter @Column(name = "fecha_ultimaContra")
-	private Date fecha_ultimaContra;
-
 	@Getter @Setter @Column(name = "identificacion")
 	private String identificacion;
 
@@ -46,6 +42,10 @@ public class Usuario implements Serializable {
 
 	@Getter @Setter @Column(name = "login")
 	private String login;
+
+	@Temporal(TemporalType.DATE)
+	@Getter @Setter @Column(name = "fecha_ultima_contra")
+	private Date fecha_ultima_contra;
 
 	//bi-directional many-to-one association to Auditoria
 	@OneToMany(mappedBy="usuario")

@@ -36,6 +36,7 @@ public class ProveedorRestController {
             objeto.setDireccion(proveedor.getDireccion());
             objeto.setNombre(proveedor.getNombre());
             objeto.setEmail(proveedor.getEmail());
+            objeto.setNit(proveedor.getNit());
             objeto.setEstado(proveedor.getEstado());
             proveedorServiceAPI.save(objeto);
         }else{

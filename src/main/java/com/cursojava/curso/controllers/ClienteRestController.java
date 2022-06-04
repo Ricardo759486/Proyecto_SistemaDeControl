@@ -33,7 +33,7 @@ public class ClienteRestController {
 
         Cliente objeto = clienteServiceAPI.get(id);
         if (objeto != null){
-            objeto.setCedula(cliente.getCedula());
+            objeto.setNumDocumento(cliente.getNumDocumento());
             objeto.setDireccion(cliente.getDireccion());
             objeto.setTipoDocumento(cliente.getTipoDocumento());
             objeto.setEstado(cliente.getEstado());

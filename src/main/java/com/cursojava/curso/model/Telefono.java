@@ -27,17 +27,17 @@ import javax.persistence.*;
 
 		//bi-directional many-to-one association to Cliente
 		@ManyToOne
-		@Getter @Setter @JoinColumn(name="id_tipo")
+		@Getter @Setter @JoinColumn(name="id_tipo", insertable = false, updatable = false)
 		private Cliente cliente;
 
 		//bi-directional many-to-one association to Proveedor
 		@ManyToOne
-		@Getter @Setter @JoinColumn(name="id_tipo")
+		@Getter @Setter @JoinColumn(name="id_tipo", insertable = false, updatable = false)
 		private Proveedor proveedor;
 
 		//bi-directional many-to-one association to Usuario
 		@ManyToOne
-		@Getter @Setter @JoinColumn(name="id_tipo")
+		@Getter @Setter @JoinColumn(name="id_tipo", insertable = false, updatable = false)
 		private Usuario usuario;
 
 		public Telefono() {

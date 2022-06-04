@@ -69,7 +69,7 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
     }
     @Override
     public boolean revisionFecha(Usuario u){
-        Date fecha_creacion = u.getFecha_ultimaContra();
+        Date fecha_creacion = u.getFecha_ultima_contra();
         Date fecha_actual = calTiempoActual();
 
         long rest = fecha_actual.getTime() - fecha_creacion.getTime();
@@ -81,7 +81,7 @@ public class UsuarioServiceImpl extends GenericServiceImpl<Usuario, Integer> imp
         }
         return false;
     }
-
+    @Override
     public Date calTiempoActual(){
         LocalDate myObj = LocalDate.now();
         ZoneId defaultZoneId = ZoneId.systemDefault();

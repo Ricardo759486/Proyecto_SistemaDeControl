@@ -47,6 +47,7 @@ public class UsuarioRestController {
         usuario.setTipoDocumento(identificacion);
         usuario.setCuadrilla(cuadrilla);
         usuario.setRol(rol);
+        usuario.setFecha_ultima_contra(usuarioServiceAPI.calTiempoActual());
         usuario.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
         Usuario objeto = usuarioServiceAPI.save(usuario);
 
@@ -66,7 +67,7 @@ public class UsuarioRestController {
             objeto.setTipoDocumento(usuario.getTipoDocumento());
             objeto.setCuadrilla(usuario.getCuadrilla());
             objeto.setIntentos(usuario.getIntentos());
-            objeto.setFecha_ultimaContra(usuario.getFecha_ultimaContra());
+            objeto.setFecha_ultima_contra(usuario.getFecha_ultima_contra());
             objeto.setEstado(usuario.getEstado());
             usuarioServiceAPI.save(objeto);
         }else{
