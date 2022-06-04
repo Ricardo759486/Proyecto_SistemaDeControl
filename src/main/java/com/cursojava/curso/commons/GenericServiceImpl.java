@@ -1,8 +1,5 @@
 package com.cursojava.curso.commons;
 
-import com.cursojava.curso.model.Usuario;
-import de.mkammerer.argon2.Argon2;
-import de.mkammerer.argon2.Argon2Factory;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 

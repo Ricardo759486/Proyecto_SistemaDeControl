@@ -9,13 +9,11 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@RequestMapping(value = "/Autenticacion")
 public class AuthController {
 
     @Autowired
@@ -29,7 +27,7 @@ public class AuthController {
         System.out.println("----- Iniciado");
     }
 
-    @PutMapping(value = "/validarLogin/{correo}/{clave}")
+    @PostMapping(value = "/validarLogin/{correo}/{clave}")
     public ResponseEntity<Usuario> login(@PathVariable(value = "correo") String correo,
                                          @PathVariable(value = "clave") String clave){
        Usuario usComprob =  usuarioServiceAPI.login(correo, clave);
@@ -59,7 +57,7 @@ public class AuthController {
     public int comprobacion(Usuario u){
         int resultado = -1;
         if(u != null){
-            if(usuarioServiceAPI.validarEstado(u)){
+            if(!usuarioServiceAPI.validarEstado(u)){
                 return 0;
                 // "Estado inactivo"
             }
