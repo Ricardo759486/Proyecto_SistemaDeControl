@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
   user: any={};
+  title = 'admin-panel-layout';
+  sideBarOpen = true;
   constructor() { }
 
   ngOnInit(): void {
@@ -20,5 +22,7 @@ export class AdminComponent implements OnInit {
     localStorage.removeItem("user");
     location.href = "/";
   }
-
+  sideBarToggler() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
 }

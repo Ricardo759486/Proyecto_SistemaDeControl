@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule) },
   { path: 'login', loadChildren: () => import('./components/auth/login/login.module').then(m => m.LoginModule) },
   { path: 'register', loadChildren: () => import('./components/auth/register/register.module').then(m => m.RegisterModule) },
-  { path: 'admin', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule) }
+  { path: 'admin', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule) },
 
 ];
 

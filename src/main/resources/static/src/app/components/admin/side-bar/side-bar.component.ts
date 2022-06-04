@@ -10,16 +10,6 @@ export class SideBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    /* global bootstrap: false */
-    (() => {
-      'use strict'
-      const tooltipTriggerList = Array.from(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-      tooltipTriggerList.forEach(tooltipTriggerEl => {
-        // @ts-ignore
-        new bootstrap.Tooltip(tooltipTriggerEl)
-      })
-    })()
-
 
   }
 

@@ -11,9 +11,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     HomeComponent,
     NavbarComponent
   ],
-  exports: [
-    NavbarComponent
-  ],
+    exports: [
+        NavbarComponent,
+        HomeComponent
+    ],
   imports: [
     CommonModule,
     HomeRoutingModule
