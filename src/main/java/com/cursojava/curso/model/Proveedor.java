@@ -46,32 +46,4 @@ public class Proveedor implements Serializable {
 	public Proveedor() {
 	}
 
-	public Cuadrilla addCuadrilla(Cuadrilla cuadrilla) {
-		getCuadrillas().add(cuadrilla);
-		cuadrilla.setProveedor(this);
-
-		return cuadrilla;
-	}
-
-	public Cuadrilla removeCuadrilla(Cuadrilla cuadrilla) {
-		getCuadrillas().remove(cuadrilla);
-		cuadrilla.setProveedor(null);
-
-		return cuadrilla;
-	}
-
-	public Telefono addTelefono(Telefono telefono) {
-		getTelefonos().add(telefono);
-		telefono.setProveedor(this);
-
-		return telefono;
-	}
-
-	public Telefono removeTelefono(Telefono telefono) {
-		getTelefonos().remove(telefono);
-		telefono.setProveedor(null);
-
-		return telefono;
-	}
-
 }

@@ -32,7 +32,6 @@ public class Cuadrilla implements Serializable {
 	@Getter @Setter @JoinColumn(name="id_prov")
 	private Proveedor proveedor;
 
-
 	//bi-directional many-to-one association to TurnoTrabajo
 	@ManyToOne
 	@Getter @Setter @JoinColumn(name="turno_trabajo")
@@ -56,48 +55,6 @@ public class Cuadrilla implements Serializable {
 	private List<Usuario> usuarios;
 
 	public Cuadrilla() {
-	}
-
-	public MaterialCuadrilla addMaterialCuadrilla(MaterialCuadrilla materialCuadrilla) {
-		getMaterialCuadrillas().add(materialCuadrilla);
-		materialCuadrilla.setCuadrilla(this);
-
-		return materialCuadrilla;
-	}
-
-	public MaterialCuadrilla removeMaterialCuadrilla(MaterialCuadrilla materialCuadrilla) {
-		getMaterialCuadrillas().remove(materialCuadrilla);
-		materialCuadrilla.setCuadrilla(null);
-
-		return materialCuadrilla;
-	}
-
-	public OrdenTrabajo addOrdenTrabajo(OrdenTrabajo ordenTrabajo) {
-		getOrdenTrabajos().add(ordenTrabajo);
-		ordenTrabajo.setCuadrilla(this);
-
-		return ordenTrabajo;
-	}
-
-	public OrdenTrabajo removeOrdenTrabajo(OrdenTrabajo ordenTrabajo) {
-		getOrdenTrabajos().remove(ordenTrabajo);
-		ordenTrabajo.setCuadrilla(null);
-
-		return ordenTrabajo;
-	}
-
-	public Usuario addUsuario(Usuario usuario) {
-		getUsuarios().add(usuario);
-		usuario.setCuadrilla(this);
-
-		return usuario;
-	}
-
-	public Usuario removeUsuario(Usuario usuario) {
-		getUsuarios().remove(usuario);
-		usuario.setCuadrilla(null);
-
-		return usuario;
 	}
 
 }

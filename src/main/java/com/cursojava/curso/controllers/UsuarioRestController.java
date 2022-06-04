@@ -53,18 +53,26 @@ public class UsuarioRestController {
         return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/updateUsuario/{id}")
-    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario, @PathVariable(value = "id") int id){
+    @PutMapping(value = "/updateUsuario/{id}/{idIdentificacion}/{idCuadrilla}/{idRol}")
+    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario,
+                                          @PathVariable(value = "id") int id,
+                                          @PathVariable(value = "idIdentificacion") int idIdentificacion,
+                                          @PathVariable(value = "idCuadrilla") int idCuadrilla,
+                                          @PathVariable(value = "idRol") int idRol){
 
         Usuario objeto = usuarioServiceAPI.get(id);
+        TipoDocumento identificacion = tipoDocumentoServiceAPI.get(idIdentificacion);
+        Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
+        Rol rol = rolServiceAPI.get(idRol);
         if (objeto != null){
-            objeto.setRol(usuario.getRol());
+
+            objeto.setRol(rol);
             objeto.setLogin(usuario.getLogin());
             objeto.setClave(usuario.getClave());
             objeto.setDireccion(usuario.getDireccion());
             objeto.setIdentificacion(usuario.getIdentificacion());
-            objeto.setTipoDocumento(usuario.getTipoDocumento());
-            objeto.setCuadrilla(usuario.getCuadrilla());
+            objeto.setTipoDocumento(identificacion);
+            objeto.setCuadrilla(cuadrilla);
             objeto.setIntentos(usuario.getIntentos());
             objeto.setFecha_ultima_contra(usuario.getFecha_ultima_contra());
             objeto.setEstado(usuario.getEstado());
