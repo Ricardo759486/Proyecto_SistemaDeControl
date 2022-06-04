@@ -43,13 +43,17 @@ public class MaterialCuadrillaRestController {
         return new ResponseEntity<MaterialCuadrilla>(objeto, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/updateMaterialCuadrilla/{id}")
-    public ResponseEntity<MaterialCuadrilla> update(@RequestBody MaterialCuadrilla materialCuadrilla, @PathVariable(value = "id") int id){
-
+    @PutMapping(value = "/updateMaterialCuadrilla/{id}/{idCuadrilla}/{idInventario}")
+    public ResponseEntity<MaterialCuadrilla> update(@RequestBody MaterialCuadrilla materialCuadrilla,
+                                                    @PathVariable(value = "id") int id,
+                                                    @PathVariable(value = "idCuadrilla") int idCuadrilla,
+                                                    @PathVariable(value = "idInventario") int idInventario){
+        Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
+        Material material = materialServiceAPI.get(idInventario);
         MaterialCuadrilla objeto = materialCuadrillaServiceAPI.get(id);
         if (objeto != null){
-            objeto.setCuadrilla(materialCuadrilla.getCuadrilla());
-            objeto.setMaterial(materialCuadrilla.getMaterial());
+            objeto.setCuadrilla(cuadrilla);
+            objeto.setMaterial(material);
             objeto.setCantidad(materialCuadrilla.getCantidad());
             materialCuadrillaServiceAPI.save(objeto);
         }else{

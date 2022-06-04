@@ -27,7 +27,8 @@ public class ClienteRestController {
     }
 
     @PostMapping(value = "/saveCliente/{idDocumento}")
-    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente, @PathVariable(value = "idDocumento") int idDocumento){
+    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente,
+                                        @PathVariable(value = "idDocumento") int idDocumento){
 
         TipoDocumento tipoDocumento = tipoDocumentoServiceAPI.get(idDocumento);
         cliente.setTipoDocumento(tipoDocumento);
@@ -35,14 +36,17 @@ public class ClienteRestController {
         return new ResponseEntity<Cliente>(objeto, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/updateCliente/{id}")
-    public ResponseEntity<Cliente> update(@RequestBody Cliente cliente, @PathVariable(value = "id") int id){
+    @PutMapping(value = "/updateCliente/{id}/{idDocumento}")
+    public ResponseEntity<Cliente> update(@RequestBody Cliente cliente,
+                                          @PathVariable(value = "id") int id,
+                                          @PathVariable(value = "idDocumento") int idDocumento){
 
         Cliente objeto = clienteServiceAPI.get(id);
+        TipoDocumento tipoDocumento = tipoDocumentoServiceAPI.get(idDocumento);
         if (objeto != null){
             objeto.setNumDocumento(cliente.getNumDocumento());
             objeto.setDireccion(cliente.getDireccion());
-            objeto.setTipoDocumento(cliente.getTipoDocumento());
+            objeto.setTipoDocumento(tipoDocumento);
             objeto.setEstado(cliente.getEstado());
             clienteServiceAPI.save(objeto);
         }else{

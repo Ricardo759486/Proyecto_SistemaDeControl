@@ -34,7 +34,8 @@ public class OrdenTrabajoRestController {
     }
 
     @PostMapping(value = "/saveOrdenTrabajo/{idCuadrilla}/{idCliente}/{idTipoServicio}")
-    public ResponseEntity<OrdenTrabajo> save(@RequestBody OrdenTrabajo ordenTrabajo, @PathVariable(value = "idCuadrilla") int idCuadrilla,
+    public ResponseEntity<OrdenTrabajo> save(@RequestBody OrdenTrabajo ordenTrabajo,
+                                             @PathVariable(value = "idCuadrilla") int idCuadrilla,
                                              @PathVariable(value = "idCliente") int idCliente,
                                              @PathVariable(value = "idTipoServicio") int idTipoServicio){
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
@@ -47,14 +48,20 @@ public class OrdenTrabajoRestController {
         return new ResponseEntity<OrdenTrabajo>(objeto, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/updateOrdenTrabajo/{id}")
-    public ResponseEntity<OrdenTrabajo> update(@RequestBody OrdenTrabajo ordenTrabajo, @PathVariable(value = "id") int id){
-
+    @PutMapping(value = "/updateOrdenTrabajo/{id}/{idCuadrilla}/{idCliente}/{idTipoServicio}")
+    public ResponseEntity<OrdenTrabajo> update(@RequestBody OrdenTrabajo ordenTrabajo,
+                                               @PathVariable(value = "id") int id,
+                                               @PathVariable(value = "idCuadrilla") int idCuadrilla,
+                                               @PathVariable(value = "idCliente") int idCliente,
+                                               @PathVariable(value = "idTipoServicio") int idTipoServicio){
+        Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
+        Cliente cliente = clienteServiceAPI.get(idCliente);
+        TipoServicio tipoServicio = tipoServicioServiceAPI.get(idTipoServicio);
         OrdenTrabajo objeto = ordenTrabajoServiceAPI.get(id);
         if (objeto != null){
-            objeto.setCliente(ordenTrabajo.getCliente());
-            objeto.setCuadrilla(ordenTrabajo.getCuadrilla());
-            objeto.setTipoServicio(ordenTrabajo.getTipoServicio());
+            objeto.setCliente(cliente);
+            objeto.setCuadrilla(cuadrilla);
+            objeto.setTipoServicio(tipoServicio);
             objeto.setDescripcion(ordenTrabajo.getDescripcion());
             objeto.setEstado(ordenTrabajo.getEstado());
             ordenTrabajoServiceAPI.save(objeto);

@@ -54,9 +54,10 @@ public class TelefonoRestController {
         return new ResponseEntity<Telefono>(objeto, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/updateTelefono/{id}")
+    @PutMapping(value = "/updateTelefono/{id}/{idTipo}")
     public ResponseEntity<Telefono> update(@RequestBody Telefono telefonoCliente,
-                                           @PathVariable(value = "id") int id){
+                                           @PathVariable(value = "id") int id,
+                                           @PathVariable(value = "idTipo") int idTipo){
 
         Telefono objeto = telefonoServiceAPI.get(id);
         if (objeto != null){
@@ -64,11 +65,14 @@ public class TelefonoRestController {
             objeto.setNumTelefono(telefonoCliente.getNumTelefono());
             objeto.setTipo(tipo);
             switch (tipo){
-                case "U":  objeto.setUsuario(telefonoCliente.getUsuario());
+                case "U":  Usuario usuario = usuarioServiceAPI.get(idTipo);
+                objeto.setUsuario(usuario);
                 break;
-                case "P":  objeto.setProveedor(telefonoCliente.getProveedor());
+                case "P":  Proveedor proveedor = proveedorServiceAPI.get(idTipo);
+                objeto.setProveedor(proveedor);
                 break;
-                case "C":  objeto.setProveedor(telefonoCliente.getProveedor());
+                case "C": Cliente cliente = clienteServiceAPI.get(idTipo);
+                objeto.setCliente(cliente);
                 break;
                 default: return new ResponseEntity<Telefono>(telefonoCliente, HttpStatus.CONFLICT);
             }

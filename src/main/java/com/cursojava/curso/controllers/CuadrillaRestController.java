@@ -37,7 +37,8 @@ public class CuadrillaRestController {
     }
 
     @PostMapping(value = "/saveCuadrilla/{idZona}/{idProveedor}/{turnoTrabajo}")
-    public ResponseEntity<Cuadrilla> save(@RequestBody Cuadrilla cuadrilla, @PathVariable(value = "idZona") int idZona,
+    public ResponseEntity<Cuadrilla> save(@RequestBody Cuadrilla cuadrilla,
+                                          @PathVariable(value = "idZona") int idZona,
                                           @PathVariable(value = "idProveedor") int idProveedor,
                                           @PathVariable(value = "turnoTrabajo") int idTurno){
         Zona zona = zonaServiceAPI.get(idZona);
@@ -51,15 +52,22 @@ public class CuadrillaRestController {
         return new ResponseEntity<Cuadrilla>(objeto, HttpStatus.OK);
     }
 
-    @PutMapping(value = "/updateCuadrilla/{id}")
-    public ResponseEntity<Cuadrilla> update(@RequestBody Cuadrilla cuadrilla, @PathVariable(value = "id") int id){
+    @PutMapping(value = "/updateCuadrilla/{id}/{idZona}/{idProveedor}/{turnoTrabajo}")
+    public ResponseEntity<Cuadrilla> update(@RequestBody Cuadrilla cuadrilla,
+                                            @PathVariable(value = "id") int id,
+                                            @PathVariable(value = "idZona") int idZona,
+                                            @PathVariable(value = "idProveedor") int idProveedor,
+                                            @PathVariable(value = "turnoTrabajo") int idTurno){
 
         Cuadrilla objeto = cuadrillaServiceAPI.get(id);
+        Zona zona = zonaServiceAPI.get(idZona);
+        Proveedor proveedor = proveedorServiceAPI.get(idProveedor);
+        TurnoTrabajo turno = turnoTrabajoServiceAPI.get(idTurno);
         if (objeto != null){
-            objeto.setZona(cuadrilla.getZona());
+            objeto.setZona(zona);
             objeto.setMovilAsociado(cuadrilla.getMovilAsociado());
-            objeto.setProveedor(cuadrilla.getProveedor());
-            objeto.setTurnoTrabajoBean(cuadrilla.getTurnoTrabajoBean());
+            objeto.setProveedor(proveedor);
+            objeto.setTurnoTrabajoBean(turno);
             objeto.setEstado(cuadrilla.getEstado());
             cuadrillaServiceAPI.save(objeto);
         }else{
