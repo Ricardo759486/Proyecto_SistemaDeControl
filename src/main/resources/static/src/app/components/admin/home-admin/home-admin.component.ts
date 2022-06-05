@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-admin.component.scss']
 })
 export class HomeAdminComponent implements OnInit {
+  user: any={};
+  title = 'admin-panel-layout';
   sideBarOpen = true;
   constructor() { }
 
   ngOnInit(): void {
+    this.user = localStorage.getItem("user");
+    if(!this.user){
+      location.href = "/";
+    }
   }
 
   sideBarToggler() {

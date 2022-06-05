@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarAdminComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
+  user: any={};
 
   constructor() { }
 
@@ -15,5 +16,10 @@ export class NavbarAdminComponent implements OnInit {
   }
   toggleSidebar() {
     this.toggleSidebarForMe.emit();
+  }
+
+  logout(){
+    localStorage.removeItem("user");
+    location.href = "/";
   }
 }

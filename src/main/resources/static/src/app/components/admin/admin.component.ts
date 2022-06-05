@@ -12,15 +12,11 @@ export class AdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // @ts-ignore
-    /**this.user = JSON.parse(localStorage.getItem("user"));
+
+    this.user = localStorage.getItem("user");
     if(!this.user){
       location.href = "/";
-    }**/
-  }
-  logout(){
-    localStorage.removeItem("user");
-    location.href = "/";
+    }
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
