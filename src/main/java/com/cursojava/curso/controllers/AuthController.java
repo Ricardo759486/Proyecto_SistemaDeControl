@@ -26,8 +26,8 @@ public class AuthController {
         System.out.println("----- Iniciado");
     }
 
-    @PostMapping(value = "/validarLogin/{correo}/{clave}")
-    public ResponseEntity<Usuario> login(@PathVariable(value = "correo") String correo,
+    @GetMapping(value = "/validarLogin/{correo}/{clave}")
+    public String login(@PathVariable(value = "correo") String correo,
                                          @PathVariable(value = "clave") String clave){
        Usuario usComprob =  usuarioServiceAPI.login(correo, clave);
        int val = comprobacion(usComprob);
@@ -36,21 +36,21 @@ public class AuthController {
                 System.out.println("Usuario bloqueado");
                 correoService.enviarCorreo(usComprob.getLogin(),"Usuario Bloqueado", "Su usuario ha sido bloqueado debido a varios intentos fallidos" +
                         "\nde inicio de sesion, contactece con un administrador para acceder\na su cuenta.\nCordialmente, Sistema de Gestion Administrativo ");
-                return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+                return "Usuario bloqueado: Es necesario comunicarse con administracion";
             case 1:
                 System.out.println("Sesion iniciada con exito");
-                return new ResponseEntity<Usuario>(usComprob, HttpStatus.OK);
+                return "Sesion iniciada con exito";
             case 2:
                 System.out.println("La contrasenia debe ser cambiada");
                 correoService.enviarCorreo(usComprob.getLogin(), "Solicitud nueva contraseña", "Debido a reglas propia de la empresa su contraseña debe\n" +
                         "ser cambiada para poder acceder a su usuario: Dirigase a xyz.com para cambiar la contraseña");
-                return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+                return "La contrasenia debe ser cambiada";
             case 3:
                 System.out.println("Login fallido");
-                return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+                return "Login fallido: Error en la autenticacion de credenciales";
             default:
                 System.out.println("Se peto");
-                return new ResponseEntity<Usuario>(usComprob, HttpStatus.INTERNAL_SERVER_ERROR);
+                return "Valor default aplicado";
         }
     }
     public int comprobacion(Usuario u){

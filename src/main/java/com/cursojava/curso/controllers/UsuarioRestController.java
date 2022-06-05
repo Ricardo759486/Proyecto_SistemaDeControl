@@ -35,7 +35,7 @@ public class UsuarioRestController {
     }
 
     @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}/{idRol}")
-    public ResponseEntity<Usuario> save(@RequestBody Usuario usuario,
+    public String save(@RequestBody Usuario usuario,
                                         @PathVariable(value = "idIdentificacion") int idIdentificacion,
                                         @PathVariable(value = "idCuadrilla") int idCuadrilla,
                                         @PathVariable(value = "idRol") int idRol){
@@ -50,7 +50,7 @@ public class UsuarioRestController {
         usuario.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
         Usuario objeto = usuarioServiceAPI.save(usuario);
 
-        return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
+        return "Credenciales del usuario "+usuario.getLogin()+" ingresadas correctamente";
     }
 
     @PutMapping(value = "/updateUsuario/{id}/{idIdentificacion}/{idCuadrilla}/{idRol}")
