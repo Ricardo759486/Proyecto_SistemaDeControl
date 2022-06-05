@@ -11,13 +11,9 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
 
-  loginService(user:any){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        contentType: 'application/json'
-      })
-    };
-    return this.http.post('http://localhost:8080/validarLogin',user, httpOptions);
-  }
+  loginService(email:string,password:string){
 
+    return this.http.get('http://localhost:8080/Autenticacion/validarLogin/'+email+'/'+password, {responseType: 'text'});
+
+}
 }

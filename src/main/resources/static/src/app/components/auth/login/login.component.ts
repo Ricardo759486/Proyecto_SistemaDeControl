@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   mensajeError: any="Usuario o contraseña incorrectos";
   loading: boolean =false;
   user: any={};
+  email: string="";
+  password: string="";
 
   constructor(private loginscv:LoginService) { }
 
@@ -26,19 +28,34 @@ export class LoginComponent implements OnInit {
     let formularyValid:boolean = formulary.reportValidity();
     if (formularyValid){
       this.loading=true;
-      this.loginscv.loginService(this.user).subscribe(
+      this.loginscv.loginService(this.email,this.password).subscribe(
         data => {
-          this.minifierSession(data);
+          alert(data);
+          if(data == ("Sesion iniciada con exito")){
+            this.minifierSession(data);
+          }else{
+            this.loading=false;
+            this.errorInicio=true;
+
+          }
+
         })
+      this.errorInicio=true;
+      this.loading=false;
+    }else{
+      alert("Por favor ingrese los datos correctamente");
     }
-    console.log(this.user);
   }
 
   minifierSession(resultant:any){
+    this.user={
+      email: this.email,
+      password: this.password
+    };
     this.loading=false;
     if(resultant){
-      localStorage.setItem('user', JSON.stringify(resultant));
-      location.href = "/admin";
+      localStorage.setItem('user', JSON.stringify(this.user));
+      location.href = "/admin/home";
     }else{
       this.errorInicio=true;
     }
