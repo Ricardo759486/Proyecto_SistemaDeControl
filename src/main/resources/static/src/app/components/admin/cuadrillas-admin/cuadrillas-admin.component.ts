@@ -11,6 +11,9 @@ export class CuadrillasAdminComponent implements OnInit {
   errorInicio: any;
   mensajeError: any;
   MovilAsociado: any;
+  Zona: any;
+  Proveedor: any;
+  TurnoTrabajo: any;
 
   constructor() { }
 
