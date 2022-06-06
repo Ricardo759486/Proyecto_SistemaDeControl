@@ -21,26 +21,26 @@
 
             </div>
             <form class="custom-form" method="post" (ngSubmit)="login()" id="login">
-              <h1>Registro Material</h1>
+              <h1>Registro Proveedor</h1>
               <input
-                type="nombreMaterial"
-                [(ngModel)] = "nombreMaterial"
-                name="nombreMaterial"
-                placeholder="Ingrese el nombre del material"
+                type="numDocumento"
+                [(ngModel)] = "numDocumento"
+                name="numDocumento"
+                placeholder="Ingrese el número de documento del cliente"
                 required="required"
               />
               <input
-                type="cantidad"
-                [(ngModel)]="cantidad"
-                name="cantidad"
-                placeholder="Ingrese la cantidad disponible"
+                type="tipoDocumento"
+                [(ngModel)]="tipoDocumento"
+                name="tipoDocumento"
+                placeholder="Seleccione el tipo de documento del cliente"
                 required="required"
               />
               <input
                 type="costo"
-                [(ngModel)]="costo"
+                [(ngModel)]="direccion"
                 name="costo"
-                placeholder="Ingrese el costo del material"
+                placeholder="Ingrese la dirección del cliente"
                 required="required"
               />
               <button type="submit" >Registrar</button>

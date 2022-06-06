@@ -51,4 +51,8 @@ public class UsuarioDAO {
         this.intentos = intentos;
         this.estado = estado;
     }
+
+    public UsuarioDAO(){
+
+    }
 }
