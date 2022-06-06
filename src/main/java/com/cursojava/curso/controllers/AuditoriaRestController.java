@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -38,43 +39,17 @@ public class AuditoriaRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveAuditoria/{idUsuario}")
-    public ResponseEntity<Auditoria> save(@RequestBody Auditoria auditoria,
-                                          @PathVariable(value = "idUsuario") int idUsuario){
+    @PostMapping(value = "/saveAuditoria")
+    public HttpStatus save(int idUsuario, String ip, String operacion, String tabla){
         Usuario usuario = usuarioServiceAPI.get(idUsuario);
+        Auditoria auditoria = new Auditoria();
+        auditoria.setFechaHora(new Date());
+        auditoria.setIpUsuario(ip);
+        auditoria.setOperacionCrud(operacion);
+        auditoria.setTabla(tabla);
         auditoria.setUsuario(usuario);
-        Auditoria objeto = auditoriaServiceAPI.save(auditoria);
+        auditoriaServiceAPI.save(auditoria);
 
-        return new ResponseEntity<Auditoria>(objeto, HttpStatus.OK);
-    }
-
-    @PutMapping(value = "/updateAuditoria/{id}/{idUsuario}")
-    public ResponseEntity<Auditoria> update(@RequestBody Auditoria auditoria,
-                                            @PathVariable(value = "id") int id,
-                                            @PathVariable(value = "idUsuario") int idUsuario){
-        Usuario usuario = usuarioServiceAPI.get(idUsuario);
-        Auditoria objeto = auditoriaServiceAPI.get(id);
-        if (objeto != null){
-            objeto.setUsuario(usuario);
-            objeto.setFechaHora(auditoria.getFechaHora());
-            objeto.setIpUsuario(auditoria.getIpUsuario());
-            objeto.setOperacionCrud(auditoria.getOperacionCrud());
-            objeto.setTabla(auditoria.getTabla());
-            auditoriaServiceAPI.save(objeto);
-        }else{
-            return new ResponseEntity<Auditoria>(auditoria, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return new ResponseEntity<Auditoria>(objeto, HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/deleteAuditoria/{id}")
-    public ResponseEntity<Auditoria> delete(@PathVariable int id){
-        Auditoria auditoria = auditoriaServiceAPI.get(id);
-        if (auditoria != null){
-            auditoriaServiceAPI.delete(id);
-        }else{
-            return new ResponseEntity<Auditoria>(auditoria, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return new ResponseEntity<Auditoria>(auditoria, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }
