@@ -8,11 +8,13 @@ import com.cursojava.curso.service.CuadrillaServiceAPI;
 import com.cursojava.curso.service.RolServiceAPI;
 import com.cursojava.curso.service.TipoDocumentoServiceAPI;
 import com.cursojava.curso.service.UsuarioServiceAPI;
+import com.cursojava.curso.service.dao.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,10 +31,18 @@ public class UsuarioRestController {
     @Autowired
     private RolServiceAPI rolServiceAPI;
 
-    @GetMapping(value = "/getAll")
-    public List<Usuario> getAll(){
+    @GetMapping(value = "/getAllUsuarios")
+    public List<UsuarioDAO> getAll(){
 
-        return usuarioServiceAPI.getAll();
+        List<Usuario> getall = usuarioServiceAPI.getAll();
+        List<UsuarioDAO> listaF = new ArrayList<>();
+
+        for (Usuario u:getall){
+            UsuarioDAO objeto = new UsuarioDAO(u.getIdUsuario(),u.getDireccion(),u.getEstado(),u.getIdentificacion(),u.getIntentos(),u.getLogin(),u.getFecha_ultima_contra(),u.getCuadrilla().getMovilAsociado(),u.getRol().getTipoRol(),u.getTipoDocumento().getDescripcion());
+            listaF.add(objeto);
+        }
+
+        return listaF;
     }
 
     @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}/{idRol}")
