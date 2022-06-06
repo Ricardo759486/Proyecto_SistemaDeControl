@@ -15,6 +15,9 @@ export class ProveedorAdminRegisterComponent implements OnInit {
   password: any;
   errorInicio: any;
   mensajeError: any;
+  nit: any;
+  direccion: any;
+  nombre: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -28,6 +31,6 @@ export class ProveedorAdminRegisterComponent implements OnInit {
   }
 
   login() {
-    
+
   }
 }

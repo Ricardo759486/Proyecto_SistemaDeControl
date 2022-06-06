@@ -10,22 +10,22 @@
 
   </div>
   <form class="custom-form" method="post" (ngSubmit)="login()" id="login">
-    <h1>Login</h1>
+    <h1>Inicio de sesión</h1>
     <input
       type="email"
       [(ngModel)] = "email"
       name="email"
-      placeholder="Email"
+      placeholder="Ingrese el Email"
       required="required"
     />
     <input
       type="password"
       [(ngModel)]="password"
       name="password"
-      placeholder="Password"
+      placeholder="Ingrese la contraseña"
       required="required"
     />
-    <button type="submit" >Get into</button>
+    <button type="submit" >Iniciar sesión</button>
     <div class="row" *ngIf="errorInicio">
       <div class="col-md-12">
         <div class="alert alert-danger" role="alert">

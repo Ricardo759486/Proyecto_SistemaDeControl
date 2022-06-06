@@ -11,36 +11,36 @@
 
 
   <form class="custom-form" method="post" (ngSubmit)="register()" id="register">
-    <h1>Register</h1>
+    <h1>Registrate como nuevo usuario</h1>
     <input
       type="email"
       [(ngModel)]="user.login"
       name="email"
-      placeholder="Email"
+      placeholder="Ingrese el Email"
       required="required"
     />
     <input
       type="number"
       [(ngModel)]="user.identificacion"
       name="Número identificación"
-      placeholder="Número identificación"
+      placeholder="Ingrese su número identificación"
       required="required"
     />
     <input
       type="number"
       [(ngModel)]="user.direccion"
       name="Dirección"
-      placeholder="Dirección"
+      placeholder="Ingrese su dirección"
       required="required"
     />
     <input
       type="password"
       [(ngModel)]="user.clave"
       name="password"
-      placeholder="Password"
+      placeholder="Ingrese su contraseña"
       required="required"
     />
-    <button type="submit" >Register</button>
+    <button type="submit" >Registrarse</button>
     <div class="row" *ngIf="errorRegister">
       <div class="col-md-12">
         <div class="alert alert-danger" role="alert">
