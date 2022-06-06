@@ -41,7 +41,7 @@ public class TelefonoRestController {
     }
 
     @PostMapping(value = "/saveTelefono/{id}")
-    public ResponseEntity<Telefono> save(@RequestBody Telefono telefonoCliente,
+    public HttpStatus save(@RequestBody Telefono telefonoCliente,
                                          @PathVariable(value = "id") int id){
         String tipo = telefonoCliente.getTipo();
         switch (tipo){
@@ -54,15 +54,14 @@ public class TelefonoRestController {
             case "C":  Cliente cliente = clienteServiceAPI.get(id);
                 telefonoCliente.setCliente(cliente);
                 break;
-            default: return new ResponseEntity<Telefono>(telefonoCliente, HttpStatus.CONFLICT);
+            default: return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        Telefono objeto = telefonoServiceAPI.save(telefonoCliente);
-
-        return new ResponseEntity<Telefono>(objeto, HttpStatus.OK);
+        telefonoServiceAPI.save(telefonoCliente);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateTelefono/{id}/{idTipo}")
-    public ResponseEntity<Telefono> update(@RequestBody Telefono telefonoCliente,
+    public HttpStatus update(@RequestBody Telefono telefonoCliente,
                                            @PathVariable(value = "id") int id,
                                            @PathVariable(value = "idTipo") int idTipo){
 
@@ -81,23 +80,23 @@ public class TelefonoRestController {
                 case "C": Cliente cliente = clienteServiceAPI.get(idTipo);
                 objeto.setCliente(cliente);
                 break;
-                default: return new ResponseEntity<Telefono>(telefonoCliente, HttpStatus.CONFLICT);
+                default: return HttpStatus.INTERNAL_SERVER_ERROR;
             }
             telefonoServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Telefono>(telefonoCliente, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Telefono>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteTelefono/{id}")
-    public ResponseEntity<Telefono> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         Telefono telefonoCliente = telefonoServiceAPI.get(id);
         if (telefonoCliente != null){
             telefonoServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Telefono>(telefonoCliente, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Telefono>(telefonoCliente, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

@@ -19,9 +19,6 @@ public class ZonaRestController {
     @Autowired
     private ZonaServiceAPI zonaServiceAPI;
 
-    @Autowired
-    private AuditoriaServiceAPI auditoriaServiceAPI;
-
     @GetMapping(value = "/getAll")
     public List<ZonaDAO> getAll(){
 
@@ -38,15 +35,13 @@ public class ZonaRestController {
     }
 
     @PostMapping(value = "/saveZona")
-    public ResponseEntity<Zona> save(@RequestBody Zona zona){
-        Zona objeto = zonaServiceAPI.save(zona);
-
-        return new ResponseEntity<Zona>(objeto, HttpStatus.OK);
+    public HttpStatus save(@RequestBody Zona zona){
+        zonaServiceAPI.save(zona);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateZona/{id}")
-    public ResponseEntity<Zona> update(@RequestBody Zona zona, @PathVariable(value = "id") int id){
-
+    public HttpStatus update(@RequestBody Zona zona, @PathVariable(value = "id") int id){
         Zona objeto = zonaServiceAPI.get(id);
         if (objeto != null){
             objeto.setCoordenadas(zona.getCoordenadas());
@@ -55,24 +50,21 @@ public class ZonaRestController {
             objeto.setEstado(zona.getEstado());
             zonaServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Zona>(zona, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Zona>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteZona/{id}")
-    public ResponseEntity<Zona> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         Zona zona = zonaServiceAPI.get(id);
         if (zona != null){
+            zona.setEstado("D");
             zonaServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Zona>(zona, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Zona>(zona, HttpStatus.OK);
-    }
-
-    public void insercionAudo(){
-
+        return HttpStatus.OK;
     }
 }
 

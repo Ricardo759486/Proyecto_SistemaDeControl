@@ -40,17 +40,17 @@ public class ClienteRestController {
     }
 
     @PostMapping(value = "/saveCliente/{idDocumento}")
-    public ResponseEntity<Cliente> save(@RequestBody Cliente cliente,
+    public HttpStatus save(@RequestBody Cliente cliente,
                                         @PathVariable(value = "idDocumento") int idDocumento){
 
         TipoDocumento tipoDocumento = tipoDocumentoServiceAPI.get(idDocumento);
         cliente.setTipoDocumento(tipoDocumento);
-        Cliente objeto = clienteServiceAPI.save(cliente);
-        return new ResponseEntity<Cliente>(objeto, HttpStatus.OK);
+        clienteServiceAPI.save(cliente);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateCliente/{id}/{idDocumento}")
-    public ResponseEntity<Cliente> update(@RequestBody Cliente cliente,
+    public HttpStatus update(@RequestBody Cliente cliente,
                                           @PathVariable(value = "id") int id,
                                           @PathVariable(value = "idDocumento") int idDocumento){
 
@@ -63,19 +63,20 @@ public class ClienteRestController {
             objeto.setEstado(cliente.getEstado());
             clienteServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Cliente>(cliente, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Cliente>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteCliente/{id}")
-    public ResponseEntity<Cliente> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         Cliente cliente = clienteServiceAPI.get(id);
         if (cliente != null){
-            clienteServiceAPI.delete(id);
+            cliente.setEstado("D");
+            clienteServiceAPI.save(cliente);
         }else{
-            return new ResponseEntity<Cliente>(cliente, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

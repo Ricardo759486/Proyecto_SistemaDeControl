@@ -35,14 +35,13 @@ public class TipoServicioRestController {
     }
 
     @PostMapping(value = "/saveTipoServicio")
-    public ResponseEntity<TipoServicio> save(@RequestBody TipoServicio tipoServicio){
-        TipoServicio objeto = tipoServicioServiceAPI.save(tipoServicio);
-
-        return new ResponseEntity<TipoServicio>(objeto, HttpStatus.OK);
+    public HttpStatus save(@RequestBody TipoServicio tipoServicio){
+        tipoServicioServiceAPI.save(tipoServicio);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateTipoServicio/{id}")
-    public ResponseEntity<TipoServicio> update(@RequestBody TipoServicio tipoServicio, @PathVariable(value = "id") int id){
+    public HttpStatus update(@RequestBody TipoServicio tipoServicio, @PathVariable(value = "id") int id){
 
         TipoServicio objeto = tipoServicioServiceAPI.get(id);
         if (objeto != null){
@@ -50,19 +49,20 @@ public class TipoServicioRestController {
             objeto.setEstado(tipoServicio.getEstado());
             tipoServicioServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<TipoServicio>(tipoServicio, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<TipoServicio>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteTipoServicio/{id}")
-    public ResponseEntity<TipoServicio> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         TipoServicio tipoServicio = tipoServicioServiceAPI.get(id);
         if (tipoServicio != null){
-            tipoServicioServiceAPI.delete(id);
+            tipoServicio.setEstado("D");
+            tipoServicioServiceAPI.save(tipoServicio);
         }else{
-            return new ResponseEntity<TipoServicio>(tipoServicio, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<TipoServicio>(tipoServicio, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

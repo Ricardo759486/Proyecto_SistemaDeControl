@@ -46,7 +46,7 @@ public class CuadrillaRestController {
     }
 
     @PostMapping(value = "/saveCuadrilla/{idZona}/{idProveedor}/{turnoTrabajo}")
-    public ResponseEntity<Cuadrilla> save(@RequestBody Cuadrilla cuadrilla,
+    public HttpStatus save(@RequestBody Cuadrilla cuadrilla,
                                           @PathVariable(value = "idZona") int idZona,
                                           @PathVariable(value = "idProveedor") int idProveedor,
                                           @PathVariable(value = "turnoTrabajo") int idTurno){
@@ -56,13 +56,13 @@ public class CuadrillaRestController {
         cuadrilla.setZona(zona);
         cuadrilla.setProveedor(proveedor);
         cuadrilla.setTurnoTrabajoBean(turno);
-        Cuadrilla objeto = cuadrillaServiceAPI.save(cuadrilla);
+        cuadrillaServiceAPI.save(cuadrilla);
 
-        return new ResponseEntity<Cuadrilla>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateCuadrilla/{id}/{idZona}/{idProveedor}/{turnoTrabajo}")
-    public ResponseEntity<Cuadrilla> update(@RequestBody Cuadrilla cuadrilla,
+    public HttpStatus update(@RequestBody Cuadrilla cuadrilla,
                                             @PathVariable(value = "id") int id,
                                             @PathVariable(value = "idZona") int idZona,
                                             @PathVariable(value = "idProveedor") int idProveedor,
@@ -80,19 +80,19 @@ public class CuadrillaRestController {
             objeto.setEstado(cuadrilla.getEstado());
             cuadrillaServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Cuadrilla>(cuadrilla, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Cuadrilla>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteCuadrilla/{id}")
-    public ResponseEntity<Cuadrilla> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(id);
         if (cuadrilla != null){
             cuadrillaServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Cuadrilla>(cuadrilla, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Cuadrilla>(cuadrilla, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

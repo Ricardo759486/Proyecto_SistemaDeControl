@@ -35,14 +35,13 @@ public class ProveedorRestController {
     }
 
     @PostMapping(value = "/saveProveedor")
-    public ResponseEntity<Proveedor> save(@RequestBody Proveedor proveedor){
-        Proveedor objeto = proveedorServiceAPI.save(proveedor);
-
-        return new ResponseEntity<Proveedor>(objeto, HttpStatus.OK);
+    public HttpStatus save(@RequestBody Proveedor proveedor){
+        proveedorServiceAPI.save(proveedor);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateProveedor/{id}")
-    public ResponseEntity<Proveedor> update(@RequestBody Proveedor proveedor, @PathVariable(value = "id") int id){
+    public HttpStatus update(@RequestBody Proveedor proveedor, @PathVariable(value = "id") int id){
 
         Proveedor objeto = proveedorServiceAPI.get(id);
         if (objeto != null){
@@ -53,19 +52,20 @@ public class ProveedorRestController {
             objeto.setEstado(proveedor.getEstado());
             proveedorServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Proveedor>(proveedor, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Proveedor>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteProveedor/{id}")
-    public ResponseEntity<Proveedor> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         Proveedor proveedor = proveedorServiceAPI.get(id);
         if (proveedor != null){
-            proveedorServiceAPI.delete(id);
+            proveedor.setEstado("D");
+            proveedorServiceAPI.save(proveedor);
         }else{
-            return new ResponseEntity<Proveedor>(proveedor, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Proveedor>(proveedor, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

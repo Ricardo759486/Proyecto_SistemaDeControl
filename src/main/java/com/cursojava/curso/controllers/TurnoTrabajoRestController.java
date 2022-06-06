@@ -35,14 +35,13 @@ public class TurnoTrabajoRestController {
     }
 
     @PostMapping(value = "/saveTurnoTrabajo")
-    public ResponseEntity<TurnoTrabajo> save(@RequestBody TurnoTrabajo tipoDocumento){
-        TurnoTrabajo objeto = turnoTrabajoServiceAPI.save(tipoDocumento);
-
-        return new ResponseEntity<TurnoTrabajo>(objeto, HttpStatus.OK);
+    public HttpStatus save(@RequestBody TurnoTrabajo tipoDocumento){
+        turnoTrabajoServiceAPI.save(tipoDocumento);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateTurnoTrabajo/{id}")
-    public ResponseEntity<TurnoTrabajo> update(@RequestBody TurnoTrabajo tipoDocumento,
+    public HttpStatus update(@RequestBody TurnoTrabajo tipoDocumento,
                                                @PathVariable(value = "id") int id_documento){
 
         TurnoTrabajo objeto = turnoTrabajoServiceAPI.get(id_documento);
@@ -51,19 +50,20 @@ public class TurnoTrabajoRestController {
             objeto.setEstado(tipoDocumento.getEstado());
             turnoTrabajoServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<TurnoTrabajo>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<TurnoTrabajo>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteTurnoTrabajo/{id}")
-    public ResponseEntity<TurnoTrabajo> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         TurnoTrabajo tipoDocumento = turnoTrabajoServiceAPI.get(id);
         if (tipoDocumento != null){
-            turnoTrabajoServiceAPI.delete(id);
+            tipoDocumento.setEstado("D");
+            turnoTrabajoServiceAPI.save(tipoDocumento);
         }else{
-            return new ResponseEntity<TurnoTrabajo>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<TurnoTrabajo>(tipoDocumento, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

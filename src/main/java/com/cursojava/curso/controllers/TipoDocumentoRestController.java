@@ -35,14 +35,13 @@ public class TipoDocumentoRestController {
     }
 
     @PostMapping(value = "/saveTipoDocumento")
-    public ResponseEntity<TipoDocumento> save(@RequestBody TipoDocumento tipoDocumento){
-        TipoDocumento objeto = tipoDocumentoServiceAPI.save(tipoDocumento);
-
-        return new ResponseEntity<TipoDocumento>(objeto, HttpStatus.OK);
+    public HttpStatus save(@RequestBody TipoDocumento tipoDocumento){
+        tipoDocumentoServiceAPI.save(tipoDocumento);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateTipoDocumento/{id}")
-    public ResponseEntity<TipoDocumento> update(@RequestBody TipoDocumento tipoDocumento, @PathVariable(value = "id") int id_documento){
+    public HttpStatus update(@RequestBody TipoDocumento tipoDocumento, @PathVariable(value = "id") int id_documento){
 
         TipoDocumento objeto = tipoDocumentoServiceAPI.get(id_documento);
         if (objeto != null){
@@ -50,19 +49,20 @@ public class TipoDocumentoRestController {
             objeto.setEstado(tipoDocumento.getEstado());
             tipoDocumentoServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<TipoDocumento>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<TipoDocumento>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteTipoDocumento/{id}")
-    public ResponseEntity<TipoDocumento> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         TipoDocumento tipoDocumento = tipoDocumentoServiceAPI.get(id);
         if (tipoDocumento != null){
-            tipoDocumentoServiceAPI.delete(id);
+            tipoDocumento.setEstado("D");
+            tipoDocumentoServiceAPI.save(tipoDocumento);
         }else{
-            return new ResponseEntity<TipoDocumento>(tipoDocumento, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<TipoDocumento>(tipoDocumento, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

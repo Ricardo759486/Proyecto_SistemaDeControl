@@ -42,19 +42,19 @@ public class MaterialCuadrillaRestController {
     }
 
     @PostMapping(value = "/saveMaterialCuadrilla/{idCuadrilla}/{idInventario}")
-    public ResponseEntity<MaterialCuadrilla> save(@RequestBody MaterialCuadrilla materialCuadrilla,
+    public HttpStatus save(@RequestBody MaterialCuadrilla materialCuadrilla,
                                                   @PathVariable(value = "idCuadrilla") int idCuadrilla,
                                                   @PathVariable(value = "idInventario") int idInventario){
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
         Material material = materialServiceAPI.get(idInventario);
         materialCuadrilla.setMaterial(material);
         materialCuadrilla.setCuadrilla(cuadrilla);
-        MaterialCuadrilla objeto = materialCuadrillaServiceAPI.save(materialCuadrilla);
-        return new ResponseEntity<MaterialCuadrilla>(objeto, HttpStatus.OK);
+        materialCuadrillaServiceAPI.save(materialCuadrilla);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateMaterialCuadrilla/{id}/{idCuadrilla}/{idInventario}")
-    public ResponseEntity<MaterialCuadrilla> update(@RequestBody MaterialCuadrilla materialCuadrilla,
+    public HttpStatus update(@RequestBody MaterialCuadrilla materialCuadrilla,
                                                     @PathVariable(value = "id") int id,
                                                     @PathVariable(value = "idCuadrilla") int idCuadrilla,
                                                     @PathVariable(value = "idInventario") int idInventario){
@@ -67,19 +67,19 @@ public class MaterialCuadrillaRestController {
             objeto.setCantidad(materialCuadrilla.getCantidad());
             materialCuadrillaServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<MaterialCuadrilla>(materialCuadrilla, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<MaterialCuadrilla>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteMaterialCuadrilla/{id}")
-    public ResponseEntity<MaterialCuadrilla> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         MaterialCuadrilla materialCuadrilla = materialCuadrillaServiceAPI.get(id);
         if (materialCuadrilla != null){
             materialCuadrillaServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<MaterialCuadrilla>(materialCuadrilla, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<MaterialCuadrilla>(materialCuadrilla, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

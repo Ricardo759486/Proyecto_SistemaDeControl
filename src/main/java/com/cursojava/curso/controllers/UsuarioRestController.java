@@ -39,7 +39,7 @@ public class UsuarioRestController {
 
         for (Usuario u:getall){
             if(u.getEstado().equals("A")){
-                UsuarioDAO objeto = new UsuarioDAO(u.getIdUsuario(),u.getLogin(),u.getTipoDocumento().getDescripcion(),u.getIdentificacion(),u.getFecha_ultima_contra(),u.getDireccion(),u.getRol().getTipoRol(),u.getCuadrilla().getMovilAsociado(),u.getIntentos(),u.getEstado());
+                UsuarioDAO objeto = new UsuarioDAO(u.getIdUsuario(),u.getLogin(),u.getTipoDocumento().getDescripcion(),u.getIdentificacion(),u.getFecha_ultima_contra()+"",u.getDireccion(),u.getRol().getTipoRol(),u.getCuadrilla().getMovilAsociado(),u.getIntentos(),u.getEstado());
                 listaF.add(objeto);
             }
         }
@@ -47,7 +47,7 @@ public class UsuarioRestController {
     }
 
     @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}/{idRol}")
-    public String save(@RequestBody Usuario usuario,
+    public HttpStatus save(@RequestBody Usuario usuario,
                                         @PathVariable(value = "idIdentificacion") int idIdentificacion,
                                         @PathVariable(value = "idCuadrilla") int idCuadrilla,
                                         @PathVariable(value = "idRol") int idRol){
@@ -60,13 +60,12 @@ public class UsuarioRestController {
         usuario.setRol(rol);
         usuario.setFecha_ultima_contra(new Date());
         usuario.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
-        Usuario objeto = usuarioServiceAPI.save(usuario);
-
-        return "Credenciales del usuario "+usuario.getLogin()+" ingresadas correctamente";
+        usuarioServiceAPI.save(usuario);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateUsuario/{id}/{idIdentificacion}/{idCuadrilla}/{idRol}")
-    public ResponseEntity<Usuario> update(@RequestBody Usuario usuario,
+    public HttpStatus update(@RequestBody Usuario usuario,
                                           @PathVariable(value = "id") int id,
                                           @PathVariable(value = "idIdentificacion") int idIdentificacion,
                                           @PathVariable(value = "idCuadrilla") int idCuadrilla,
@@ -89,28 +88,27 @@ public class UsuarioRestController {
             objeto.setEstado(usuario.getEstado());
             usuarioServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Usuario>(usuario, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Usuario>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/cambiarContrasenia/{id}/{contra}")
-    public ResponseEntity<Usuario> cambiarContra(@RequestBody Usuario usuario,
+    public HttpStatus cambiarContra(@RequestBody Usuario usuario,
                                                  @PathVariable(value = "contra") String contra){
         usuario.setClave(usuarioServiceAPI.hashearContra(contra));
-        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteUsuario/{id}")
-    public ResponseEntity<Usuario> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         Usuario usuario = usuarioServiceAPI.get(id);
         if (usuario != null){
-            usuarioServiceAPI.delete(id);
+            usuario.setEstado("D");
+            usuarioServiceAPI.save(usuario);
         }else{
-            return new ResponseEntity<Usuario>(usuario, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+        return HttpStatus.OK;
     }
-
-
 }

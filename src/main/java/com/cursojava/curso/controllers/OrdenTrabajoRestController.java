@@ -46,7 +46,7 @@ public class OrdenTrabajoRestController {
     }
 
     @PostMapping(value = "/saveOrdenTrabajo/{idCuadrilla}/{idCliente}/{idTipoServicio}")
-    public ResponseEntity<OrdenTrabajo> save(@RequestBody OrdenTrabajo ordenTrabajo,
+    public HttpStatus save(@RequestBody OrdenTrabajo ordenTrabajo,
                                              @PathVariable(value = "idCuadrilla") int idCuadrilla,
                                              @PathVariable(value = "idCliente") int idCliente,
                                              @PathVariable(value = "idTipoServicio") int idTipoServicio){
@@ -56,12 +56,12 @@ public class OrdenTrabajoRestController {
         ordenTrabajo.setCuadrilla(cuadrilla);
         ordenTrabajo.setCliente(cliente);
         ordenTrabajo.setTipoServicio(tipoServicio);
-        OrdenTrabajo objeto = ordenTrabajoServiceAPI.save(ordenTrabajo);
-        return new ResponseEntity<OrdenTrabajo>(objeto, HttpStatus.OK);
+        ordenTrabajoServiceAPI.save(ordenTrabajo);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateOrdenTrabajo/{id}/{idCuadrilla}/{idCliente}/{idTipoServicio}")
-    public ResponseEntity<OrdenTrabajo> update(@RequestBody OrdenTrabajo ordenTrabajo,
+    public HttpStatus update(@RequestBody OrdenTrabajo ordenTrabajo,
                                                @PathVariable(value = "id") int id,
                                                @PathVariable(value = "idCuadrilla") int idCuadrilla,
                                                @PathVariable(value = "idCliente") int idCliente,
@@ -78,19 +78,20 @@ public class OrdenTrabajoRestController {
             objeto.setEstado(ordenTrabajo.getEstado());
             ordenTrabajoServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<OrdenTrabajo>(ordenTrabajo, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<OrdenTrabajo>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteOrdenTrabajo/{id}")
-    public ResponseEntity<OrdenTrabajo> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         OrdenTrabajo ordenTrabajo = ordenTrabajoServiceAPI.get(id);
         if (ordenTrabajo != null){
-            ordenTrabajoServiceAPI.delete(id);
+            ordenTrabajo.setEstado("D");
+            ordenTrabajoServiceAPI.save(ordenTrabajo);
         }else{
-            return new ResponseEntity<OrdenTrabajo>(ordenTrabajo, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<OrdenTrabajo>(ordenTrabajo, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

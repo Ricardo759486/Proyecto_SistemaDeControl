@@ -35,14 +35,13 @@ public class RolRestController {
     }
 
     @PostMapping(value = "/saveRol")
-    public ResponseEntity<Rol> save(@RequestBody Rol rol){
-        Rol objeto = rolServiceAPI.save(rol);
-
-        return new ResponseEntity<Rol>(objeto, HttpStatus.OK);
+    public HttpStatus save(@RequestBody Rol rol){
+        rolServiceAPI.save(rol);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateRol/{id}")
-    public ResponseEntity<Rol> update(@RequestBody Rol rol, @PathVariable(value = "id") int id){
+    public HttpStatus update(@RequestBody Rol rol, @PathVariable(value = "id") int id){
 
         Rol objeto = rolServiceAPI.get(id);
         if (objeto != null){
@@ -50,19 +49,20 @@ public class RolRestController {
             objeto.setEstado(rol.getEstado());
             rolServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Rol>(rol, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Rol>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteRol/{id}")
-    public ResponseEntity<Rol> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         Rol rol = rolServiceAPI.get(id);
         if (rol != null){
-            rolServiceAPI.delete(id);
+            rol.setEstado("D");
+            rolServiceAPI.save(rol);
         }else{
-            return new ResponseEntity<Rol>(rol, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Rol>(rol, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

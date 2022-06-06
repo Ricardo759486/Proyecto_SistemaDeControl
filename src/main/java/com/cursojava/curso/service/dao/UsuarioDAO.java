@@ -21,9 +21,8 @@ public class UsuarioDAO {
     @Getter @Setter
     private String identificacion;
 
-    @Temporal(TemporalType.DATE)
     @Getter @Setter
-    private Date fecha_ultima_contra;
+    private String fecha_ultima_contra;
 
     @Getter @Setter
     private String direccion;
@@ -40,7 +39,7 @@ public class UsuarioDAO {
     @Getter @Setter
     private String estado;
 
-    public UsuarioDAO(int idUsuario, String login, String tipoDoc, String identificacion, Date fecha_ultima_contra, String direccion, String nomRol, String idCuadrilla, int intentos, String estado) {
+    public UsuarioDAO(int idUsuario, String login, String tipoDoc, String identificacion, String fecha_ultima_contra, String direccion, String nomRol, String idCuadrilla, int intentos, String estado) {
         this.idUsuario = idUsuario;
         this.login = login;
         this.tipoDoc = tipoDoc;

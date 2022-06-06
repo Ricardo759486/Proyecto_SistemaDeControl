@@ -31,7 +31,7 @@ public class AuthController {
     public UsuarioDAO login(@PathVariable(value = "correo") String correo,
                                          @PathVariable(value = "clave") String clave){
        Usuario usC =  usuarioServiceAPI.login(correo, clave);
-       UsuarioDAO objeto = new UsuarioDAO(usC.getIdUsuario(),usC.getLogin(),usC.getTipoDocumento().getDescripcion(),usC.getIdentificacion(),usC.getFecha_ultima_contra(),usC.getDireccion(),usC.getRol().getTipoRol(),usC.getCuadrilla().getMovilAsociado(),usC.getIntentos(),usC.getEstado());
+       UsuarioDAO objeto = new UsuarioDAO(usC.getIdUsuario(),usC.getLogin(),usC.getTipoDocumento().getDescripcion(),usC.getIdentificacion(),usC.getFecha_ultima_contra()+"",usC.getDireccion(),usC.getRol().getTipoRol(),usC.getCuadrilla().getMovilAsociado(),usC.getIntentos(),usC.getEstado());
        int val = comprobacion(usC);
         switch(val) {
             case 0:

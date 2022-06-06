@@ -34,14 +34,13 @@ public class MaterialRestController {
     }
 
     @PostMapping(value = "/saveMaterial")
-    public ResponseEntity<Material> save(@RequestBody Material material){
-        Material objeto = materialServiceAPI.save(material);
-
-        return new ResponseEntity<Material>(objeto, HttpStatus.OK);
+    public HttpStatus save(@RequestBody Material material){
+        materialServiceAPI.save(material);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateMaterial/{id}")
-    public ResponseEntity<Material> update(@RequestBody Material material, @PathVariable(value = "id") int id){
+    public HttpStatus update(@RequestBody Material material, @PathVariable(value = "id") int id){
 
         Material objeto = materialServiceAPI.get(id);
         if (objeto != null){
@@ -51,19 +50,20 @@ public class MaterialRestController {
             objeto.setEstado(material.getEstado());
             materialServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Material>(material, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Material>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteMaterial/{id}")
-    public ResponseEntity<Material> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         Material material = materialServiceAPI.get(id);
         if (material != null){
-            materialServiceAPI.delete(id);
+            material.setEstado("D");
+            materialServiceAPI.save(material);
         }else{
-            return new ResponseEntity<Material>(material, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Material>(material, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }

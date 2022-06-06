@@ -32,15 +32,13 @@ public class ParametroRestController {
     }
 
     @PostMapping(value = "/saveParametro")
-    public ResponseEntity<Parametro> save(@RequestBody Parametro parametro){
-        Parametro objeto = parametroServiceAPI.save(parametro);
-
-        return new ResponseEntity<Parametro>(objeto, HttpStatus.OK);
+    public HttpStatus save(@RequestBody Parametro parametro){
+        parametroServiceAPI.save(parametro);
+        return HttpStatus.OK;
     }
 
     @PutMapping(value = "/updateParametro/{id}")
-    public ResponseEntity<Parametro> update(@RequestBody Parametro parametro, @PathVariable(value = "id") int id){
-
+    public HttpStatus update(@RequestBody Parametro parametro, @PathVariable(value = "id") int id){
         Parametro objeto = parametroServiceAPI.get(id);
         if (objeto != null){
             objeto.setTipo(parametro.getTipo());
@@ -48,19 +46,19 @@ public class ParametroRestController {
             objeto.setValor(parametro.getValor());
             parametroServiceAPI.save(objeto);
         }else{
-            return new ResponseEntity<Parametro>(parametro, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Parametro>(objeto, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 
     @GetMapping(value = "/deleteParametro/{id}")
-    public ResponseEntity<Parametro> delete(@PathVariable int id){
+    public HttpStatus delete(@PathVariable int id){
         Parametro parametro = parametroServiceAPI.get(id);
         if (parametro != null){
             parametroServiceAPI.delete(id);
         }else{
-            return new ResponseEntity<Parametro>(parametro, HttpStatus.INTERNAL_SERVER_ERROR);
+            return HttpStatus.INTERNAL_SERVER_ERROR;
         }
-        return new ResponseEntity<Parametro>(parametro, HttpStatus.OK);
+        return HttpStatus.OK;
     }
 }
