@@ -1,4 +1,4 @@
-package com.cursojava.curso.controllers;
+package com.cursojava.curso.commons.controllers;
 
 import com.cursojava.curso.model.Zona;
 import com.cursojava.curso.service.AuditoriaServiceAPI;

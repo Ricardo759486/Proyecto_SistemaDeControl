@@ -16,6 +16,7 @@ public class Parametro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Getter @Setter
 	@Column(name="id_parametro")
 	private int idParametro;
 
