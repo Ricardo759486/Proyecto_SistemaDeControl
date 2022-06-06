@@ -1,18 +1,18 @@
 package com.cursojava.curso.controllers;
 
-import com.cursojava.curso.model.Cliente;
-import com.cursojava.curso.model.Proveedor;
-import com.cursojava.curso.model.Telefono;
-import com.cursojava.curso.model.Usuario;
+import com.cursojava.curso.model.*;
 import com.cursojava.curso.service.ClienteServiceAPI;
 import com.cursojava.curso.service.ProveedorServiceAPI;
 import com.cursojava.curso.service.TelefonoServiceAPI;
 import com.cursojava.curso.service.UsuarioServiceAPI;
+import com.cursojava.curso.service.dao.TelefonoDAO;
+import com.cursojava.curso.service.dao.ZonaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,8 +29,15 @@ public class TelefonoRestController {
     private ProveedorServiceAPI proveedorServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<Telefono> getAll(){
-        return telefonoServiceAPI.getAll();
+    public List<TelefonoDAO> getAll(){
+        List<Telefono> getall = telefonoServiceAPI.getAll();
+        List<TelefonoDAO> listaF = new ArrayList<>();
+
+        for (Telefono t:getall){
+            TelefonoDAO objeto = new TelefonoDAO(t.getIdTelefono(),t.getNumTelefono(),t.getTipo(),t.getCliente().getNumDocumento(), t.getProveedor().getNit(),t.getUsuario().getIdentificacion());
+            listaF.add(objeto);
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveTelefono/{id}")

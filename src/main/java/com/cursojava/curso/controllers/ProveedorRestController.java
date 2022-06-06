@@ -1,12 +1,16 @@
 package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Proveedor;
+import com.cursojava.curso.model.Zona;
 import com.cursojava.curso.service.ProveedorServiceAPI;
+import com.cursojava.curso.service.dao.ProveedorDAO;
+import com.cursojava.curso.service.dao.ZonaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,8 +21,17 @@ public class ProveedorRestController {
     private ProveedorServiceAPI proveedorServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<Proveedor> getAll(){
-        return proveedorServiceAPI.getAll();
+    public List<ProveedorDAO> getAll(){
+        List<Proveedor> getall = proveedorServiceAPI.getAll();
+        List<ProveedorDAO> listaF = new ArrayList<>();
+
+        for (Proveedor p:getall){
+            if(p.getEstado().equals("A")){
+                ProveedorDAO objeto = new ProveedorDAO(p.getIdProveedor(),p.getNit(),p.getDireccion(),p.getEmail(),p.getNombre(),p.getEstado());
+                listaF.add(objeto);
+            }
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveProveedor")

@@ -1,12 +1,16 @@
 package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.TipoDocumento;
+import com.cursojava.curso.model.Zona;
 import com.cursojava.curso.service.TipoDocumentoServiceAPI;
+import com.cursojava.curso.service.dao.TipoDocumentoDAO;
+import com.cursojava.curso.service.dao.ZonaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,8 +21,17 @@ public class TipoDocumentoRestController {
     private TipoDocumentoServiceAPI tipoDocumentoServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<TipoDocumento> getAll(){
-        return tipoDocumentoServiceAPI.getAll();
+    public List<TipoDocumentoDAO> getAll(){
+        List<TipoDocumento> getall = tipoDocumentoServiceAPI.getAll();
+        List<TipoDocumentoDAO> listaF = new ArrayList<>();
+
+        for (TipoDocumento t:getall){
+            if(t.getEstado().equals("A")){
+                TipoDocumentoDAO objeto = new TipoDocumentoDAO(t.getIdDocumento(),t.getDescripcion(),t.getEstado());
+                listaF.add(objeto);
+            }
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveTipoDocumento")

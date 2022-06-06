@@ -1,12 +1,16 @@
 package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.TurnoTrabajo;
+import com.cursojava.curso.model.Usuario;
 import com.cursojava.curso.service.TurnoTrabajoServiceAPI;
+import com.cursojava.curso.service.dao.TurnoTrabajoDAO;
+import com.cursojava.curso.service.dao.UsuarioDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,8 +21,17 @@ public class TurnoTrabajoRestController {
     private TurnoTrabajoServiceAPI turnoTrabajoServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<TurnoTrabajo> getAll(){
-        return turnoTrabajoServiceAPI.getAll();
+    public List<TurnoTrabajoDAO> getAll(){
+        List<TurnoTrabajo> getall = turnoTrabajoServiceAPI.getAll();
+        List<TurnoTrabajoDAO> listaF = new ArrayList<>();
+
+        for (TurnoTrabajo t:getall){
+            if(t.getEstado().equals("A")){
+                TurnoTrabajoDAO objeto = new TurnoTrabajoDAO(t.getIdTurno(),t.getDescripcion(),t.getEstado());
+                listaF.add(objeto);
+            }
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveTurnoTrabajo")

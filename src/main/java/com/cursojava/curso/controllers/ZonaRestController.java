@@ -3,11 +3,13 @@ package com.cursojava.curso.controllers;
 import com.cursojava.curso.model.Zona;
 import com.cursojava.curso.service.AuditoriaServiceAPI;
 import com.cursojava.curso.service.ZonaServiceAPI;
+import com.cursojava.curso.service.dao.ZonaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,8 +23,18 @@ public class ZonaRestController {
     private AuditoriaServiceAPI auditoriaServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<Zona> getAll(){
-        return zonaServiceAPI.getAll();
+    public List<ZonaDAO> getAll(){
+
+        List<Zona> getall = zonaServiceAPI.getAll();
+        List<ZonaDAO> listaF = new ArrayList<>();
+
+        for (Zona z:getall){
+            if(z.getEstado().equals("A")){
+                ZonaDAO objeto = new ZonaDAO(z.getIdZona(), z.getCiudad(), z.getLocalidad(), z.getCoordenadas(), z.getEstado() );
+                listaF.add(objeto);
+            }
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveZona")

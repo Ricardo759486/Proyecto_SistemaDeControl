@@ -1,12 +1,16 @@
 package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Rol;
+import com.cursojava.curso.model.Zona;
 import com.cursojava.curso.service.RolServiceAPI;
+import com.cursojava.curso.service.dao.RolDAO;
+import com.cursojava.curso.service.dao.ZonaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,8 +21,17 @@ public class RolRestController {
     private RolServiceAPI rolServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<Rol> getAll(){
-        return rolServiceAPI.getAll();
+    public List<RolDAO> getAll(){
+        List<Rol> getall = rolServiceAPI.getAll();
+        List<RolDAO> listaF = new ArrayList<>();
+
+        for (Rol r:getall){
+            if(r.getEstado().equals("A")){
+                RolDAO objeto = new RolDAO(r.getIdRol(),r.getTipoRol(),r.getEstado());
+                listaF.add(objeto);
+            }
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveRol")

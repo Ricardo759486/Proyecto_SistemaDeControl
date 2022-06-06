@@ -17,7 +17,7 @@ public class Proveedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_proveedor")
+	@Getter @Setter @Column(name="id_proveedor")
 	private int idProveedor;
 
 	@Getter @Setter @Column(name="nit")
