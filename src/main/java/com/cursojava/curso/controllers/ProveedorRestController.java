@@ -27,7 +27,7 @@ public class ProveedorRestController {
 
         for (Proveedor p:getall){
             if(p.getEstado().equals("A")){
-                ProveedorDAO objeto = new ProveedorDAO(p.getIdProveedor(),p.getNit(),p.getDireccion(),p.getEmail(),p.getNombre(),p.getEstado());
+                ProveedorDAO objeto = new ProveedorDAO(p.getIdProveedor(),p.getNombre(),p.getNit(),p.getEmail(),p.getDireccion(),p.getEstado());
                 listaF.add(objeto);
             }
         }
