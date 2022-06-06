@@ -14,6 +14,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { ProveedorAdminRegisterComponent } from './proveedor-admin-register/proveedor-admin-register.component';
 import {FormsModule} from "@angular/forms";
+import { CuadrillasAdminComponent } from './cuadrillas-admin/cuadrillas-admin.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {FormsModule} from "@angular/forms";
     HomeAdminComponent,
     AdminDashboardMainComponent,
     ProveedorAdminRegisterComponent,
+    CuadrillasAdminComponent,
 
   ],
   imports: [
