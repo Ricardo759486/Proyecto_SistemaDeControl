@@ -14,11 +14,11 @@ public class CursoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CursoApplication.class, args);
-		AuditoriaRestController a = new AuditoriaRestController();
+		/*AuditoriaRestController a = new AuditoriaRestController();
 		Auditoria au = new Auditoria();
 		au.setIpUsuario("1234");
 		au.setOperacionCrud("CU");
 		au.setTabla("XX");
-		a.save(au);
+		a.save(au);*/
 	}
 }

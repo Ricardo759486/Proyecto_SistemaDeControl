@@ -14,7 +14,11 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { ProveedorAdminRegisterComponent } from './proveedor-admin-register/proveedor-admin-register.component';
 import {FormsModule} from "@angular/forms";
+<<<<<<< HEAD
 import { MaterialAdminComponent } from './material-admin/material-admin.component';
+=======
+import { CuadrillasAdminComponent } from './cuadrillas-admin/cuadrillas-admin.component';
+>>>>>>> e2b9661f1ce87f5b4e388674e3e57234615ab7a6
 
 
 @NgModule({
@@ -25,7 +29,11 @@ import { MaterialAdminComponent } from './material-admin/material-admin.componen
     HomeAdminComponent,
     AdminDashboardMainComponent,
     ProveedorAdminRegisterComponent,
+<<<<<<< HEAD
     MaterialAdminComponent,
+=======
+    CuadrillasAdminComponent,
+>>>>>>> e2b9661f1ce87f5b4e388674e3e57234615ab7a6
 
   ],
   imports: [
