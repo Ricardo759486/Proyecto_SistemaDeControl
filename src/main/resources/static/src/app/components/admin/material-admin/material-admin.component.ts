@@ -6,10 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./material-admin.component.scss']
 })
 export class MaterialAdminComponent implements OnInit {
+  sideBarOpen: any;
+  loading: any;
+  nombreMaterial: any;
+  cantidad: any;
+  costo: any;
+  errorInicio: any;
+  mensajeError: any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  sideBarToggler() {
+
+  }
+
+  login() {
+
+  }
 }
