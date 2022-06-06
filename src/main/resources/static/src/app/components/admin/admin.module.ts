@@ -18,6 +18,7 @@ import { MaterialAdminComponent } from './material-admin/material-admin.componen
 import { CuadrillasAdminComponent } from './cuadrillas-admin/cuadrillas-admin.component';
 import {TablaProveedorComponent} from "./tabla-proveedor/tabla-proveedor.component";
 import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
+import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
     CuadrillasAdminComponent,
     TablaProveedorComponent,
     ClienteAdminComponent,
+    ZonaAdminComponent,
   ],
   imports: [
     CommonModule,
