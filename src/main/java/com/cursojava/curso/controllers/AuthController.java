@@ -3,6 +3,7 @@ package com.cursojava.curso.controllers;
 import com.cursojava.curso.model.Usuario;
 import com.cursojava.curso.service.AuditoriaServiceAPI;
 import com.cursojava.curso.service.UsuarioServiceAPI;
+import com.cursojava.curso.service.dao.UsuarioDAO;
 import com.cursojava.curso.service.impl.EnvioCorreoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -27,30 +28,31 @@ public class AuthController {
     }
 
     @GetMapping(value = "/validarLogin/{correo}/{clave}")
-    public String login(@PathVariable(value = "correo") String correo,
+    public UsuarioDAO login(@PathVariable(value = "correo") String correo,
                                          @PathVariable(value = "clave") String clave){
-       Usuario usComprob =  usuarioServiceAPI.login(correo, clave);
-       int val = comprobacion(usComprob);
+       Usuario usC =  usuarioServiceAPI.login(correo, clave);
+       UsuarioDAO u= new UsuarioDAO(usC.getIdUsuario(),usC.getDireccion(), usC.getEstado(), usC.getIdentificacion(), usC.getIntentos(), usC.getLogin(), usC.getFecha_ultima_contra(), usC.getCuadrilla().getMovilAsociado(), usC.getRol().getTipoRol(), usC.getTipoDocumento().getDescripcion());
+       int val = comprobacion(usC);
         switch(val) {
             case 0:
                 System.out.println("Usuario bloqueado");
-                correoService.enviarCorreo(usComprob.getLogin(),"Usuario Bloqueado", "Su usuario ha sido bloqueado debido a varios intentos fallidos" +
+                correoService.enviarCorreo(usC.getLogin(),"Usuario Bloqueado", "Su usuario ha sido bloqueado debido a varios intentos fallidos" +
                         "\nde inicio de sesion, contactece con un administrador para acceder\na su cuenta.\nCordialmente, Sistema de Gestion Administrativo ");
-                return "Usuario bloqueado: Es necesario comunicarse con administracion";
+                return u;
             case 1:
                 System.out.println("Sesion iniciada con exito");
-                return "Sesion iniciada con exito";
+                return u;
             case 2:
                 System.out.println("La contrasenia debe ser cambiada");
-                correoService.enviarCorreo(usComprob.getLogin(), "Solicitud nueva contraseña", "Debido a reglas propia de la empresa su contraseña debe\n" +
+                correoService.enviarCorreo(usC.getLogin(), "Solicitud nueva contraseña", "Debido a reglas propia de la empresa su contraseña debe\n" +
                         "ser cambiada para poder acceder a su usuario: Dirigase a xyz.com para cambiar la contraseña");
-                return "La contrasenia debe ser cambiada";
+                return u;
             case 3:
                 System.out.println("Login fallido");
-                return "Login fallido: Error en la autenticacion de credenciales";
+                return null;
             default:
                 System.out.println("Se peto");
-                return "Valor default aplicado";
+                return u;
         }
     }
     public int comprobacion(Usuario u){

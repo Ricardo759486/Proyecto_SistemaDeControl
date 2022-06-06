@@ -31,6 +31,7 @@ public class UsuarioRestController {
 
     @GetMapping(value = "/getAll")
     public List<Usuario> getAll(){
+
         return usuarioServiceAPI.getAll();
     }
 
