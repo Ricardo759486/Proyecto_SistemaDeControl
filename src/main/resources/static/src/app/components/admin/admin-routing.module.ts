@@ -6,6 +6,7 @@ import {ProveedorAdminRegisterComponent} from "./proveedor-admin-register/provee
 import {CuadrillasAdminComponent} from "./cuadrillas-admin/cuadrillas-admin.component";
 import {MaterialAdminComponent} from "./material-admin/material-admin.component";
 import {ZonaAdminComponent} from "./zona-admin/zona-admin.component";
+import {MaterialcuadrillaAdminComponent} from "./materialcuadrilla-admin/materialcuadrilla-admin.component";
 
 
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'cuadrilla_register', component: CuadrillasAdminComponent },
   { path: 'material_register', component: MaterialAdminComponent },
   { path: 'zona_register', component: ZonaAdminComponent },
+  { path: 'materialcuadrilla_register', component: MaterialcuadrillaAdminComponent },
 
 ];
 
