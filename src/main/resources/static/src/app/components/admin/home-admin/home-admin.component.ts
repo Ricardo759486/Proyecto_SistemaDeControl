@@ -9,6 +9,7 @@ export class HomeAdminComponent implements OnInit {
   user: any={};
   title = 'admin-panel-layout';
   sideBarOpen = true;
+  data: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -16,6 +17,7 @@ export class HomeAdminComponent implements OnInit {
     if(!this.user){
       location.href = "/";
     }
+
   }
 
   sideBarToggler() {

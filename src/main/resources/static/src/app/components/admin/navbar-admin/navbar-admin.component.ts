@@ -9,10 +9,16 @@ import { Router } from '@angular/router';
 export class NavbarAdminComponent implements OnInit {
   @Output() toggleSidebarForMe: EventEmitter<any> = new EventEmitter();
   user: any={};
+  email: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.email = this.user.login;
+    if(!this.user){
+      location.href = "/";
+    }
   }
   toggleSidebar() {
     this.toggleSidebarForMe.emit();

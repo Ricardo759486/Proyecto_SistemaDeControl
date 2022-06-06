@@ -13,7 +13,7 @@ export class LoginService {
 
   loginService(email:string,password:string){
 
-    return this.http.get('http://localhost:8080/Autenticacion/validarLogin/'+email+'/'+password, {responseType: 'text'});
+    return this.http.get('http://localhost:8080/Autenticacion/validarLogin/'+email+'/'+password, {responseType: 'json'});
 
 }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../../../shared/services/auth/login.service";
 import {compareSegments} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/segment_marker";
+import {UserI} from "../../../shared/models/user.interface";
+
 
 @Component({
   selector: 'app-login',
@@ -8,11 +10,10 @@ import {compareSegments} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/se
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   errorInicio: boolean= false;
   mensajeError: any="Usuario o contraseña incorrectos";
   loading: boolean =false;
-  user: any={};
+  user: object = {};
   email: string="";
   password: string="";
 
@@ -30,8 +31,6 @@ export class LoginComponent implements OnInit {
       this.loading=true;
       this.loginscv.loginService(this.email,this.password).subscribe(
         data => {
-          console.log(data);
-          alert(data);
           if(data!=null){
             this.minifierSession(data);
           }else{
@@ -46,13 +45,12 @@ export class LoginComponent implements OnInit {
   }
 
   minifierSession(resultant:any){
-    this.user={
-      email: this.email,
-      password: this.password
-    };
+    this.user = resultant;
+
     this.loading=false;
     if(resultant!=null){
-      localStorage.setItem('user', JSON.stringify(this.user));
+      alert("Bienvenido");
+      localStorage.setItem("user", JSON.stringify(this.user));
       location.href = "/admin/home";
     }else{
       this.errorInicio=true;

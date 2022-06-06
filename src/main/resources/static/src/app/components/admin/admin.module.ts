@@ -16,6 +16,7 @@ import { ProveedorAdminRegisterComponent } from './proveedor-admin-register/prov
 import {FormsModule} from "@angular/forms";
 import { MaterialAdminComponent } from './material-admin/material-admin.component';
 import { CuadrillasAdminComponent } from './cuadrillas-admin/cuadrillas-admin.component';
+import {TablaProveedorComponent} from "./tabla-proveedor/tabla-proveedor.component";
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { CuadrillasAdminComponent } from './cuadrillas-admin/cuadrillas-admin.co
     ProveedorAdminRegisterComponent,
     MaterialAdminComponent,
     CuadrillasAdminComponent,
+    TablaProveedorComponent,
   ],
   imports: [
     CommonModule,
