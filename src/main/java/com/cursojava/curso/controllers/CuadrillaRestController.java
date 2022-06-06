@@ -1,18 +1,17 @@
 package com.cursojava.curso.controllers;
 
-import com.cursojava.curso.model.Cuadrilla;
-import com.cursojava.curso.model.Proveedor;
-import com.cursojava.curso.model.TurnoTrabajo;
-import com.cursojava.curso.model.Zona;
+import com.cursojava.curso.model.*;
 import com.cursojava.curso.service.CuadrillaServiceAPI;
 import com.cursojava.curso.service.ProveedorServiceAPI;
 import com.cursojava.curso.service.TurnoTrabajoServiceAPI;
 import com.cursojava.curso.service.ZonaServiceAPI;
+import com.cursojava.curso.service.dao.CuadrillaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,8 +31,18 @@ public class CuadrillaRestController {
     private TurnoTrabajoServiceAPI turnoTrabajoServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<Cuadrilla> getAll(){
-        return cuadrillaServiceAPI.getAll();
+    public List<CuadrillaDAO> getAll(){
+
+        List<Cuadrilla> getall = cuadrillaServiceAPI.getAll();
+        List<CuadrillaDAO> listaF = new ArrayList<>();
+
+        for (Cuadrilla c:getall){
+            if(c.getEstado().equals("A")) {
+                CuadrillaDAO objeto = new CuadrillaDAO(c.getIdCuadrilla(),c.getMovilAsociado(),c.getProveedor().getNombre(),c.getTurnoTrabajoBean().getDescripcion(),c.getZona().getLocalidad(),c.getEstado());
+                listaF.add(objeto);
+            }
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveCuadrilla/{idZona}/{idProveedor}/{turnoTrabajo}")

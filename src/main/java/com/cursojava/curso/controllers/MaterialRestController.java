@@ -2,11 +2,13 @@ package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Material;
 import com.cursojava.curso.service.MaterialServiceAPI;
+import com.cursojava.curso.service.dao.MaterialDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,8 +19,18 @@ public class MaterialRestController {
     private MaterialServiceAPI materialServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<Material> getAll(){
-        return materialServiceAPI.getAll();
+    public List<MaterialDAO> getAll(){
+
+        List<Material> getall = materialServiceAPI.getAll();
+        List<MaterialDAO> listaF = new ArrayList<>();
+
+        for (Material m:getall){
+            if(m.getEstado().equals("A")) {
+                MaterialDAO objeto = new MaterialDAO(m.getIdInventario(),m.getNombreMaterial(),m.getCantidad(),m.getCosto(),m.getEstado());
+                listaF.add(objeto);
+            }
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveMaterial")

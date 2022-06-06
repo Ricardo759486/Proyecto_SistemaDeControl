@@ -2,10 +2,9 @@ package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Cliente;
 import com.cursojava.curso.model.TipoDocumento;
-import com.cursojava.curso.model.Usuario;
 import com.cursojava.curso.service.ClienteServiceAPI;
 import com.cursojava.curso.service.TipoDocumentoServiceAPI;
-import com.cursojava.curso.service.dao.UsuarioDAO;
+import com.cursojava.curso.service.dao.ClienteDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,12 +26,14 @@ public class ClienteRestController {
     @GetMapping(value = "/getAll")
     public List<ClienteDAO> getAll(){
 
-        List<Usuario> getall = usuarioServiceAPI.getAll();
-        List<UsuarioDAO> listaF = new ArrayList<>();
+        List<Cliente> getall = clienteServiceAPI.getAll();
+        List<ClienteDAO> listaF = new ArrayList<>();
 
-        for (Usuario u:getall){
-            UsuarioDAO objeto = new UsuarioDAO(u.getIdUsuario(),u.getLogin(),u.getTipoDocumento().getDescripcion(),u.getIdentificacion(),u.getFecha_ultima_contra(),u.getDireccion(),u.getRol().getTipoRol(),u.getCuadrilla().getMovilAsociado(),u.getIntentos(),u.getEstado());
-            listaF.add(objeto);
+        for (Cliente c:getall){
+            if(c.getEstado().equals("A")){
+                ClienteDAO objeto = new ClienteDAO(c.getIdCliente(),c.getDireccion(),c.getTipoDocumento().getDescripcion(),c.getNumDocumento(),c.getEstado());
+                listaF.add(objeto);
+            }
         }
 
         return listaF;

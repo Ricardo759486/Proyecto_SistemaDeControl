@@ -5,11 +5,13 @@ import com.cursojava.curso.service.ClienteServiceAPI;
 import com.cursojava.curso.service.CuadrillaServiceAPI;
 import com.cursojava.curso.service.OrdenTrabajoServiceAPI;
 import com.cursojava.curso.service.TipoServicioServiceAPI;
+import com.cursojava.curso.service.dao.OrdenTrabajoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,8 +31,18 @@ public class OrdenTrabajoRestController {
     private TipoServicioServiceAPI tipoServicioServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<OrdenTrabajo> getAll(){
-        return ordenTrabajoServiceAPI.getAll();
+    public List<OrdenTrabajoDAO> getAll(){
+
+        List<OrdenTrabajo> getall = ordenTrabajoServiceAPI.getAll();
+        List<OrdenTrabajoDAO> listaF = new ArrayList<>();
+
+        for (OrdenTrabajo o:getall){
+            if(o.getEstado().equals("A")) {
+                OrdenTrabajoDAO objeto = new OrdenTrabajoDAO(o.getIdOrdenTrabajo(),o.getDescripcion(),o.getTipoServicio().getDescripcion(),o.getCliente().getNumDocumento(),o.getCuadrilla().getMovilAsociado(),o.getEstado());
+                listaF.add(objeto);
+            }
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveOrdenTrabajo/{idCuadrilla}/{idCliente}/{idTipoServicio}")

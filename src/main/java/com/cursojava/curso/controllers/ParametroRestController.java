@@ -2,11 +2,13 @@ package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Parametro;
 import com.cursojava.curso.service.ParametroServiceAPI;
+import com.cursojava.curso.service.dao.ParametroDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,8 +19,16 @@ public class ParametroRestController {
     private ParametroServiceAPI parametroServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<Parametro> getAll(){
-        return parametroServiceAPI.getAll();
+    public List<ParametroDAO> getAll(){
+
+        List<Parametro> getall = parametroServiceAPI.getAll();
+        List<ParametroDAO> listaF = new ArrayList<>();
+
+        for (Parametro p:getall){
+                ParametroDAO objeto = new ParametroDAO(p.getIdParametro(),p.getDescripcion(),p.getTipo(),p.getValor());
+                listaF.add(objeto);
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveParametro")

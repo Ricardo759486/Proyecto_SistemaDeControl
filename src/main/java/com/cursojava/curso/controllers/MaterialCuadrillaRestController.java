@@ -6,11 +6,13 @@ import com.cursojava.curso.model.MaterialCuadrilla;
 import com.cursojava.curso.service.CuadrillaServiceAPI;
 import com.cursojava.curso.service.MaterialCuadrillaServiceAPI;
 import com.cursojava.curso.service.MaterialServiceAPI;
+import com.cursojava.curso.service.dao.MaterialCuadrillaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -27,8 +29,16 @@ public class MaterialCuadrillaRestController {
     private MaterialServiceAPI materialServiceAPI;
 
     @GetMapping(value = "/getAll")
-    public List<MaterialCuadrilla> getAll(){
-        return materialCuadrillaServiceAPI.getAll();
+    public List<MaterialCuadrillaDAO> getAll(){
+
+        List<MaterialCuadrilla> getall = materialCuadrillaServiceAPI.getAll();
+        List<MaterialCuadrillaDAO> listaF = new ArrayList<>();
+
+        for (MaterialCuadrilla m:getall){
+                MaterialCuadrillaDAO objeto = new MaterialCuadrillaDAO(m.getIdRegistro(),m.getMaterial().getNombreMaterial(),m.getCantidad(),m.getCuadrilla().getMovilAsociado());
+                listaF.add(objeto);
+        }
+        return listaF;
     }
 
     @PostMapping(value = "/saveMaterialCuadrilla/{idCuadrilla}/{idInventario}")
