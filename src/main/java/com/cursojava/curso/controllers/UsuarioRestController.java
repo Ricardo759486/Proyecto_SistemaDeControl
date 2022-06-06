@@ -1,4 +1,4 @@
-package com.cursojava.curso.commons.controllers;
+package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.Cuadrilla;
 import com.cursojava.curso.model.Rol;
@@ -31,14 +31,14 @@ public class UsuarioRestController {
     @Autowired
     private RolServiceAPI rolServiceAPI;
 
-    @GetMapping(value = "/getAllUsuarios")
+    @GetMapping(value = "/getAll")
     public List<UsuarioDAO> getAll(){
 
         List<Usuario> getall = usuarioServiceAPI.getAll();
         List<UsuarioDAO> listaF = new ArrayList<>();
 
         for (Usuario u:getall){
-            UsuarioDAO objeto = new UsuarioDAO(u.getIdUsuario(),u.getDireccion(),u.getEstado(),u.getIdentificacion(),u.getIntentos(),u.getLogin(),u.getFecha_ultima_contra(),u.getCuadrilla().getMovilAsociado(),u.getRol().getTipoRol(),u.getTipoDocumento().getDescripcion());
+            UsuarioDAO objeto = new UsuarioDAO(u.getIdUsuario(),u.getLogin(),u.getTipoDocumento().getDescripcion(),u.getIdentificacion(),u.getFecha_ultima_contra(),u.getDireccion(),u.getRol().getTipoRol(),u.getCuadrilla().getMovilAsociado(),u.getIntentos(),u.getEstado());
             listaF.add(objeto);
         }
 

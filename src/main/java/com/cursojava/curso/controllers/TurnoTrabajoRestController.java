@@ -1,4 +1,4 @@
-package com.cursojava.curso.commons.controllers;
+package com.cursojava.curso.controllers;
 
 import com.cursojava.curso.model.TurnoTrabajo;
 import com.cursojava.curso.service.TurnoTrabajoServiceAPI;
