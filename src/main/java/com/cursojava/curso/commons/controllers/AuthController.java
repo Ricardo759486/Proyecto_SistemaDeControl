@@ -1,4 +1,4 @@
-package com.cursojava.curso.controllers;
+package com.cursojava.curso.commons.controllers;
 
 import com.cursojava.curso.model.Usuario;
 import com.cursojava.curso.service.AuditoriaServiceAPI;
@@ -31,28 +31,28 @@ public class AuthController {
     public UsuarioDAO login(@PathVariable(value = "correo") String correo,
                                          @PathVariable(value = "clave") String clave){
        Usuario usC =  usuarioServiceAPI.login(correo, clave);
-       UsuarioDAO u= new UsuarioDAO(usC.getIdUsuario(),usC.getDireccion(), usC.getEstado(), usC.getIdentificacion(), usC.getIntentos(), usC.getLogin(), usC.getFecha_ultima_contra(), usC.getCuadrilla().getMovilAsociado(), usC.getRol().getTipoRol(), usC.getTipoDocumento().getDescripcion());
+       //UsuarioDAO u= new UsuarioDAO(usC.getIdUsuario(),usC.getDireccion(), usC.getEstado(), usC.getIdentificacion(), usC.getIntentos(), usC.getLogin(), usC.getFecha_ultima_contra(), usC.getCuadrilla().getMovilAsociado(), usC.getRol().getTipoRol(), usC.getTipoDocumento().getDescripcion());
        int val = comprobacion(usC);
         switch(val) {
             case 0:
                 System.out.println("Usuario bloqueado");
                 correoService.enviarCorreo(usC.getLogin(),"Usuario Bloqueado", "Su usuario ha sido bloqueado debido a varios intentos fallidos" +
                         "\nde inicio de sesion, contactece con un administrador para acceder\na su cuenta.\nCordialmente, Sistema de Gestion Administrativo ");
-                return u;
+                return null;
             case 1:
                 System.out.println("Sesion iniciada con exito");
-                return u;
+                return null;
             case 2:
                 System.out.println("La contrasenia debe ser cambiada");
                 correoService.enviarCorreo(usC.getLogin(), "Solicitud nueva contraseña", "Debido a reglas propia de la empresa su contraseña debe\n" +
                         "ser cambiada para poder acceder a su usuario: Dirigase a xyz.com para cambiar la contraseña");
-                return u;
+                return null;
             case 3:
                 System.out.println("Login fallido");
                 return null;
             default:
                 System.out.println("Se peto");
-                return u;
+                return null;
         }
     }
     public int comprobacion(Usuario u){
