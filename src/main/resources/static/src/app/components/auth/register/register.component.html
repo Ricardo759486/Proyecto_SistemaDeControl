@@ -14,23 +14,30 @@
     <h1>Register</h1>
     <input
       type="email"
-      [(ngModel)]="user.email"
+      [(ngModel)]="user.login"
       name="email"
       placeholder="Email"
       required="required"
     />
     <input
-      type="password"
-      [(ngModel)]="user.password"
-      name="password"
-      placeholder="Password"
+      type="number"
+      [(ngModel)]="user.identificacion"
+      name="Número identificación"
+      placeholder="Número identificación"
+      required="required"
+    />
+    <input
+      type="number"
+      [(ngModel)]="user.direccion"
+      name="Dirección"
+      placeholder="Dirección"
       required="required"
     />
     <input
       type="password"
-      [(ngModel)]="user.confirmPassword"
+      [(ngModel)]="user.clave"
       name="password"
-      placeholder="Repeat the password"
+      placeholder="Password"
       required="required"
     />
     <button type="submit" >Register</button>
