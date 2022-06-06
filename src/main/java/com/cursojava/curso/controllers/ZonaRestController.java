@@ -36,6 +36,7 @@ public class ZonaRestController {
 
     @PostMapping(value = "/saveZona")
     public HttpStatus save(@RequestBody Zona zona){
+        zona.setEstado("A");
         zonaServiceAPI.save(zona);
         return HttpStatus.OK;
     }

@@ -1,7 +1,5 @@
 package com.cursojava.curso.controllers;
-
 import com.cursojava.curso.model.Usuario;
-import com.cursojava.curso.service.AuditoriaServiceAPI;
 import com.cursojava.curso.service.UsuarioServiceAPI;
 import com.cursojava.curso.service.dao.UsuarioDAO;
 import com.cursojava.curso.service.impl.EnvioCorreoImpl;

@@ -35,6 +35,7 @@ public class MaterialRestController {
 
     @PostMapping(value = "/saveMaterial")
     public HttpStatus save(@RequestBody Material material){
+        material.setEstado("A");
         materialServiceAPI.save(material);
         return HttpStatus.OK;
     }

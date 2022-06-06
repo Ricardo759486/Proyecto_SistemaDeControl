@@ -45,6 +45,7 @@ public class ClienteRestController {
 
         TipoDocumento tipoDocumento = tipoDocumentoServiceAPI.get(idDocumento);
         cliente.setTipoDocumento(tipoDocumento);
+        cliente.setEstado("A");
         clienteServiceAPI.save(cliente);
         return HttpStatus.OK;
     }

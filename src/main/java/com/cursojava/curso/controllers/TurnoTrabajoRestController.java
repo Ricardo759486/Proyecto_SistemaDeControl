@@ -35,8 +35,9 @@ public class TurnoTrabajoRestController {
     }
 
     @PostMapping(value = "/saveTurnoTrabajo")
-    public HttpStatus save(@RequestBody TurnoTrabajo tipoDocumento){
-        turnoTrabajoServiceAPI.save(tipoDocumento);
+    public HttpStatus save(@RequestBody TurnoTrabajo turnoTrabajo){
+        turnoTrabajo.setEstado("A");
+        turnoTrabajoServiceAPI.save(turnoTrabajo);
         return HttpStatus.OK;
     }
 

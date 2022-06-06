@@ -60,6 +60,7 @@ public class UsuarioRestController {
         usuario.setRol(rol);
         usuario.setFecha_ultima_contra(new Date());
         usuario.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
+        usuario.setEstado("A");
         usuarioServiceAPI.save(usuario);
         return HttpStatus.OK;
     }

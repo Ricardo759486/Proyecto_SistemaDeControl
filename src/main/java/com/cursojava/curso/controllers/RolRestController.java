@@ -36,6 +36,7 @@ public class RolRestController {
 
     @PostMapping(value = "/saveRol")
     public HttpStatus save(@RequestBody Rol rol){
+        rol.setEstado("A");
         rolServiceAPI.save(rol);
         return HttpStatus.OK;
     }

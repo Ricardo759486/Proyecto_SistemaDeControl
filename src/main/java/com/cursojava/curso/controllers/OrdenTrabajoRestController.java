@@ -56,6 +56,7 @@ public class OrdenTrabajoRestController {
         ordenTrabajo.setCuadrilla(cuadrilla);
         ordenTrabajo.setCliente(cliente);
         ordenTrabajo.setTipoServicio(tipoServicio);
+        ordenTrabajo.setEstado("A");
         ordenTrabajoServiceAPI.save(ordenTrabajo);
         return HttpStatus.OK;
     }

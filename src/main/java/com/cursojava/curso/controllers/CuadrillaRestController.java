@@ -56,6 +56,7 @@ public class CuadrillaRestController {
         cuadrilla.setZona(zona);
         cuadrilla.setProveedor(proveedor);
         cuadrilla.setTurnoTrabajoBean(turno);
+        cuadrilla.setEstado("A");
         cuadrillaServiceAPI.save(cuadrilla);
 
         return HttpStatus.OK;

@@ -36,6 +36,7 @@ public class TipoDocumentoRestController {
 
     @PostMapping(value = "/saveTipoDocumento")
     public HttpStatus save(@RequestBody TipoDocumento tipoDocumento){
+        tipoDocumento.setEstado("A");
         tipoDocumentoServiceAPI.save(tipoDocumento);
         return HttpStatus.OK;
     }

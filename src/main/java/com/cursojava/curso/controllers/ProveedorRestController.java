@@ -36,6 +36,7 @@ public class ProveedorRestController {
 
     @PostMapping(value = "/saveProveedor")
     public HttpStatus save(@RequestBody Proveedor proveedor){
+        proveedor.setEstado("A");
         proveedorServiceAPI.save(proveedor);
         return HttpStatus.OK;
     }
