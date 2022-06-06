@@ -30,20 +30,16 @@ export class LoginComponent implements OnInit {
       this.loading=true;
       this.loginscv.loginService(this.email,this.password).subscribe(
         data => {
+          console.log(data);
           alert(data);
-          if(data == ("Sesion iniciada con exito")){
+          if(data!=null){
             this.minifierSession(data);
           }else{
             this.loading=false;
             this.mensajeError="No se pudo conectar con el servidor";
             this.errorInicio=true;
-
           }
-
         })
-      this.mensajeError="No se pudo conectar con el servidor";
-      this.errorInicio=true;
-      this.loading=false;
     }else{
       alert("Por favor ingrese los datos correctamente");
     }
@@ -55,7 +51,7 @@ export class LoginComponent implements OnInit {
       password: this.password
     };
     this.loading=false;
-    if(resultant == ("Sesion iniciada con exito")){
+    if(resultant!=null){
       localStorage.setItem('user', JSON.stringify(this.user));
       location.href = "/admin/home";
     }else{
