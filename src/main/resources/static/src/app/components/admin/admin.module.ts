@@ -21,6 +21,7 @@ import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
 import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
 import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
+import { ParametroAdminComponent } from './parametro-admin/parametro-admin.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-ad
     ZonaAdminComponent,
     MaterialcuadrillaAdminComponent,
     OrdentrabajoAdminComponent,
+    ParametroAdminComponent,
   ],
   imports: [
     CommonModule,

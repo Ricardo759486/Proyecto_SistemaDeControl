@@ -9,7 +9,7 @@ import {ZonaAdminComponent} from "./zona-admin/zona-admin.component";
 import {MaterialcuadrillaAdminComponent} from "./materialcuadrilla-admin/materialcuadrilla-admin.component";
 import {ClienteAdminComponent} from "./cliente-admin/cliente-admin.component";
 import {OrdentrabajoAdminComponent} from "./ordentrabajo-admin/ordentrabajo-admin.component";
-
+import {ParametroAdminComponent} from "./parametro-admin/parametro-admin.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'zona_register', component: ZonaAdminComponent },
   { path: 'materialcuadrilla_register', component: MaterialcuadrillaAdminComponent },
   { path: 'ordentrabajo_register', component: OrdentrabajoAdminComponent },
+  { path: 'parametro_register' , component: ParametroAdminComponent },
 ];
 
 @NgModule({
