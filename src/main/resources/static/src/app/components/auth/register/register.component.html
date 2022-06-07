@@ -27,10 +27,10 @@
       required="required"
     />
     <br>
-    <label>Seleccione la zona:  </label>
-    <select [(ngModel)]="cuadrilla.idZona" [ngModelOptions]="{standalone: true}">
-      <option *ngFor="let zona of zona" value = {{zona.idZona}}>
-        {{zona.localidad}}
+    <label>Seleccione el tipo de documento:  </label>
+    <select [(ngModel)]="user.tipoDoc" [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let tipoDocumento of tipoDocumento" value = {{tipoDocumento.idDocumento}}>
+        {{tipoDocumento.descripcion}}
       </option>
     </select>
     <br>
