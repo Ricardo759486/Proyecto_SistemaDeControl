@@ -1,0 +1,48 @@
+ <div class="register">
+   <div class="row" *ngIf="loading">
+     <div class="col-md-4 col-md-offset-4">
+       <div class="spinner-border text-info float-right" role="status">
+         <span class="sr-only">Loading...</span>
+       </div>
+     </div>
+   </div>
+   <form class="custom-form" method="post" (ngSubmit)="register_ordentrabajo()" id="login">
+     <h1>Registro Orden de Trabajo</h1>
+     <input
+       type="descripcion"
+       [(ngModel)] = "ordentrabajo.descripcion"
+       name="descripcion"
+       placeholder="Ingrese la descripción de la orden de trabajo"
+       required="required"
+     />
+     <input
+       type="idCliente"
+       [(ngModel)]="ordentrabajo.idCliente"
+       name="idCliente"
+       placeholder="Seleccione el id del cliente"
+       required="required"
+     />
+     <input
+       type="idCuadrilla"
+       [(ngModel)]="ordentrabajo.idCuadrilla"
+       name="idCuadrilla"
+       placeholder="Seleccione el id de la cuadrilla"
+       required="required"
+     />
+     <input
+       type="idTipoServicio"
+       [(ngModel)]="ordentrabajo.idTipoServicio"
+       name="idTipoServicio"
+       placeholder="Seleccione el id del tipo de servicio"
+       required="required"
+     />
+     <button type="submit" >Registrar</button>
+     <div class="row" *ngIf="errorInicio">
+       <div class="col-md-12">
+         <div class="alert alert-danger" role="alert">
+           <strong>Error: </strong> {{mensajeError}}
+         </div>
+       </div>
+     </div>
+   </form>
+ </div>

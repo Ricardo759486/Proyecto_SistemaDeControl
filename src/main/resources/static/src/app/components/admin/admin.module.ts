@@ -19,7 +19,7 @@ import { TablaProveedorComponent} from "./proveedor/tabla-proveedor/tabla-provee
 import { ClienteAdminRegisterComponent } from './Cliente/cliente-admin-register/cliente-admin-register.component';
 import { ZonaAdminRegisterComponent } from './Zona/zona-admin-register/zona-admin-register.component';
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
-import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
+import { OrdentrabajoAdminRegisterComponent } from './OrdenTrabajo/ordentrabajo-admin-register/ordentrabajo-admin-register.component';
 import { ParametroAdminRegisterComponent } from './parametro/parametro-admin-register/parametro-admin-register.component';
 import { TelefonoAdminRegisterComponent } from './Telefono/telefono-admin-register/telefono-admin-register.component';
 import { MaterialAdminPageComponent } from './material/material-admin-page/material-admin-page.component';
@@ -47,7 +47,7 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     ClienteAdminRegisterComponent,
     ZonaAdminRegisterComponent,
     MaterialcuadrillaAdminComponent,
-    OrdentrabajoAdminComponent,
+    OrdentrabajoAdminRegisterComponent,
     ParametroAdminRegisterComponent,
     TelefonoAdminRegisterComponent,
     ProveedorAdminPageComponent,
