@@ -20,7 +20,7 @@ export class UsuarioAdminRegisterComponent implements OnInit {
   errorInicio: any;
   mensajeError: any;
   loading: any;
-  usuario: any;
+  usuario: any={};
 
   cuadrilla: Cuadrilla[] = [];
   tipoDocumento: TipoDocumento[] = [];

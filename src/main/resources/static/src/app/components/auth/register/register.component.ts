@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
   user: any={};
   errorRegister: boolean= false;
   mensajeError: any="Revisa los campos";
+  cuadrilla: any;
+  zona: any;
   constructor(private registerscv:RegisterService) { }
 
   ngOnInit(): void {

@@ -25,7 +25,7 @@
     />
     <br>
     <label>Seleccione el tipo de documento:  </label>
-    <select [(ngModel)]="usuario.tipoDoc">
+    <select [(ngModel)]="usuario.tipoDoc" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let tipoDocumento of tipoDocumento" value = {{tipoDocumento.idDocumento}}>
         {{tipoDocumento.descripcion}}
       </option>
@@ -53,7 +53,7 @@
     />
     <br>
     <label>Seleccione la cuadrilla:  </label>
-    <select [(ngModel)]="usuario.idCuadrilla">
+    <select [(ngModel)]="usuario.idCuadrilla" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>
         {{cuadrilla.movilAsociado}}
       </option>
