@@ -2,20 +2,20 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-parametro-admin',
-  templateUrl: './parametro-admin.component.html',
-  styleUrls: ['./parametro-admin.component.scss']
+  templateUrl: './parametro-admin-register.component.html',
+  styleUrls: ['./parametro-admin-register.component.scss']
 })
-export class ParametroAdminComponent implements OnInit {
+export class ParametroAdminRegisterComponent implements OnInit {
+
   user: any={};
-  sideBarOpen: any;
+  title = 'admin-panel-layout';
+  sideBarOpen = true;
   loading: any;
+  parametro: any;
   errorInicio: any;
   mensajeError: any;
-  descripcion: any;
-  tipo: any;
-  valor: any;
-
   constructor() { }
+
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
     if(!this.user){
@@ -26,7 +26,7 @@ export class ParametroAdminComponent implements OnInit {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  login() {
+  register_parametro() {
 
   }
 }

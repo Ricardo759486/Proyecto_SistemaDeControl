@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {TablaAdminProveedorService} from "../../../../shared/services/admin/tabla-admin-proveedor.service";
 import {Router} from "@angular/router";
 import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
 import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
@@ -21,4 +20,11 @@ export class TablaCuadrillaComponent implements OnInit {
   }
 
 
+  Editar(cuadrilla: Cuadrilla) {
+
+  }
+
+  Delete(cuadrilla: Cuadrilla) {
+
+  }
 }

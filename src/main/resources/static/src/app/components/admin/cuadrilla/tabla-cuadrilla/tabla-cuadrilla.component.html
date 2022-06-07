@@ -21,20 +21,8 @@
         <td>{{cuadrilla.zona}}</td>
         <td>{{cuadrilla.estado}}</td>
         <td>
-          <button class="btn btn-warning">Editar</button>
-          <button class="btn btn-danger">Delete</button>
-        </td>
-      </tr>
-      <tr *ngFor="let cuadrilla of cuadrilla" class="text-center" >
-        <td>{{cuadrilla.idCuadrilla}}</td>
-        <td>{{cuadrilla.movilAsociado}}</td>
-        <td>{{cuadrilla.proveedor}}</td>
-        <td>{{cuadrilla.turnoTrabajo}}</td>
-        <td>{{cuadrilla.zona}}</td>
-        <td>{{cuadrilla.estado}}</td>
-        <td>
-          <button class="btn btn-warning">Editar</button>
-          <button class="btn btn-danger">Delete</button>
+          <button (click)="Editar(cuadrilla)" class="btn btn-warning">Editar</button>
+          <button (click)="Delete(cuadrilla)" class="btn btn-danger">Delete</button>
         </td>
       </tr>
       </tbody>

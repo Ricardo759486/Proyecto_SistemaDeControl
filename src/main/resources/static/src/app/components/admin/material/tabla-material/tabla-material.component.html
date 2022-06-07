@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>NombreMaterial</th>
+        <th>Cantidad</th>
+        <th>Costo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody class="body_tabla">
+      <tr *ngFor="let material of material" class="text-center" >
+        <td>{{material.idInventario}}</td>
+        <td>{{material.nombreMaterial}}</td>
+        <td>{{material.cantidad}}</td>
+        <td>{{material.costo}}</td>
+        <td>{{material.estado}}</td>
+        <td>
+          <button (click)="Editar(material)" class="btn btn-warning">Editar</button>
+          <button (click)="Delete(material)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

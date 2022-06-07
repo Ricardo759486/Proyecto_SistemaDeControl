@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ParametroAdminComponent } from './parametro-admin.component';
+import { MaterialAdminPageComponent } from './material-admin-page.component';
 
-describe('ParametroAdminComponent', () => {
-  let component: ParametroAdminComponent;
-  let fixture: ComponentFixture<ParametroAdminComponent>;
+describe('MaterialAdminPageComponent', () => {
+  let component: MaterialAdminPageComponent;
+  let fixture: ComponentFixture<MaterialAdminPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ParametroAdminComponent ]
+      declarations: [ MaterialAdminPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ParametroAdminComponent);
+    fixture = TestBed.createComponent(MaterialAdminPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

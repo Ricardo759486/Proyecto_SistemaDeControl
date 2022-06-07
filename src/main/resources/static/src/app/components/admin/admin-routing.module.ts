@@ -9,7 +9,7 @@ import {ZonaAdminComponent} from "./zona-admin/zona-admin.component";
 import {MaterialcuadrillaAdminComponent} from "./materialcuadrilla-admin/materialcuadrilla-admin.component";
 import {ClienteAdminComponent} from "./cliente-admin/cliente-admin.component";
 import {OrdentrabajoAdminComponent} from "./ordentrabajo-admin/ordentrabajo-admin.component";
-import {ParametroAdminComponent} from "./parametro/parametro-admin-register/parametro-admin.component";
+import {ParametroAdminRegisterComponent} from "./parametro/parametro-admin-register/parametro-admin-register.component";
 import {TelefonoAdminComponent} from "./telefono-admin/telefono-admin.component";
 import {ProveedorAdminPageComponent} from "./proveedor/proveedor-admin-page/proveedor-admin-page.component";
 
