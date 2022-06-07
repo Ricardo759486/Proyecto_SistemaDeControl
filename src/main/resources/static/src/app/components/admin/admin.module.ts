@@ -48,7 +48,6 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     ZonaAdminComponent,
     MaterialcuadrillaAdminComponent,
     OrdentrabajoAdminComponent,
-
     ParametroAdminRegisterComponent,
     TelefonoAdminRegisterComponent,
     ProveedorAdminPageComponent,
@@ -59,8 +58,6 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     UsuarioAdminPageComponent,
     TablaUsuarioComponent,
     UsuarioAdminRegisterComponent,
-
-    
     ProveedorAdminPageComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
@@ -73,6 +70,7 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     CommonModule,
     AdminRoutingModule,
     // * MATERIAL IMPORTS
+    
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
