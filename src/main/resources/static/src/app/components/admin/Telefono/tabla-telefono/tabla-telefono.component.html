@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>NumTelefono</th>
+        <th>Tipo</th>
+        <th>Cliente</th>
+        <th>Proveedor</th>
+        <th>Usuario</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody class="body_tabla">
+      <tr *ngFor="let telefono of telefono" class="text-center" >
+        <td>{{telefono.idTelefono}}</td>
+        <td>{{telefono.numTelefono}}</td>
+        <td>{{telefono.tipo}}</td>
+        <td>{{telefono.cliente}}</td>
+        <td>{{telefono.proveedor}}</td>
+        <td>{{telefono.usuario}}</td>
+        <td>
+          <button (click)="Editar(telefono)" class="btn btn-warning">Editar</button>
+          <button (click)="Delete(telefono)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

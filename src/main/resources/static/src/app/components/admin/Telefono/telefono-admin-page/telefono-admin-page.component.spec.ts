@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TelefonoAdminComponent } from './telefono-admin.component';
+import { TelefonoAdminPageComponent } from './telefono-admin-page.component';
 
-describe('TelefonoAdminComponent', () => {
-  let component: TelefonoAdminComponent;
-  let fixture: ComponentFixture<TelefonoAdminComponent>;
+describe('TelefonoAdminPageComponent', () => {
+  let component: TelefonoAdminPageComponent;
+  let fixture: ComponentFixture<TelefonoAdminPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TelefonoAdminComponent ]
+      declarations: [ TelefonoAdminPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TelefonoAdminComponent);
+    fixture = TestBed.createComponent(TelefonoAdminPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -24,7 +24,7 @@ import {
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
 import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
 import { ParametroAdminRegisterComponent } from './parametro/parametro-admin-register/parametro-admin-register.component';
-import { TelefonoAdminComponent } from './telefono-admin/telefono-admin.component';
+import { TelefonoAdminRegisterComponent } from './Telefono/telefono-admin-register/telefono-admin-register.component';
 import { ProveedorAdminPageComponent } from './proveedor/proveedor-admin-page/proveedor-admin-page.component';
 import { ParametroAdminPageComponent } from './parametro/parametro-admin-page/parametro-admin-page.component';
 import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-parametro.component';
@@ -33,6 +33,7 @@ import { TablaMaterialComponent } from './material/tabla-material/tabla-material
 import {TablaUsuarioComponent} from "./Usuario/tabla-usuario/tabla-usuario.component";
 import {UsuarioAdminPageComponent} from "./Usuario/usuario-admin-page/usuario-admin-page.component";
 import {UsuarioAdminRegisterComponent} from "./Usuario/usuario-admin-register/usuario-admin-register.component";
+
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import {UsuarioAdminRegisterComponent} from "./Usuario/usuario-admin-register/us
     MaterialcuadrillaAdminComponent,
     OrdentrabajoAdminComponent,
     ParametroAdminRegisterComponent,
-    TelefonoAdminComponent,
+    TelefonoAdminRegisterComponent,
     ProveedorAdminPageComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
@@ -59,6 +60,7 @@ import {UsuarioAdminRegisterComponent} from "./Usuario/usuario-admin-register/us
     UsuarioAdminPageComponent,
     TablaUsuarioComponent,
     UsuarioAdminRegisterComponent,
+
   ],
   imports: [
     CommonModule,
