@@ -18,22 +18,16 @@ import { MaterialAdminRegisterComponent } from './material/material-admin-regist
 import { TablaProveedorComponent} from "./proveedor/tabla-proveedor/tabla-proveedor.component";
 import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
 import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
-import {
-  CuadrillaAdminRegisterComponent
-} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
 import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
-import { ParametroAdminRegisterComponent } from './parametro/parametro-admin-register/parametro-admin-register.component';
+import { ParametroAdminComponent } from './parametro/parametro-admin-register/parametro-admin.component';
 import { TelefonoAdminComponent } from './telefono-admin/telefono-admin.component';
 import { ProveedorAdminPageComponent } from './proveedor/proveedor-admin-page/proveedor-admin-page.component';
 import { ParametroAdminPageComponent } from './parametro/parametro-admin-page/parametro-admin-page.component';
 import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-parametro.component';
-import { MaterialAdminPageComponent } from './material/material-admin-page/material-admin-page.component';
-import { TablaMaterialComponent } from './material/tabla-material/tabla-material.component';
-import {TablaUsuarioComponent} from "./Usuario/tabla-usuario/tabla-usuario.component";
-import {UsuarioAdminPageComponent} from "./Usuario/usuario-admin-page/usuario-admin-page.component";
-import {UsuarioAdminRegisterComponent} from "./Usuario/usuario-admin-register/usuario-admin-register.component";
-
+import { CuadrillaAdminRegisterComponent} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
+import {CuadrillaAdminPageComponent} from "./cuadrilla/cuadrilla-admin-page/cuadrilla-admin-page.component";
+import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadrilla.component';
 @NgModule({
   declarations: [
     AdminComponent,
@@ -43,22 +37,19 @@ import {UsuarioAdminRegisterComponent} from "./Usuario/usuario-admin-register/us
     AdminDashboardMainComponent,
     ProveedorAdminRegisterComponent,
     MaterialAdminRegisterComponent,
-    CuadrillaAdminRegisterComponent,
     TablaProveedorComponent,
     ClienteAdminComponent,
     ZonaAdminComponent,
     MaterialcuadrillaAdminComponent,
     OrdentrabajoAdminComponent,
-    ParametroAdminRegisterComponent,
+    ParametroAdminComponent,
     TelefonoAdminComponent,
     ProveedorAdminPageComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
-    MaterialAdminPageComponent,
-    TablaMaterialComponent,
-    UsuarioAdminPageComponent,
-    TablaUsuarioComponent,
-    UsuarioAdminRegisterComponent,
+    CuadrillaAdminRegisterComponent,
+    CuadrillaAdminPageComponent,
+    TablaCuadrillaComponent
   ],
   imports: [
     CommonModule,

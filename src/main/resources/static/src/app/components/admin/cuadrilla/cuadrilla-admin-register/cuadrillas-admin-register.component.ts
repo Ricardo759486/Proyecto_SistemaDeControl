@@ -11,6 +11,9 @@ import {
   TablaAdminTurnotrabajoService
 } from "../../../../shared/services/admin/tabla_turnotrabajo/tabla-admin-turnotrabajo.service";
 
+import {Router} from "@angular/router";
+import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
+
 @Component({
   selector: 'app-cuadrilla-admin',
   templateUrl: './cuadrilla-admin-register.component.html',
@@ -19,9 +22,8 @@ import {
 export class CuadrillaAdminRegisterComponent implements OnInit {
 
   user: any={};
-  title = 'admin-panel-layout';
   loading: any;
-  cuadrilla: any;
+  cuadrilla: any={};
   sideBarOpen: any;
   errorInicio: any;
   mensajeError: any;
@@ -30,10 +32,14 @@ export class CuadrillaAdminRegisterComponent implements OnInit {
   proveedor: Proveedor[] = [];
   turnoTrabajo: TurnoTrabajo[] = [];
 
+<<<<<<< HEAD
   constructor(private admin_zonascv: TablaAdminZonaService,
               private admin_proveedorscv: TablaAdminProveedorService,
               private admin_turnoTrabajoscv: TablaAdminTurnotrabajoService,
               private router:Router) { }
+=======
+  constructor(private  cuadrillascv: CuadrillaAdminService, private router:Router) { }
+>>>>>>> 3c626a14e500e8877cbb9ddeb2a1c5a119a04c3b
 
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
@@ -54,11 +60,26 @@ export class CuadrillaAdminRegisterComponent implements OnInit {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  login() {
-
+  register_cuadrilla() {
+    let formulary : any = document.getElementById("register_provedor");
+    let formularyValid:boolean = formulary.reportValidity();
+    if (formularyValid){
+      this.loading=true;
+      this.cuadrillascv.registerService(this.cuadrilla).subscribe(
+        data => {
+          this.confirmar(data);
+        })
+    }
   }
 
-  register_cuadrilla() {
 
+  confirmar(resultant:any){
+    this.loading=false;
+    if(resultant){
+      alert("Cuadrilla registrada");
+      this.cuadrilla={};
+    }else{
+      this.errorInicio=true;
+    }
   }
 }
