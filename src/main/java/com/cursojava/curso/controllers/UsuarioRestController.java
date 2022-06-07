@@ -46,7 +46,7 @@ public class UsuarioRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}{idRol}")
+    @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}/{idRol}")
     public HttpStatus save(@RequestBody Usuario usuario,
                                         @PathVariable(value = "idIdentificacion") int idIdentificacion,
                                         @PathVariable(value = "idCuadrilla") int idCuadrilla,

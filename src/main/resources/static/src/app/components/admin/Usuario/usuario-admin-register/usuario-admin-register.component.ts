@@ -6,6 +6,9 @@ import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cua
 import {
   TablaAdminTipoDocumentoService
 } from "../../../../shared/services/admin/tabla_tipoDocumento/tabla-admin-tipo-documento.service";
+import {TablaAdminUsuarioService} from "../../../../shared/services/admin/tabla_usuario/tabla-admin-usuario.service";
+import {Rol} from "../../../../shared/models/Rol";
+import {RolService} from "../../../../shared/services/rol.service";
 
 
 @Component({
@@ -24,9 +27,10 @@ export class UsuarioAdminRegisterComponent implements OnInit {
 
   cuadrilla: Cuadrilla[] = [];
   tipoDocumento: TipoDocumento[] = [];
+  rol: Rol[] = [];
 
-  constructor(private admin_cuadrillascv: CuadrillaAdminService,
-              private admin_tipoDocumentoscv: TablaAdminTipoDocumentoService, private router:Router) { }
+  constructor(private usuarioSvc:TablaAdminUsuarioService, private admin_cuadrillascv: CuadrillaAdminService,
+              private admin_tipoDocumentoscv: TablaAdminTipoDocumentoService, private rolSvc: RolService, private router:Router) { }
 
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
@@ -36,8 +40,12 @@ export class UsuarioAdminRegisterComponent implements OnInit {
     this.admin_cuadrillascv.getCuadrilla().subscribe(data =>{
       this.cuadrilla = data;
     });
+
     this.admin_tipoDocumentoscv.getTipoDocumento().subscribe(data =>{
       this.tipoDocumento = data;
+    });
+    this.rolSvc.getRol().subscribe(data =>{
+      this.rol = data;
     });
   }
   sideBarToggler() {
@@ -45,6 +53,26 @@ export class UsuarioAdminRegisterComponent implements OnInit {
   }
 
   register_usuario() {
+    let formulary : any = document.getElementById("register_usuario");
+    let formularyValid:boolean = formulary.reportValidity();
+    if (formularyValid){
+      console.log(this.usuario);
+      this.loading=true;
+      this.usuarioSvc.registerService(this.usuario).subscribe(
+        data => {
+          this.confirmar(data);
+        })
+    }
+  }
 
+
+  confirmar(resultant:any){
+    this.loading=false;
+    if(resultant){
+      alert("Proveedor registrado");
+      this.usuario={};
+    }else{
+      this.errorInicio=true;
+    }
   }
 }

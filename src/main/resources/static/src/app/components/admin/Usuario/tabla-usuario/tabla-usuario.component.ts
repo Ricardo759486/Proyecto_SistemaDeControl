@@ -23,5 +23,9 @@ export class TablaUsuarioComponent implements OnInit {
   Editar(usuario: UserI) {
   }
   Delete(usuario: UserI) {
+    this.tabla_admin_usuarioscv.deleteUsuario(usuario).subscribe(data => {
+      this.usuario = this.usuario.filter(p => p !== usuario);
+      alert("usuario Eliminado");
+    })
   }
 }

@@ -7,7 +7,7 @@
     </div>
 
   </div>
-  <form class="custom-form" method="post" (ngSubmit)="register_usuario()" id="login">
+  <form class="custom-form" method="post" (ngSubmit)="register_usuario()" id="register_usuario">
     <h1>Registro Usuario</h1>
     <input
       type="text"
@@ -44,13 +44,7 @@
       placeholder="direccion"
       required="required"
     />
-    <input
-      type="Date"
-      [(ngModel)] = "usuario.fecha_ultima_contra"
-      name="fecha_ultima_contra"
-      placeholder="fecha_ultima_contra"
-      required="required"
-    />
+
     <br>
     <label>Seleccione la cuadrilla:  </label>
     <select [(ngModel)]="usuario.idCuadrilla" [ngModelOptions]="{standalone: true}">
@@ -58,7 +52,15 @@
         {{cuadrilla.movilAsociado}}
       </option>
     </select>
-
+    <br>
+    <br>
+    <label>Seleccione Rol:  </label>
+    <select [(ngModel)]="usuario.idRol" [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let rol of rol" value = {{rol.idRol}}>
+        {{rol.tipoRol}}
+      </option>
+    </select>
+    <br>
     <button type="submit" >Registrar</button>
     <div class="row" *ngIf="errorInicio">
       <div class="col-md-12">
