@@ -20,12 +20,11 @@ import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
 import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
 import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
-import { ParametroAdminComponent } from './parametro/parametro-admin-register/parametro-admin.component';
 import { TelefonoAdminComponent } from './telefono-admin/telefono-admin.component';
 import { ProveedorAdminPageComponent } from './proveedor/proveedor-admin-page/proveedor-admin-page.component';
 import { ParametroAdminPageComponent } from './parametro/parametro-admin-page/parametro-admin-page.component';
 import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-parametro.component';
-import { CuadrillaAdminRegisterComponent} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
+import { CuadrillasAdminRegisterComponent} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
 import {CuadrillaAdminPageComponent} from "./cuadrilla/cuadrilla-admin-page/cuadrilla-admin-page.component";
 import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadrilla.component';
 @NgModule({
@@ -42,12 +41,11 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     ZonaAdminComponent,
     MaterialcuadrillaAdminComponent,
     OrdentrabajoAdminComponent,
-    ParametroAdminComponent,
     TelefonoAdminComponent,
     ProveedorAdminPageComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
-    CuadrillaAdminRegisterComponent,
+    CuadrillasAdminRegisterComponent,
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent
   ],

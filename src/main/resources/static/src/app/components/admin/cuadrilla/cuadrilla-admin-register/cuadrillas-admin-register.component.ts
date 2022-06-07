@@ -10,8 +10,6 @@ import {
 import {
   TablaAdminTurnotrabajoService
 } from "../../../../shared/services/admin/tabla_turnotrabajo/tabla-admin-turnotrabajo.service";
-
-import {Router} from "@angular/router";
 import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
 
 @Component({
@@ -19,7 +17,7 @@ import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cua
   templateUrl: './cuadrilla-admin-register.component.html',
   styleUrls: ['./cuadrilla-admin-register.component.scss']
 })
-export class CuadrillaAdminRegisterComponent implements OnInit {
+export class CuadrillasAdminRegisterComponent implements OnInit {
 
   user: any={};
   loading: any;
@@ -32,14 +30,11 @@ export class CuadrillaAdminRegisterComponent implements OnInit {
   proveedor: Proveedor[] = [];
   turnoTrabajo: TurnoTrabajo[] = [];
 
-<<<<<<< HEAD
-  constructor(private admin_zonascv: TablaAdminZonaService,
+  constructor(private  cuadrillascv: CuadrillaAdminService,
+              private admin_zonascv: TablaAdminZonaService,
               private admin_proveedorscv: TablaAdminProveedorService,
               private admin_turnoTrabajoscv: TablaAdminTurnotrabajoService,
               private router:Router) { }
-=======
-  constructor(private  cuadrillascv: CuadrillaAdminService, private router:Router) { }
->>>>>>> 3c626a14e500e8877cbb9ddeb2a1c5a119a04c3b
 
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
@@ -71,7 +66,6 @@ export class CuadrillaAdminRegisterComponent implements OnInit {
         })
     }
   }
-
 
   confirmar(resultant:any){
     this.loading=false;
