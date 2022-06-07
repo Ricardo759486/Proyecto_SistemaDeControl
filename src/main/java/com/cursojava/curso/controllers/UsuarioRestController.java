@@ -43,8 +43,13 @@ public class UsuarioRestController {
 
         for (Usuario u:getall){
             if(u.getEstado().equals("A")){
-                UsuarioDAO objeto = new UsuarioDAO(u.getIdUsuario(),u.getLogin(),u.getTipoDocumento().getDescripcion(),u.getIdentificacion(),u.getFecha_ultima_contra()+"",u.getDireccion(),u.getRol().getTipoRol(),u.getCuadrilla().getMovilAsociado(),u.getIntentos(),u.getEstado());
-                listaF.add(objeto);
+                if(u.getCuadrilla() == null){
+                    UsuarioDAO objeto = new UsuarioDAO(u.getIdUsuario(),u.getLogin(),u.getTipoDocumento().getDescripcion(),u.getIdentificacion(),u.getFecha_ultima_contra()+"",u.getDireccion(),u.getRol().getTipoRol(),"",u.getIntentos(),u.getEstado());
+                    listaF.add(objeto);
+                }else {
+                    UsuarioDAO objeto = new UsuarioDAO(u.getIdUsuario(), u.getLogin(), u.getTipoDocumento().getDescripcion(), u.getIdentificacion(), u.getFecha_ultima_contra() + "", u.getDireccion(), u.getRol().getTipoRol(), u.getCuadrilla().getMovilAsociado(), u.getIntentos(), u.getEstado());
+                    listaF.add(objeto);
+                }
             }
         }
         return listaF;
