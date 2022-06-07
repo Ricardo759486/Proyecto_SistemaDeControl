@@ -15,6 +15,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/Autenticacion/**").permitAll()
                 .antMatchers("/Proveedor/**").permitAll()
-                .antMatchers("/api3/**").permitAll();
+                .antMatchers("/Cuadrilla/**").permitAll()
+                .antMatchers("/MaterialCuadrilla/**").permitAll()
+                .antMatchers("/Material/**").permitAll()
+                .antMatchers("/OrdenTrabajo/**").permitAll()
+                .antMatchers("/Rol/**").permitAll()
+                .antMatchers("/Telefono/**").permitAll()
+                .antMatchers("/TipoServicio/**").permitAll()
+                .antMatchers("/TurnoTrabajo/**").permitAll()
+                .antMatchers("/Zona/**").permitAll()
+                .antMatchers("/api/**").permitAll();;
+
     }
 }

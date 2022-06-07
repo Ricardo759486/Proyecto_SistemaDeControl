@@ -1,4 +1,4 @@
-<div class="login">
+<div class="register_cuadrilla">
   <div class="row" *ngIf="loading">
     <div class="col-md-4 col-md-offset-4">
       <div class="spinner-border text-info float-right" role="status">
@@ -7,36 +7,41 @@
     </div>
 
   </div>
-  <form class="custom-form" method="post" (ngSubmit)="register_cuadrilla()" id="login">
+  <form class="custom-form" method="post" (ngSubmit)="register_cuadrilla()" id="register_cuadrilla">
     <h1>Registro Cuadrillas</h1>
     <input
-      type="movilAsociado"
+      type="text"
       [(ngModel)] = "cuadrilla.movilAsociado"
       name="MovilAsociado"
       placeholder="Movil Asociado"
       required="required"
     />
-    <input
-      type="select"
-      [(ngModel)]="cuadrilla.zona"
-      name="Zona"
-      placeholder="Seleccione una Zona..."
-      required="required"
-    />
-    <input
-      type="select"
-      [(ngModel)]="cuadrilla.proveedor"
-      name="Proveedor"
-      placeholder="Seleccione un Provedor..."
-      required="required"
-    />
-    <input
-      type="select"
-      [(ngModel)]="cuadrilla.turnoTrabajo"
-      name="TurnoTrabajo"
-      placeholder="Ingrese el turno de trabajo"
-      required="required"
-    />
+    <br>
+    <br>
+    <label>Seleccione la zona:  </label>
+    <select [(ngModel)]="cuadrilla.zona">
+      <option *ngFor="let zona of zona" value = {{zona.idZona}}>
+        {{zona.localidad}}
+      </option>
+    </select>
+    <br>
+    <br>
+    <label>Seleccione el proveedor:  </label>
+    <br>
+    <select [(ngModel)]="cuadrilla.proveedor">
+      <option *ngFor="let proveedor of proveedor" value = {{proveedor.idProveedor}}>
+        {{proveedor.nombre}}
+      </option>
+    </select>
+    <br>
+    <br>
+    <label>Seleccione el turno de trabajo:  </label>
+    <select [(ngModel)]="cuadrilla.turnoTrabajo">
+      <option *ngFor="let turnoTrabajo of turnoTrabajo" value = {{turnoTrabajo.idTurno}}>
+        {{turnoTrabajo.descripcion}}
+      </option>
+    </select>
+    <br>
     <button type="submit" >Registrar</button>
     <div class="row" *ngIf="errorInicio">
       <div class="col-md-12">

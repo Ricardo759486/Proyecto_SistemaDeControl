@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
             this.minifierSession(data);
           }else{
             this.loading=false;
-            this.mensajeError="No se pudo conectar con el servidor";
+            this.mensajeError="Credenciales incorrectas";
             this.errorInicio=true;
           }
         })
