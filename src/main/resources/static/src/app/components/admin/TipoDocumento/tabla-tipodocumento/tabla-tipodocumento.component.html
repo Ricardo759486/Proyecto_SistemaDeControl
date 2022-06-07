@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Descripcion</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody class="body_tabla">
+      <tr *ngFor="let tipodocumento of tipodocumento" class="text-center" >
+        <td>{{tipodocumento.idDocumento}}</td>
+        <td>{{tipodocumento.descripcion}}</td>
+        <td>{{tipodocumento.estado}}</td>
+        <td>
+          <button (click)="Editar(tipodocumento)" class="btn btn-warning">Editar</button>
+          <button (click)="Delete(tipodocumento)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
