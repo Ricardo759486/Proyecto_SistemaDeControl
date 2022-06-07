@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>MovilAsociado</th>
+        <th>Proveedor</th>
+        <th>TurnoTrabajo</th>
+        <th>Zona</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody class="body_tabla">
+      <tr *ngFor="let cuadrilla of cuadrilla" class="text-center" >
+        <td>{{cuadrilla.idCuadrilla}}</td>
+        <td>{{cuadrilla.movilAsociado}}</td>
+        <td>{{cuadrilla.proveedor}}</td>
+        <td>{{cuadrilla.turnoTrabajo}}</td>
+        <td>{{cuadrilla.zona}}</td>
+        <td>{{cuadrilla.estado}}</td>
+        <td>
+          <button class="btn btn-warning">Editar</button>
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      <tr *ngFor="let cuadrilla of cuadrilla" class="text-center" >
+        <td>{{cuadrilla.idCuadrilla}}</td>
+        <td>{{cuadrilla.movilAsociado}}</td>
+        <td>{{cuadrilla.proveedor}}</td>
+        <td>{{cuadrilla.turnoTrabajo}}</td>
+        <td>{{cuadrilla.zona}}</td>
+        <td>{{cuadrilla.estado}}</td>
+        <td>
+          <button class="btn btn-warning">Editar</button>
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-material-admin',
-  templateUrl: './material-admin.component.html',
-  styleUrls: ['./material-admin.component.scss']
+  selector: 'app-cuadrilla-admin',
+  templateUrl: './cuadrilla-admin-register.component.html',
+  styleUrls: ['./cuadrilla-admin-register.component.scss']
 })
-export class MaterialAdminComponent implements OnInit {
+export class CuadrillaAdminRegisterComponent implements OnInit {
+
   user: any={};
-  sideBarOpen: any;
+  title = 'admin-panel-layout';
   loading: any;
-  nombreMaterial: any;
-  cantidad: any;
-  costo: any;
+  cuadrilla: any;
+  sideBarOpen: any;
   errorInicio: any;
   mensajeError: any;
+  Zona: any;
+
 
   constructor() { }
 
@@ -28,6 +30,10 @@ export class MaterialAdminComponent implements OnInit {
   }
 
   login() {
+
+  }
+
+  register_cuadrilla() {
 
   }
 }

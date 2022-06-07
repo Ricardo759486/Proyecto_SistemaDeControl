@@ -14,16 +14,18 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { ProveedorAdminRegisterComponent } from './proveedor/proveedor-admin-register/proveedor-admin-register.component';
 import { FormsModule } from "@angular/forms";
-import { MaterialAdminComponent } from './material-admin/material-admin.component';
-import { CuadrillasAdminComponent } from './cuadrillas-admin/cuadrillas-admin.component';
+import { MaterialAdminRegisterComponent } from './material/material-admin-register/material-admin-register.component';
+import { CuadrillasAdminRegisterComponent } from './cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component';
 import { TablaProveedorComponent} from "./proveedor/tabla-proveedor/tabla-proveedor.component";
 import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
 import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
 import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
-import { ParametroAdminComponent } from './parametro-admin/parametro-admin.component';
+import { ParametroAdminComponent } from './parametro/parametro-admin-register/parametro-admin.component';
 import { TelefonoAdminComponent } from './telefono-admin/telefono-admin.component';
 import { ProveedorAdminPageComponent } from './proveedor/proveedor-admin-page/proveedor-admin-page.component';
+import { ParametroAdminPageComponent } from './parametro/parametro-admin-page/parametro-admin-page.component';
+import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-parametro.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +35,8 @@ import { ProveedorAdminPageComponent } from './proveedor/proveedor-admin-page/pr
     HomeAdminComponent,
     AdminDashboardMainComponent,
     ProveedorAdminRegisterComponent,
-    MaterialAdminComponent,
-    CuadrillasAdminComponent,
+    MaterialAdminRegisterComponent,
+    CuadrillasAdminRegisterComponent,
     TablaProveedorComponent,
     ClienteAdminComponent,
     ZonaAdminComponent,
@@ -43,6 +45,8 @@ import { ProveedorAdminPageComponent } from './proveedor/proveedor-admin-page/pr
     ParametroAdminComponent,
     TelefonoAdminComponent,
     ProveedorAdminPageComponent,
+    ParametroAdminPageComponent,
+    TablaParametroComponent,
   ],
   imports: [
     CommonModule,
