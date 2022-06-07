@@ -56,9 +56,10 @@ export class CuadrillasAdminRegisterComponent implements OnInit {
   }
 
   register_cuadrilla() {
-    let formulary : any = document.getElementById("register_provedor");
+    let formulary : any = document.getElementById("register_cuadrilla");
     let formularyValid:boolean = formulary.reportValidity();
     if (formularyValid){
+
       this.loading=true;
       this.cuadrillascv.registerService(this.cuadrilla).subscribe(
         data => {

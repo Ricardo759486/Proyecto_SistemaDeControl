@@ -16,6 +16,7 @@ export class CuadrillaAdminService {
   }
 
   registerService(cuadrilla: Cuadrilla) {
-    return this.http.post<Cuadrilla>('http://localhost:8080/Cuadrilla/saveCuadrilla/'+cuadrilla.idCuadrilla+'/'+cuadrilla.proveedor+'/'+cuadrilla.turnoTrabajo+'', cuadrilla);
+    console.log(cuadrilla);
+    return this.http.post<Cuadrilla>('http://localhost:8080/Cuadrilla/saveCuadrilla/'+cuadrilla.idZona+'/'+cuadrilla.idProveedor+'/'+cuadrilla.idTurnoTrabajo,cuadrilla);
   }
 }

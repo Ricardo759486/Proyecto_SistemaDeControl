@@ -5,4 +5,7 @@ export class Cuadrilla{
   turnoTrabajo: string="";
   zona: string="";
   estado: string="";
+  idProveedor: number=0;
+  idTurnoTrabajo: number=0;
+  idZona: number=0;
 }
