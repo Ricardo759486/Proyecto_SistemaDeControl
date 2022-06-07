@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Descripcion</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody class="body_tabla">
+      <tr *ngFor="let tiposervicio of tiposervicio" class="text-center" >
+        <td>{{tiposervicio.idServicio}}</td>
+        <td>{{tiposervicio.descripcion}}</td>
+        <td>{{tiposervicio.estado}}</td>
+        <td>
+          <button (click)="Editar(tiposervicio)" class="btn btn-warning">Editar</button>
+          <button (click)="Delete(tiposervicio)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

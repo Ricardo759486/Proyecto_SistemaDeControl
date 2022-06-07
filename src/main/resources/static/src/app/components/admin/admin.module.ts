@@ -33,6 +33,9 @@ import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-param
 import { CuadrillasAdminRegisterComponent} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
 import {CuadrillaAdminPageComponent} from "./cuadrilla/cuadrilla-admin-page/cuadrilla-admin-page.component";
 import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadrilla.component';
+import { TiposervicioAdminPageComponent } from './tiposervicio/tiposervicio-admin-page/tiposervicio-admin-page.component';
+import { TiposervicioAdminRegisterComponent } from './tiposervicio/tiposervicio-admin-register/tiposervicio-admin-register.component';
+import { TablaTiposervicioComponent } from './tiposervicio/tabla-tiposervicio/tabla-tiposervicio.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,9 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     CuadrillasAdminRegisterComponent,
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent,
+    TiposervicioAdminPageComponent,
+    TiposervicioAdminRegisterComponent,
+    TablaTiposervicioComponent,
 
   ],
   imports: [
