@@ -25,6 +25,9 @@ export class TablaCuadrillaComponent implements OnInit {
   }
 
   Delete(cuadrilla: Cuadrilla) {
-
+    this.tabla_admin_cuadrillascv.deleteProveedor(cuadrilla).subscribe(data => {
+      this.cuadrilla = this.cuadrilla.filter(p => p !== cuadrilla);
+      alert("Cuadrilla Eliminada");
+    })
   }
 }
