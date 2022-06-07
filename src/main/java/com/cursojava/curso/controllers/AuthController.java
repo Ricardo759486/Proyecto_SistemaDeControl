@@ -75,7 +75,11 @@ public class AuthController {
         }
     }
     @GetMapping(value = "/validarFecha/{id}")
-    public boolean validarFecha(@PathVariable(value = "id") int id){
-        return usuarioServiceAPI.revisionFecha(usuarioServiceAPI.get(id));
+    public String validarFecha(@PathVariable(value = "id") int id){
+        if(usuarioServiceAPI.revisionFecha(usuarioServiceAPI.get(id))){
+            return "SI";
+        }else{
+            return "NO";
+        }
     }
 }
