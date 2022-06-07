@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-cuadrillas-admin',
-  templateUrl: './cuadrillas-admin.component.html',
-  styleUrls: ['./cuadrillas-admin.component.scss']
+  selector: 'app-material-admin',
+  templateUrl: './material-admin-register.component.html',
+  styleUrls: ['./material-admin-register.component.scss']
 })
-export class CuadrillasAdminComponent implements OnInit {
-  user: any={};
+export class MaterialAdminRegisterComponent implements OnInit {
+
+  user: any = {};
+  title = 'admin-panel-layout';
+  sideBarOpen = true;
   loading: any;
-  sideBarOpen: any;
+  material: any;
   errorInicio: any;
   mensajeError: any;
-  MovilAsociado: any;
-  Zona: any;
-  Proveedor: any;
-  TurnoTrabajo: any;
-
   constructor() { }
 
   ngOnInit(): void {
@@ -28,7 +26,7 @@ export class CuadrillasAdminComponent implements OnInit {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  login() {
+  register_material() {
 
   }
 }

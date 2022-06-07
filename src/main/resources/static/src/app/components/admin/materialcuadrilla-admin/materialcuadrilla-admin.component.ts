@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Cuadrilla} from "../../../shared/models/Cuadrilla";
 import {Material} from "../../../shared/models/Material";
-import {CuadrillaAdminService} from "../../../shared/services/admin/cuadrilla-admin.service";
+import {CuadrillaAdminService} from "../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
 import {MaterialAdminService} from "../../../shared/services/admin/material-admin.service";
 import {Router} from "@angular/router";
 

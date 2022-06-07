@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Cuadrilla} from "../../models/Cuadrilla";
+import {Cuadrilla} from "../../../models/Cuadrilla";
 
 @Injectable({
   providedIn: 'root'

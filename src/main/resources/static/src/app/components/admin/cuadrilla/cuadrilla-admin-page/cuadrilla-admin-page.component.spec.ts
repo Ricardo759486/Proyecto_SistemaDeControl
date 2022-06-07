@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CuadrillasAdminComponent } from './cuadrillas-admin.component';
+import { CuadrillaAdminPageComponent } from './cuadrilla-admin-page.component';
 
-describe('CuadrillasAdminComponent', () => {
-  let component: CuadrillasAdminComponent;
-  let fixture: ComponentFixture<CuadrillasAdminComponent>;
+describe('CuadrillaAdminPageComponent', () => {
+  let component: CuadrillaAdminPageComponent;
+  let fixture: ComponentFixture<CuadrillaAdminPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CuadrillasAdminComponent ]
+      declarations: [ CuadrillaAdminPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CuadrillasAdminComponent);
+    fixture = TestBed.createComponent(CuadrillaAdminPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
