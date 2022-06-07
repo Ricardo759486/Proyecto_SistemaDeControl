@@ -8,5 +8,6 @@ export interface UserI{
   nomRol: string;
   idCuadrilla : number
   intentos:number;
+  estado:number;
 
 }

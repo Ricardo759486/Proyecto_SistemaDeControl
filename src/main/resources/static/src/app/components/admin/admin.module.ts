@@ -15,10 +15,12 @@ import { MatListModule } from '@angular/material/list';
 import { ProveedorAdminRegisterComponent } from './proveedor/proveedor-admin-register/proveedor-admin-register.component';
 import { FormsModule } from "@angular/forms";
 import { MaterialAdminRegisterComponent } from './material/material-admin-register/material-admin-register.component';
-import { CuadrillasAdminRegisterComponent } from './cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component';
 import { TablaProveedorComponent} from "./proveedor/tabla-proveedor/tabla-proveedor.component";
 import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
 import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
+import {
+  CuadrillaAdminRegisterComponent
+} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
 import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
 import { ParametroAdminComponent } from './parametro/parametro-admin-register/parametro-admin.component';
@@ -26,6 +28,10 @@ import { TelefonoAdminComponent } from './telefono-admin/telefono-admin.componen
 import { ProveedorAdminPageComponent } from './proveedor/proveedor-admin-page/proveedor-admin-page.component';
 import { ParametroAdminPageComponent } from './parametro/parametro-admin-page/parametro-admin-page.component';
 import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-parametro.component';
+import {TablaUsuarioComponent} from "./Usuario/tabla-usuario/tabla-usuario.component";
+import {UsuarioAdminPageComponent} from "./Usuario/usuario-admin-page/usuario-admin-page.component";
+import {UsuarioAdminRegisterComponent} from "./Usuario/usuario-admin-register/usuario-admin-register.component";
+
 
 @NgModule({
   declarations: [
@@ -36,7 +42,7 @@ import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-param
     AdminDashboardMainComponent,
     ProveedorAdminRegisterComponent,
     MaterialAdminRegisterComponent,
-    CuadrillasAdminRegisterComponent,
+    CuadrillaAdminRegisterComponent,
     TablaProveedorComponent,
     ClienteAdminComponent,
     ZonaAdminComponent,
@@ -47,6 +53,9 @@ import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-param
     ProveedorAdminPageComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
+    UsuarioAdminPageComponent,
+    TablaUsuarioComponent,
+    UsuarioAdminRegisterComponent,
   ],
   imports: [
     CommonModule,
