@@ -63,14 +63,13 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     TablaParametroComponent,
     CuadrillasAdminRegisterComponent,
     CuadrillaAdminPageComponent,
-    TablaCuadrillaComponent
-
+    TablaCuadrillaComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     // * MATERIAL IMPORTS
-    
+
     MatSidenavModule,
     MatToolbarModule,
     MatMenuModule,
