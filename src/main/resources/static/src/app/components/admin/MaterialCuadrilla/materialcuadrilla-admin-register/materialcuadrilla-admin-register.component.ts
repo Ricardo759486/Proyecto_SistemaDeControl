@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {Cuadrilla} from "../../../shared/models/Cuadrilla";
-import {Material} from "../../../shared/models/Material";
-import {CuadrillaAdminService} from "../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
-import {MaterialAdminService} from "../../../shared/services/admin/tabla_material/material-admin.service";
+import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
+import {Material} from "../../../../shared/models/Material";
+import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
+import {MaterialAdminService} from "../../../../shared/services/admin/tabla_material/material-admin.service";
 import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-materialcuadrilla-admin',
-  templateUrl: './materialcuadrilla-admin.component.html',
-  styleUrls: ['./materialcuadrilla-admin.component.scss']
+  templateUrl: './materialcuadrilla-admin-register.component.html',
+  styleUrls: ['./materialcuadrilla-admin-register.component.scss']
 })
-export class MaterialcuadrillaAdminComponent implements OnInit {
+export class MaterialcuadrillaAdminRegisterComponent implements OnInit {
   user: any={};
   Cuadrilla: any;
   Material: any;
@@ -19,7 +19,7 @@ export class MaterialcuadrillaAdminComponent implements OnInit {
   mensajeError: any;
   loading: any;
   sideBarOpen: any;
-
+  materialcuadrilla: any={};
   cuadrilla: Cuadrilla[] = [];
   material: Material[] = [];
 

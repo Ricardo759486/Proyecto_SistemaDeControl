@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin.component';
+import { MaterialcuadrillaAdminRegisterComponent } from './materialcuadrilla-admin-register.component';
 
 describe('MaterialcuadrillaAdminComponent', () => {
-  let component: MaterialcuadrillaAdminComponent;
-  let fixture: ComponentFixture<MaterialcuadrillaAdminComponent>;
+  let component: MaterialcuadrillaAdminRegisterComponent;
+  let fixture: ComponentFixture<MaterialcuadrillaAdminRegisterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MaterialcuadrillaAdminComponent ]
+      declarations: [ MaterialcuadrillaAdminRegisterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MaterialcuadrillaAdminComponent);
+    fixture = TestBed.createComponent(MaterialcuadrillaAdminRegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -18,7 +18,7 @@ import { MaterialAdminRegisterComponent } from './material/material-admin-regist
 import { TablaProveedorComponent} from "./proveedor/tabla-proveedor/tabla-proveedor.component";
 import { ClienteAdminRegisterComponent } from './Cliente/cliente-admin-register/cliente-admin-register.component';
 import { ZonaAdminRegisterComponent } from './Zona/zona-admin-register/zona-admin-register.component';
-import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
+import { MaterialcuadrillaAdminRegisterComponent } from './MaterialCuadrilla/materialcuadrilla-admin-register/materialcuadrilla-admin-register.component';
 import { OrdentrabajoAdminRegisterComponent } from './OrdenTrabajo/ordentrabajo-admin-register/ordentrabajo-admin-register.component';
 import { ParametroAdminRegisterComponent } from './parametro/parametro-admin-register/parametro-admin-register.component';
 import { TelefonoAdminRegisterComponent } from './Telefono/telefono-admin-register/telefono-admin-register.component';
@@ -33,6 +33,8 @@ import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-param
 import { CuadrillasAdminRegisterComponent} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
 import {CuadrillaAdminPageComponent} from "./cuadrilla/cuadrilla-admin-page/cuadrilla-admin-page.component";
 import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadrilla.component';
+import { MaterialcuadrillaAdminPageComponent } from './materialcuadrilla/materialcuadrilla-admin-page/materialcuadrilla-admin-page.component';
+import { TablaMaterialcuadrillaComponent } from './materialcuadrilla/tabla-materialcuadrilla/tabla-materialcuadrilla.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,7 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     TablaProveedorComponent,
     ClienteAdminRegisterComponent,
     ZonaAdminRegisterComponent,
-    MaterialcuadrillaAdminComponent,
+    MaterialcuadrillaAdminRegisterComponent,
     OrdentrabajoAdminRegisterComponent,
     ParametroAdminRegisterComponent,
     TelefonoAdminRegisterComponent,
@@ -64,6 +66,8 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     CuadrillasAdminRegisterComponent,
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent,
+    MaterialcuadrillaAdminPageComponent,
+    TablaMaterialcuadrillaComponent,
   ],
   imports: [
     CommonModule,

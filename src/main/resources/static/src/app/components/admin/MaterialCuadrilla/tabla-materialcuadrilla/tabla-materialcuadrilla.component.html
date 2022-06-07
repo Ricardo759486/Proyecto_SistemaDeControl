@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>cantidad</th>
+        <th>idCuadrilla</th>
+        <th>idMaterial</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody class="body_tabla">
+      <tr *ngFor="let materialcuadrilla of materialcuadrilla" class="text-center" >
+        <td>{{materialcuadrilla.idRegistro}}</td>
+        <td>{{materialcuadrilla.cantidad}}</td>
+        <td>{{materialcuadrilla.idCuadrilla}}</td>
+        <td>{{materialcuadrilla.idMaterial}}</td>
+        <td>
+          <button (click)="Editar(materialcuadrilla)" class="btn btn-warning">Editar</button>
+          <button (click)="Delete(materialcuadrilla)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
