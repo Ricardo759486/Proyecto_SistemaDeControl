@@ -46,20 +46,38 @@ public class UsuarioRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}")
+    @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}{idRol}")
     public HttpStatus save(@RequestBody Usuario usuario,
                                         @PathVariable(value = "idIdentificacion") int idIdentificacion,
-                                        @PathVariable(value = "idCuadrilla") int idCuadrilla){
+                                        @PathVariable(value = "idCuadrilla") int idCuadrilla,
+                                        @PathVariable(value = "idRol") int idRol){
 
         TipoDocumento identificacion = tipoDocumentoServiceAPI.get(idIdentificacion);
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
-        Rol rol = rolServiceAPI.get(1);
+        Rol rol = rolServiceAPI.get(idRol);
         usuario.setTipoDocumento(identificacion);
         usuario.setCuadrilla(cuadrilla);
         usuario.setRol(rol);
         usuario.setFecha_ultima_contra(new Date());
         usuario.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
+        usuario.setIntentos(0);
         usuario.setEstado("A");
+        usuarioServiceAPI.save(usuario);
+        return HttpStatus.OK;
+    }
+
+    @PostMapping(value = "/saveUsuario/{idIdentificacion}")
+    public HttpStatus saveLogin(@RequestBody Usuario usuario,
+                           @PathVariable(value = "idIdentificacion") int idIdentificacion){
+
+        TipoDocumento identificacion = tipoDocumentoServiceAPI.get(idIdentificacion);
+        Rol rol = rolServiceAPI.get(1);
+        usuario.setTipoDocumento(identificacion);
+        usuario.setRol(rol);
+        usuario.setFecha_ultima_contra(new Date());
+        usuario.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
+        usuario.setEstado("A");
+        usuario.setIntentos(0);
         usuarioServiceAPI.save(usuario);
         return HttpStatus.OK;
     }

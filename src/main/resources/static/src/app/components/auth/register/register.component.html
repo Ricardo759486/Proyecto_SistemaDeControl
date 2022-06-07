@@ -20,6 +20,21 @@
       required="required"
     />
     <input
+      type="password"
+      [(ngModel)]="user.clave"
+      name="password"
+      placeholder="Ingrese su contraseña"
+      required="required"
+    />
+    <br>
+    <label>Seleccione la zona:  </label>
+    <select [(ngModel)]="cuadrilla.idZona" [ngModelOptions]="{standalone: true}">
+      <option *ngFor="let zona of zona" value = {{zona.idZona}}>
+        {{zona.localidad}}
+      </option>
+    </select>
+    <br>
+    <input
       type="number"
       [(ngModel)]="user.identificacion"
       name="Número identificación"
@@ -31,13 +46,6 @@
       [(ngModel)]="user.direccion"
       name="Dirección"
       placeholder="Ingrese su dirección"
-      required="required"
-    />
-    <input
-      type="password"
-      [(ngModel)]="user.clave"
-      name="password"
-      placeholder="Ingrese su contraseña"
       required="required"
     />
     <button type="submit" >Registrarse</button>
