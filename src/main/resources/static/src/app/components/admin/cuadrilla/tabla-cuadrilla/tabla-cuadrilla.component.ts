@@ -20,4 +20,11 @@ export class TablaCuadrillaComponent implements OnInit {
   }
 
 
+  Editar(cuadrilla: Cuadrilla) {
+
+  }
+
+  Delete(cuadrilla: Cuadrilla) {
+
+  }
 }
