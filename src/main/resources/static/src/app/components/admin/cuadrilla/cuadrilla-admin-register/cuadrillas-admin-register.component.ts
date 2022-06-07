@@ -41,7 +41,7 @@ export class CuadrillasAdminRegisterComponent implements OnInit {
     if(!this.user){
       location.href = "/";
     }
-    this.admin_zonascv.getZona().subscribe(data =>{
+    this.admin_zonascv.getZonas().subscribe(data =>{
       this.zona = data;
     });
     this.admin_proveedorscv.getProveedores().subscribe(data =>{

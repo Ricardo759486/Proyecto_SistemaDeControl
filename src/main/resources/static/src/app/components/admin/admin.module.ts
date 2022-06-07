@@ -17,7 +17,7 @@ import { FormsModule } from "@angular/forms";
 import { MaterialAdminRegisterComponent } from './material/material-admin-register/material-admin-register.component';
 import { TablaProveedorComponent} from "./proveedor/tabla-proveedor/tabla-proveedor.component";
 import { ClienteAdminRegisterComponent } from './Cliente/cliente-admin-register/cliente-admin-register.component';
-import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
+import { ZonaAdminRegisterComponent } from './Zona/zona-admin-register/zona-admin-register.component';
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
 import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
 import { ParametroAdminRegisterComponent } from './parametro/parametro-admin-register/parametro-admin-register.component';
@@ -45,7 +45,7 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     MaterialAdminRegisterComponent,
     TablaProveedorComponent,
     ClienteAdminRegisterComponent,
-    ZonaAdminComponent,
+    ZonaAdminRegisterComponent,
     MaterialcuadrillaAdminComponent,
     OrdentrabajoAdminComponent,
     ParametroAdminRegisterComponent,

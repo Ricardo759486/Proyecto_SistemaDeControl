@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ZonaAdminComponent } from './zona-admin.component';
+import { TablaZonaComponent } from './tabla-zona.component';
 
-describe('ZonaAdminComponent', () => {
-  let component: ZonaAdminComponent;
-  let fixture: ComponentFixture<ZonaAdminComponent>;
+describe('TablaZonaComponent', () => {
+  let component: TablaZonaComponent;
+  let fixture: ComponentFixture<TablaZonaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ZonaAdminComponent ]
+      declarations: [ TablaZonaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ZonaAdminComponent);
+    fixture = TestBed.createComponent(TablaZonaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

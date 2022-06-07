@@ -10,8 +10,18 @@ export class TablaAdminZonaService {
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/Zona/getAll';
-
-  getZona(){
+  urleliminar = 'http://localhost:8080/Zona/deleteZona';
+  urlsave = 'http://localhost:8080/Zona/saveZona';
+  getZonas(){
     return this.http.get<Zona[]>(this.url);
   }
+  deleteZona(zona: Zona){
+    return this.http.get<Zona>(this.urleliminar+"/"+zona.idZona);
+  }
+
+  registerService(zona: Zona){
+    return this.http.post<Zona>(this.urlsave,zona);
+  }
+
 }
+
