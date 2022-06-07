@@ -46,15 +46,14 @@ public class UsuarioRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}/{idRol}")
+    @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}")
     public HttpStatus save(@RequestBody Usuario usuario,
                                         @PathVariable(value = "idIdentificacion") int idIdentificacion,
-                                        @PathVariable(value = "idCuadrilla") int idCuadrilla,
-                                        @PathVariable(value = "idRol") int idRol){
+                                        @PathVariable(value = "idCuadrilla") int idCuadrilla){
 
         TipoDocumento identificacion = tipoDocumentoServiceAPI.get(idIdentificacion);
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
-        Rol rol = rolServiceAPI.get(idRol);
+        Rol rol = rolServiceAPI.get(1);
         usuario.setTipoDocumento(identificacion);
         usuario.setCuadrilla(cuadrilla);
         usuario.setRol(rol);

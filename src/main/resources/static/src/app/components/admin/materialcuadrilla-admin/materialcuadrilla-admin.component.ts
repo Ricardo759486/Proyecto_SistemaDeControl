@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Cuadrilla} from "../../../shared/models/Cuadrilla";
+import {CuadrillaAdminService} from "../../../shared/services/admin/cuadrilla-admin.service";
+import {Router} from "@angular/router";
+import {TablaAdminProveedorService} from "../../../shared/services/admin/tabla-admin-proveedor.service";
 
 @Component({
   selector: 'app-materialcuadrilla-admin',
@@ -15,13 +19,18 @@ export class MaterialcuadrillaAdminComponent implements OnInit {
   loading: any;
   sideBarOpen: any;
 
-  constructor() { }
+  cuadrilla: Cuadrilla[] = [];
+
+  constructor(private admin_cuadrillascv: CuadrillaAdminService, private router:Router) { }
 
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
     if(!this.user){
       location.href = "/";
     }
+    this.admin_cuadrillascv.getCuadrilla().subscribe(data =>{
+      this.cuadrilla = data;
+    });
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;

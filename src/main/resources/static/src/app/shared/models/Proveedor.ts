@@ -5,5 +5,4 @@ export class Proveedor{
   email: string="";
   direccion: string="";
   estado: string="";
-
 }
