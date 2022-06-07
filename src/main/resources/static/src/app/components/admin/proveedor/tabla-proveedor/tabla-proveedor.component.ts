@@ -24,6 +24,9 @@ export class TablaProveedorComponent implements OnInit {
   }
 
   Delete(proveedor: Proveedor) {
-
+    this.tabla_admin_provvedorscv.deleteProveedor(proveedor).subscribe(data => {
+      this.proveedor = this.proveedor.filter(p => p !== proveedor);
+      alert("Proveedor Eliminado");
+    })
   }
 }
