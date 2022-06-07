@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {RegisterService}  from "../../../shared/services/auth/register.service";
+import {Router} from "@angular/router";
+import {TipoDocumento} from "../../../shared/models/TipoDocumento";
+import {
+  TablaAdminTipoDocumentoService
+} from "../../../shared/services/admin/tabla_tipoDocumento/tabla-admin-tipo-documento.service";
 
 
 @Component({
@@ -8,17 +13,25 @@ import {RegisterService}  from "../../../shared/services/auth/register.service";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
-
+  sideBarOpen = true;
   loading: boolean =false;
   user: any={};
   errorRegister: boolean= false;
   mensajeError: any="Revisa los campos";
   cuadrilla: any;
   zona: any;
-  constructor(private registerscv:RegisterService) { }
+
+  tipoDocumento: TipoDocumento[] = [];
+
+  constructor(private registerscv:RegisterService,
+              private admin_tipoDocumentoscv: TablaAdminTipoDocumentoService,
+              private router:Router) { }
 
   ngOnInit(): void {
+    this.admin_tipoDocumentoscv.getTipoDocumento().subscribe(data =>{
+      this.tipoDocumento = data;
+    });
+    console.log(this.tipoDocumento);
   }
 
   register() {

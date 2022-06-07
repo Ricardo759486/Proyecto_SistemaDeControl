@@ -6,7 +6,7 @@ export interface UserI{
   fecha_ultima_contra : String;
   direccion: string;
   nomRol: string;
-  idCuadrilla : number
+  idCuadrilla : number;
   intentos:number;
   idRol: number;
   estado:number;

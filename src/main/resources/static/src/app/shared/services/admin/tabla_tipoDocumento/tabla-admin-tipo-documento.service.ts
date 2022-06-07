@@ -10,8 +10,8 @@ export class TablaAdminTipoDocumentoService {
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/Document/getAll';
-  urleliminar = 'http://localhost:8080/Telefono/deleteTelefono';
-  urlsave = 'http://localhost:8080/Telefono/saveTelefono';
+  urleliminar = 'http://localhost:8080/Document/deleteTipoDocumento';
+  urlsave = 'http://localhost:8080/Document/saveTipoDocumento';
   getTipoDocumento(){
     return this.http.get<TipoDocumento[]>(this.url);
   }
