@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./components/auth/login/login.module').then(m => m.LoginModule) },
   { path: 'register', loadChildren: () => import('./components/auth/register/register.module').then(m => m.RegisterModule) },
   { path: 'admin', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule) },
+  { path: 'new_password', loadChildren: () => import('./components/auth/new-password/new-password.module').then(m => m.NewPasswordModule) },
 
 ];
 

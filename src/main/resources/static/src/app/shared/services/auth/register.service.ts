@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import {UserI} from "../../models/user.interface";
 @Injectable({
   providedIn: 'root'
 })
@@ -8,12 +9,8 @@ export class RegisterService {
 
   constructor(private http:HttpClient) { }
 
-  registerService(user:any){
-    const httpOptions = {
-      headers: new HttpHeaders({
-        contentType: 'application/json'
-      })
-    };
-    return this.http.post('http://localhost:8080/api/login',user, httpOptions);
+  registerService(usuario: UserI) {
+    return this.http.post<UserI>('http://localhost:8080/api/saveUsuario/'+usuario.tipoDoc,usuario);
   }
+
 }

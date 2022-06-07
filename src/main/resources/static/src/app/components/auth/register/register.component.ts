@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
     let formulary : any = document.getElementById("register");
     let formularyValid:boolean = formulary.reportValidity();
     if (formularyValid){
+      console.log(this.user);
       this.loading=true;
       this.registerscv.registerService(this.user).subscribe(
         data => {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
+import {UserI} from "../../models/user.interface";
 
 
 @Injectable({
@@ -16,4 +17,9 @@ export class LoginService {
     return this.http.get('http://localhost:8080/Autenticacion/validarLogin/'+email+'/'+password, {responseType: 'json'});
 
 }
+  verificarClave(user:UserI){
+
+    return this.http.get('http://localhost:8080/Autenticacion/validarFecha/'+user.idUsuario, {responseType: 'text'});
+
+  }
 }

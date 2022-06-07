@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../../../shared/services/auth/login.service";
 import {compareSegments} from "@angular/compiler-cli/src/ngtsc/sourcemaps/src/segment_marker";
 import {UserI} from "../../../shared/models/user.interface";
+import {TablaAdminUsuarioService} from "../../../shared/services/admin/tabla_usuario/tabla-admin-usuario.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -13,11 +15,12 @@ export class LoginComponent implements OnInit {
   errorInicio: boolean= false;
   mensajeError: any="Usuario o contraseña incorrectos";
   loading: boolean =false;
-  user: object = {};
+  useri:UserI[]=[]
+  user: any = {};
   email: string="";
   password: string="";
 
-  constructor(private loginscv:LoginService) { }
+  constructor(private loginscv:LoginService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -49,14 +52,31 @@ export class LoginComponent implements OnInit {
 
     this.loading=false;
     if(resultant!=null){
-      alert("Bienvenido");
+
       localStorage.setItem("user", JSON.stringify(this.user));
-      location.href = "/admin/home";
+
+      this.useri = JSON.parse(localStorage.getItem('user')??'{}');
+      alert("Bienvenido");
+      this.verificarClave(this.useri);
+
 
     }else{
       this.errorInicio=true;
     }
 
+  }
+  verificarClave(user:any){
+    this.loginscv.verificarClave(user).subscribe(data =>{
+      user = data;
+      console.log(data);
+    });
+    location.href = "/admin/home";
+    if (user =='SI'){
+      console.log("SI");
+      location.href = "/admin/home";
+
+    }else{
+    }
   }
 
 }
