@@ -24,7 +24,7 @@
               <h1>Registro Material a cuadrillas</h1>
               <br>
               <label>Seleccione la cuadrilla:  </label>
-              <select>
+              <select [(ngModel)]="Cuadrilla">
                 <option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>
                   {{cuadrilla.movilAsociado}}
                 </option>
@@ -33,7 +33,7 @@
               <br>
               <br>
               <label>Seleccione el material:  </label>
-              <select>
+              <select [(ngModel)]="Material">
                 <option *ngFor="let material of material" value = {{material.idInventario}}>
                   {{material.nombreMaterial}}
                 </option>

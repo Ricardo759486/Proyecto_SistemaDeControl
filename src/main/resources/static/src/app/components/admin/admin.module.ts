@@ -18,6 +18,9 @@ import { MaterialAdminRegisterComponent } from './material/material-admin-regist
 import { TablaProveedorComponent} from "./proveedor/tabla-proveedor/tabla-proveedor.component";
 import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
 import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
+import {
+  CuadrillaAdminRegisterComponent
+} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
 import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
 import { ParametroAdminRegisterComponent } from './parametro/parametro-admin-register/parametro-admin-register.component';
@@ -25,8 +28,15 @@ import { TelefonoAdminComponent } from './telefono-admin/telefono-admin.componen
 import { ProveedorAdminPageComponent } from './proveedor/proveedor-admin-page/proveedor-admin-page.component';
 import { ParametroAdminPageComponent } from './parametro/parametro-admin-page/parametro-admin-page.component';
 import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-parametro.component';
+<<<<<<< HEAD
 import { MaterialAdminPageComponent } from './material/material-admin-page/material-admin-page.component';
 import { TablaMaterialComponent } from './material/tabla-material/tabla-material.component';
+=======
+import {TablaUsuarioComponent} from "./Usuario/tabla-usuario/tabla-usuario.component";
+import {UsuarioAdminPageComponent} from "./Usuario/usuario-admin-page/usuario-admin-page.component";
+import {UsuarioAdminRegisterComponent} from "./Usuario/usuario-admin-register/usuario-admin-register.component";
+
+>>>>>>> b241df4f37d065ea8d4992be4cdd1d794389d0c6
 
 @NgModule({
   declarations: [
@@ -37,6 +47,10 @@ import { TablaMaterialComponent } from './material/tabla-material/tabla-material
     AdminDashboardMainComponent,
     ProveedorAdminRegisterComponent,
     MaterialAdminRegisterComponent,
+<<<<<<< HEAD
+=======
+    CuadrillaAdminRegisterComponent,
+>>>>>>> b241df4f37d065ea8d4992be4cdd1d794389d0c6
     TablaProveedorComponent,
     ClienteAdminComponent,
     ZonaAdminComponent,
@@ -47,8 +61,14 @@ import { TablaMaterialComponent } from './material/tabla-material/tabla-material
     ProveedorAdminPageComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
+<<<<<<< HEAD
     MaterialAdminPageComponent,
     TablaMaterialComponent,
+=======
+    UsuarioAdminPageComponent,
+    TablaUsuarioComponent,
+    UsuarioAdminRegisterComponent,
+>>>>>>> b241df4f37d065ea8d4992be4cdd1d794389d0c6
   ],
   imports: [
     CommonModule,
