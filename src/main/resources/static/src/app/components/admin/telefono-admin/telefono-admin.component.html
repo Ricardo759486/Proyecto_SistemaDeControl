@@ -21,26 +21,40 @@
 
             </div>
             <form class="custom-form" method="post" (ngSubmit)="login()" id="login">
-              <h1>Registro Cliente</h1>
+              <h1>Registro Telefono</h1>
               <input
-                type="numDocumento"
-                [(ngModel)] = "numDocumento"
-                name="numDocumento"
-                placeholder="Ingrese el número de documento del cliente"
+                type="num_telefono"
+                [(ngModel)] = "num_telefono"
+                name="num_telefono"
+                placeholder="Ingrese el numero de telefono"
                 required="required"
               />
               <input
-                type="tipoDocumento"
-                [(ngModel)]="tipoDocumento"
-                name="tipoDocumento"
-                placeholder="Seleccione el tipo de documento del cliente"
+                type="tipo"
+                [(ngModel)]="tipo"
+                name="tipo"
+                placeholder="Seleccione el tipo de usuario"
                 required="required"
               />
               <input
                 type="costo"
-                [(ngModel)]="direccion"
+                [(ngModel)]="idUsuario"
                 name="costo"
-                placeholder="Ingrese la dirección del cliente"
+                placeholder="Ingrese el costo del material"
+                required="required"
+              />
+              <input
+                type="costo"
+                [(ngModel)]="idProveedor"
+                name="costo"
+                placeholder="Ingrese el costo del material"
+                required="required"
+              />
+              <input
+                type="costo"
+                [(ngModel)]="idCliente"
+                name="costo"
+                placeholder="Ingrese el costo del material"
                 required="required"
               />
               <button type="submit" >Registrar</button>
@@ -58,4 +72,5 @@
     </div>
   </mat-drawer-content>
 </mat-drawer-container>
+
 

@@ -10,12 +10,13 @@ import {MaterialcuadrillaAdminComponent} from "./materialcuadrilla-admin/materia
 import {ClienteAdminComponent} from "./cliente-admin/cliente-admin.component";
 import {OrdentrabajoAdminComponent} from "./ordentrabajo-admin/ordentrabajo-admin.component";
 import {ParametroAdminComponent} from "./parametro-admin/parametro-admin.component";
+import {TelefonoAdminComponent} from "./telefono-admin/telefono-admin.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeAdminComponent },
   { path: 'dashboard', component: AdminDashboardMainComponent },
-  { path: 'cliente', component: ClienteAdminComponent },
+  { path: 'cliente_register', component: ClienteAdminComponent },
   { path: 'provedor_register', component: ProveedorAdminRegisterComponent },
   { path: 'cuadrilla_register', component: CuadrillasAdminComponent },
   { path: 'material_register', component: MaterialAdminComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'materialcuadrilla_register', component: MaterialcuadrillaAdminComponent },
   { path: 'ordentrabajo_register', component: OrdentrabajoAdminComponent },
   { path: 'parametro_register' , component: ParametroAdminComponent },
+  { path: 'telefono_register' , component: TelefonoAdminComponent },
 ];
 
 @NgModule({
