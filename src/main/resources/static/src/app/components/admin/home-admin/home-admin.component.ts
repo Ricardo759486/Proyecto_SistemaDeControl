@@ -18,6 +18,7 @@ export class HomeAdminComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user')??'{}');
     this.tiempo_contra = this.user.fecha_ultima_contra;
     this.email = this.user.login;
+    this.user = localStorage.getItem("user");
     if(!this.user){
       location.href = "/";
     }

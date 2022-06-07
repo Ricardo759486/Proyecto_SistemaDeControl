@@ -19,7 +19,7 @@
     <br>
     <br>
     <label>Seleccione la zona:  </label>
-    <select [(ngModel)]="cuadrilla.idZona">
+    <select [(ngModel)]="cuadrilla.idZona" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let zona of zona" value = {{zona.idZona}}>
         {{zona.localidad}}
       </option>
@@ -28,7 +28,7 @@
     <br>
     <label>Seleccione el proveedor:  </label>
     <br>
-    <select [(ngModel)]="cuadrilla.idProveedor">
+    <select [(ngModel)]="cuadrilla.idProveedor"  [ngModelOptions]="{standalone: true}">
       <option *ngFor="let proveedor of proveedor" value = {{proveedor.idProveedor}}>
         {{proveedor.nombre}}
       </option>
@@ -36,7 +36,7 @@
     <br>
     <br>
     <label>Seleccione el turno de trabajo:  </label>
-    <select [(ngModel)]="cuadrilla.idTurnoTrabajo">
+    <select [(ngModel)]="cuadrilla.idTurnoTrabajo" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let turnoTrabajo of turnoTrabajo" value = {{turnoTrabajo.idTurno}}>
         {{turnoTrabajo.descripcion}}
       </option>

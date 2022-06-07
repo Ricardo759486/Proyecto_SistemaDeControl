@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
       alert("Bienvenido");
       localStorage.setItem("user", JSON.stringify(this.user));
       location.href = "/admin/home";
+
     }else{
       this.errorInicio=true;
     }
