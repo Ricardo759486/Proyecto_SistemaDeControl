@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Descripcion</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody class="body_tabla">
+      <tr *ngFor="let turnotrabajo of turnotrabajo" class="text-center" >
+        <td>{{turnotrabajo.idTurno}}</td>
+        <td>{{turnotrabajo.descripcion}}</td>
+        <td>{{turnotrabajo.estado}}</td>
+        <td>
+          <button (click)="Editar(turnotrabajo)" class="btn btn-warning">Editar</button>
+          <button (click)="Delete(turnotrabajo)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

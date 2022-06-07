@@ -33,8 +33,6 @@ import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-param
 import { CuadrillasAdminRegisterComponent} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
 import {CuadrillaAdminPageComponent} from "./cuadrilla/cuadrilla-admin-page/cuadrilla-admin-page.component";
 import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadrilla.component';
-import { MaterialcuadrillaAdminPageComponent } from './materialcuadrilla/materialcuadrilla-admin-page/materialcuadrilla-admin-page.component';
-import { TablaMaterialcuadrillaComponent } from './materialcuadrilla/tabla-materialcuadrilla/tabla-materialcuadrilla.component';
 
 @NgModule({
   declarations: [
@@ -66,8 +64,7 @@ import { TablaMaterialcuadrillaComponent } from './materialcuadrilla/tabla-mater
     CuadrillasAdminRegisterComponent,
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent,
-    MaterialcuadrillaAdminPageComponent,
-    TablaMaterialcuadrillaComponent,
+
   ],
   imports: [
     CommonModule,
