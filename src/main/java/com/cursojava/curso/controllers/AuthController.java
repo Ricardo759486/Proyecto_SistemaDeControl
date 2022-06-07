@@ -39,7 +39,7 @@ public class AuthController {
                 System.out.println("Usuario bloqueado");
                 correoService.enviarCorreo(usC.getLogin(),"Usuario Bloqueado", "Su usuario ha sido bloqueado debido a varios intentos fallidos" +
                         "\nde inicio de sesion, contactece con un administrador para acceder\na su cuenta.\nCordialmente, Sistema de Gestion Administrativo ");
-                return objeto;
+                return null;
             case 1:
                 System.out.println("Sesion iniciada con exito");
                 return objeto;
@@ -73,5 +73,9 @@ public class AuthController {
             return 3;
             //"Login fallido"
         }
+    }
+    @GetMapping(value = "/validarFecha/{id}")
+    public boolean validarFecha(@PathVariable(value = "id") int id){
+        return usuarioServiceAPI.revisionFecha(usuarioServiceAPI.get(id));
     }
 }

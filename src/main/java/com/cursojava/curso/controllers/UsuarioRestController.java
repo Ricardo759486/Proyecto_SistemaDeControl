@@ -9,6 +9,7 @@ import com.cursojava.curso.service.RolServiceAPI;
 import com.cursojava.curso.service.TipoDocumentoServiceAPI;
 import com.cursojava.curso.service.UsuarioServiceAPI;
 import com.cursojava.curso.service.dao.UsuarioDAO;
+import com.cursojava.curso.service.impl.EnvioCorreoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,9 @@ public class UsuarioRestController {
     private CuadrillaServiceAPI cuadrillaServiceAPI;
     @Autowired
     private RolServiceAPI rolServiceAPI;
+
+    @Autowired
+    private EnvioCorreoImpl correoService;
 
     @GetMapping(value = "/getAll")
     public List<UsuarioDAO> getAll(){
@@ -59,10 +63,13 @@ public class UsuarioRestController {
         usuario.setCuadrilla(cuadrilla);
         usuario.setRol(rol);
         usuario.setFecha_ultima_contra(new Date());
-        usuario.setClave(usuarioServiceAPI.hashearContra(usuario.getClave()));
+        String contra = usuario.getClave();
+        usuario.setClave(usuarioServiceAPI.hashearContra(contra));
         usuario.setIntentos(0);
         usuario.setEstado("A");
         usuarioServiceAPI.save(usuario);
+        correoService.enviarCorreo(usuario.getLogin()+"", "Registro exitoso", "Bienvenido usuario "+usuario.getLogin()+":\nUsted ha sido registrado" +
+                "por un administrador de la empresa de Electri-Bogota, asignado a la cuadrilla: "+usuario.getCuadrilla()+", su clave de accesso es: " +contra);
         return HttpStatus.OK;
     }
 
@@ -79,6 +86,8 @@ public class UsuarioRestController {
         usuario.setEstado("A");
         usuario.setIntentos(0);
         usuarioServiceAPI.save(usuario);
+        correoService.enviarCorreo(usuario.getLogin()+"", "Registro exitoso", "Bienvenido usuario "+usuario.getLogin()+":\nHa quedado" +
+                "registrado en nuestra sistema como un nuevo usuario, ya puede iniciar sesión");
         return HttpStatus.OK;
     }
 
