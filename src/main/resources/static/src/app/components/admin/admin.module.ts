@@ -15,7 +15,6 @@ import { MatListModule } from '@angular/material/list';
 import { ProveedorAdminRegisterComponent } from './proveedor/proveedor-admin-register/proveedor-admin-register.component';
 import { FormsModule } from "@angular/forms";
 import { MaterialAdminRegisterComponent } from './material/material-admin-register/material-admin-register.component';
-import { CuadrillasAdminRegisterComponent } from './cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component';
 import { TablaProveedorComponent} from "./proveedor/tabla-proveedor/tabla-proveedor.component";
 import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
 import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
@@ -26,7 +25,9 @@ import { TelefonoAdminComponent } from './telefono-admin/telefono-admin.componen
 import { ProveedorAdminPageComponent } from './proveedor/proveedor-admin-page/proveedor-admin-page.component';
 import { ParametroAdminPageComponent } from './parametro/parametro-admin-page/parametro-admin-page.component';
 import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-parametro.component';
-
+import { CuadrillaAdminRegisterComponent} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
+import {CuadrillaAdminPageComponent} from "./cuadrilla/cuadrilla-admin-page/cuadrilla-admin-page.component";
+import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadrilla.component';
 @NgModule({
   declarations: [
     AdminComponent,
@@ -36,7 +37,6 @@ import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-param
     AdminDashboardMainComponent,
     ProveedorAdminRegisterComponent,
     MaterialAdminRegisterComponent,
-    CuadrillasAdminRegisterComponent,
     TablaProveedorComponent,
     ClienteAdminComponent,
     ZonaAdminComponent,
@@ -47,6 +47,9 @@ import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-param
     ProveedorAdminPageComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
+    CuadrillaAdminRegisterComponent,
+    CuadrillaAdminPageComponent,
+    TablaCuadrillaComponent
   ],
   imports: [
     CommonModule,
