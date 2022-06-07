@@ -22,25 +22,22 @@
             </div>
             <form class="custom-form" method="post" (ngSubmit)="login()" id="login">
               <h1>Registro Material a cuadrillas</h1>
+              <br>
+              <label>Seleccione la cuadrilla:  </label>
               <select>
                 <option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>
                   {{cuadrilla.movilAsociado}}
                 </option>
               </select>
-              <input
-                type="select"
-                [(ngModel)] = "Cuadrilla"
-                name="Cuadrilla"
-                placeholder="Cuadrilla"
-                required="required"
-              />
-              <input
-                type="text"
-                [(ngModel)]="Material"
-                name="Material"
-                placeholder="Material"
-                required="required"
-              />
+              <br>
+              <br>
+              <br>
+              <label>Seleccione el material:  </label>
+              <select>
+                <option *ngFor="let material of material" value = {{material.idInventario}}>
+                  {{material.nombreMaterial}}
+                </option>
+              </select>
               <input
                 type="number"
                 [(ngModel)]="Cantidad"

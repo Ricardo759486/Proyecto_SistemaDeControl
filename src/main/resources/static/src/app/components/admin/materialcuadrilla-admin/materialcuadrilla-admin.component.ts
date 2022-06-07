@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Cuadrilla} from "../../../shared/models/Cuadrilla";
+import {Material} from "../../../shared/models/Material";
 import {CuadrillaAdminService} from "../../../shared/services/admin/cuadrilla-admin.service";
+import {MaterialAdminService} from "../../../shared/services/admin/material-admin.service";
 import {Router} from "@angular/router";
-import {TablaAdminProveedorService} from "../../../shared/services/admin/tabla-admin-proveedor.service";
 
 @Component({
   selector: 'app-materialcuadrilla-admin',
@@ -20,8 +21,10 @@ export class MaterialcuadrillaAdminComponent implements OnInit {
   sideBarOpen: any;
 
   cuadrilla: Cuadrilla[] = [];
+  material: Material[] = [];
 
-  constructor(private admin_cuadrillascv: CuadrillaAdminService, private router:Router) { }
+  constructor(private admin_cuadrillascv: CuadrillaAdminService,
+              private admin_materialscv: MaterialAdminService, private router:Router) { }
 
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
@@ -30,6 +33,9 @@ export class MaterialcuadrillaAdminComponent implements OnInit {
     }
     this.admin_cuadrillascv.getCuadrilla().subscribe(data =>{
       this.cuadrilla = data;
+    });
+    this.admin_materialscv.getMaterial().subscribe(data =>{
+      this.material = data;
     });
   }
   sideBarToggler() {
