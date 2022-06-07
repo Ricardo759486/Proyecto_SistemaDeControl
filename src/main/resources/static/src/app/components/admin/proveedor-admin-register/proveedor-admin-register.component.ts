@@ -30,7 +30,8 @@ export class ProveedorAdminRegisterComponent implements OnInit {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  login() {
+
+  register_proveedor() {
 
   }
 }
