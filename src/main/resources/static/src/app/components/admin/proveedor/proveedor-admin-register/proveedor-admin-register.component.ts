@@ -11,13 +11,9 @@ export class ProveedorAdminRegisterComponent implements OnInit {
   title = 'admin-panel-layout';
   sideBarOpen = true;
   loading: any;
-  email: any;
-  password: any;
+  proveedor: any;
   errorInicio: any;
   mensajeError: any;
-  nit: any;
-  direccion: any;
-  nombre: any;
   constructor() { }
 
   ngOnInit(): void {

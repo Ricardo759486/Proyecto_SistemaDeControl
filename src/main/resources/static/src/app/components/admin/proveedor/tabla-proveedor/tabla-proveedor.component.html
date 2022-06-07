@@ -21,20 +21,8 @@
                 <td>{{proveedor.direccion}}</td>
                 <td>{{proveedor.estado}}</td>
                 <td>
-                  <button class="btn btn-warning">Editar</button>
-                  <button class="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-              <tr *ngFor="let proveedor of proveedor" class="text-center" >
-                <td>{{proveedor.idProveedor}}</td>
-                <td>{{proveedor.nombre}}</td>
-                <td>{{proveedor.nit}}</td>
-                <td>{{proveedor.email}}</td>
-                <td>{{proveedor.direccion}}</td>
-                <td>{{proveedor.estado}}</td>
-                <td>
-                  <button class="btn btn-warning">Editar</button>
-                  <button class="btn btn-danger">Delete</button>
+                  <button (click)="Editar(proveedor)" class="btn btn-warning">Editar</button>
+                  <button (click)="Delete(proveedor)" class="btn btn-danger">Delete</button>
                 </td>
               </tr>
             </tbody>

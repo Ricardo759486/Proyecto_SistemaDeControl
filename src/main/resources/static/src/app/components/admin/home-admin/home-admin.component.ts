@@ -10,10 +10,14 @@ export class HomeAdminComponent implements OnInit {
   title = 'admin-panel-layout';
   sideBarOpen = true;
   data: any;
+  email: string = "";
+  tiempo_contra :string ="";
   constructor() { }
 
   ngOnInit(): void {
-    this.user = localStorage.getItem("user");
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.tiempo_contra = this.user.fecha_ultima_contra;
+    this.email = this.user.login;
     if(!this.user){
       location.href = "/";
     }

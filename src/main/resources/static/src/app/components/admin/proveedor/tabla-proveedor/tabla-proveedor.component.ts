@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Proveedor} from "../../../../shared/models/Proveedor";
-import {TablaAdminProveedorService} from "../../../../shared/services/admin/tabla-admin-proveedor.service";
+import {TablaAdminProveedorService} from "../../../../shared/services/admin/tabla_proveedor/tabla-admin-proveedor.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -19,4 +19,11 @@ export class TablaProveedorComponent implements OnInit {
     });
   }
 
+  Editar(proveedor: Proveedor) {
+
+  }
+
+  Delete(proveedor: Proveedor) {
+
+  }
 }
