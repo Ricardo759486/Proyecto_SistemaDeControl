@@ -20,6 +20,8 @@ import {TablaProveedorComponent} from "./tabla-proveedor/tabla-proveedor.compone
 import { ClienteAdminComponent } from './cliente-admin/cliente-admin.component';
 import { ZonaAdminComponent } from './zona-admin/zona-admin.component';
 import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/materialcuadrilla-admin.component';
+import { OrdentrabajoAdminComponent } from './ordentrabajo-admin/ordentrabajo-admin.component';
+import { ParametroAdminComponent } from './parametro-admin/parametro-admin.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { MaterialcuadrillaAdminComponent } from './materialcuadrilla-admin/mater
     ClienteAdminComponent,
     ZonaAdminComponent,
     MaterialcuadrillaAdminComponent,
+    OrdentrabajoAdminComponent,
+    ParametroAdminComponent,
   ],
   imports: [
     CommonModule,
