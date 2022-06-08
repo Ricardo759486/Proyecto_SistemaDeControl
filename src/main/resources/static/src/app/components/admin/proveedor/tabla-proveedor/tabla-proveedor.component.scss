@@ -3,12 +3,36 @@ table {
 }
 
 .mat-form-field {
-
+  font-size: 20px;
   width: 100%;
-  font-family: "Helvetica Neue";
 }
 
 td, th {
+  min-width: calc(100vw / 8);
   width: 25%;
-  font-size: 2rem;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 1rem;
+  width: 98%;
+  margin: 0 auto;
+  display: block;
+  margin-top: 1rem;
+}
+
+.container-btn-new {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin: 1rem -0.6rem;
+  button {
+    color: #fff;
+    width: 25%;
+    background: black ;
+    cursor: pointer;
+  }
 }

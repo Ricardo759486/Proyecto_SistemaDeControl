@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {MatDialog} from "@angular/material/dialog";
 
 export interface UserData {
   id: string;
@@ -13,38 +14,6 @@ export interface UserData {
   fruit: string;
 }
 
-/** Constants used to fill up our data base. */
-const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
-];
-const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
-];
 
 @Component({
   selector: 'app-tabla-proveedor',
@@ -54,25 +23,21 @@ const NAMES: string[] = [
 export class TablaProveedorComponent implements OnInit {
 
   proveedor: Proveedor[] = [];
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit'];
-  dataSource!: MatTableDataSource<UserData>;
+  displayedColumns: string[] = ['ID', 'nombre','nit','email','direccion', 'actions'];
+  dataSource = new MatTableDataSource();
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
 
-  constructor(private tabla_admin_provvedorscv: TablaAdminProveedorService, private router:Router) {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+  constructor(private tabla_admin_provvedorscv: TablaAdminProveedorService, private router:Router, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
     this.tabla_admin_provvedorscv.getProveedores().subscribe(data =>{
       this.proveedor = data;
-
+      this.dataSource.data = this.proveedor;
     });
 
   }
@@ -101,18 +66,7 @@ export class TablaProveedorComponent implements OnInit {
   }
 
 
-}
-function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
+  Agregar() {
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
-  };
+  }
 }

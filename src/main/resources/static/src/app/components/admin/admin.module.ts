@@ -38,7 +38,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
-
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     CuadrillasAdminRegisterComponent,
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent,
+
   ],
   imports: [
     CommonModule,
@@ -94,7 +96,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-
+    MatButtonModule,
+    MatDialogModule
   ]
 })
 export class AdminModule { }

@@ -16,9 +16,12 @@
     color: black;
     font-size: 2rem;
     &-data {
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
   }
+}
+.mat-drawer-container{
+  background-color: #171c2f;
 }
