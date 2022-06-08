@@ -33,6 +33,13 @@ import { TablaParametroComponent } from './parametro/tabla-parametro/tabla-param
 import { CuadrillasAdminRegisterComponent} from "./cuadrilla/cuadrilla-admin-register/cuadrillas-admin-register.component";
 import {CuadrillaAdminPageComponent} from "./cuadrilla/cuadrilla-admin-page/cuadrilla-admin-page.component";
 import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadrilla.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatTableModule} from "@angular/material/table";
+import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from "@angular/material/paginator";
+
+
 
 @NgModule({
   declarations: [
@@ -64,7 +71,6 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     CuadrillasAdminRegisterComponent,
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent,
-
   ],
   imports: [
     CommonModule,
@@ -78,6 +84,16 @@ import { TablaCuadrillaComponent } from './cuadrilla/tabla-cuadrilla/tabla-cuadr
     MatDividerModule,
     MatListModule,
     FormsModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
 
   ]
 })

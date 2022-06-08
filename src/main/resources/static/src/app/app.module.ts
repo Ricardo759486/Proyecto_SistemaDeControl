@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import { MatSliderModule} from "@angular/material/slider";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     MatSliderModule,
     BrowserAnimationsModule,
+    MatNativeDateModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
