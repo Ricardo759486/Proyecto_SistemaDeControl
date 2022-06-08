@@ -21,8 +21,8 @@ export class CuadrillaAdminService {
     return this.http.post<Cuadrilla>('http://localhost:8080/Cuadrilla/saveCuadrilla/'+cuadrilla.idZona+'/'+cuadrilla.idProveedor+'/'+cuadrilla.idTurnoTrabajo,cuadrilla);
   }
 
-  deleteProveedor(cuadrilla: Cuadrilla) {
-    return this.http.get<Proveedor>(this.urlEliminar+"/"+cuadrilla.idCuadrilla);
+  deleteCuadrilla(cuadrilla: Cuadrilla) {
+    return this.http.get<Cuadrilla>(this.urlEliminar+"/"+cuadrilla.idCuadrilla);
 
   }
 }

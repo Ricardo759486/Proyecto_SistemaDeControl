@@ -90,7 +90,8 @@ public class CuadrillaRestController {
     public HttpStatus delete(@PathVariable int id){
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(id);
         if (cuadrilla != null){
-            cuadrillaServiceAPI.delete(id);
+            cuadrilla.setEstado("D");
+            cuadrillaServiceAPI.save(cuadrilla);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
