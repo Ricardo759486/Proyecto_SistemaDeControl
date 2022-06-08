@@ -17,8 +17,9 @@
       required="required"
     />
     <br>
-    <br>
     <label>Seleccione la zona:  </label>
+    <br>
+    <br>
     <select [(ngModel)]="cuadrilla.idZona" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let zona of zona" value = {{zona.idZona}}>
         {{zona.localidad}}
@@ -28,6 +29,7 @@
     <br>
     <label>Seleccione el proveedor:  </label>
     <br>
+    <br>
     <select [(ngModel)]="cuadrilla.idProveedor"  [ngModelOptions]="{standalone: true}">
       <option *ngFor="let proveedor of proveedor" value = {{proveedor.idProveedor}}>
         {{proveedor.nombre}}
@@ -36,11 +38,14 @@
     <br>
     <br>
     <label>Seleccione el turno de trabajo:  </label>
+    <br>
+    <br>
     <select [(ngModel)]="cuadrilla.idTurnoTrabajo" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let turnoTrabajo of turnoTrabajo" value = {{turnoTrabajo.idTurno}}>
         {{turnoTrabajo.descripcion}}
       </option>
     </select>
+    <br>
     <br>
     <button type="submit" >Registrar</button>
     <div class="row" *ngIf="errorInicio">

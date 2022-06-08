@@ -13,18 +13,20 @@
       type="text"
       [(ngModel)] = "usuario.login"
       name="login"
-      placeholder="Login"
+      placeholder="Ingrese el correo del usuario"
       required="required"
     />
     <input
       type="text"
       [(ngModel)] = "usuario.clave"
       name="clave"
-      placeholder="clave"
+      placeholder="Ingrese la clave"
       required="required"
     />
     <br>
     <label>Seleccione el tipo de documento:  </label>
+    <br>
+    <br>
     <select [(ngModel)]="usuario.tipoDoc" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let tipoDocumento of tipoDocumento" value = {{tipoDocumento.idDocumento}}>
         {{tipoDocumento.descripcion}}
@@ -34,19 +36,21 @@
       type="numeric"
       [(ngModel)]="usuario.identificacion"
       name="identificacion"
-      placeholder="identificacion"
+      placeholder="Ingrese el número de identificación"
       required="required"
     />
     <input
       type="text"
       [(ngModel)] = "usuario.direccion"
       name="direccion"
-      placeholder="direccion"
+      placeholder="Ingrese la dirección de residencia"
       required="required"
     />
 
     <br>
     <label>Seleccione la cuadrilla:  </label>
+    <br>
+    <br>
     <select [(ngModel)]="usuario.idCuadrilla" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>
         {{cuadrilla.movilAsociado}}
@@ -55,11 +59,14 @@
     <br>
     <br>
     <label>Seleccione Rol:  </label>
+    <br>
+    <br>
     <select [(ngModel)]="usuario.idRol" [ngModelOptions]="{standalone: true}">
       <option *ngFor="let rol of rol" value = {{rol.idRol}}>
         {{rol.tipoRol}}
       </option>
     </select>
+    <br>
     <br>
     <button type="submit" >Registrar</button>
     <div class="row" *ngIf="errorInicio">
