@@ -6,7 +6,6 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import {MatDialog} from "@angular/material/dialog";
-import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
 import Swal from "sweetalert2";
 import {ProveedorAdminModalComponent } from "../proveedor-admin-modal/proveedor-admin-modal.component";
 
