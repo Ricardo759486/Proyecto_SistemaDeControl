@@ -1,4 +1,4 @@
-@import "./variables";
+@import "variables";
 
 .sport {
     background: $category_color_sport !important;
@@ -11,7 +11,7 @@
   .style {
     background: $category_color_style !important;
   }
-  
+
   mat-chip.mat-chip.mat-primary.mat-standard-chip {
     min-height: 1rem;
     padding: 9px;

@@ -6,6 +6,8 @@ import {TablaAdminUsuarioService} from "../../../../shared/services/admin/tabla_
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
+import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-tabla-usuario',
@@ -42,11 +44,30 @@ export class TablaUsuarioComponent implements OnInit {
   }
   Editar(usuario: UserI) {
   }
+
   Delete(usuario: UserI) {
-    this.tabla_admin_usuarioscv.deleteUsuario(usuario).subscribe(data => {
-      this.usuario = this.usuario.filter(p => p !== usuario);
-      alert("usuario Eliminado");
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.value) {
+        this.tabla_admin_usuarioscv.deleteUsuario(usuario).subscribe(data => {
+          this.usuario = this.usuario.filter(p => p !== usuario);
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+          location.href = "/admin/usuario_admin";
+        })
+      }
     })
+
   }
 
   Agregar() {

@@ -13,7 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { ProveedorAdminRegisterComponent } from './proveedor/proveedor-admin-register/proveedor-admin-register.component';
-import { FormsModule } from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { MaterialAdminRegisterComponent } from './material/material-admin-register/material-admin-register.component';
 import { TablaProveedorComponent} from "./proveedor/tabla-proveedor/tabla-proveedor.component";
 import { ClienteAdminRegisterComponent } from './Cliente/cliente-admin-register/cliente-admin-register.component';
@@ -40,6 +40,8 @@ import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
+import { ProveedorAdminModalComponent } from './proveedor/proveedor-admin-modal/proveedor-admin-modal.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 @NgModule({
@@ -72,6 +74,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     CuadrillasAdminRegisterComponent,
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent,
+    ProveedorAdminModalComponent,
 
   ],
   imports: [
@@ -97,7 +100,9 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatSortModule,
     MatPaginatorModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ]
 })
 export class AdminModule { }
