@@ -64,8 +64,18 @@ import {TelefonoAdminModalComponent} from "./Telefono/telefono-admin-modal/telef
 import {TablaTelefonoComponent} from "./Telefono/tabla-telefono/tabla-telefono.component";
 
 import { CuadrillaAdminEditarComponent } from './cuadrilla/cuadrilla-admin-editar/cuadrilla-admin-editar.component';
+<<<<<<< HEAD
 import { MaterialcuadrillaAdminEditarComponent } from './MaterialCuadrilla/materialcuadrilla-admin-editar/materialcuadrilla-admin-editar.component';
 import { UsuarioAdminEditarComponent } from './Usuario/usuario-admin-editar/usuario-admin-editar.component';
+=======
+import {OrdentrabajoAdminPageComponent} from "./OrdenTrabajo/ordentrabajo-admin-page/ordentrabajo-admin-page.component";
+import {TablaOrdentrabajoComponent} from "./OrdenTrabajo/tabla-ordentrabajo/tabla-ordentrabajo.component";
+import {
+  OrdentrabajoAdminModalComponent
+} from "./OrdenTrabajo/ordentrabajo/ordentrabajo-admin-modal/ordentrabajo-admin-modal.component";
+
+
+>>>>>>> 2f00bd32db3683ba76e7721f40945f834d56bed6
 
 
 @NgModule({
@@ -123,8 +133,16 @@ import { UsuarioAdminEditarComponent } from './Usuario/usuario-admin-editar/usua
     TelefonoAdminRegisterComponent,
     TelefonoAdminPageComponent,
     TablaTelefonoComponent,
+<<<<<<< HEAD
     UsuarioAdminEditarComponent,
     
+=======
+    TablaOrdentrabajoComponent,
+    OrdentrabajoAdminModalComponent,
+    OrdentrabajoAdminRegisterComponent,
+    OrdentrabajoAdminPageComponent,
+
+>>>>>>> 2f00bd32db3683ba76e7721f40945f834d56bed6
   ],
   imports: [
     CommonModule,

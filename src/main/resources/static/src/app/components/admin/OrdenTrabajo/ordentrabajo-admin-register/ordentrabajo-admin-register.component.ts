@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  TablaAdminProveedorService
-} from "../../../../shared/services/admin/tabla_proveedor/tabla-admin-proveedor.service";
 import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {OrdenTrabajo} from "../../../../shared/models/OrdenTrabajo";
+import {
+  TablaAdminOrdentrabajoService
+} from "../../../../shared/services/admin/tabla_ordentrabajo/tabla-admin-ordentrabajo.service";
 
 @Component({
   selector: 'app-ordentrabajo-admin',
@@ -15,11 +18,19 @@ export class OrdentrabajoAdminRegisterComponent implements OnInit {
   title = 'admin-panel-layout';
   sideBarOpen = true;
   loading: any;
-  ordentrabajo: any={};
+  ordentrabajo: OrdenTrabajo[] = [];
   errorInicio: boolean = false;
   mensajeError: any = "No se pudo registrar la orden de trabajo";
+  constructor(private  ordentrabajoscv: TablaAdminOrdentrabajoService,
+              private router:Router,public dialog: MatDialog) { }
 
-  constructor(private  provedorscv: TablaAdminProveedorService, private router:Router) { }
+  public newOrdenTrabajo = new FormGroup({
+    descripcion: new FormControl('', Validators.required),
+    idCliente: new FormControl('', Validators.required),
+    idCuadrilla: new FormControl('', Validators.required),
+    idTipoServicio: new FormControl('', Validators.required),
+  });
+
 
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
@@ -30,8 +41,31 @@ export class OrdentrabajoAdminRegisterComponent implements OnInit {
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
+  confirmar(resultant:OrdenTrabajo){
+    this.loading=false;
+    if(resultant){
+      alert("Orden de Trabajo registrada");
+      this.dialog.closeAll();
+      this.ordentrabajo=[];
+    }else{
+      alert("No se pudo registrar el proveedor");
+    }
+  }
 
-  register_ordentrabajo() {
+  register_ordentrabajo(ordentrabajo: OrdenTrabajo){ {
+    this.loading=true;
+
+    if ( this.newOrdenTrabajo.valid) {
+      this.ordentrabajoscv.registerService(ordentrabajo).subscribe(
+        data => {
+          this.confirmar(data);
+        })
+    }else {
+      alert("No se pudo registrar la orden de trabajo");
+      this.loading=false;
+    }
+  }
+
 
   }
 }
