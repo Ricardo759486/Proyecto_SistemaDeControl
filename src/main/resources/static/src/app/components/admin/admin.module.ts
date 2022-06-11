@@ -58,13 +58,13 @@ import {
   MaterialcuadrillaAdminPageComponent
 } from "./MaterialCuadrilla/materialcuadrilla-admin-page/materialcuadrilla-admin-page.component";
 import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/cliente-admin-editar.component';
-<<<<<<< HEAD
+
 import {TelefonoAdminPageComponent} from "./Telefono/telefono-admin-page/telefono-admin-page.component";
 import {TelefonoAdminModalComponent} from "./Telefono/telefono-admin-modal/telefono-admin-modal.component";
 import {TablaTelefonoComponent} from "./Telefono/tabla-telefono/tabla-telefono.component";
-=======
+
 import { CuadrillaAdminEditarComponent } from './cuadrilla/cuadrilla-admin-editar/cuadrilla-admin-editar.component';
->>>>>>> 3b4d57ff5dc42041ba68d81eadb75105b1c5b50d
+
 
 
 
@@ -105,9 +105,7 @@ import { CuadrillaAdminEditarComponent } from './cuadrilla/cuadrilla-admin-edita
     ProveedorAdminPageComponent,
     ProveedorAdminModalComponent,
     ProveedorAdminEditarComponent,
-<<<<<<< HEAD
     CuadrillaAdminEditarComponent,
-=======
     MaterialcuadrillaAdminModalComponent,
     TablaMaterialcuadrillaComponent,
     MaterialcuadrillaAdminPageComponent,
@@ -117,7 +115,6 @@ import { CuadrillaAdminEditarComponent } from './cuadrilla/cuadrilla-admin-edita
     TelefonoAdminPageComponent,
     TablaTelefonoComponent,
 
->>>>>>> 1419e58707cf1774cdbfd1df9e77bdae2749d131
   ],
   imports: [
     CommonModule,
