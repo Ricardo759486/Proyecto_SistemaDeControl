@@ -56,9 +56,6 @@ export class TablaProveedorComponent implements OnInit {
     }
   }
 
-  Editar(proveedor: Proveedor) {
-
-  }
 
 
 
@@ -91,6 +88,10 @@ export class TablaProveedorComponent implements OnInit {
   Agregar() {
     this.openDialog();
   }
+  Editar(proveedor: Proveedor) {
+    this.openDialog(proveedor);
+  }
+
   openDialog(proveedor?: Proveedor): void {
     const config = {
       data: {
