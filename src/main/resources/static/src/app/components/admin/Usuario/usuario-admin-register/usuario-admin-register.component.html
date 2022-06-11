@@ -1,80 +1,43 @@
-<div class="register">
-  <div class="row" *ngIf="loading">
-    <div class="col-md-4 col-md-offset-4">
-      <div class="spinner-border text-info float-right" role="status">
-        <span class="sr-only">Loading...</span>
-      </div>
+<div class="row" *ngIf="loading">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="spinner-border text-info float-right" role="status">
+      <span class="sr-only"></span>
     </div>
-
   </div>
-  <form class="custom-form" method="post" (ngSubmit)="register_usuario()" id="register_usuario">
-    <h1>Registro Usuario</h1>
-    <input
-      type="text"
-      [(ngModel)] = "usuario.login"
-      name="login"
-      placeholder="Ingrese el correo del usuario"
-      required="required"
-    />
-    <input
-      type="text"
-      [(ngModel)] = "usuario.clave"
-      name="clave"
-      placeholder="Ingrese la clave"
-      required="required"
-    />
-    <br>
-    <label>Seleccione el tipo de documento:  </label>
-    <br>
-    <br>
-    <select [(ngModel)]="usuario.tipoDoc" [ngModelOptions]="{standalone: true}">
-      <option *ngFor="let tipoDocumento of tipoDocumento" value = {{tipoDocumento.idDocumento}}>
-        {{tipoDocumento.descripcion}}
-      </option>
-    </select>
-    <input
-      type="numeric"
-      [(ngModel)]="usuario.identificacion"
-      name="identificacion"
-      placeholder="Ingrese el número de identificación"
-      required="required"
-    />
-    <input
-      type="text"
-      [(ngModel)] = "usuario.direccion"
-      name="direccion"
-      placeholder="Ingrese la dirección de residencia"
-      required="required"
-    />
 
-    <br>
-    <label>Seleccione la cuadrilla:  </label>
-    <br>
-    <br>
-    <select [(ngModel)]="usuario.idCuadrilla" [ngModelOptions]="{standalone: true}">
-      <option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>
-        {{cuadrilla.movilAsociado}}
-      </option>
-    </select>
-    <br>
-    <br>
-    <label>Seleccione Rol:  </label>
-    <br>
-    <br>
-    <select [(ngModel)]="usuario.idRol" [ngModelOptions]="{standalone: true}">
-      <option *ngFor="let rol of rol" value = {{rol.idRol}}>
-        {{rol.tipoRol}}
-      </option>
-    </select>
-    <br>
-    <br>
-    <button type="submit" >Registrar</button>
-    <div class="row" *ngIf="errorInicio">
-      <div class="col-md-12">
-        <div class="alert alert-danger" role="alert">
-          <strong>Error: </strong> {{mensajeError}}
-        </div>
-      </div>
+</div>
+<div class="new-post-container">
+  <form [formGroup]="newUsuario" (ngSubmit)="register_usuario(newUsuario.value)">
+    <mat-form-field>
+      <mat-label>Correo / Login</mat-label>
+      <input matInput placeholder="Ingrese el correo" formControlName="login" type="email">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Clave</mat-label>
+      <input matInput placeholder="Ingrese la clave" formControlName="clave">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tipo de documento</mat-label>
+      <input matInput placeholder="Seleccione tipo de documento" formControlName="tipoDocumento" >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Numero de identificacion</mat-label>
+      <input matInput placeholder="Ingrese el numero del documento" formControlName="numDocumento">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Direccion</mat-label>
+      <input matInput placeholder="Ingrese la direccion" formControlName="direccion">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cuadrilla</mat-label>
+      <input matInput placeholder="Seleccione la cuadrilla" formControlName="cuadrilla">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Rol</mat-label>
+      <input matInput placeholder="Seleccione el rol" formControlName="rol">
+    </mat-form-field>
+    <div class="container-button">
+      <input type="submit" class="mat-flat-button" value="Save">
     </div>
   </form>
 </div>
