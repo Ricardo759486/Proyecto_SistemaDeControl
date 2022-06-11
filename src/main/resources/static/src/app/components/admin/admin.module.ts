@@ -48,6 +48,17 @@ import { ClienteAdminModalComponent } from './Cliente/cliente-admin-modal/client
 import {TablaClienteComponent} from "./Cliente/tabla-cliente/tabla-cliente.component";
 import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-admin-page.component";
 import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/proveedor-admin-editar.component";
+import {
+  MaterialcuadrillaAdminModalComponent
+} from "./MaterialCuadrilla/materialcuadrilla-admin-modal/materialcuadrilla-admin-modal.component";
+import {
+  TablaMaterialcuadrillaComponent
+} from "./MaterialCuadrilla/tabla-materialcuadrilla/tabla-materialcuadrilla.component";
+import {
+  MaterialcuadrillaAdminPageComponent
+} from "./MaterialCuadrilla/materialcuadrilla-admin-page/materialcuadrilla-admin-page.component";
+
+
 
 
 @NgModule({
@@ -59,7 +70,6 @@ import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/
     AdminDashboardMainComponent,
     MaterialAdminRegisterComponent,
     ZonaAdminRegisterComponent,
-    MaterialcuadrillaAdminRegisterComponent,
     OrdentrabajoAdminRegisterComponent,
     ParametroAdminRegisterComponent,
     TelefonoAdminRegisterComponent,
@@ -88,6 +98,11 @@ import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/
     ProveedorAdminPageComponent,
     ProveedorAdminModalComponent,
     ProveedorAdminEditarComponent,
+    MaterialcuadrillaAdminModalComponent,
+    TablaMaterialcuadrillaComponent,
+    MaterialcuadrillaAdminPageComponent,
+    MaterialcuadrillaAdminRegisterComponent,
+
   ],
   imports: [
     CommonModule,
