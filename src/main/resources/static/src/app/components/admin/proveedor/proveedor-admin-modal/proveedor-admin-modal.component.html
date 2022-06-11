@@ -1,9 +1,8 @@
 <h2>{{data.message}}</h2>
 <mat-dialog-content class="dialog-content">
   <div *ngIf="data.content; else showNewForm">
-<!--    <app-proveedor-admin-register [proveedor]="data.content"></app-proveedor-admin-register>-->
+    <app-proveedor-admin-editar [proveedor]="data.content"></app-proveedor-admin-editar>
   </div>
-
   <ng-template #showNewForm>
     <app-proveedor-admin-register></app-proveedor-admin-register>
   </ng-template>

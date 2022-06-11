@@ -46,7 +46,7 @@ import { CuadrillaAdminModalComponent } from './cuadrilla/cuadrilla-admin-modal/
 import { ClienteAdminModalComponent } from './Cliente/cliente-admin-modal/cliente-admin-modal.component';
 import {TablaClienteComponent} from "./Cliente/tabla-cliente/tabla-cliente.component";
 import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-admin-page.component";
-
+import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/proveedor-admin-editar.component";
 
 @NgModule({
   declarations: [
@@ -84,7 +84,7 @@ import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-ad
     TablaProveedorComponent,
     ProveedorAdminPageComponent,
     ProveedorAdminModalComponent,
-
+    ProveedorAdminEditarComponent,
   ],
   imports: [
     CommonModule,
