@@ -64,6 +64,11 @@ import {TelefonoAdminModalComponent} from "./Telefono/telefono-admin-modal/telef
 import {TablaTelefonoComponent} from "./Telefono/tabla-telefono/tabla-telefono.component";
 
 import { CuadrillaAdminEditarComponent } from './cuadrilla/cuadrilla-admin-editar/cuadrilla-admin-editar.component';
+import {OrdentrabajoAdminPageComponent} from "./OrdenTrabajo/ordentrabajo-admin-page/ordentrabajo-admin-page.component";
+import {TablaOrdentrabajoComponent} from "./OrdenTrabajo/tabla-ordentrabajo/tabla-ordentrabajo.component";
+import {
+  OrdentrabajoAdminModalComponent
+} from "./OrdenTrabajo/ordentrabajo/ordentrabajo-admin-modal/ordentrabajo-admin-modal.component";
 
 
 
@@ -114,6 +119,10 @@ import { CuadrillaAdminEditarComponent } from './cuadrilla/cuadrilla-admin-edita
     TelefonoAdminRegisterComponent,
     TelefonoAdminPageComponent,
     TablaTelefonoComponent,
+    TablaOrdentrabajoComponent,
+    OrdentrabajoAdminModalComponent,
+    OrdentrabajoAdminRegisterComponent,
+    OrdentrabajoAdminPageComponent,
 
   ],
   imports: [
