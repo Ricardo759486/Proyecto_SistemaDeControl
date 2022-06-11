@@ -1,8 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Proveedor} from "../../../../shared/models/Proveedor";
-import {
-  TablaAdminProveedorService
-} from "../../../../shared/services/admin/tabla_proveedor/tabla-admin-proveedor.service";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -22,7 +18,7 @@ export class ClienteAdminEditarComponent implements OnInit {
 
   loading: any;
   errorInicio: boolean = false;
-  mensajeError: any = "No se pudo actualizar el proveedor";
+  mensajeError: any = "No se pudo actualizar el cliente";
   tipoDocumento: TipoDocumento[] = [];
   @Input() cliente : Cliente;
 
@@ -59,6 +55,7 @@ export class ClienteAdminEditarComponent implements OnInit {
     this.loading=true;
 
     if ( this.editCliente.valid) {
+      console.log(cliente);
       this.clientescv.editarCliente(cliente).subscribe(
         data => {
           this.confirmar(data);

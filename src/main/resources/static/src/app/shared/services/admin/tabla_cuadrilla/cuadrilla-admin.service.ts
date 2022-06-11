@@ -13,6 +13,8 @@ export class CuadrillaAdminService {
   url = 'http://localhost:8080/Cuadrilla/getAll';
   urlRegistrar = 'http://localhost:8080/Cuadrilla/registrar';
   urlEliminar = 'http://localhost:8080/Cuadrilla/deleteCuadrilla';
+  urlupdate = 'http://localhost:8080/Cuadrilla/updateCuadrilla';
+
   getCuadrilla(){
     return this.http.get<Cuadrilla[]>(this.url);
   }
@@ -23,6 +25,10 @@ export class CuadrillaAdminService {
 
   deleteCuadrilla(cuadrilla: Cuadrilla) {
     return this.http.get<Cuadrilla>(this.urlEliminar+"/"+cuadrilla.idCuadrilla);
-
   }
+
+  editarCuadrilla(cuadrilla: Cuadrilla){
+    return this.http.put<Cuadrilla>(this.urlupdate+"/"+cuadrilla.idCuadrilla+"/"+cuadrilla.idZona+"/"+cuadrilla.idProveedor+"/"+cuadrilla.idTurnoTrabajo,cuadrilla);
+  }
+
 }

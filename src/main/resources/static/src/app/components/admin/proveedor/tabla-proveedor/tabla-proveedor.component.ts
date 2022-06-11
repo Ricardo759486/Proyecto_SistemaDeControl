@@ -56,9 +56,6 @@ export class TablaProveedorComponent implements OnInit {
     }
   }
 
-
-
-
   Delete(proveedor: Proveedor) {
     Swal.fire({
       title: 'Are you sure?',
@@ -83,7 +80,6 @@ export class TablaProveedorComponent implements OnInit {
     })
 
   }
-
 
   Agregar() {
     this.openDialog();

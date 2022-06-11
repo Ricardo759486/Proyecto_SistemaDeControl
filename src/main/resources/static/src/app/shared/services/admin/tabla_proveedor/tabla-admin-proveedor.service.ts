@@ -21,7 +21,6 @@ export class TablaAdminProveedorService {
    return this.http.get<Proveedor>(this.urleliminar+"/"+proveedor.idProveedor);
  }
 
-
   registerService(proveedor: Proveedor){
     return this.http.post<Proveedor>(this.urlsave,proveedor);
   }
