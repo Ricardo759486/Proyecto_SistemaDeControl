@@ -47,6 +47,7 @@ import { ClienteAdminModalComponent } from './Cliente/cliente-admin-modal/client
 import {TablaClienteComponent} from "./Cliente/tabla-cliente/tabla-cliente.component";
 import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-admin-page.component";
 import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/proveedor-admin-editar.component";
+import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/cliente-admin-editar.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/
     TablaClienteComponent,
     ClienteAdminPageComponent,
     ClienteAdminModalComponent,
+    ClienteAdminEditarComponent,
 
     ProveedorAdminRegisterComponent,
     TablaProveedorComponent,
