@@ -58,9 +58,14 @@ import {
   MaterialcuadrillaAdminPageComponent
 } from "./MaterialCuadrilla/materialcuadrilla-admin-page/materialcuadrilla-admin-page.component";
 import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/cliente-admin-editar.component';
+
+import {TelefonoAdminPageComponent} from "./Telefono/telefono-admin-page/telefono-admin-page.component";
+import {TelefonoAdminModalComponent} from "./Telefono/telefono-admin-modal/telefono-admin-modal.component";
+import {TablaTelefonoComponent} from "./Telefono/tabla-telefono/tabla-telefono.component";
+
 import { CuadrillaAdminEditarComponent } from './cuadrilla/cuadrilla-admin-editar/cuadrilla-admin-editar.component';
 import { MaterialcuadrillaAdminEditarComponent } from './MaterialCuadrilla/materialcuadrilla-admin-editar/materialcuadrilla-admin-editar.component';
-
+import { UsuarioAdminEditarComponent } from './Usuario/usuario-admin-editar/usuario-admin-editar.component';
 
 
 @NgModule({
@@ -74,7 +79,6 @@ import { MaterialcuadrillaAdminEditarComponent } from './MaterialCuadrilla/mater
     ZonaAdminRegisterComponent,
     OrdentrabajoAdminRegisterComponent,
     ParametroAdminRegisterComponent,
-    TelefonoAdminRegisterComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
     MaterialAdminPageComponent,
@@ -102,6 +106,7 @@ import { MaterialcuadrillaAdminEditarComponent } from './MaterialCuadrilla/mater
     ProveedorAdminModalComponent,
     ProveedorAdminEditarComponent,
 
+
     MaterialcuadrillaAdminRegisterComponent,
     TablaMaterialcuadrillaComponent,
     MaterialcuadrillaAdminPageComponent,
@@ -109,6 +114,17 @@ import { MaterialcuadrillaAdminEditarComponent } from './MaterialCuadrilla/mater
     MaterialcuadrillaAdminEditarComponent,
 
     CuadrillaAdminEditarComponent,
+    CuadrillaAdminEditarComponent,
+    MaterialcuadrillaAdminModalComponent,
+    TablaMaterialcuadrillaComponent,
+    MaterialcuadrillaAdminPageComponent,
+    MaterialcuadrillaAdminRegisterComponent,
+    TelefonoAdminModalComponent,
+    TelefonoAdminRegisterComponent,
+    TelefonoAdminPageComponent,
+    TablaTelefonoComponent,
+    UsuarioAdminEditarComponent,
+    
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,14 @@ import {TablaAdminUsuarioService} from "../../../../shared/services/admin/tabla_
 import {UserI} from "../../../../shared/models/user.interface";
 import {MatDialog} from "@angular/material/dialog";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {TipoDocumento} from "../../../../shared/models/TipoDocumento";
+import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
+import {Rol} from "../../../../shared/models/Rol";
+import {
+  TablaAdminTipoDocumentoService
+} from "../../../../shared/services/admin/tabla_tipoDocumento/tabla-admin-tipo-documento.service";
+import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
+import {RolService} from "../../../../shared/services/rol.service";
 
 
 
@@ -18,19 +26,26 @@ export class UsuarioAdminRegisterComponent implements OnInit {
   sideBarOpen = true;
   loading: any;
   usuario: UserI [] = [];
+  tipoDocumento: TipoDocumento[] = [];
+  cuadrilla: Cuadrilla[] = [];
+  rol: Rol[] = [];
   errorInicio: boolean = false;
   mensajeError: any = "No se pudo registrar el usuario";
 
-  constructor(private usuarioSvc:TablaAdminUsuarioService, private router:Router,public dialog: MatDialog) { }
+  constructor(private usuarioSvc:TablaAdminUsuarioService,
+              private  tipoDocumentocv: TablaAdminTipoDocumentoService,
+              private  cuadrillacv: CuadrillaAdminService,
+              private  rolcv: RolService,
+              private router:Router,public dialog: MatDialog) { }
 
   public newUsuario = new FormGroup({
     login: new FormControl('', [Validators.required,Validators.email]),
     clave: new FormControl('', Validators.required),
     tipoDocumento: new FormControl('', Validators.required),
-    numIdentificacion: new FormControl('', Validators.required),
+    numDocumento: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
-    idCuadrilla: new FormControl('', Validators.required),
-    idRol: new FormControl('', Validators.required),
+    cuadrilla: new FormControl('', Validators.required),
+    rol: new FormControl('', Validators.required),
   });
 
 
@@ -39,6 +54,15 @@ export class UsuarioAdminRegisterComponent implements OnInit {
     if(!this.user){
       location.href = "/";
     }
+    this.tipoDocumentocv.getTipoDocumento().subscribe(data =>{
+      this.tipoDocumento = data;
+    });
+    this.cuadrillacv.getCuadrilla().subscribe(data =>{
+      this.cuadrilla = data;
+    });
+    this.rolcv.getRol().subscribe(data =>{
+      this.rol = data;
+    });
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;

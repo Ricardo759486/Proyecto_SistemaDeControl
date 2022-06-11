@@ -55,7 +55,6 @@ export class ClienteAdminEditarComponent implements OnInit {
     this.loading=true;
 
     if ( this.editCliente.valid) {
-      console.log(cliente);
       this.clientescv.editarCliente(cliente).subscribe(
         data => {
           this.confirmar(data);

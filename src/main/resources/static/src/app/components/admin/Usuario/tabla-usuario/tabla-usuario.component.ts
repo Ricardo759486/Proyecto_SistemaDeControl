@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import {MatDialog} from "@angular/material/dialog";
 
 import {UsuarioAdminModalComponent} from "../usuario-admin-modal/usuario-admin-modal.component";
+import {Cliente} from "../../../../shared/models/Cliente";
 
 @Component({
   selector: 'app-tabla-usuario',
@@ -45,8 +46,6 @@ export class TablaUsuarioComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  Editar(usuario: UserI) {
-  }
 
   Delete(usuario: UserI) {
     Swal.fire({
@@ -76,6 +75,11 @@ export class TablaUsuarioComponent implements OnInit {
   Agregar() {
     this.openDialog();
   }
+
+  Editar(usuario: UserI) {
+    this.openDialog(usuario);
+  }
+
   openDialog(usuario?: UserI): void {
     const config = {
       data: {

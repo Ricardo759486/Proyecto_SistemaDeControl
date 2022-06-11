@@ -9,14 +9,20 @@
 <div class="new-post-container">
   <form [formGroup]="newMaterialCuadrilla" (ngSubmit)="register_materialCuadrilla(newMaterialCuadrilla.value)">
 
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Cuadrilla</mat-label>
-      <input matInput placeholder="Seleccione la cuadrilla" formControlName="cuadrilla">
+      <mat-select placeholder="cuadrilla" formControlName="cuadrilla">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>{{cuadrilla.movilAsociado}}</mat-option>
+      </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field appearance="fill">
       <mat-label>Material</mat-label>
-      <input matInput placeholder="Seleccione el material" formControlName="material">
+      <mat-select placeholder="material" formControlName="material">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let material of material" value = {{material.idInventario}}>{{material.nombreMaterial}}</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field>

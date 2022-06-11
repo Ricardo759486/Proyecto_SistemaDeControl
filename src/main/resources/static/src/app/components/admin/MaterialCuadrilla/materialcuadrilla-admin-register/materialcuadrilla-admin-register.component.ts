@@ -6,6 +6,10 @@ import {
   TablaAdminMaterialcuadrillaService
 } from "../../../../shared/services/admin/tabla_materialcuadrilla/tabla-admin-materialcuadrilla.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
+import {Material} from "../../../../shared/models/Material";
+import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
+import {MaterialAdminService} from "../../../../shared/services/admin/tabla_material/material-admin.service";
 
 @Component({
   selector: 'app-materialcuadrilla-admin',
@@ -19,14 +23,18 @@ export class MaterialcuadrillaAdminRegisterComponent implements OnInit {
   sideBarOpen = true;
   loading: any;
   materialcuadrilla: MaterialCuadrilla[] = [];
+  cuadrilla: Cuadrilla[] = [];
+  material: Material[] = [];
   errorInicio: boolean = false;
   mensajeError: any = "No se pudo asignar el material";
   constructor(private  materialcuadrillascv: TablaAdminMaterialcuadrillaService,
+              private  cuadrillacv: CuadrillaAdminService,
+              private  materialcv: MaterialAdminService,
               private router:Router,public dialog: MatDialog) { }
 
   public newMaterialCuadrilla = new FormGroup({
-    idCuadrilla: new FormControl('', Validators.required),
-    idMaterial: new FormControl('', Validators.required),
+    cuadrilla: new FormControl('', Validators.required),
+    material: new FormControl('', Validators.required),
     cantidad: new FormControl('', Validators.required),
   });
 
@@ -36,6 +44,12 @@ export class MaterialcuadrillaAdminRegisterComponent implements OnInit {
     if(!this.user){
       location.href = "/";
     }
+    this.cuadrillacv.getCuadrilla().subscribe(data =>{
+      this.cuadrilla = data;
+    });
+    this.materialcv.getMaterial().subscribe(data =>{
+      this.material = data;
+    });
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;

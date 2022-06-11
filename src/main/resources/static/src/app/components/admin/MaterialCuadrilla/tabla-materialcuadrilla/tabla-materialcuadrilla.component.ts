@@ -21,13 +21,11 @@ import {
 export class TablaMaterialcuadrillaComponent implements OnInit {
 
   materialcuadrilla: MaterialCuadrilla[] = [];
-  displayedColumns: string[] = ['ID', 'Cuadrilla','Material','Cantidad'];
+  displayedColumns: string[] = ['ID', 'cuadrilla','material','cantidad', 'actions'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
-
-
 
   constructor(private tabla_admin_materialcuadrillascv: TablaAdminMaterialcuadrillaService,
               private router:Router, public dialog: MatDialog) {
@@ -71,13 +69,12 @@ export class TablaMaterialcuadrillaComponent implements OnInit {
             'Material asignado eliminada.',
             'success'
           )
-          location.href = "/admin/materialcuadrilla_admin";
+          location.href = "/admin/materialCuadrilla_admin";
         })
       }
     })
 
   }
-
 
   Agregar() {
     this.openDialog();

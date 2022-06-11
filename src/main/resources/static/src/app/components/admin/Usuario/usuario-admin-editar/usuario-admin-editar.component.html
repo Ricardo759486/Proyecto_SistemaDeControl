@@ -7,7 +7,7 @@
 
 </div>
 <div class="new-post-container">
-  <form [formGroup]="newUsuario" (ngSubmit)="register_usuario(newUsuario.value)">
+  <form [formGroup]="editUsuario" (ngSubmit)="editar_usuario(editUsuario.value)">
 
     <mat-form-field>
       <mat-label>Correo / Login</mat-label>
@@ -58,4 +58,3 @@
     </div>
   </form>
 </div>
-

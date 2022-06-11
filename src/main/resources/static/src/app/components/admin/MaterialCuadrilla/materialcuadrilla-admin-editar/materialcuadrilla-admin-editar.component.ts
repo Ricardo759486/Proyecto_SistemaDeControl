@@ -75,8 +75,8 @@ export class MaterialcuadrillaAdminEditarComponent implements OnInit {
     this.editMaterialCuadrilla.patchValue({
       idRegistro: this.materialCuadrilla.idRegistro,
       cantidad: this.materialCuadrilla.cantidad,
-      idCuadrilla: this.materialCuadrilla.idCuadrilla,
-      idMaterial: this.materialCuadrilla.idMaterial,
+      cuadrilla: this.materialCuadrilla.cuadrilla,
+      material: this.materialCuadrilla.material,
     });
   }
 
