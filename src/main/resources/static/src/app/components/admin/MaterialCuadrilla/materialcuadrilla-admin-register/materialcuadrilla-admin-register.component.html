@@ -8,18 +8,22 @@
 </div>
 <div class="new-post-container">
   <form [formGroup]="newMaterialCuadrilla" (ngSubmit)="register_materialCuadrilla(newMaterialCuadrilla.value)">
+
     <mat-form-field>
       <mat-label>Cuadrilla</mat-label>
       <input matInput placeholder="Seleccione la cuadrilla" formControlName="cuadrilla">
     </mat-form-field>
+
     <mat-form-field>
       <mat-label>Material</mat-label>
       <input matInput placeholder="Seleccione el material" formControlName="material">
     </mat-form-field>
+
     <mat-form-field>
       <mat-label>Cantidad</mat-label>
       <input matInput placeholder="Cantidad a asignar" formControlName="cantidad" >
     </mat-form-field>
+
     <div class="container-button">
       <input type="submit" class="mat-flat-button" value="Save">
     </div>
