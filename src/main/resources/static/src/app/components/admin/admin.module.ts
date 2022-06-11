@@ -43,6 +43,9 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { ProveedorAdminModalComponent } from './proveedor/proveedor-admin-modal/proveedor-admin-modal.component';
 import {MatSelectModule} from "@angular/material/select";
 import { CuadrillaAdminModalComponent } from './cuadrilla/cuadrilla-admin-modal/cuadrilla-admin-modal.component';
+import { ClienteAdminModalComponent } from './Cliente/cliente-admin-modal/cliente-admin-modal.component';
+import {TablaClienteComponent} from "./Cliente/tabla-cliente/tabla-cliente.component";
+import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-admin-page.component";
 
 
 @NgModule({
@@ -52,16 +55,12 @@ import { CuadrillaAdminModalComponent } from './cuadrilla/cuadrilla-admin-modal/
     NavbarAdminComponent,
     HomeAdminComponent,
     AdminDashboardMainComponent,
-    ProveedorAdminRegisterComponent,
     MaterialAdminRegisterComponent,
-    TablaProveedorComponent,
-    ClienteAdminRegisterComponent,
     ZonaAdminRegisterComponent,
     MaterialcuadrillaAdminRegisterComponent,
     OrdentrabajoAdminRegisterComponent,
     ParametroAdminRegisterComponent,
     TelefonoAdminRegisterComponent,
-    ProveedorAdminPageComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
     MaterialAdminPageComponent,
@@ -69,14 +68,22 @@ import { CuadrillaAdminModalComponent } from './cuadrilla/cuadrilla-admin-modal/
     UsuarioAdminPageComponent,
     TablaUsuarioComponent,
     UsuarioAdminRegisterComponent,
-    ProveedorAdminPageComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
     CuadrillasAdminRegisterComponent,
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent,
-    ProveedorAdminModalComponent,
     CuadrillaAdminModalComponent,
+
+    ClienteAdminRegisterComponent,
+    TablaClienteComponent,
+    ClienteAdminPageComponent,
+    ClienteAdminModalComponent,
+
+    ProveedorAdminRegisterComponent,
+    TablaProveedorComponent,
+    ProveedorAdminPageComponent,
+    ProveedorAdminModalComponent,
 
   ],
   imports: [

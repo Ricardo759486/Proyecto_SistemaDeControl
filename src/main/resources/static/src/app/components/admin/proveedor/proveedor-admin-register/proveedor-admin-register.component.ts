@@ -21,7 +21,8 @@ export class ProveedorAdminRegisterComponent implements OnInit {
   proveedor: Proveedor[] = [];
   errorInicio: boolean = false;
   mensajeError: any = "No se pudo registrar el proveedor";
-  constructor(private  provedorscv: TablaAdminProveedorService, private router:Router,public dialog: MatDialog) { }
+  constructor(private  provedorscv: TablaAdminProveedorService,
+              private router:Router,public dialog: MatDialog) { }
 
   public newProveedor = new FormGroup({
     nit: new FormControl('', Validators.required),

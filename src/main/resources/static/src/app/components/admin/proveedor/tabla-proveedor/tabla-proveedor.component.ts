@@ -16,7 +16,6 @@ export interface UserData {
   fruit: string;
 }
 
-
 @Component({
   selector: 'app-tabla-proveedor',
   templateUrl: './tabla-proveedor.component.html',
@@ -33,7 +32,8 @@ export class TablaProveedorComponent implements OnInit {
 
 
 
-  constructor(private tabla_admin_provvedorscv: TablaAdminProveedorService, private router:Router, public dialog: MatDialog) {
+  constructor(private tabla_admin_provvedorscv: TablaAdminProveedorService,
+              private router:Router, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
