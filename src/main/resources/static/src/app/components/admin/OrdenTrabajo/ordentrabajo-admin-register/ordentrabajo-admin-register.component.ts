@@ -6,6 +6,14 @@ import {OrdenTrabajo} from "../../../../shared/models/OrdenTrabajo";
 import {
   TablaAdminOrdentrabajoService
 } from "../../../../shared/services/admin/tabla_ordentrabajo/tabla-admin-ordentrabajo.service";
+import {Cliente} from "../../../../shared/models/Cliente";
+import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
+import {TipoServicio} from "../../../../shared/models/TipoServicio";
+import {TablaAdminClienteService} from "../../../../shared/services/admin/tabla_cliente/tabla-admin-cliente.service";
+import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
+import {
+  TablaAdminTiposervicioService
+} from "../../../../shared/services/admin/tabla_tiposervicio/tabla-admin-tiposervicio.service";
 
 @Component({
   selector: 'app-ordentrabajo-admin',
@@ -19,16 +27,23 @@ export class OrdentrabajoAdminRegisterComponent implements OnInit {
   sideBarOpen = true;
   loading: any;
   ordentrabajo: OrdenTrabajo[] = [];
+  cliente: Cliente[] = [];
+  cuadrilla: Cuadrilla[] = [];
+  tipoServicio: TipoServicio[] = [];
   errorInicio: boolean = false;
   mensajeError: any = "No se pudo registrar la orden de trabajo";
+
   constructor(private  ordentrabajoscv: TablaAdminOrdentrabajoService,
+              private  clientecv: TablaAdminClienteService,
+              private  cuadrillacv: CuadrillaAdminService,
+              private  tipoServiciocv: TablaAdminTiposervicioService,
               private router:Router,public dialog: MatDialog) { }
 
   public newOrdenTrabajo = new FormGroup({
     descripcion: new FormControl('', Validators.required),
-    idCliente: new FormControl('', Validators.required),
-    idCuadrilla: new FormControl('', Validators.required),
-    idTipoServicio: new FormControl('', Validators.required),
+    cliente: new FormControl('', Validators.required),
+    cuadrilla: new FormControl('', Validators.required),
+    tipoServicio: new FormControl('', Validators.required),
   });
 
 
@@ -37,6 +52,15 @@ export class OrdentrabajoAdminRegisterComponent implements OnInit {
     if(!this.user){
       location.href = "/";
     }
+    this.clientecv.getClientes().subscribe(data =>{
+      this.cliente = data;
+    });
+    this.cuadrillacv.getCuadrilla().subscribe(data =>{
+      this.cuadrilla = data;
+    });
+    this.tipoServiciocv.getTipoServicios().subscribe(data =>{
+      this.tipoServicio = data;
+    });
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;

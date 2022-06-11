@@ -58,25 +58,18 @@ import {
   MaterialcuadrillaAdminPageComponent
 } from "./MaterialCuadrilla/materialcuadrilla-admin-page/materialcuadrilla-admin-page.component";
 import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/cliente-admin-editar.component';
-
 import {TelefonoAdminPageComponent} from "./Telefono/telefono-admin-page/telefono-admin-page.component";
 import {TelefonoAdminModalComponent} from "./Telefono/telefono-admin-modal/telefono-admin-modal.component";
 import {TablaTelefonoComponent} from "./Telefono/tabla-telefono/tabla-telefono.component";
-
 import { CuadrillaAdminEditarComponent } from './cuadrilla/cuadrilla-admin-editar/cuadrilla-admin-editar.component';
-<<<<<<< HEAD
 import { MaterialcuadrillaAdminEditarComponent } from './MaterialCuadrilla/materialcuadrilla-admin-editar/materialcuadrilla-admin-editar.component';
 import { UsuarioAdminEditarComponent } from './Usuario/usuario-admin-editar/usuario-admin-editar.component';
-=======
 import {OrdentrabajoAdminPageComponent} from "./OrdenTrabajo/ordentrabajo-admin-page/ordentrabajo-admin-page.component";
 import {TablaOrdentrabajoComponent} from "./OrdenTrabajo/tabla-ordentrabajo/tabla-ordentrabajo.component";
 import {
   OrdentrabajoAdminModalComponent
 } from "./OrdenTrabajo/ordentrabajo/ordentrabajo-admin-modal/ordentrabajo-admin-modal.component";
-
-
->>>>>>> 2f00bd32db3683ba76e7721f40945f834d56bed6
-
+import { OrdentrabajoAdminEditarComponent } from './OrdenTrabajo/ordentrabajo-admin-editar/ordentrabajo-admin-editar.component';
 
 @NgModule({
   declarations: [
@@ -133,16 +126,14 @@ import {
     TelefonoAdminRegisterComponent,
     TelefonoAdminPageComponent,
     TablaTelefonoComponent,
-<<<<<<< HEAD
     UsuarioAdminEditarComponent,
-    
-=======
+
     TablaOrdentrabajoComponent,
     OrdentrabajoAdminModalComponent,
     OrdentrabajoAdminRegisterComponent,
     OrdentrabajoAdminPageComponent,
+    OrdentrabajoAdminEditarComponent,
 
->>>>>>> 2f00bd32db3683ba76e7721f40945f834d56bed6
   ],
   imports: [
     CommonModule,
