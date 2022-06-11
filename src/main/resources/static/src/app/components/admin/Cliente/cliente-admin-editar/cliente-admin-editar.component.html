@@ -7,7 +7,7 @@
 
 </div>
 <div class="new-post-container">
-  <form [formGroup]="newCliente" (ngSubmit)="register_cliente(newCliente.value)">
+  <form [formGroup]="editCliente" (ngSubmit)="editar_cliente(editCliente.value)">
 
     <mat-form-field appearance="fill">
       <mat-label>Tipo de documento</mat-label>
@@ -18,7 +18,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-label>Numero de documento</mat-label>
+      <mat-label>Numero de Documento</mat-label>
       <input matInput placeholder="numeroDocumento" formControlName="numeroDocumento">
     </mat-form-field>
 

@@ -48,6 +48,7 @@ import { ClienteAdminModalComponent } from './Cliente/cliente-admin-modal/client
 import {TablaClienteComponent} from "./Cliente/tabla-cliente/tabla-cliente.component";
 import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-admin-page.component";
 import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/proveedor-admin-editar.component";
+<<<<<<< HEAD
 import {
   MaterialcuadrillaAdminModalComponent
 } from "./MaterialCuadrilla/materialcuadrilla-admin-modal/materialcuadrilla-admin-modal.component";
@@ -59,6 +60,9 @@ import {
 } from "./MaterialCuadrilla/materialcuadrilla-admin-page/materialcuadrilla-admin-page.component";
 
 
+=======
+import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/cliente-admin-editar.component';
+>>>>>>> 9aecf2b9e11f706889e09900181f44529867605a
 
 
 @NgModule({
@@ -92,6 +96,7 @@ import {
     TablaClienteComponent,
     ClienteAdminPageComponent,
     ClienteAdminModalComponent,
+    ClienteAdminEditarComponent,
 
     ProveedorAdminRegisterComponent,
     TablaProveedorComponent,
