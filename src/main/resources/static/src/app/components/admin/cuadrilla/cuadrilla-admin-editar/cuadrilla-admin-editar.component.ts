@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
-import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Zona} from "../../../../shared/models/Zona";
 import {Proveedor} from "../../../../shared/models/Proveedor";
 import {TurnoTrabajo} from "../../../../shared/models/TurnoTrabajo";
@@ -14,44 +12,39 @@ import {
 import {
   TablaAdminTurnotrabajoService
 } from "../../../../shared/services/admin/tabla_turnotrabajo/tabla-admin-turnotrabajo.service";
+import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
+import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
 
 @Component({
-  selector: 'app-cuadrilla-admin',
-  templateUrl: './cuadrilla-admin-register.component.html',
-  styleUrls: ['./cuadrilla-admin-register.component.scss']
+  selector: 'app-cuadrilla-admin-editar',
+  templateUrl: './cuadrilla-admin-editar.component.html',
+  styleUrls: ['./cuadrilla-admin-editar.component.scss']
 })
-export class CuadrillasAdminRegisterComponent implements OnInit {
+export class CuadrillaAdminEditarComponent implements OnInit {
 
-  user: any={};
-  title = 'admin-panel-layout';
   loading: any;
-  cuadrilla: Cuadrilla[] = [];
+  errorInicio: boolean = false;
+  mensajeError: any = "No se pudo actualizar la cuadrilla";
   zona: Zona[] = [];
   proveedor: Proveedor[] = [];
   turnoTrabajo: TurnoTrabajo[] = [];
-  sideBarOpen: any;
-  errorInicio: any;
-  mensajeError: any;
+  @Input() cuadrilla : Cuadrilla;
 
-  constructor(private  cuadrillascv: CuadrillaAdminService,
+  constructor(private  cuadrillacv: CuadrillaAdminService,
               private  zonacv: TablaAdminZonaService,
               private  proveedorcv: TablaAdminProveedorService,
               private  turnoTrabajocv: TablaAdminTurnotrabajoService,
-              private router:Router,public dialog: MatDialog) { }
-
-  public newCuadrilla = new FormGroup({
+              private router:Router,public dialog: MatDialog) {
+  }
+  public editCuadrilla = new FormGroup({
     movilAsociado: new FormControl('', Validators.required),
     zona: new FormControl('', Validators.required),
     proveedor: new FormControl('', Validators.required),
     turnoTrabajo: new FormControl('', Validators.required),
   });
 
-
   ngOnInit(): void {
-    this.user = localStorage.getItem("user");
-    if(!this.user){
-      location.href = "/";
-    }
+    this.initValuesForm();
     this.zonacv.getZonas().subscribe(data =>{
       this.zona = data;
     });
@@ -62,35 +55,40 @@ export class CuadrillasAdminRegisterComponent implements OnInit {
       this.turnoTrabajo = data;
     });
   }
-  sideBarToggler() {
-    this.sideBarOpen = !this.sideBarOpen;
-  }
-
-  confirmar(resultant: Cuadrilla){
+  confirmar(resultant:Cuadrilla){
     this.loading=false;
     if(resultant){
-      alert("Cuadrilla registrada");
+      alert("Cuadrilla actualizada");
       this.dialog.closeAll();
-      this.cuadrilla=[];
+      location.href = "/admin/cuadrilla_admin";
     }else{
-      alert("No se pudo registrar la cuadrilla");
+      alert("No se pudo aztualizar la cuadrilla");
     }
   }
+  editar_cuadrilla(cuadrilla: Cuadrilla){
 
-  register_cuadrilla(cuadrilla: Cuadrilla){ {
+    cuadrilla.idCuadrilla= this.cuadrilla.idCuadrilla;
+    cuadrilla.estado= this.cuadrilla.estado;
     this.loading=true;
 
-    if ( this.newCuadrilla.valid) {
-      this.cuadrillascv.registerService(cuadrilla).subscribe(
+    if ( this.editCuadrilla.valid) {
+      this.cuadrillacv.editarCuadrilla(cuadrilla).subscribe(
         data => {
           this.confirmar(data);
         })
     }else {
-      alert("No se pudo registrar la cuadrilla");
+      alert("No se pudo actualizar la cuadrilla");
       this.loading=false;
     }
   }
-
-
+  private initValuesForm(): void {
+    this.editCuadrilla.patchValue({
+      idCuadrilla: this.cuadrilla.idCuadrilla,
+      movilAsociado: this.cuadrilla.movilAsociado,
+      zona: this.cuadrilla.zona,
+      proveedor: this.cuadrilla.proveedor,
+      turnoTrabajo: this.cuadrilla.turnoTrabajo,
+    });
   }
+
 }

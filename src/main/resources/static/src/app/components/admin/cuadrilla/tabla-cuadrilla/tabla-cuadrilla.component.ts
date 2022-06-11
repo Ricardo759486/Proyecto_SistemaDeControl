@@ -44,11 +44,6 @@ export class TablaCuadrillaComponent implements OnInit, AfterViewInit {
     }
   }
 
-
-  Editar(cuadrilla: Cuadrilla) {
-
-  }
-
   Delete(cuadrilla: Cuadrilla) {
     Swal.fire({
       title: 'Estas seguro?',
@@ -75,6 +70,9 @@ export class TablaCuadrillaComponent implements OnInit, AfterViewInit {
   }
   Agregar() {
     this.openDialog();
+  }
+  Editar(cuadrilla: Cuadrilla) {
+    this.openDialog(cuadrilla);
   }
   openDialog(cuadrilla?: Cuadrilla): void {
     const config = {

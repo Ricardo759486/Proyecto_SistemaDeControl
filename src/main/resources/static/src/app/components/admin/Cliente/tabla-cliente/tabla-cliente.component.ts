@@ -54,10 +54,6 @@ export class TablaClienteComponent implements OnInit {
     }
   }
 
-  Editar(cliente: Cliente) {
-
-  }
-
   Delete(cliente: Cliente) {
     Swal.fire({
       title: 'Are you sure?',
@@ -86,6 +82,11 @@ export class TablaClienteComponent implements OnInit {
   Agregar() {
     this.openDialog();
   }
+
+  Editar(cliente: Cliente) {
+    this.openDialog(cliente);
+  }
+
   openDialog(cliente?: Cliente): void {
     const config = {
       data: {

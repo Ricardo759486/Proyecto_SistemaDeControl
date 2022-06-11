@@ -7,7 +7,8 @@
 
 </div>
 <div class="new-post-container">
-  <form [formGroup]="newCuadrilla" (ngSubmit)="register_cuadrilla(newCuadrilla.value)">
+  <form [formGroup]="editCuadrilla" (ngSubmit)="editar_cuadrilla(editCuadrilla.value)">
+
 
     <mat-form-field>
       <mat-label>Movil Asociado</mat-label>
@@ -43,5 +44,3 @@
     </div>
   </form>
 </div>
-
-

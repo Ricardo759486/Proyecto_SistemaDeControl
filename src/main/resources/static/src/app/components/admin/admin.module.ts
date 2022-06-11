@@ -49,6 +49,7 @@ import {TablaClienteComponent} from "./Cliente/tabla-cliente/tabla-cliente.compo
 import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-admin-page.component";
 import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/proveedor-admin-editar.component";
 import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/cliente-admin-editar.component';
+import { CuadrillaAdminEditarComponent } from './cuadrilla/cuadrilla-admin-editar/cuadrilla-admin-editar.component';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/clie
     ProveedorAdminPageComponent,
     ProveedorAdminModalComponent,
     ProveedorAdminEditarComponent,
+    CuadrillaAdminEditarComponent,
   ],
   imports: [
     CommonModule,
