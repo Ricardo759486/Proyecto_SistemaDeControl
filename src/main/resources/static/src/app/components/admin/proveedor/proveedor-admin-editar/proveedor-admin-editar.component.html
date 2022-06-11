@@ -7,26 +7,24 @@
 
 </div>
 <div class="new-post-container">
-  <form [formGroup]="newCliente" (ngSubmit)="register_cliente(newCliente.value)">
-
-    <mat-form-field appearance="fill">
-      <mat-label>Tipo de documento</mat-label>
-      <mat-select placeholder="tipoDocumento" formControlName="tipoDocumento">
-        <mat-option>None</mat-option>
-        <mat-option *ngFor="let tipoDocumento of tipoDocumento" value = {{tipoDocumento.idDocumento}}>{{tipoDocumento.descripcion}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
+  <form [formGroup]="editProveedor" (ngSubmit)="editar_proveedor(editProveedor.value)">
     <mat-form-field>
-      <mat-label>Numero de documento</mat-label>
-      <input matInput placeholder="numeroDocumento" formControlName="numeroDocumento">
+      <mat-label>Nit</mat-label>
+      <input matInput placeholder="nit" formControlName="nit">
     </mat-form-field>
-
     <mat-form-field>
       <mat-label>Direccion</mat-label>
-      <input matInput placeholder="direccion" formControlName="direccion">
+      <input matInput placeholder="Direccion" formControlName="direccion">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" formControlName="email" type="email">
     </mat-form-field>
 
+    <mat-form-field>
+      <mat-label>Nombre</mat-label>
+      <input matInput placeholder="Nombre" formControlName="nombre">
+    </mat-form-field>
     <div class="container-button">
       <input type="submit" class="mat-flat-button" value="Save">
     </div>
