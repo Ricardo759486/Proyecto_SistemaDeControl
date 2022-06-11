@@ -43,7 +43,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { ProveedorAdminModalComponent } from './proveedor/proveedor-admin-modal/proveedor-admin-modal.component';
 import {MatSelectModule} from "@angular/material/select";
 import { CuadrillaAdminModalComponent } from './cuadrilla/cuadrilla-admin-modal/cuadrilla-admin-modal.component';
-
+import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/proveedor-admin-editar.component";
 
 @NgModule({
   declarations: [
@@ -77,7 +77,7 @@ import { CuadrillaAdminModalComponent } from './cuadrilla/cuadrilla-admin-modal/
     TablaCuadrillaComponent,
     ProveedorAdminModalComponent,
     CuadrillaAdminModalComponent,
-
+    ProveedorAdminEditarComponent,
   ],
   imports: [
     CommonModule,
