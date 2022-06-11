@@ -48,7 +48,6 @@ import { ClienteAdminModalComponent } from './Cliente/cliente-admin-modal/client
 import {TablaClienteComponent} from "./Cliente/tabla-cliente/tabla-cliente.component";
 import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-admin-page.component";
 import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/proveedor-admin-editar.component";
-
 import {
   MaterialcuadrillaAdminModalComponent
 } from "./MaterialCuadrilla/materialcuadrilla-admin-modal/materialcuadrilla-admin-modal.component";
@@ -58,10 +57,10 @@ import {
 import {
   MaterialcuadrillaAdminPageComponent
 } from "./MaterialCuadrilla/materialcuadrilla-admin-page/materialcuadrilla-admin-page.component";
-
-
-
 import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/cliente-admin-editar.component';
+import {TelefonoAdminPageComponent} from "./Telefono/telefono-admin-page/telefono-admin-page.component";
+import {TelefonoAdminModalComponent} from "./Telefono/telefono-admin-modal/telefono-admin-modal.component";
+import {TablaTelefonoComponent} from "./Telefono/tabla-telefono/tabla-telefono.component";
 
 
 
@@ -76,7 +75,6 @@ import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/clie
     ZonaAdminRegisterComponent,
     OrdentrabajoAdminRegisterComponent,
     ParametroAdminRegisterComponent,
-    TelefonoAdminRegisterComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
     MaterialAdminPageComponent,
@@ -107,6 +105,10 @@ import { ClienteAdminEditarComponent } from './Cliente/cliente-admin-editar/clie
     TablaMaterialcuadrillaComponent,
     MaterialcuadrillaAdminPageComponent,
     MaterialcuadrillaAdminRegisterComponent,
+    TelefonoAdminModalComponent,
+    TelefonoAdminRegisterComponent,
+    TelefonoAdminPageComponent,
+    TablaTelefonoComponent,
 
   ],
   imports: [

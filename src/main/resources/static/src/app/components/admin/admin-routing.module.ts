@@ -9,7 +9,7 @@ import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-ad
 import {
   MaterialcuadrillaAdminPageComponent
 } from "./MaterialCuadrilla/materialcuadrilla-admin-page/materialcuadrilla-admin-page.component";
-
+import {TelefonoAdminPageComponent} from "./Telefono/telefono-admin-page/telefono-admin-page.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'usuario_admin', component: UsuarioAdminPageComponent },
   { path: 'cliente_admin', component: ClienteAdminPageComponent },
   { path: 'materialcuadrilla_admin', component: MaterialcuadrillaAdminPageComponent},
+  { path: 'telefono_admin', component: TelefonoAdminPageComponent},
 ];
 
 @NgModule({
