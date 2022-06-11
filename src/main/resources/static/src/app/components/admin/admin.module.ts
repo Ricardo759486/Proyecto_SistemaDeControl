@@ -42,6 +42,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import { ProveedorAdminModalComponent } from './proveedor/proveedor-admin-modal/proveedor-admin-modal.component';
 import {MatSelectModule} from "@angular/material/select";
+import { CuadrillaAdminModalComponent } from './cuadrilla/cuadrilla-admin-modal/cuadrilla-admin-modal.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import {MatSelectModule} from "@angular/material/select";
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent,
     ProveedorAdminModalComponent,
+    CuadrillaAdminModalComponent,
 
   ],
   imports: [
