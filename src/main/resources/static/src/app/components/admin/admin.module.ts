@@ -43,14 +43,12 @@ import {MatDialogModule} from "@angular/material/dialog";
 import { ProveedorAdminModalComponent } from './proveedor/proveedor-admin-modal/proveedor-admin-modal.component';
 import {MatSelectModule} from "@angular/material/select";
 import { CuadrillaAdminModalComponent } from './cuadrilla/cuadrilla-admin-modal/cuadrilla-admin-modal.component';
-<<<<<<< HEAD
 import {UsuarioAdminModalComponent} from "./Usuario/usuario-admin-modal/usuario-admin-modal.component";
-=======
 import { ClienteAdminModalComponent } from './Cliente/cliente-admin-modal/cliente-admin-modal.component';
 import {TablaClienteComponent} from "./Cliente/tabla-cliente/tabla-cliente.component";
 import {ClienteAdminPageComponent} from "./Cliente/cliente-admin-page/cliente-admin-page.component";
 import {ProveedorAdminEditarComponent} from "./proveedor/proveedor-admin-editar/proveedor-admin-editar.component";
->>>>>>> cb8b7bad449d705713c4f6eb8bef0599d9ab6d16
+
 
 @NgModule({
   declarations: [
