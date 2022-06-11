@@ -1,15 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Proveedor} from "../../../../shared/models/Proveedor";
-import {Zona} from "../../../../shared/models/Zona";
-import {TurnoTrabajo} from "../../../../shared/models/TurnoTrabajo";
 import {Router} from "@angular/router";
-import {TablaAdminZonaService} from "../../../../shared/services/admin/tabla_zona/tabla-admin-zona.service";
-import {
-  TablaAdminProveedorService
-} from "../../../../shared/services/admin/tabla_proveedor/tabla-admin-proveedor.service";
-import {
-  TablaAdminTurnotrabajoService
-} from "../../../../shared/services/admin/tabla_turnotrabajo/tabla-admin-turnotrabajo.service";
+import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatDialog} from "@angular/material/dialog";
 import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
 
 @Component({
@@ -20,61 +13,58 @@ import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cua
 export class CuadrillasAdminRegisterComponent implements OnInit {
 
   user: any={};
+  title = 'admin-panel-layout';
   loading: any;
-  cuadrilla: any={};
+  cuadrilla: Cuadrilla[] = [];
   sideBarOpen: any;
   errorInicio: any;
   mensajeError: any;
 
-  zona: Zona[] = [];
-  proveedor: Proveedor[] = [];
-  turnoTrabajo: TurnoTrabajo[] = [];
+  constructor(private  cuadrillascv: CuadrillaAdminService, private router:Router,public dialog: MatDialog) { }
 
-  constructor(private  cuadrillascv: CuadrillaAdminService,
-              private admin_zonascv: TablaAdminZonaService,
-              private admin_proveedorscv: TablaAdminProveedorService,
-              private admin_turnoTrabajoscv: TablaAdminTurnotrabajoService,
-              private router:Router) { }
+  public newCuadrilla = new FormGroup({
+    movilasociado: new FormControl('', Validators.required),
+    idzona: new FormControl('', Validators.required),
+    idproveedor: new FormControl('', Validators.required),
+    idturno: new FormControl('', Validators.required),
+  });
+
 
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
     if(!this.user){
       location.href = "/";
     }
-    this.admin_zonascv.getZonas().subscribe(data =>{
-      this.zona = data;
-    });
-    this.admin_proveedorscv.getProveedores().subscribe(data =>{
-      this.proveedor = data;
-    });
-    this.admin_turnoTrabajoscv.getTurnoTrabajo().subscribe(data =>{
-      this.turnoTrabajo = data;
-    });
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
 
-  register_cuadrilla() {
-    let formulary : any = document.getElementById("register_cuadrilla");
-    let formularyValid:boolean = formulary.reportValidity();
-    if (formularyValid){
-
-      this.loading=true;
-      this.cuadrillascv.registerService(this.cuadrilla).subscribe(
-        data => {
-          this.confirmar(data);
-        })
-    }
-  }
-
-  confirmar(resultant:any){
+  confirmar(resultant: Cuadrilla){
     this.loading=false;
     if(resultant){
       alert("Cuadrilla registrada");
-      this.cuadrilla={};
+      this.dialog.closeAll();
+      this.cuadrilla=[];
     }else{
-      this.errorInicio=true;
+      alert("No se pudo registrar la cuadrilla");
     }
+  }
+
+  register_cuadrilla(cuadrilla: Cuadrilla){ {
+    this.loading=true;
+
+    if ( this.newCuadrilla.valid) {
+      this.cuadrillascv.registerService(cuadrilla).subscribe(
+        data => {
+          this.confirmar(data);
+        })
+    }else {
+      alert("No se pudo registrar la cuadrilla");
+      this.loading=false;
+    }
+  }
+
+
   }
 }

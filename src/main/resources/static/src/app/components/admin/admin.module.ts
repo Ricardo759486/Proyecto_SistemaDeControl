@@ -42,7 +42,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import { ProveedorAdminModalComponent } from './proveedor/proveedor-admin-modal/proveedor-admin-modal.component';
 import {MatSelectModule} from "@angular/material/select";
-import { ProveedorAdminEditarComponent } from './proveedor/proveedor-admin-editar/proveedor-admin-editar.component';
+import { CuadrillaAdminModalComponent } from './cuadrilla/cuadrilla-admin-modal/cuadrilla-admin-modal.component';
 
 
 @NgModule({
@@ -76,7 +76,7 @@ import { ProveedorAdminEditarComponent } from './proveedor/proveedor-admin-edita
     CuadrillaAdminPageComponent,
     TablaCuadrillaComponent,
     ProveedorAdminModalComponent,
-    ProveedorAdminEditarComponent,
+    CuadrillaAdminModalComponent,
 
   ],
   imports: [

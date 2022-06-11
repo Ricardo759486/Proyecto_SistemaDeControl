@@ -2,11 +2,13 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {Cuadrilla} from "../../../../shared/models/Cuadrilla";
 import {CuadrillaAdminService} from "../../../../shared/services/admin/tabla_cuadrilla/cuadrilla-admin.service";
-import {Proveedor} from "../../../../shared/models/Proveedor";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
 import Swal from 'sweetalert2';
+import {MatDialog} from "@angular/material/dialog";
+import {CuadrillaAdminModalComponent} from "../cuadrilla-admin-modal/cuadrilla-admin-modal.component";
+
 @Component({
   selector: 'app-tabla-cuadrilla',
   templateUrl: './tabla-cuadrilla.component.html',
@@ -20,7 +22,8 @@ export class TablaCuadrillaComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
-  constructor(private tabla_admin_cuadrillascv: CuadrillaAdminService, private router:Router) { }
+
+  constructor(private tabla_admin_cuadrillascv: CuadrillaAdminService, private router:Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.tabla_admin_cuadrillascv.getCuadrilla().subscribe(data =>{
@@ -48,20 +51,20 @@ export class TablaCuadrillaComponent implements OnInit, AfterViewInit {
 
   Delete(cuadrilla: Cuadrilla) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Estas seguro?',
+      text: "No podras recuperar la cuadrilla",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, eliminar!'
     }).then((result) => {
       if (result.value) {
         this.tabla_admin_cuadrillascv.deleteCuadrilla(cuadrilla).subscribe(data => {
           this.cuadrilla = this.cuadrilla.filter(p => p !== cuadrilla);
           Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
+            'Eliminado!',
+            'Cuadrilla eliminada.',
             'success'
           )
           location.href = "/admin/cuadrilla_admin";
@@ -70,7 +73,21 @@ export class TablaCuadrillaComponent implements OnInit, AfterViewInit {
     })
 
   }
-  Agregar(){
-
+  Agregar() {
+    this.openDialog();
   }
+  openDialog(cuadrilla?: Cuadrilla): void {
+    const config = {
+      data: {
+        message: cuadrilla ? 'Editar' : 'Agregar',
+        content: cuadrilla
+      }
+    };
+    const dialogRef = this.dialog.open(CuadrillaAdminModalComponent, config);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result ${result}`);
+    });
+  }
+
 }
+
