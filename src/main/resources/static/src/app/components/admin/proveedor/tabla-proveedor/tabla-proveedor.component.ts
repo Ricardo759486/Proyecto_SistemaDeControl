@@ -30,8 +30,6 @@ export class TablaProveedorComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
-
-
   constructor(private tabla_admin_provvedorscv: TablaAdminProveedorService,
               private router:Router, public dialog: MatDialog) {
   }

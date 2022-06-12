@@ -65,7 +65,5 @@ export class ProveedorAdminRegisterComponent implements OnInit {
       this.loading=false;
     }
   }
-
-
 }
 }

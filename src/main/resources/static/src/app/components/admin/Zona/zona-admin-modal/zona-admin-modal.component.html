@@ -1,0 +1,10 @@
+<h2>{{data.message}}</h2>
+<mat-dialog-content class="dialog-content">
+  <div *ngIf="data.content; else showNewForm">
+    <app-zona-admin-editar [zona]="data.content"></app-zona-admin-editar>
+  </div>
+  <ng-template #showNewForm>
+    <app-zona-admin></app-zona-admin>
+  </ng-template>
+</mat-dialog-content>
+

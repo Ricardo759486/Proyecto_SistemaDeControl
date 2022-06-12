@@ -98,6 +98,26 @@ import {
 import {
   TiposervicioAdminEditarComponent
 } from "./TipoServicio/tiposervicio-admin-editar/tiposervicio-admin-editar.component";
+import {
+  TurnotrabajoRegisterPageComponent
+} from "./TurnoTrabajo/turnotrabajo-admin-page/turnotrabajo-register-page.component";
+import {TablaTurnotrabajoComponent} from "./TurnoTrabajo/tabla-turnotrabajo/tabla-turnotrabajo.component";
+import {
+  TurnotrabajoRegisterRegisterComponent
+} from "./TurnoTrabajo/turnotrabajo-admin-register/turnotrabajo-register-register.component";
+import {
+  TurnotrabajoAdminModalComponent
+} from "./TurnoTrabajo/turnotrabajo-admin-modal/turnotrabajo-admin-modal.component";
+import {
+  TurnotrabajoAdminEditarComponent
+} from "./TurnoTrabajo/turnotrabajo-admin-editar/turnotrabajo-admin-editar.component";
+import {ZonaAdminPageComponent} from "./Zona/zona-admin-page/zona-admin-page.component";
+import {TablaZonaComponent} from "./Zona/tabla-zona/tabla-zona.component";
+import {ZonaAdminModalComponent} from "./Zona/zona-admin-modal/zona-admin-modal.component";
+import { ZonaAdminEditarComponent } from './Zona/zona-admin-editar/zona-admin-editar.component';
+import {AuditoriaAdminPageComponent} from "./Auditoria/auditoria-admin-page/auditoria-admin-page.component";
+import {TablaAuditoriaComponent} from "./Auditoria/tabla-auditoria/tabla-auditoria.component";
+
 
 @NgModule({
   declarations: [
@@ -107,7 +127,6 @@ import {
     HomeAdminComponent,
     AdminDashboardMainComponent,
     MaterialAdminRegisterComponent,
-    ZonaAdminRegisterComponent,
     OrdentrabajoAdminRegisterComponent,
     ParametroAdminPageComponent,
     TablaMaterialComponent,
@@ -179,6 +198,21 @@ import {
     TiposervicioAdminRegisterComponent,
     TiposervicioAdminPageComponent,
     TablaTiposervicioComponent,
+
+    TurnotrabajoAdminModalComponent,
+    TurnotrabajoAdminEditarComponent,
+    TurnotrabajoRegisterPageComponent,
+    TurnotrabajoRegisterRegisterComponent,
+    TablaTurnotrabajoComponent,
+
+    ZonaAdminModalComponent,
+    ZonaAdminEditarComponent,
+    ZonaAdminPageComponent,
+    ZonaAdminRegisterComponent,
+    TablaZonaComponent,
+
+    AuditoriaAdminPageComponent,
+    TablaAuditoriaComponent,
 
   ],
   imports: [

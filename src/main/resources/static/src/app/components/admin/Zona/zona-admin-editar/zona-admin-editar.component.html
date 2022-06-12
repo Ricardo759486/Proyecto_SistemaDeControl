@@ -7,19 +7,18 @@
 
 </div>
 <div class="new-post-container">
-  <form [formGroup]="newZona" (ngSubmit)="register_zona(newZona.value)">
+  <form [formGroup]="editZona" (ngSubmit)="editar_zona(editZona.value)">
     <mat-form-field>
       <mat-label>Ciudad</mat-label>
       <input matInput placeholder="Ingrese la ciudad" formControlName="ciudad">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Coordenadas</mat-label>
-      <input matInput placeholder="Ingrese las coordenadas" formControlName="coordenadas" >
+      <input matInput placeholder="Ingrese las coordenadas" formControlName="coordenadas">
     </mat-form-field>
-
     <mat-form-field>
       <mat-label>Localidad</mat-label>
-      <input matInput placeholder="Ingrese la localidad" formControlName="localidad">
+      <input matInput placeholder="Email" formControlName="localidad" >
     </mat-form-field>
     <div class="container-button">
       <input type="submit" class="mat-flat-button" value="Save">

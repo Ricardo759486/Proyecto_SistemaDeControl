@@ -17,6 +17,11 @@ import {
   TipodocumentoAdminPageComponent
 } from "./TipoDocumento/tipodocumento-admin-page/tipodocumento-admin-page.component";
 import {TiposervicioAdminPageComponent} from "./TipoServicio/tiposervicio-admin-page/tiposervicio-admin-page.component";
+import {
+  TurnotrabajoRegisterPageComponent
+} from "./TurnoTrabajo/turnotrabajo-admin-page/turnotrabajo-register-page.component";
+import {ZonaAdminPageComponent} from "./Zona/zona-admin-page/zona-admin-page.component";
+import {AuditoriaAdminPageComponent} from "./Auditoria/auditoria-admin-page/auditoria-admin-page.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -34,6 +39,9 @@ const routes: Routes = [
   { path: 'parametro_admin', component: ParametroAdminPageComponent},
   { path: 'tipodocumento_admin', component: TipodocumentoAdminPageComponent},
   { path: 'tiposervicio_admin', component: TiposervicioAdminPageComponent},
+  { path: 'turnotrabajo_admin', component: TurnotrabajoRegisterPageComponent},
+  { path: 'zona_admin', component: ZonaAdminPageComponent},
+  { path: 'auditoria_admin', component: AuditoriaAdminPageComponent},
 
 ];
 

@@ -38,7 +38,7 @@ export class ProveedorAdminEditarComponent implements OnInit {
       this.dialog.closeAll();
       location.href = "/admin/provedor_admin";
     }else{
-      alert("No se pudo aztualizar el proveedor");
+      alert("No se pudo actualizar el proveedor");
     }
   }
   editar_proveedor(proveedor: Proveedor){

@@ -1,0 +1,19 @@
+<div class="row" *ngIf="loading">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="spinner-border text-info float-right" role="status">
+      <span class="sr-only"></span>
+    </div>
+  </div>
+
+</div>
+<div class="new-post-container">
+  <form [formGroup]="newTurnoTrabajo" (ngSubmit)="register_turnotrabajo(newTurnoTrabajo.value)">
+    <mat-form-field>
+      <mat-label>Turno de Trabajo</mat-label>
+      <input matInput placeholder="Ingrese el turno de trabajo" formControlName="turnotrabajo">
+    </mat-form-field>
+    <div class="container-button">
+      <input type="submit" class="mat-flat-button" value="Save">
+    </div>
+  </form>
+</div>
