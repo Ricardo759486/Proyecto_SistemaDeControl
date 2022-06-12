@@ -1,0 +1,9 @@
+<h2>{{data.message}}</h2>
+<mat-dialog-content class="dialog-content">
+  <div *ngIf="data.content; else showNewForm">
+    <app-tiposervicio-admin-editar [tiposervicio]="data.content"></app-tiposervicio-admin-editar>
+  </div>
+  <ng-template #showNewForm>
+    <app-tiposervicio-admin-register></app-tiposervicio-admin-register>
+  </ng-template>
+</mat-dialog-content>

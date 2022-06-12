@@ -11,6 +11,7 @@ export class TablaAdminTiposervicioService {
   url = 'http://localhost:8080/TipoServicio/getAll';
   urleliminar = 'http://localhost:8080/TipoServicio/deleteTipoServicio';
   urlsave = 'http://localhost:8080/TipoServicio/saveTipoServicio';
+  urlupdate = 'http://localhost:8080/TipoServicio/updateTipoServicio';
 
   getTipoServicios(){
     return this.http.get<TipoServicio[]>(this.url);
@@ -19,6 +20,9 @@ export class TablaAdminTiposervicioService {
     return this.http.get<TipoServicio>(this.urleliminar+"/"+tipoServicio.idServicio);
   }
 
+  editarProveedor(tipoServicio: TipoServicio){
+    return this.http.put<TipoServicio>(this.urlupdate+"/"+tipoServicio.idServicio,tipoServicio);
+  }
   registerService(tipoServicio: TipoServicio){
     return this.http.post<TipoServicio>(this.urlsave,tipoServicio);
   }

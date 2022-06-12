@@ -16,6 +16,7 @@ import {ParametroAdminPageComponent} from "./parametro/parametro-admin-page/para
 import {
   TipodocumentoAdminPageComponent
 } from "./TipoDocumento/tipodocumento-admin-page/tipodocumento-admin-page.component";
+import {TiposervicioAdminPageComponent} from "./TipoServicio/tiposervicio-admin-page/tiposervicio-admin-page.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'material_admin', component: MaterialAdminPageComponent},
   { path: 'parametro_admin', component: ParametroAdminPageComponent},
   { path: 'tipodocumento_admin', component: TipodocumentoAdminPageComponent},
+  { path: 'tiposervicio_admin', component: TiposervicioAdminPageComponent},
 
 ];
 

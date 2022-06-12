@@ -58,20 +58,20 @@ export class TablaProveedorComponent implements OnInit {
 
   Delete(proveedor: Proveedor) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Estas seguro?',
+      text: "No podras recuperar el proveedor",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: 'Si, eliminar!'
     }).then((result) => {
       if (result.value) {
         this.tabla_admin_provvedorscv.deleteProveedor(proveedor).subscribe(data => {
           this.proveedor = this.proveedor.filter(p => p !== proveedor);
           Swal.fire(
-            'Deleted!',
-            'Your file has been deleted.',
+            'Eliminado!',
+            'Proveedor eliminado.',
             'success'
           )
           location.href = "/admin/provedor_admin";

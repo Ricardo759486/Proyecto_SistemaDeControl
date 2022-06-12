@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {TipoServicio} from "../../../../shared/models/TipoServicio";
 import {
-  TablaAdminProveedorService
-} from "../../../../shared/services/admin/tabla_proveedor/tabla-admin-proveedor.service";
-import {Router} from "@angular/router";
+  TablaAdminTiposervicioService
+} from "../../../../shared/services/admin/tabla_tiposervicio/tabla-admin-tiposervicio.service";
 
 @Component({
   selector: 'app-tiposervicio-admin-register',
@@ -15,11 +17,16 @@ export class TiposervicioAdminRegisterComponent implements OnInit {
   title = 'admin-panel-layout';
   sideBarOpen = true;
   loading: any;
-  tiposervicio: any={};
+  tiposervicio: TipoServicio[] = [];
   errorInicio: boolean = false;
   mensajeError: any = "No se pudo registrar el tipo de servicio";
+  constructor(private  tiposervicioscv: TablaAdminTiposervicioService,
+              private router:Router,public dialog: MatDialog) { }
 
-  constructor(private  provedorscv: TablaAdminProveedorService, private router:Router) { }
+  public newTiposervicio = new FormGroup({
+    descripcion: new FormControl('', Validators.required),
+  });
+
 
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
@@ -30,8 +37,31 @@ export class TiposervicioAdminRegisterComponent implements OnInit {
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
+  confirmar(resultant:TipoServicio){
+    this.loading=false;
+    if(resultant){
+      alert("Tipo de servicio registrado");
+      this.dialog.closeAll();
+      this.tiposervicio=[];
+    }else{
+      alert("No se pudo registrar el Tipo de servicio");
+    }
+  }
 
-  register_tiposervicio() {
+  register_tiposervicio(tiposervicio: TipoServicio){ {
+    this.loading=true;
+
+    if ( this.newTiposervicio.valid) {
+      this.tiposervicioscv.registerService(tiposervicio).subscribe(
+        data => {
+          this.confirmar(data);
+        })
+    }else {
+      alert("No se pudo registrar el Tipo de servicio");
+      this.loading=false;
+    }
+  }
+
 
   }
 }

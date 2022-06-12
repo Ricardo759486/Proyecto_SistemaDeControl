@@ -87,6 +87,17 @@ import {
 import {
   TipodocumentoAdminRegisterComponent
 } from "./TipoDocumento/tipodocumento-admin-register/tipodocumento-admin-register.component";
+import {
+  TiposervicioAdminRegisterComponent
+} from "./TipoServicio/tiposervicio-admin-register/tiposervicio-admin-register.component";
+import {TiposervicioAdminPageComponent} from "./TipoServicio/tiposervicio-admin-page/tiposervicio-admin-page.component";
+import {TablaTiposervicioComponent} from "./TipoServicio/tabla-tiposervicio/tabla-tiposervicio.component";
+import {
+  TiposervicioAdminModalComponent
+} from "./TipoServicio/tiposervicio-admin-modal/tiposervicio-admin-modal.component";
+import {
+  TiposervicioAdminEditarComponent
+} from "./TipoServicio/tiposervicio-admin-editar/tiposervicio-admin-editar.component";
 
 @NgModule({
   declarations: [
@@ -162,6 +173,12 @@ import {
     TipodocumentoAdminPageComponent,
     TipodocumentoAdminRegisterComponent,
     TablaTipodocumentoComponent,
+
+    TiposervicioAdminModalComponent,
+    TiposervicioAdminEditarComponent,
+    TiposervicioAdminRegisterComponent,
+    TiposervicioAdminPageComponent,
+    TablaTiposervicioComponent,
 
   ],
   imports: [

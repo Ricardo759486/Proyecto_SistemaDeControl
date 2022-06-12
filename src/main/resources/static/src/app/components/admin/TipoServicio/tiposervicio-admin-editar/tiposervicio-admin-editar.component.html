@@ -7,11 +7,12 @@
 
 </div>
 <div class="new-post-container">
-  <form [formGroup]="newTiposervicio" (ngSubmit)="register_tiposervicio(newTiposervicio.value)">
+  <form [formGroup]="editTiposervicio" (ngSubmit)="editar_tiposervicio(editTiposervicio.value)">
     <mat-form-field>
       <mat-label>Descripcion</mat-label>
-      <input matInput placeholder="Ingrese el servicio" formControlName="tiposervicio">
+      <input matInput placeholder="Ingrese la descripcion" formControlName="descripcion">
     </mat-form-field>
+
     <div class="container-button">
       <input type="submit" class="mat-flat-button" value="Save">
     </div>
