@@ -7,7 +7,6 @@ import com.cursojava.curso.service.TipoDocumentoServiceAPI;
 import com.cursojava.curso.service.dao.ClienteDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,6 +21,9 @@ public class ClienteRestController {
 
     @Autowired
     private TipoDocumentoServiceAPI tipoDocumentoServiceAPI;
+
+    @Autowired
+    private AuditoriaRestController audi;
 
     @GetMapping(value = "/getAll")
     public List<ClienteDAO> getAll(){
@@ -39,21 +41,23 @@ public class ClienteRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveCliente/{idDocumento}")
+    @PostMapping(value = "/saveCliente/{idDocumento}/{idUsuario}")
     public HttpStatus save(@RequestBody Cliente cliente,
-                                        @PathVariable(value = "idDocumento") int idDocumento){
+                                        @PathVariable(value = "idDocumento") int idDocumento, @PathVariable(value = "idUsuario") int idUsuario ){
 
         TipoDocumento tipoDocumento = tipoDocumentoServiceAPI.get(idDocumento);
         cliente.setTipoDocumento(tipoDocumento);
         cliente.setEstado("A");
         clienteServiceAPI.save(cliente);
+        audi.saveAuditoria("Guardar", "Cliente",idUsuario);
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateCliente/{id}/{idDocumento}")
+    @PutMapping(value = "/updateCliente/{id}/{idDocumento}/{idUsuario}")
     public HttpStatus update(@RequestBody Cliente cliente,
                                           @PathVariable(value = "id") int id,
-                                          @PathVariable(value = "idDocumento") int idDocumento){
+                                          @PathVariable(value = "idDocumento") int idDocumento,
+                                          @PathVariable(value = "idUsuario") int idUsuario){
 
         Cliente objeto = clienteServiceAPI.get(id);
         TipoDocumento tipoDocumento = tipoDocumentoServiceAPI.get(idDocumento);
@@ -63,18 +67,20 @@ public class ClienteRestController {
             objeto.setTipoDocumento(tipoDocumento);
             objeto.setEstado(cliente.getEstado());
             clienteServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "Cliente",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteCliente/{id}")
-    public HttpStatus delete(@PathVariable int id){
+    @GetMapping(value = "/deleteCliente/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario){
         Cliente cliente = clienteServiceAPI.get(id);
         if (cliente != null){
             cliente.setEstado("D");
             clienteServiceAPI.save(cliente);
+            audi.saveAuditoria("Eliminar", "Cliente",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
