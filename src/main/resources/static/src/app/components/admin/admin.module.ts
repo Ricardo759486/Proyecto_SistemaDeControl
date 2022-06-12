@@ -70,6 +70,8 @@ import {
   OrdentrabajoAdminModalComponent
 } from "./OrdenTrabajo/ordentrabajo/ordentrabajo-admin-modal/ordentrabajo-admin-modal.component";
 import { OrdentrabajoAdminEditarComponent } from './OrdenTrabajo/ordentrabajo-admin-editar/ordentrabajo-admin-editar.component';
+import { MaterialAdminModalComponent } from './material/material-admin-modal/material-admin-modal.component';
+import { MaterialAdminEditarComponent } from './material/material-admin-editar/material-admin-editar.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,6 @@ import { OrdentrabajoAdminEditarComponent } from './OrdenTrabajo/ordentrabajo-ad
     ParametroAdminRegisterComponent,
     ParametroAdminPageComponent,
     TablaParametroComponent,
-    MaterialAdminPageComponent,
     TablaMaterialComponent,
     UsuarioAdminPageComponent,
     TablaUsuarioComponent,
@@ -133,6 +134,11 @@ import { OrdentrabajoAdminEditarComponent } from './OrdenTrabajo/ordentrabajo-ad
     OrdentrabajoAdminRegisterComponent,
     OrdentrabajoAdminPageComponent,
     OrdentrabajoAdminEditarComponent,
+
+    MaterialAdminModalComponent,
+    MaterialAdminEditarComponent,
+    MaterialAdminPageComponent,
+    TablaMaterialComponent,
 
   ],
   imports: [

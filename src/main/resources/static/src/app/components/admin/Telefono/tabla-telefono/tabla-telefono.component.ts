@@ -18,7 +18,7 @@ import {TelefonoAdminModalComponent} from "../telefono-admin-modal/telefono-admi
 export class TablaTelefonoComponent implements OnInit {
 
   telefono: Telefono[] = [];
-  displayedColumns: string[] = ['ID', 'Numero','Tipo','Cliente','Proveedor', 'Usuario'];
+  displayedColumns: string[] = ['ID', 'Telefono','Tipo','Cliente','Proveedor', 'Usuario', 'actions'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;

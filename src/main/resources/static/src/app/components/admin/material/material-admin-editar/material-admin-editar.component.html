@@ -7,21 +7,21 @@
 
 </div>
 <div class="new-post-container">
-  <form [formGroup]="newMaterial" (ngSubmit)="register_material(newMaterial.value)">
+  <form [formGroup]="editMaterial" (ngSubmit)="editar_material(editMaterial.value)">
     <mat-form-field>
-      <mat-label>Nombre</mat-label>
-      <input matInput placeholder="Nombre" formControlName="nombre">
+      <mat-label>Nombre material</mat-label>
+      <input matInput placeholder="Ingrese el nombre del material" formControlName="nombreMaterial">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Cantidad</mat-label>
-      <input matInput placeholder="Cantidad" formControlName="cantidad">
+      <input matInput placeholder="Ingrese la cantidad" formControlName="cantidad">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Costo</mat-label>
-      <input matInput placeholder="Costo" formControlName="costo">
+      <input matInput placeholder="Ingrese el costo" formControlName="costo">
     </mat-form-field>
     <div class="container-button">
-      <input type="submit" class="mat-flat-button" value="Save">
+      <input type="submit" class="mat-flat-button" value="Guardar">
     </div>
   </form>
 </div>
