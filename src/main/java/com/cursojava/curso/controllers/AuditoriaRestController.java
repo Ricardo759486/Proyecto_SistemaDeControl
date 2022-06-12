@@ -26,9 +26,9 @@ public class AuditoriaRestController {
 
     @Autowired
     private AuditoriaServiceAPI auditoriaServiceAPI;
-    @Autowired
-    private UsuarioServiceAPI usuarioServiceAPI = new UsuarioServiceImpl();
 
+    @Autowired
+    private UsuarioServiceAPI usuarioServiceAPI;
 
     @GetMapping(value = "/getAll")
     public List<AuditoriaDAO> getAll(){
@@ -40,17 +40,18 @@ public class AuditoriaRestController {
                 AuditoriaDAO objeto = new AuditoriaDAO(a.getIdInforme(), a.getFechaHora(), a.getIpUsuario(), a.getOperacionCrud(), a.getTabla(), a.getUsuario().getLogin());
                 listaF.add(objeto);
         }
-
         return listaF;
     }
 
-    //@PostMapping(value = "/saveAuditoria")
-    /*public ResponseEntity<Auditoria> save(){
-        Auditoria a = new Auditoria();
-        //auditoria.setFechaHora(new Date());
-        //Usuario usuario = usuarioServiceAPI.get(3);
-        //auditoria.setUsuario(usuario);
-        Auditoria objeto = auditoriaServiceAPI.save(auditoria);
-        return new ResponseEntity<Auditoria>(objeto, HttpStatus.OK);
-    }*/
+    public void saveAuditoria(String ope, String tabla, int idUsuario){
+        Auditoria auditoria = new Auditoria();
+
+        auditoria.setFechaHora(new Date());
+        auditoria.setIpUsuario("pruebaip");
+        auditoria.setOperacionCrud(ope);
+        auditoria.setTabla(tabla);
+        Usuario usuario = usuarioServiceAPI.get(idUsuario);
+        auditoria.setUsuario(usuario);
+        auditoriaServiceAPI.save(auditoria);
+    }
 }
