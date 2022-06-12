@@ -13,6 +13,9 @@ import {TelefonoAdminPageComponent} from "./Telefono/telefono-admin-page/telefon
 import {OrdentrabajoAdminPageComponent} from "./OrdenTrabajo/ordentrabajo-admin-page/ordentrabajo-admin-page.component";
 import {MaterialAdminPageComponent} from "./material/material-admin-page/material-admin-page.component";
 import {ParametroAdminPageComponent} from "./parametro/parametro-admin-page/parametro-admin-page.component";
+import {
+  TipodocumentoAdminPageComponent
+} from "./TipoDocumento/tipodocumento-admin-page/tipodocumento-admin-page.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,6 +31,7 @@ const routes: Routes = [
   { path: 'ordentrabajo_admin', component: OrdentrabajoAdminPageComponent},
   { path: 'material_admin', component: MaterialAdminPageComponent},
   { path: 'parametro_admin', component: ParametroAdminPageComponent},
+  { path: 'tipodocumento_admin', component: TipodocumentoAdminPageComponent},
 
 ];
 

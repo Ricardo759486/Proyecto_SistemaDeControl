@@ -74,6 +74,19 @@ import { MaterialAdminModalComponent } from './material/material-admin-modal/mat
 import { MaterialAdminEditarComponent } from './material/material-admin-editar/material-admin-editar.component';
 import { ParametroAdminModalComponent } from './parametro/parametro-admin-modal/parametro-admin-modal.component';
 import { ParametroAdminEditarComponent } from './parametro/parametro-admin-editar/parametro-admin-editar.component';
+import {
+  TipodocumentoAdminPageComponent
+} from "./TipoDocumento/tipodocumento-admin-page/tipodocumento-admin-page.component";
+import {TablaTipodocumentoComponent} from "./TipoDocumento/tabla-tipodocumento/tabla-tipodocumento.component";
+import {
+  TipodocumentoAdminModalComponent
+} from "./TipoDocumento/tipodocumento-admin-modal/tipodocumento-admin-modal.component";
+import {
+  TipodocumentoAdminEditarComponent
+} from "./TipoDocumento/tipodocumento-admin-editar/tipodocumento-admin-editar.component";
+import {
+  TipodocumentoAdminRegisterComponent
+} from "./TipoDocumento/tipodocumento-admin-register/tipodocumento-admin-register.component";
 
 @NgModule({
   declarations: [
@@ -143,6 +156,12 @@ import { ParametroAdminEditarComponent } from './parametro/parametro-admin-edita
     ParametroAdminEditarComponent,
     ParametroAdminRegisterComponent,
     TablaParametroComponent,
+
+    TipodocumentoAdminModalComponent,
+    TipodocumentoAdminEditarComponent,
+    TipodocumentoAdminPageComponent,
+    TipodocumentoAdminRegisterComponent,
+    TablaTipodocumentoComponent,
 
   ],
   imports: [
