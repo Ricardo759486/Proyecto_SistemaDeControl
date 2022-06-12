@@ -32,10 +32,24 @@ public class TelefonoRestController {
     public List<TelefonoDAO> getAll(){
         List<Telefono> getall = telefonoServiceAPI.getAll();
         List<TelefonoDAO> listaF = new ArrayList<>();
+        TelefonoDAO objeto;
 
         for (Telefono t:getall){
-            TelefonoDAO objeto = new TelefonoDAO(t.getIdTelefono(),t.getNumTelefono(),t.getTipo(),t.getCliente().getNumDocumento(), t.getProveedor().getNit(),t.getUsuario().getIdentificacion());
-            listaF.add(objeto);
+            switch (t.getTipo()){
+                case "U":
+                        objeto = new TelefonoDAO(t.getIdTelefono(),t.getNumTelefono(),t.getTipo(),"", "",t.getUsuario().getIdentificacion());
+                        listaF.add(objeto);
+                    break;
+                case "P":
+                        objeto = new TelefonoDAO(t.getIdTelefono(),t.getNumTelefono(),t.getTipo(),"", t.getProveedor().getNombre(),"");
+                        listaF.add(objeto);
+                    break;
+                case "C":
+                        objeto = new TelefonoDAO(t.getIdTelefono(),t.getNumTelefono(),t.getTipo(),t.getCliente().getNumDocumento(), "","");
+                        listaF.add(objeto);
+                    break;
+                default: return null;
+            }
         }
         return listaF;
     }

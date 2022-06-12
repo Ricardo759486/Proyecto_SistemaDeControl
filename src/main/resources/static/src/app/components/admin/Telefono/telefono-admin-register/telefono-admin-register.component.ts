@@ -23,11 +23,8 @@ export class TelefonoAdminRegisterComponent implements OnInit {
               private router:Router,public dialog: MatDialog) { }
 
   public newTelefono = new FormGroup({
-    num_telefono: new FormControl('', Validators.required),
-    tipo: new FormControl('', Validators.required),
-    idUsuario: new FormControl('', Validators.required),
-    idProveedor: new FormControl('', Validators.required),
-    idCliente: new FormControl('', Validators.required),
+    numTelefono: new FormControl('', Validators.required),
+    tipoUsuario: new FormControl('', Validators.required),
   });
 
 

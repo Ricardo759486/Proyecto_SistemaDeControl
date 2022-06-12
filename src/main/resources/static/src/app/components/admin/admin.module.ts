@@ -117,6 +117,7 @@ import {ZonaAdminModalComponent} from "./Zona/zona-admin-modal/zona-admin-modal.
 import { ZonaAdminEditarComponent } from './Zona/zona-admin-editar/zona-admin-editar.component';
 import {AuditoriaAdminPageComponent} from "./Auditoria/auditoria-admin-page/auditoria-admin-page.component";
 import {TablaAuditoriaComponent} from "./Auditoria/tabla-auditoria/tabla-auditoria.component";
+import { TelefonoAdminEditarComponent } from './Telefono/telefono-admin-editar/telefono-admin-editar.component';
 
 
 @NgModule({
@@ -213,6 +214,7 @@ import {TablaAuditoriaComponent} from "./Auditoria/tabla-auditoria/tabla-auditor
 
     AuditoriaAdminPageComponent,
     TablaAuditoriaComponent,
+    TelefonoAdminEditarComponent,
 
   ],
   imports: [
