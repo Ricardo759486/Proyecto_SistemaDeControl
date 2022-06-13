@@ -41,9 +41,9 @@ export class CuadrillasAdminRegisterComponent implements OnInit {
 
   public newCuadrilla = new FormGroup({
     movilAsociado: new FormControl('', Validators.required),
-    zona: new FormControl('', Validators.required),
-    proveedor: new FormControl('', Validators.required),
-    turnoTrabajo: new FormControl('', Validators.required),
+    idZona: new FormControl('', Validators.required),
+    idProveedor: new FormControl('', Validators.required),
+    idTurnoTrabajo: new FormControl('', Validators.required),
   });
 
 
@@ -72,6 +72,7 @@ export class CuadrillasAdminRegisterComponent implements OnInit {
       alert("Cuadrilla registrada");
       this.dialog.closeAll();
       this.cuadrilla=[];
+      location.href = "/admin/cuadrilla_admin";
     }else{
       alert("No se pudo registrar la cuadrilla");
     }
@@ -79,8 +80,8 @@ export class CuadrillasAdminRegisterComponent implements OnInit {
 
   register_cuadrilla(cuadrilla: Cuadrilla){ {
     this.loading=true;
-
-    if ( this.newCuadrilla.valid) {
+  if(cuadrilla.movilAsociado.length<7){
+    if ( this.newCuadrilla.valid){
       this.cuadrillascv.registerService(cuadrilla).subscribe(
         data => {
           this.confirmar(data);
@@ -89,6 +90,11 @@ export class CuadrillasAdminRegisterComponent implements OnInit {
       alert("No se pudo registrar la cuadrilla");
       this.loading=false;
     }
+  }else{
+    alert("El movil asociado debe tener 6 digitos");
+    this.loading=false;
+  }
+
   }
 
 

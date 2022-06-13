@@ -11,7 +11,7 @@ export class CuadrillaAdminService {
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/Cuadrilla/getAll';
-  urlRegistrar = 'http://localhost:8080/Cuadrilla/registrar';
+  urlRegistrar = 'http://localhost:8080/Cuadrilla/saveCuadrilla';
   urlEliminar = 'http://localhost:8080/Cuadrilla/deleteCuadrilla';
   urlupdate = 'http://localhost:8080/Cuadrilla/updateCuadrilla';
 
@@ -20,7 +20,7 @@ export class CuadrillaAdminService {
   }
 
   registerService(cuadrilla: Cuadrilla) {
-    return this.http.post<Cuadrilla>('http://localhost:8080/Cuadrilla/saveCuadrilla/'+cuadrilla.idZona+'/'+cuadrilla.idProveedor+'/'+cuadrilla.idTurnoTrabajo,cuadrilla);
+    return this.http.post<Cuadrilla>(this.urlRegistrar+"/"+cuadrilla.idZona+"/"+cuadrilla.idProveedor+"/"+cuadrilla.idTurnoTrabajo,cuadrilla);
   }
 
   deleteCuadrilla(cuadrilla: Cuadrilla) {

@@ -38,9 +38,9 @@ export class CuadrillaAdminEditarComponent implements OnInit {
   }
   public editCuadrilla = new FormGroup({
     movilAsociado: new FormControl('', Validators.required),
-    zona: new FormControl('', Validators.required),
-    proveedor: new FormControl('', Validators.required),
-    turnoTrabajo: new FormControl('', Validators.required),
+    idZona: new FormControl('', Validators.required),
+    idProveedor: new FormControl('', Validators.required),
+    idTurnoTrabajo: new FormControl('', Validators.required),
   });
 
   ngOnInit(): void {
@@ -70,16 +70,23 @@ export class CuadrillaAdminEditarComponent implements OnInit {
     cuadrilla.idCuadrilla= this.cuadrilla.idCuadrilla;
     cuadrilla.estado= this.cuadrilla.estado;
     this.loading=true;
+  if (cuadrilla.movilAsociado.length<7){
+
 
     if ( this.editCuadrilla.valid) {
       this.cuadrillacv.editarCuadrilla(cuadrilla).subscribe(
         data => {
           this.confirmar(data);
         })
+
     }else {
       alert("No se pudo actualizar la cuadrilla");
       this.loading=false;
     }
+  }else{
+    alert("El movil asociado debe tener 6 digitos");
+    this.loading=false;
+  }
   }
   private initValuesForm(): void {
     this.editCuadrilla.patchValue({

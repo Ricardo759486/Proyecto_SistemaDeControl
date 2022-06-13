@@ -16,7 +16,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Zona</mat-label>
-      <mat-select placeholder="zona" formControlName="zona">
+      <mat-select placeholder="idZona" formControlName="idZona">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let zona of zona" value = {{zona.idZona}}>{{zona.localidad}}</mat-option>
       </mat-select>
@@ -24,7 +24,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Proveedor</mat-label>
-      <mat-select placeholder="proveedor" formControlName="proveedor">
+      <mat-select placeholder="idProveedor" formControlName="idProveedor">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let proveedor of proveedor" value = {{proveedor.idProveedor}}>{{proveedor.nombre}}</mat-option>
       </mat-select>
@@ -32,7 +32,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Turno de trabajo</mat-label>
-      <mat-select placeholder="turnoTrabajo" formControlName="turnoTrabajo">
+      <mat-select placeholder="idTurnoTrabajo" formControlName="idTurnoTrabajo">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let turnoTrabajo of turnoTrabajo" value = {{turnoTrabajo.idTurno}}>{{turnoTrabajo.descripcion}}</mat-option>
       </mat-select>
