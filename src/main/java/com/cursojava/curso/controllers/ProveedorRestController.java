@@ -35,11 +35,11 @@ public class ProveedorRestController {
     }
 
     @PostMapping(value = "/saveProveedor/{idUsuario}")
-    public HttpStatus save(@RequestBody Proveedor proveedor, @PathVariable(value = "idUsuario") int idUusario){
+    public HttpStatus save(@RequestBody Proveedor proveedor, @PathVariable(value = "idUsuario") int idUsuario){
 
         proveedor.setEstado("A");
         proveedorServiceAPI.save(proveedor);
-        audi.saveAuditoria("Guardar", "Proveedor",idUusario);
+        audi.saveAuditoria("Guardar", "Proveedor",idUsuario);
         return HttpStatus.OK;
     }
 

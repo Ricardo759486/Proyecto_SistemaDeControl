@@ -30,6 +30,9 @@ public class OrdenTrabajoRestController {
     @Autowired
     private TipoServicioServiceAPI tipoServicioServiceAPI;
 
+    @Autowired
+    private AuditoriaRestController audi;
+
     @GetMapping(value = "/getAll")
     public List<OrdenTrabajoDAO> getAll(){
 
@@ -45,11 +48,12 @@ public class OrdenTrabajoRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveOrdenTrabajo/{idCuadrilla}/{idCliente}/{idTipoServicio}")
+    @PostMapping(value = "/saveOrdenTrabajo/{idCuadrilla}/{idCliente}/{idTipoServicio}/{idUsuario}")
     public HttpStatus save(@RequestBody OrdenTrabajo ordenTrabajo,
                                              @PathVariable(value = "idCuadrilla") int idCuadrilla,
                                              @PathVariable(value = "idCliente") int idCliente,
-                                             @PathVariable(value = "idTipoServicio") int idTipoServicio){
+                                             @PathVariable(value = "idTipoServicio") int idTipoServicio,
+                                             @PathVariable(value = "idUsuario") int idUsuario){
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
         Cliente cliente = clienteServiceAPI.get(idCliente);
         TipoServicio tipoServicio = tipoServicioServiceAPI.get(idTipoServicio);
@@ -58,15 +62,17 @@ public class OrdenTrabajoRestController {
         ordenTrabajo.setTipoServicio(tipoServicio);
         ordenTrabajo.setEstado("A");
         ordenTrabajoServiceAPI.save(ordenTrabajo);
+        audi.saveAuditoria("Guardar", "OrdenTrabajo",idUsuario);
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateOrdenTrabajo/{id}/{idCuadrilla}/{idCliente}/{idTipoServicio}")
+    @PutMapping(value = "/updateOrdenTrabajo/{id}/{idCuadrilla}/{idCliente}/{idTipoServicio}/{idUsuario}")
     public HttpStatus update(@RequestBody OrdenTrabajo ordenTrabajo,
                                                @PathVariable(value = "id") int id,
                                                @PathVariable(value = "idCuadrilla") int idCuadrilla,
                                                @PathVariable(value = "idCliente") int idCliente,
-                                               @PathVariable(value = "idTipoServicio") int idTipoServicio){
+                                               @PathVariable(value = "idTipoServicio") int idTipoServicio,
+                                               @PathVariable(value = "idUsuario") int idUsuario){
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
         Cliente cliente = clienteServiceAPI.get(idCliente);
         TipoServicio tipoServicio = tipoServicioServiceAPI.get(idTipoServicio);
@@ -78,18 +84,20 @@ public class OrdenTrabajoRestController {
             objeto.setDescripcion(ordenTrabajo.getDescripcion());
             objeto.setEstado(ordenTrabajo.getEstado());
             ordenTrabajoServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "OrdenTrabajo",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteOrdenTrabajo/{id}")
-    public HttpStatus delete(@PathVariable int id){
+    @GetMapping(value = "/deleteOrdenTrabajo/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario){
         OrdenTrabajo ordenTrabajo = ordenTrabajoServiceAPI.get(id);
         if (ordenTrabajo != null){
             ordenTrabajo.setEstado("D");
             ordenTrabajoServiceAPI.save(ordenTrabajo);
+            audi.saveAuditoria("Eliminar", "OrdenTrabajo",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }

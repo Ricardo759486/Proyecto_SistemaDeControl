@@ -30,6 +30,9 @@ public class CuadrillaRestController {
     @Autowired
     private TurnoTrabajoServiceAPI turnoTrabajoServiceAPI;
 
+    @Autowired
+    private AuditoriaRestController audi;
+
     @GetMapping(value = "/getAll")
     public List<CuadrillaDAO> getAll(){
 
@@ -45,11 +48,12 @@ public class CuadrillaRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveCuadrilla/{idZona}/{idProveedor}/{turnoTrabajo}")
+    @PostMapping(value = "/saveCuadrilla/{idZona}/{idProveedor}/{turnoTrabajo}/{idUsuario}")
     public HttpStatus save(@RequestBody Cuadrilla cuadrilla,
                                           @PathVariable(value = "idZona") int idZona,
                                           @PathVariable(value = "idProveedor") int idProveedor,
-                                          @PathVariable(value = "turnoTrabajo") int idTurno){
+                                          @PathVariable(value = "turnoTrabajo") int idTurno,
+                                          @PathVariable(value = "idUsuario") int idUsuario ){
         Zona zona = zonaServiceAPI.get(idZona);
         Proveedor proveedor = proveedorServiceAPI.get(idProveedor);
         TurnoTrabajo turno = turnoTrabajoServiceAPI.get(idTurno);
@@ -58,16 +62,18 @@ public class CuadrillaRestController {
         cuadrilla.setTurnoTrabajoBean(turno);
         cuadrilla.setEstado("A");
         cuadrillaServiceAPI.save(cuadrilla);
+        audi.saveAuditoria("Guardar","Cuadrilla",idUsuario);
 
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateCuadrilla/{id}/{idZona}/{idProveedor}/{turnoTrabajo}")
+    @PutMapping(value = "/updateCuadrilla/{id}/{idZona}/{idProveedor}/{turnoTrabajo}/{idUsuario}")
     public HttpStatus update(@RequestBody Cuadrilla cuadrilla,
                                             @PathVariable(value = "id") int id,
                                             @PathVariable(value = "idZona") int idZona,
                                             @PathVariable(value = "idProveedor") int idProveedor,
-                                            @PathVariable(value = "turnoTrabajo") int idTurno){
+                                            @PathVariable(value = "turnoTrabajo") int idTurno,
+                                            @PathVariable(value = "idUsuario") int idUsuario ){
 
         Cuadrilla objeto = cuadrillaServiceAPI.get(id);
         Zona zona = zonaServiceAPI.get(idZona);
@@ -80,18 +86,20 @@ public class CuadrillaRestController {
             objeto.setTurnoTrabajoBean(turno);
             objeto.setEstado(cuadrilla.getEstado());
             cuadrillaServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "Cuadrilla", idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteCuadrilla/{id}")
-    public HttpStatus delete(@PathVariable int id){
+    @GetMapping(value = "/deleteCuadrilla/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario ){
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(id);
         if (cuadrilla != null){
             cuadrilla.setEstado("D");
             cuadrillaServiceAPI.save(cuadrilla);
+            audi.saveAuditoria("Eliminar", "Cuadrilla", idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }

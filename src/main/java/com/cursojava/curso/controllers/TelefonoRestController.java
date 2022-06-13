@@ -28,6 +28,9 @@ public class TelefonoRestController {
     @Autowired
     private ProveedorServiceAPI proveedorServiceAPI;
 
+    @Autowired
+    private AuditoriaRestController audi;
+
     @GetMapping(value = "/getAll")
     public List<TelefonoDAO> getAll(){
         List<Telefono> getall = telefonoServiceAPI.getAll();
@@ -54,9 +57,9 @@ public class TelefonoRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveTelefono/{id}")
+    @PostMapping(value = "/saveTelefono/{id}/{idUsuario}")
     public HttpStatus save(@RequestBody Telefono telefonoCliente,
-                                         @PathVariable(value = "id") int id){
+                                         @PathVariable(value = "id") int id, @PathVariable(value = "idUsuario") int idUsuario){
         String tipo = telefonoCliente.getTipo();
         switch (tipo){
             case "U":  Usuario usuario = usuarioServiceAPI.get(id);
@@ -71,13 +74,15 @@ public class TelefonoRestController {
             default: return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         telefonoServiceAPI.save(telefonoCliente);
+        audi.saveAuditoria("Guardar", "Telefono",idUsuario);
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateTelefono/{id}/{idTipo}")
+    @PutMapping(value = "/updateTelefono/{id}/{idTipo}/{idUsuario}")
     public HttpStatus update(@RequestBody Telefono telefonoCliente,
                                            @PathVariable(value = "id") int id,
-                                           @PathVariable(value = "idTipo") int idTipo){
+                                           @PathVariable(value = "idTipo") int idTipo,
+                                           @PathVariable(value = "idUsuario") int idUsuario){
 
         Telefono objeto = telefonoServiceAPI.get(id);
         if (objeto != null){
@@ -97,17 +102,19 @@ public class TelefonoRestController {
                 default: return HttpStatus.INTERNAL_SERVER_ERROR;
             }
             telefonoServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "Proveedor",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteTelefono/{id}")
-    public HttpStatus delete(@PathVariable int id){
+    @GetMapping(value = "/deleteTelefono/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario){
         Telefono telefonoCliente = telefonoServiceAPI.get(id);
         if (telefonoCliente != null){
             telefonoServiceAPI.delete(id);
+            audi.saveAuditoria("Eliminar", "Telefono",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }

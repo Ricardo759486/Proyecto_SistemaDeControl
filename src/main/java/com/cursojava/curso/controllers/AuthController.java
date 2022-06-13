@@ -57,7 +57,6 @@ public class AuthController {
         }
     }
     public int comprobacion(Usuario u){
-        int resultado = -1;
         if(u != null){
             if(!usuarioServiceAPI.validarEstado(u)){
                 return 0;

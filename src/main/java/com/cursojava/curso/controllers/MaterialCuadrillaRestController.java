@@ -28,6 +28,9 @@ public class MaterialCuadrillaRestController {
     @Autowired
     private MaterialServiceAPI materialServiceAPI;
 
+    @Autowired
+    private AuditoriaRestController audi;
+
     @GetMapping(value = "/getAll")
     public List<MaterialCuadrillaDAO> getAll(){
 
@@ -41,23 +44,26 @@ public class MaterialCuadrillaRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveMaterialCuadrilla/{idCuadrilla}/{idInventario}")
+    @PostMapping(value = "/saveMaterialCuadrilla/{idCuadrilla}/{idInventario}/{idUsuario}")
     public HttpStatus save(@RequestBody MaterialCuadrilla materialCuadrilla,
                                                   @PathVariable(value = "idCuadrilla") int idCuadrilla,
-                                                  @PathVariable(value = "idInventario") int idInventario){
+                                                  @PathVariable(value = "idInventario") int idInventario,
+                                                  @PathVariable(value = "idUsuario") int idUsuario){
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
         Material material = materialServiceAPI.get(idInventario);
         materialCuadrilla.setMaterial(material);
         materialCuadrilla.setCuadrilla(cuadrilla);
         materialCuadrillaServiceAPI.save(materialCuadrilla);
+        audi.saveAuditoria("Guardar", "MaterialCuadrilla", idUsuario);
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateMaterialCuadrilla/{id}/{idCuadrilla}/{idInventario}")
+    @PutMapping(value = "/updateMaterialCuadrilla/{id}/{idCuadrilla}/{idInventario}/{idUsuario}")
     public HttpStatus update(@RequestBody MaterialCuadrilla materialCuadrilla,
                                                     @PathVariable(value = "id") int id,
                                                     @PathVariable(value = "idCuadrilla") int idCuadrilla,
-                                                    @PathVariable(value = "idInventario") int idInventario){
+                                                    @PathVariable(value = "idInventario") int idInventario,
+                                                    @PathVariable(value = "idUsuario") int idUsuario){
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
         Material material = materialServiceAPI.get(idInventario);
         MaterialCuadrilla objeto = materialCuadrillaServiceAPI.get(id);
@@ -66,17 +72,19 @@ public class MaterialCuadrillaRestController {
             objeto.setMaterial(material);
             objeto.setCantidad(materialCuadrilla.getCantidad());
             materialCuadrillaServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "MaterialCuadrilla", idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteMaterialCuadrilla/{id}")
-    public HttpStatus delete(@PathVariable int id){
+    @GetMapping(value = "/deleteMaterialCuadrilla/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario ){
         MaterialCuadrilla materialCuadrilla = materialCuadrillaServiceAPI.get(id);
         if (materialCuadrilla != null){
             materialCuadrillaServiceAPI.delete(id);
+            audi.saveAuditoria("Eliminar", "MaterialCuadrilla", idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }

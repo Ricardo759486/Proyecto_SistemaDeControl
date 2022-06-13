@@ -35,6 +35,9 @@ public class UsuarioRestController {
     @Autowired
     private EnvioCorreoImpl correoService;
 
+    @Autowired
+    private AuditoriaRestController audi;
+
     @GetMapping(value = "/getAll")
     public List<UsuarioDAO> getAll(){
 
@@ -55,11 +58,12 @@ public class UsuarioRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}/{idRol}")
+    @PostMapping(value = "/saveUsuario/{idIdentificacion}/{idCuadrilla}/{idRol}/{idUsuario}")
     public HttpStatus save(@RequestBody Usuario usuario,
                                         @PathVariable(value = "idIdentificacion") int idIdentificacion,
                                         @PathVariable(value = "idCuadrilla") int idCuadrilla,
-                                        @PathVariable(value = "idRol") int idRol){
+                                        @PathVariable(value = "idRol") int idRol,
+                                        @PathVariable(value = "idUsuario") int idUsuario){
 
         TipoDocumento identificacion = tipoDocumentoServiceAPI.get(idIdentificacion);
         Cuadrilla cuadrilla = cuadrillaServiceAPI.get(idCuadrilla);
@@ -73,6 +77,7 @@ public class UsuarioRestController {
         usuario.setIntentos(0);
         usuario.setEstado("A");
         usuarioServiceAPI.save(usuario);
+        audi.saveAuditoria("Guardar", "Usuario",idUsuario);
         correoService.enviarCorreo(usuario.getLogin()+"", "Registro exitoso", "Bienvenido usuario "+usuario.getLogin()+":\nUsted ha sido registrado" +
                 "por un administrador de la empresa de Electri-Bogota, asignado a la cuadrilla: "+usuario.getCuadrilla()+", su clave de accesso es: " +contra);
         return HttpStatus.OK;
@@ -96,12 +101,13 @@ public class UsuarioRestController {
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateUsuario/{id}/{idIdentificacion}/{idCuadrilla}/{idRol}")
+    @PutMapping(value = "/updateUsuario/{id}/{idIdentificacion}/{idCuadrilla}/{idRol}/{idUsuario}")
     public HttpStatus update(@RequestBody Usuario usuario,
                                           @PathVariable(value = "id") int id,
                                           @PathVariable(value = "idIdentificacion") int idIdentificacion,
                                           @PathVariable(value = "idCuadrilla") int idCuadrilla,
-                                          @PathVariable(value = "idRol") int idRol){
+                                          @PathVariable(value = "idRol") int idRol,
+                                          @PathVariable(value = "idUsuario") int idUsuario){
 
         Usuario objeto = usuarioServiceAPI.get(id);
         TipoDocumento identificacion = tipoDocumentoServiceAPI.get(idIdentificacion);
@@ -119,6 +125,7 @@ public class UsuarioRestController {
             objeto.setFecha_ultima_contra(usuario.getFecha_ultima_contra());
             objeto.setEstado(usuario.getEstado());
             usuarioServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "Usuario",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
@@ -132,11 +139,12 @@ public class UsuarioRestController {
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteUsuario/{id}")
-    public HttpStatus delete(@PathVariable int id){
+    @GetMapping(value = "/deleteUsuario/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario){
         Usuario usuario = usuarioServiceAPI.get(id);
         if (usuario != null){
             usuario.setEstado("D");
+            audi.saveAuditoria("Eliminar", "Usuario",idUsuario);
             usuarioServiceAPI.save(usuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;

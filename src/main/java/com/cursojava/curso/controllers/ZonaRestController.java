@@ -19,6 +19,9 @@ public class ZonaRestController {
     @Autowired
     private ZonaServiceAPI zonaServiceAPI;
 
+    @Autowired
+    private AuditoriaRestController audi;
+
     @GetMapping(value = "/getAll")
     public List<ZonaDAO> getAll(){
 
@@ -34,15 +37,16 @@ public class ZonaRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveZona")
-    public HttpStatus save(@RequestBody Zona zona){
+    @PostMapping(value = "/saveZona/{idUsuario}")
+    public HttpStatus save(@RequestBody Zona zona, @PathVariable(value = "idUsuario") int idUsuario){
         zona.setEstado("A");
         zonaServiceAPI.save(zona);
+        audi.saveAuditoria("Guardar", "Zona",idUsuario);
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateZona/{id}")
-    public HttpStatus update(@RequestBody Zona zona, @PathVariable(value = "id") int id){
+    @PutMapping(value = "/updateZona/{id}/{idUsuario}")
+    public HttpStatus update(@RequestBody Zona zona, @PathVariable(value = "id") int id, @PathVariable(value = "idUsuario") int idUsuario){
         Zona objeto = zonaServiceAPI.get(id);
         if (objeto != null){
             objeto.setCoordenadas(zona.getCoordenadas());
@@ -50,18 +54,20 @@ public class ZonaRestController {
             objeto.setLocalidad(zona.getLocalidad());
             objeto.setEstado(zona.getEstado());
             zonaServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "Zona",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteZona/{id}")
-    public HttpStatus delete(@PathVariable int id){
+    @GetMapping(value = "/deleteZona/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario){
         Zona zona = zonaServiceAPI.get(id);
         if (zona != null){
             zona.setEstado("D");
             zonaServiceAPI.delete(id);
+            audi.saveAuditoria("Eliminar", "Zona",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }

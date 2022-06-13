@@ -20,6 +20,9 @@ public class TipoDocumentoRestController {
     @Autowired
     private TipoDocumentoServiceAPI tipoDocumentoServiceAPI;
 
+    @Autowired
+    private AuditoriaRestController audi;
+
     @GetMapping(value = "/getAll")
     public List<TipoDocumentoDAO> getAll(){
         List<TipoDocumento> getall = tipoDocumentoServiceAPI.getAll();
@@ -34,33 +37,38 @@ public class TipoDocumentoRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveTipoDocumento")
-    public HttpStatus save(@RequestBody TipoDocumento tipoDocumento){
+    @PostMapping(value = "/saveTipoDocumento/{idUsuario}")
+    public HttpStatus save(@RequestBody TipoDocumento tipoDocumento, @PathVariable(value = "idUsuario") int idUsuario){
         tipoDocumento.setEstado("A");
         tipoDocumentoServiceAPI.save(tipoDocumento);
+        audi.saveAuditoria("Guardar", "TipoDocumento",idUsuario);
+
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateTipoDocumento/{id}")
-    public HttpStatus update(@RequestBody TipoDocumento tipoDocumento, @PathVariable(value = "id") int id_documento){
+    @PutMapping(value = "/updateTipoDocumento/{id}/{idUsuario}")
+    public HttpStatus update(@RequestBody TipoDocumento tipoDocumento, @PathVariable(value = "id") int id_documento, @PathVariable(value = "idUsuario") int idUsuario){
 
         TipoDocumento objeto = tipoDocumentoServiceAPI.get(id_documento);
         if (objeto != null){
             objeto.setDescripcion(tipoDocumento.getDescripcion());
             objeto.setEstado(tipoDocumento.getEstado());
             tipoDocumentoServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "TipoDocumento",idUsuario);
+
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteTipoDocumento/{id}")
-    public HttpStatus delete(@PathVariable int id){
+    @GetMapping(value = "/deleteTipoDocumento/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario){
         TipoDocumento tipoDocumento = tipoDocumentoServiceAPI.get(id);
         if (tipoDocumento != null){
             tipoDocumento.setEstado("D");
             tipoDocumentoServiceAPI.save(tipoDocumento);
+            audi.saveAuditoria("Eliminar", "TipoDocumento",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }

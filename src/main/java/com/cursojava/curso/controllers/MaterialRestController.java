@@ -18,6 +18,9 @@ public class MaterialRestController {
     @Autowired
     private MaterialServiceAPI materialServiceAPI;
 
+    @Autowired
+    private AuditoriaRestController audi;
+
     @GetMapping(value = "/getAll")
     public List<MaterialDAO> getAll(){
 
@@ -33,15 +36,17 @@ public class MaterialRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveMaterial")
-    public HttpStatus save(@RequestBody Material material){
+    @PostMapping(value = "/saveMaterial/{idUsuario}")
+    public HttpStatus save(@RequestBody Material material, @PathVariable(value = "idUsuario") int idUsuario ){
         material.setEstado("A");
         materialServiceAPI.save(material);
+        audi.saveAuditoria("Guardar", "Usuario",idUsuario);
+
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateMaterial/{id}")
-    public HttpStatus update(@RequestBody Material material, @PathVariable(value = "id") int id){
+    @PutMapping(value = "/updateMaterial/{id}/{idUsuario}")
+    public HttpStatus update(@RequestBody Material material, @PathVariable(value = "id") int id, @PathVariable(value = "idUsuario") int idUsuario){
 
         Material objeto = materialServiceAPI.get(id);
         if (objeto != null){
@@ -50,18 +55,20 @@ public class MaterialRestController {
             objeto.setCosto(material.getCosto());
             objeto.setEstado(material.getEstado());
             materialServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "Usuario",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteMaterial/{id}")
-    public HttpStatus delete(@PathVariable int id){
+        @GetMapping(value = "/deleteMaterial/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario){
         Material material = materialServiceAPI.get(id);
         if (material != null){
             material.setEstado("D");
             materialServiceAPI.save(material);
+            audi.saveAuditoria("Eliminar", "Usuario",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }

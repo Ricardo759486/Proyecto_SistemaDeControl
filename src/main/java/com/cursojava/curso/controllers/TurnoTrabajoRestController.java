@@ -20,6 +20,9 @@ public class TurnoTrabajoRestController {
     @Autowired
     private TurnoTrabajoServiceAPI turnoTrabajoServiceAPI;
 
+    @Autowired
+    private AuditoriaRestController audi;
+
     @GetMapping(value = "/getAll")
     public List<TurnoTrabajoDAO> getAll(){
         List<TurnoTrabajo> getall = turnoTrabajoServiceAPI.getAll();
@@ -34,34 +37,38 @@ public class TurnoTrabajoRestController {
         return listaF;
     }
 
-    @PostMapping(value = "/saveTurnoTrabajo")
-    public HttpStatus save(@RequestBody TurnoTrabajo turnoTrabajo){
+    @PostMapping(value = "/saveTurnoTrabajo/{idUsuario}")
+    public HttpStatus save(@RequestBody TurnoTrabajo turnoTrabajo, @PathVariable(value = "idUsuario") int idUsuario){
         turnoTrabajo.setEstado("A");
         turnoTrabajoServiceAPI.save(turnoTrabajo);
+        audi.saveAuditoria("Guardar", "TurnoTrabajo",idUsuario);
+
         return HttpStatus.OK;
     }
 
-    @PutMapping(value = "/updateTurnoTrabajo/{id}")
+    @PutMapping(value = "/updateTurnoTrabajo/{id}/{idUsuario}")
     public HttpStatus update(@RequestBody TurnoTrabajo tipoDocumento,
-                                               @PathVariable(value = "id") int id_documento){
+                                               @PathVariable(value = "id") int id_documento, @PathVariable(value = "idUsuario") int idUsuario){
 
         TurnoTrabajo objeto = turnoTrabajoServiceAPI.get(id_documento);
         if (objeto != null){
             objeto.setDescripcion(tipoDocumento.getDescripcion());
             objeto.setEstado(tipoDocumento.getEstado());
             turnoTrabajoServiceAPI.save(objeto);
+            audi.saveAuditoria("Actualizar", "TurnoTrabajo",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
         return HttpStatus.OK;
     }
 
-    @GetMapping(value = "/deleteTurnoTrabajo/{id}")
-    public HttpStatus delete(@PathVariable int id){
+    @GetMapping(value = "/deleteTurnoTrabajo/{id}/{idUsuario}")
+    public HttpStatus delete(@PathVariable int id, @PathVariable(value = "idUsuario") int idUsuario){
         TurnoTrabajo tipoDocumento = turnoTrabajoServiceAPI.get(id);
         if (tipoDocumento != null){
             tipoDocumento.setEstado("D");
             turnoTrabajoServiceAPI.save(tipoDocumento);
+            audi.saveAuditoria("Eliminar", "TurnoTrabajo",idUsuario);
         }else{
             return HttpStatus.INTERNAL_SERVER_ERROR;
         }
