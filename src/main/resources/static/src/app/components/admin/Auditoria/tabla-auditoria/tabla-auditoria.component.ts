@@ -15,7 +15,7 @@ import {TablaAuditoriaService} from "../../../../shared/services/admin/tabla_aud
 export class TablaAuditoriaComponent implements OnInit {
 
   auditoria: Auditoria[] = [];
-  displayedColumns: string[] = ['ID', 'fecha_hora','ipusuario','operacioncrud','tabla', 'idusuario'];
+  displayedColumns: string[] = ['ID', 'fechaHora','ipUsuario','operacionCrud','tabla', 'usuario'];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;

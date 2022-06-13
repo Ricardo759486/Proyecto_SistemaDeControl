@@ -1,8 +1,8 @@
 export class Auditoria{
   idInforme: number=0;
-  fecha_hora: string ="";
+  fechaHora: String;
   ipUsuario: string="";
   operacionCrud: string="";
   tabla: string="";
-  idUsuario: string="";
+  usuario: string="";
 }

@@ -9,7 +9,7 @@ export class TablaAuditoriaService {
 
   constructor(private http:HttpClient) { }
 
-  url = 'http://localhost:8080/Proveedor/getAll';
+  url = 'http://localhost:8080/Auditoria/getAll';
 
   getAuditorias(){
     return this.http.get<Auditoria[]>(this.url);

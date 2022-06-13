@@ -37,7 +37,7 @@ public class AuditoriaRestController {
         List<AuditoriaDAO> listaF = new ArrayList<>();
 
         for (Auditoria a:getall){
-                AuditoriaDAO objeto = new AuditoriaDAO(a.getIdInforme(), a.getFechaHora(), a.getIpUsuario(), a.getOperacionCrud(), a.getTabla(), a.getUsuario().getLogin());
+                AuditoriaDAO objeto = new AuditoriaDAO(a.getIdInforme(), "" + a.getFechaHora(), a.getIpUsuario(), a.getOperacionCrud(), a.getTabla(), a.getUsuario().getLogin());
                 listaF.add(objeto);
         }
         return listaF;

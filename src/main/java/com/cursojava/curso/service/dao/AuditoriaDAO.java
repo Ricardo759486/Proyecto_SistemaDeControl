@@ -11,7 +11,7 @@ public class AuditoriaDAO {
     private int idInforme;
 
     @Getter @Setter
-    private Date fechaHora;
+    private String fechaHora;
 
     @Getter @Setter
     private String ipUsuario;
@@ -25,7 +25,7 @@ public class AuditoriaDAO {
     @Getter @Setter
     private String usuario;
 
-    public AuditoriaDAO(int idInforme, Date fechaHora, String ipUsuario, String operacionCrud, String tabla, String usuario) {
+    public AuditoriaDAO(int idInforme, String fechaHora, String ipUsuario, String operacionCrud, String tabla, String usuario) {
         this.idInforme = idInforme;
         this.fechaHora = fechaHora;
         this.ipUsuario = ipUsuario;
