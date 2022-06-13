@@ -7,6 +7,8 @@ import {Proveedor} from "../../../models/Proveedor";
   providedIn: 'root'
 })
 export class TablaAdminOrdentrabajoService {
+  user : any;
+  id : number;
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/OrdenTrabajo/getAll';
@@ -18,13 +20,19 @@ export class TablaAdminOrdentrabajoService {
     return this.http.get<OrdenTrabajo[]>(this.url);
   }
   deleteOrdenTrabajo(ordenTrabajo: OrdenTrabajo){
-    return this.http.get<OrdenTrabajo>(this.urleliminar+"/"+ordenTrabajo.idOrdenTrabajo);
+    return this.http.get<OrdenTrabajo>(this.urleliminar+"/"+ordenTrabajo.idOrdenTrabajo+"/"+this.obteneridAdmin());
   }
 
   registerService(ordenTrabajo: OrdenTrabajo){
-    return this.http.post<OrdenTrabajo>(this.urlsave,ordenTrabajo);
+    return this.http.post<OrdenTrabajo>(this.urlsave+"/"+ordenTrabajo.idCuadrilla+"/"+ordenTrabajo.idCliente+"/"+ordenTrabajo.idTipoServicio+"/"+this.obteneridAdmin(),ordenTrabajo);
   }
   editarOrdenTrabajo(ordenTrabajo: OrdenTrabajo){
-    return this.http.put<OrdenTrabajo>(this.urlupdate+"/"+ordenTrabajo.idOrdenTrabajo,ordenTrabajo);
+    return this.http.put<OrdenTrabajo>(this.urlupdate+"/"+ordenTrabajo.idOrdenTrabajo+"/"+ordenTrabajo.idCuadrilla+"/"+ordenTrabajo.idCliente+"/"+ordenTrabajo.idTipoServicio+"/"+this.obteneridAdmin(),ordenTrabajo);
+  }
+  obteneridAdmin(){
+    localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.id = this.user.idUsuario;
+    return this.id;
   }
 }

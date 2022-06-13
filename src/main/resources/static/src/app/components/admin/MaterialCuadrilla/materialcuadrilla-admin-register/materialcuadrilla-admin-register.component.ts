@@ -33,9 +33,9 @@ export class MaterialcuadrillaAdminRegisterComponent implements OnInit {
               private router:Router,public dialog: MatDialog) { }
 
   public newMaterialCuadrilla = new FormGroup({
-    cuadrilla: new FormControl('', Validators.required),
-    material: new FormControl('', Validators.required),
-    cantidad: new FormControl('', Validators.required),
+    idCuadrilla: new FormControl('', [Validators.required]),
+    idMaterial: new FormControl('', Validators.required),
+    cantidad: new FormControl('', [Validators.required, Validators.max(100000)]),
   });
 
 
@@ -60,6 +60,7 @@ export class MaterialcuadrillaAdminRegisterComponent implements OnInit {
       alert("Material asignado a la cuadrilla");
       this.dialog.closeAll();
       this.materialcuadrilla=[];
+      location.href = "/admin/materialCuadrilla_admin";
     }else{
       alert("No se pudo asignar el material a la cuadrilla");
     }

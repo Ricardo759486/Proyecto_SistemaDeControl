@@ -5,4 +5,7 @@ export class OrdenTrabajo{
   cuadrilla: string="";
   tipoServicio: string="";
   estado: string="";
+  idCliente: number=0;
+  idCuadrilla: number=0;
+  idTipoServicio: number=0;
 }

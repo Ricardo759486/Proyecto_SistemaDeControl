@@ -31,9 +31,9 @@ export class MaterialcuadrillaAdminEditarComponent implements OnInit {
               private router:Router,public dialog: MatDialog) {
   }
   public editMaterialCuadrilla = new FormGroup({
-    cuadrilla: new FormControl('', Validators.required),
-    material: new FormControl('', Validators.required),
-    cantidad: new FormControl('', Validators.required),
+    idCuadrilla: new FormControl('', [Validators.required]),
+    idMaterial: new FormControl('', Validators.required),
+    cantidad: new FormControl('', [Validators.required, Validators.max(100000)]),
   });
 
   ngOnInit(): void {
@@ -58,7 +58,7 @@ export class MaterialcuadrillaAdminEditarComponent implements OnInit {
   editar_materialCuadrilla(materialCuadrilla: MaterialCuadrilla){
 
     materialCuadrilla.idRegistro= this.materialCuadrilla.idRegistro;
-    //materialCuadrilla.estado= this.cliente.estado;
+
     this.loading=true;
 
     if ( this.editMaterialCuadrilla.valid) {

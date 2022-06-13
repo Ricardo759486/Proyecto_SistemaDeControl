@@ -42,9 +42,9 @@ export class OrdentrabajoAdminEditarComponent implements OnInit {
   }
   public editOrdenTrabajo = new FormGroup({
     descripcion: new FormControl('', Validators.required),
-    cliente: new FormControl('', Validators.required),
-    cuadrilla: new FormControl('', Validators.required),
-    tipoServicio: new FormControl('', Validators.required),
+    idCliente: new FormControl('', Validators.required),
+    idCuadrilla: new FormControl('', Validators.required),
+    idTipoServicio: new FormControl('', Validators.required),
 
   });
 
@@ -65,7 +65,7 @@ export class OrdentrabajoAdminEditarComponent implements OnInit {
     if(resultant){
       alert("Orden de trabajo actualizada");
       this.dialog.closeAll();
-      location.href = "/admin/ordenTrabajo_admin";
+      location.href = "/admin/ordentrabajo_admin";
     }else{
       alert("No se pudo aztualizar la orden de trabajo");
     }
@@ -90,9 +90,9 @@ export class OrdentrabajoAdminEditarComponent implements OnInit {
     this.editOrdenTrabajo.patchValue({
       idOrdenTrabajo: this.ordenTrabajo.idOrdenTrabajo,
       descripcion: this.ordenTrabajo.descripcion,
-      cliente: this.ordenTrabajo.cliente,
-      cuadrilla: this.ordenTrabajo.cuadrilla,
-      tipoServicio: this.ordenTrabajo.tipoServicio,
+      idCliente: this.ordenTrabajo.idCliente,
+      idCuadrilla: this.ordenTrabajo.idCuadrilla,
+      idTipoServicio: this.ordenTrabajo.idTipoServicio,
     });
   }
 

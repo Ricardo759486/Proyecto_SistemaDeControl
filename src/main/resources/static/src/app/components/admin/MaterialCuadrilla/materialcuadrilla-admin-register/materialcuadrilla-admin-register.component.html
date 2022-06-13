@@ -11,7 +11,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Cuadrilla</mat-label>
-      <mat-select placeholder="cuadrilla" formControlName="cuadrilla">
+      <mat-select placeholder="idCuadrilla" formControlName="idCuadrilla">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>{{cuadrilla.movilAsociado}}</mat-option>
       </mat-select>
@@ -19,7 +19,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Material</mat-label>
-      <mat-select placeholder="material" formControlName="material">
+      <mat-select placeholder="idMaterial" formControlName="idMaterial">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let material of material" value = {{material.idInventario}}>{{material.nombreMaterial}}</mat-option>
       </mat-select>
@@ -27,7 +27,7 @@
 
     <mat-form-field>
       <mat-label>Cantidad</mat-label>
-      <input matInput placeholder="Cantidad a asignar" formControlName="cantidad" >
+      <input matInput placeholder="Cantidad a asignar" formControlName="cantidad" type="number">
     </mat-form-field>
 
     <div class="container-button">

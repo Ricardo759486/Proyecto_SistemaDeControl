@@ -7,7 +7,8 @@ import {Proveedor} from "../../../models/Proveedor";
   providedIn: 'root'
 })
 export class TablaAdminMaterialcuadrillaService {
-
+  user : any;
+  id : number;
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/MaterialCuadrilla/getAll';
@@ -19,15 +20,20 @@ export class TablaAdminMaterialcuadrillaService {
     return this.http.get<MaterialCuadrilla[]>(this.url);
   }
   deleteMaterialCuadrilla(matCuadrilla: MaterialCuadrilla){
-    return this.http.get<MaterialCuadrilla>(this.urleliminar+"/"+matCuadrilla.idRegistro);
+    return this.http.get<MaterialCuadrilla>(this.urleliminar+"/"+matCuadrilla.idRegistro+"/"+this.obteneridAdmin());
   }
 
   registerService(matCuadrilla: MaterialCuadrilla){
-    return this.http.post<MaterialCuadrilla>(this.urlsave,matCuadrilla);
+    return this.http.post<MaterialCuadrilla>(this.urlsave+"/"+matCuadrilla.idCuadrilla+"/"+matCuadrilla.idMaterial+"/"+this.obteneridAdmin(),matCuadrilla);
   }
 
-  editarMaterialCuadrilla(materialCuadrilla: MaterialCuadrilla){
-    return this.http.put<MaterialCuadrilla>(this.urlupdate+"/"+materialCuadrilla.idRegistro,materialCuadrilla);
+  editarMaterialCuadrilla(matCuadrilla: MaterialCuadrilla){
+    return this.http.put<MaterialCuadrilla>(this.urlupdate+"/"+matCuadrilla.idRegistro+"/"+matCuadrilla.idCuadrilla+"/"+matCuadrilla.idMaterial+"/"+this.obteneridAdmin(),matCuadrilla);
   }
-
+  obteneridAdmin(){
+    localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.id = this.user.idUsuario;
+    return this.id;
+  }
 }

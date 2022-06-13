@@ -41,9 +41,9 @@ export class OrdentrabajoAdminRegisterComponent implements OnInit {
 
   public newOrdenTrabajo = new FormGroup({
     descripcion: new FormControl('', Validators.required),
-    cliente: new FormControl('', Validators.required),
-    cuadrilla: new FormControl('', Validators.required),
-    tipoServicio: new FormControl('', Validators.required),
+    idCliente: new FormControl('', Validators.required),
+    idCuadrilla: new FormControl('', Validators.required),
+    idTipoServicio: new FormControl('', Validators.required),
   });
 
 
@@ -71,6 +71,7 @@ export class OrdentrabajoAdminRegisterComponent implements OnInit {
       alert("Orden de Trabajo registrada");
       this.dialog.closeAll();
       this.ordentrabajo=[];
+      location.href = "/admin/ordentrabajo_admin";
     }else{
       alert("No se pudo registrar el proveedor");
     }

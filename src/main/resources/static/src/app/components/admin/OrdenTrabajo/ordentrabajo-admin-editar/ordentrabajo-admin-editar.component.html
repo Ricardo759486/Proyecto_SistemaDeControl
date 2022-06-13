@@ -16,7 +16,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Cliente</mat-label>
-      <mat-select placeholder="cliente" formControlName="cliente">
+      <mat-select placeholder="idCliente" formControlName="idCliente">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let cliente of cliente" value = {{cliente.idCliente}}>{{cliente.numDocumento}}</mat-option>
       </mat-select>
@@ -24,7 +24,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Cuadrilla</mat-label>
-      <mat-select placeholder="cuadrilla" formControlName="cuadrilla">
+      <mat-select placeholder="idCuadrilla" formControlName="idCuadrilla">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>{{cuadrilla.movilAsociado}}</mat-option>
       </mat-select>
@@ -32,7 +32,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Tipo de servicio</mat-label>
-      <mat-select placeholder="tipoServicio" formControlName="tipoServicio">
+      <mat-select placeholder="idTipoServicio" formControlName="idTipoServicio">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let tipoServicio of tipoServicio" value = {{tipoServicio.idServicio}}>{{tipoServicio.descripcion}}</mat-option>
       </mat-select>
