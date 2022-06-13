@@ -30,8 +30,8 @@ export class ClienteAdminRegisterComponent implements OnInit {
               private router:Router,public dialog: MatDialog) { }
 
   public newCliente = new FormGroup({
-    tipoDocumento: new FormControl('', Validators.required),
-    numeroDocumento: new FormControl('', Validators.required),
+    tipoDoc: new FormControl('', Validators.required),
+    numDocumento: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
   });
 
@@ -61,8 +61,9 @@ export class ClienteAdminRegisterComponent implements OnInit {
 
   register_cliente(cliente: Cliente) {
     {
+      cliente.estado = "A";
       this.loading = true;
-
+      console.log(cliente);
       if (this.newCliente.valid) {
         this.clientescv.registerService(cliente).subscribe(
           data => {

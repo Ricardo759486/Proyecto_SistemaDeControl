@@ -23,6 +23,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/Telefono/**").permitAll()
                 .antMatchers("/TipoServicio/**").permitAll()
                 .antMatchers("/TurnoTrabajo/**").permitAll()
+                .antMatchers("/Cliente/**").permitAll()
                 .antMatchers("/Zona/**").permitAll()
                 .antMatchers("/api/**").permitAll();;
 

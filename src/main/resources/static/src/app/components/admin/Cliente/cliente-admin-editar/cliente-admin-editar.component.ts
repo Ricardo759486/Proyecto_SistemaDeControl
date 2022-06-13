@@ -27,8 +27,8 @@ export class ClienteAdminEditarComponent implements OnInit {
               private router:Router,public dialog: MatDialog) {
   }
   public editCliente = new FormGroup({
-    tipoDocumento: new FormControl('', Validators.required),
-    numeroDocumento: new FormControl('', Validators.required),
+    tipoDoc: new FormControl('', Validators.required),
+    numDocumento: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
   });
 
@@ -67,8 +67,8 @@ export class ClienteAdminEditarComponent implements OnInit {
   private initValuesForm(): void {
     this.editCliente.patchValue({
       idCliente: this.cliente.idCliente,
-      tipoDocumento: this.cliente.tipoDocumento,
-      numeroDocumento: this.cliente.numDocumento,
+      tipoDoc: this.cliente.tipoDoc,
+      numDocumento: this.cliente.numDocumento,
       direccion: this.cliente.direccion,
     });
   }

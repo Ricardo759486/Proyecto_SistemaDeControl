@@ -1,11 +1,4 @@
-<div class="row" *ngIf="loading">
-  <div class="col-md-4 col-md-offset-4">
-    <div class="spinner-border text-info float-right" role="status">
-      <span class="sr-only"></span>
-    </div>
-  </div>
 
-</div>
 <div class="new-post-container">
   <form [formGroup]="newUsuario" (ngSubmit)="register_usuario(newUsuario.value)">
 
@@ -21,7 +14,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Tipo de documento</mat-label>
-      <mat-select placeholder="tipoDocumento" formControlName="tipoDocumento">
+      <mat-select placeholder="tipoDocumento" formControlName="tipoDoc">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let tipoDocumento of tipoDocumento" value = {{tipoDocumento.idDocumento}}>{{tipoDocumento.descripcion}}</mat-option>
       </mat-select>
@@ -29,7 +22,7 @@
 
     <mat-form-field>
       <mat-label>Numero de identificacion</mat-label>
-      <input matInput placeholder="Ingrese el numero del documento" formControlName="numDocumento">
+      <input matInput placeholder="Ingrese el numero del documento" formControlName="identificacion">
     </mat-form-field>
 
     <mat-form-field>
@@ -39,7 +32,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Cuadrilla</mat-label>
-      <mat-select placeholder="cuadrilla" formControlName="cuadrilla">
+      <mat-select placeholder="cuadrilla" formControlName="idCuadrilla">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>{{cuadrilla.movilAsociado}}</mat-option>
       </mat-select>
@@ -47,7 +40,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Rol</mat-label>
-      <mat-select placeholder="rol" formControlName="rol">
+      <mat-select placeholder="rol" formControlName="idRol">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let rol of rol" value = {{rol.idRol}}>{{rol.tipoRol}}</mat-option>
       </mat-select>
@@ -55,7 +48,16 @@
 
     <div class="container-button">
       <input type="submit" class="mat-flat-button" value="Save">
+      <div class="row" *ngIf="loading">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="spinner-border text-info float-right" role="status">
+            <span class="sr-only"></span>
+          </div>
+        </div>
+      </div>
     </div>
   </form>
 </div>
+
+
 

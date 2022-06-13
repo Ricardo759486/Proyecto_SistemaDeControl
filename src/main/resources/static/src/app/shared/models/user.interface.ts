@@ -1,7 +1,7 @@
 export interface UserI{
   idUsuario: number;
   login: string;
-  tipoDoc: string;
+  tipoDoc: number;
   identificacion: string;
   fecha_ultima_contra : String;
   direccion: string;
@@ -11,5 +11,6 @@ export interface UserI{
   idRol: number;
   estado:number;
   tipoDocumento:number;
+  clave:string;
 
 }

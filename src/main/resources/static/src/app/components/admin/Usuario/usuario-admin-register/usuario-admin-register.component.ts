@@ -41,11 +41,11 @@ export class UsuarioAdminRegisterComponent implements OnInit {
   public newUsuario = new FormGroup({
     login: new FormControl('', [Validators.required,Validators.email]),
     clave: new FormControl('', Validators.required),
-    tipoDocumento: new FormControl('', Validators.required),
-    numDocumento: new FormControl('', Validators.required),
+    tipoDoc: new FormControl('', Validators.required),
+    identificacion: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
-    cuadrilla: new FormControl('', Validators.required),
-    rol: new FormControl('', Validators.required),
+    idCuadrilla: new FormControl('', Validators.required),
+    idRol: new FormControl('', Validators.required),
   });
 
 
@@ -73,6 +73,7 @@ export class UsuarioAdminRegisterComponent implements OnInit {
       alert("Usuario registrado");
       this.dialog.closeAll();
       this.usuario=[];
+      location.href = "/admin/usuario_admin";
     }else{
       alert("No se pudo registrar el usuario");
     }

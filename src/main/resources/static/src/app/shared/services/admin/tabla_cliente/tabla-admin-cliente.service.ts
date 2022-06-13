@@ -6,6 +6,8 @@ import {Cliente} from "../../../models/Cliente";
   providedIn: 'root'
 })
 export class TablaAdminClienteService {
+  user : any;
+  id : number;
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/Cliente/getAll';
@@ -16,15 +18,22 @@ export class TablaAdminClienteService {
     return this.http.get<Cliente[]>(this.url);
   }
   deleteCliente(cliente: Cliente){
-    return this.http.get<Cliente>(this.urleliminar+"/"+cliente.idCliente);
+    return this.http.get<Cliente>(this.urleliminar+"/"+cliente.idCliente+"/"+this.obteneridAdmin());
   }
 
   editarCliente(cliente: Cliente){
-    return this.http.put<Cliente>(this.urlupdate+"/"+cliente.idCliente+"/"+cliente.tipoDocumento,cliente);
+    return this.http.put<Cliente>(this.urlupdate+"/"+cliente.idCliente+"/"+cliente.tipoDoc+"/"+this.obteneridAdmin(),cliente);
   }
 
   registerService(cliente: Cliente){
-    return this.http.post<Cliente>(this.urlsave+"/"+cliente.tipoDocumento,cliente);
+    console.log(cliente);
+    return this.http.post<Cliente>(this.urlsave+"/"+cliente.tipoDoc+"/"+this.obteneridAdmin(),cliente);
   }
 
+  obteneridAdmin(){
+    localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.id = this.user.idUsuario;
+    return this.id;
+  }
 }

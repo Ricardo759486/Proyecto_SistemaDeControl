@@ -39,11 +39,11 @@ export class UsuarioAdminEditarComponent implements OnInit {
   public editUsuario = new FormGroup({
     login: new FormControl('', [Validators.required,Validators.email]),
     clave: new FormControl('', Validators.required),
-    tipoDocumento: new FormControl('', Validators.required),
-    numDocumento: new FormControl('', Validators.required),
+    tipoDoc: new FormControl('', Validators.required),
+    identificacion: new FormControl('', Validators.required),
     direccion: new FormControl('', Validators.required),
-    cuadrilla: new FormControl('', Validators.required),
-    rol: new FormControl('', Validators.required),
+    idCuadrilla: new FormControl('', Validators.required),
+    idRol: new FormControl('', Validators.required),
   });
 
   ngOnInit(): void {
@@ -63,15 +63,17 @@ export class UsuarioAdminEditarComponent implements OnInit {
     if(resultant){
       alert("Usuario actualizado");
       this.dialog.closeAll();
+      this.usuario=null;
       location.href = "/admin/usuario_admin";
     }else{
-      alert("No se pudo aztualizar el usuario");
+      alert("No se pudo actualizar el usuario");
     }
   }
   editar_usuario(usuario: UserI){
 
     usuario.idUsuario= this.usuario.idUsuario;
     usuario.estado= this.usuario.estado;
+    usuario.fecha_ultima_contra = this.usuario.fecha_ultima_contra;
     this.loading=true;
 
     if ( this.editUsuario.valid) {
@@ -92,6 +94,7 @@ export class UsuarioAdminEditarComponent implements OnInit {
       identificacion: this.usuario.identificacion,
       direccion: this.usuario.direccion,
       nomRol: this.usuario.nomRol,
+      fecha_ultima_contra: this.usuario.fecha_ultima_contra,
     });
   }
 

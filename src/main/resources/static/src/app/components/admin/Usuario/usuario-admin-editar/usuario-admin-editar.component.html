@@ -21,7 +21,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Tipo de documento</mat-label>
-      <mat-select placeholder="tipoDocumento" formControlName="tipoDocumento">
+      <mat-select placeholder="tipoDocumento" formControlName="tipoDoc">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let tipoDocumento of tipoDocumento" value = {{tipoDocumento.idDocumento}}>{{tipoDocumento.descripcion}}</mat-option>
       </mat-select>
@@ -29,7 +29,7 @@
 
     <mat-form-field>
       <mat-label>Numero de identificacion</mat-label>
-      <input matInput placeholder="Ingrese el numero del documento" formControlName="numDocumento">
+      <input matInput placeholder="Ingrese el numero del documento" formControlName="identificacion">
     </mat-form-field>
 
     <mat-form-field>
@@ -39,7 +39,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Cuadrilla</mat-label>
-      <mat-select placeholder="cuadrilla" formControlName="cuadrilla">
+      <mat-select placeholder="cuadrilla" formControlName="idCuadrilla">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let cuadrilla of cuadrilla" value = {{cuadrilla.idCuadrilla}}>{{cuadrilla.movilAsociado}}</mat-option>
       </mat-select>
@@ -47,7 +47,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Rol</mat-label>
-      <mat-select placeholder="rol" formControlName="rol">
+      <mat-select placeholder="rol" formControlName="idRol">
         <mat-option>None</mat-option>
         <mat-option *ngFor="let rol of rol" value = {{rol.idRol}}>{{rol.tipoRol}}</mat-option>
       </mat-select>

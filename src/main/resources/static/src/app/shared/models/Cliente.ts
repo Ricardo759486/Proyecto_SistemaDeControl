@@ -4,4 +4,5 @@ export class Cliente{
   numDocumento: string="";
   estado: string="";
   tipoDocumento: number=0;
+  tipoDoc : number=0;
 }
