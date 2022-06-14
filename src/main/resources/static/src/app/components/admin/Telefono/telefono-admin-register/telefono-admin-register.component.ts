@@ -43,6 +43,7 @@ export class TelefonoAdminRegisterComponent implements OnInit {
       alert("Telefono registrado");
       this.dialog.closeAll();
       this.telefono=[];
+      location.href = "/admin/telefono_admin";
     }else{
       alert("No se pudo registrar el telefono");
     }

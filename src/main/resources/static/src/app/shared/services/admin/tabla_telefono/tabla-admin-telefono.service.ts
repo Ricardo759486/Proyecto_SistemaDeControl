@@ -7,7 +7,8 @@ import {Proveedor} from "../../../models/Proveedor";
   providedIn: 'root'
 })
 export class TablaAdminTelefonoService {
-
+  user : any;
+  id : number;
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/Telefono/getAll';
@@ -18,15 +19,20 @@ export class TablaAdminTelefonoService {
     return this.http.get<Telefono[]>(this.url);
   }
   deleteTelefono(telefono: Telefono){
-    return this.http.get<Telefono>(this.urleliminar+"/"+telefono.idTelefono);
+    return this.http.get<Telefono>(this.urleliminar+"/"+telefono.idTelefono+"/"+this.obteneridAdmin());
   }
 
   registerService(telefono: Telefono){
-    return this.http.post<Telefono>(this.urlsave,telefono);
+    return this.http.post<Telefono>(this.urlsave+"/"+telefono.tipoUsuario+"/"+this.obteneridAdmin(),telefono);
   }
 
   editarTelefono(telefono: Telefono){
-    return this.http.put<Telefono>(this.urlupdate+"/"+telefono.idTelefono,telefono);
+    return this.http.put<Telefono>(this.urlupdate+"/"+telefono.idTelefono+"/"+telefono.tipoUsuario+"/"+this.obteneridAdmin(),telefono);
   }
-
+  obteneridAdmin(){
+    localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.id = this.user.idUsuario;
+    return this.id;
+  }
 }

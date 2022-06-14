@@ -5,4 +5,6 @@ export class Telefono{
   cliente: string="";
   proveedor: string="";
   usuario: string="";
+  estado: string="";
+  tipoUsuario: string="";
 }

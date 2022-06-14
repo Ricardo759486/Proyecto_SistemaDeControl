@@ -41,7 +41,7 @@ export class TelefonoAdminEditarComponent implements OnInit {
   editar_telefono(telefono: Telefono){
 
     telefono.idTelefono= this.telefono.idTelefono;
-    //telefono.estado= this.telefono.estado;
+    telefono.estado= this.telefono.estado;
     this.loading=true;
 
     if ( this.editTelefono.valid) {
@@ -58,7 +58,7 @@ export class TelefonoAdminEditarComponent implements OnInit {
     this.editTelefono.patchValue({
       idTelefono: this.telefono.idTelefono,
       numTelefono: this.telefono.numTelefono,
-      tipoUsuario: this.telefono.tipo,
+      tipoUsuario: this.telefono.tipoUsuario,
     });
   }
 
