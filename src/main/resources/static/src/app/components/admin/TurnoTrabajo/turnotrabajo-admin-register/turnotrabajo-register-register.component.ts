@@ -44,6 +44,7 @@ export class TurnotrabajoRegisterRegisterComponent implements OnInit {
       alert("Turno de Trabajo registrado");
       this.dialog.closeAll();
       this.turnotrabajo =[];
+      location.href = "/admin/turnotrabajo_admin";
     }else{
       alert("No se pudo registrar el turno de trabajo");
     }

@@ -23,7 +23,7 @@ export class MaterialAdminRegisterComponent implements OnInit {
               private router:Router,public dialog: MatDialog) { }
 
   public newMaterial = new FormGroup({
-    nombre: new FormControl('', Validators.required),
+    nombreMaterial: new FormControl('', Validators.required),
     cantidad: new FormControl('', Validators.required),
     costo: new FormControl('', Validators.required),
   });
@@ -44,6 +44,7 @@ export class MaterialAdminRegisterComponent implements OnInit {
       alert("Material registrado");
       this.dialog.closeAll();
       this.material=[];
+      location.href = "/admin/material_admin";
     }else{
       alert("No se pudo registrar el material");
     }

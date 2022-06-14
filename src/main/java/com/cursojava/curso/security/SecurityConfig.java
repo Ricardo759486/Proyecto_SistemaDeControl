@@ -24,6 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/TipoServicio/**").permitAll()
                 .antMatchers("/TurnoTrabajo/**").permitAll()
                 .antMatchers("/Cliente/**").permitAll()
+                .antMatchers("/Parametro/**").permitAll()
+                .antMatchers("/Document/**").permitAll()
+                .antMatchers("/Auditoria/**").permitAll()
                 .antMatchers("/Zona/**").permitAll()
                 .antMatchers("/api/**").permitAll();;
 

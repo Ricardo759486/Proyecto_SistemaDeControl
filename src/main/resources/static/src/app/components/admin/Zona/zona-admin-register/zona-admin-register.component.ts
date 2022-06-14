@@ -44,6 +44,7 @@ export class ZonaAdminRegisterComponent implements OnInit {
       alert("Zona registrado");
       this.dialog.closeAll();
       this.zona=[];
+      location.href = "/admin/zona_admin";
     }else{
       alert("No se pudo registrar la zona");
     }

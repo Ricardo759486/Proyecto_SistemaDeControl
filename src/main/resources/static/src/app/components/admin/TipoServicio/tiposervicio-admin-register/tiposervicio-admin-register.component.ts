@@ -43,6 +43,7 @@ export class TiposervicioAdminRegisterComponent implements OnInit {
       alert("Tipo de servicio registrado");
       this.dialog.closeAll();
       this.tiposervicio=[];
+      location.href = "/admin/tiposervicio_admin";
     }else{
       alert("No se pudo registrar el Tipo de servicio");
     }

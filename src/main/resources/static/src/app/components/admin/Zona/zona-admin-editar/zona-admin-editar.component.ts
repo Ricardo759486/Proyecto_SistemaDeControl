@@ -41,6 +41,7 @@ export class ZonaAdminEditarComponent implements OnInit {
   editar_zona(zona: Zona){
 
     zona.idZona = this.zona.idZona;
+    zona.estado = this.zona.estado;
 
     this.loading=true;
 

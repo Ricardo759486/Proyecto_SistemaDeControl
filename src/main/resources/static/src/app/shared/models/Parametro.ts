@@ -3,4 +3,5 @@ export class Parametro{
   descripcion: string ="";
   tipo: string="";
   valor: string="";
+  estado: string="";
 }

@@ -46,6 +46,7 @@ export class ParametroAdminRegisterComponent implements OnInit {
       alert("Parametro registrado");
       this.dialog.closeAll();
       this.parametro=[];
+      location.href = "/admin/parametro_admin";
     }else{
       alert("No se pudo registrar el parametro");
     }

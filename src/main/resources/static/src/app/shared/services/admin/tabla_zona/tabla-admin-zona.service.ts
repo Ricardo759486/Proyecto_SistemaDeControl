@@ -6,7 +6,8 @@ import {Zona} from "../../../models/Zona";
   providedIn: 'root'
 })
 export class TablaAdminZonaService {
-
+  user : any;
+  id : number;
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/Zona/getAll';
@@ -18,15 +19,20 @@ export class TablaAdminZonaService {
     return this.http.get<Zona[]>(this.url);
   }
   deleteZona(zona: Zona){
-    return this.http.get<Zona>(this.urleliminar+"/"+zona.idZona);
+    return this.http.get<Zona>(this.urleliminar+"/"+zona.idZona+"/"+this.obteneridAdmin());
   }
 
   registerService(zona: Zona){
-    return this.http.post<Zona>(this.urlsave,zona);
+    return this.http.post<Zona>(this.urlsave+"/"+this.obteneridAdmin(),zona);
   }
   editarZona(zona: Zona){
-    return this.http.put<Zona>(this.urlupdate+"/"+zona.idZona,zona);
+    return this.http.put<Zona>(this.urlupdate+"/"+zona.idZona+"/"+this.obteneridAdmin(),zona);
   }
-
+  obteneridAdmin(){
+    localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.id = this.user.idUsuario;
+    return this.id;
+  }
 }
 

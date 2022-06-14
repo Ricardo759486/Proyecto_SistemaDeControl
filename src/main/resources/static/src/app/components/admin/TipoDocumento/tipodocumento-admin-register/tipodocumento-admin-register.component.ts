@@ -44,6 +44,7 @@ export class TipodocumentoAdminRegisterComponent implements OnInit {
       alert("Tipo de Documento registrado");
       this.dialog.closeAll();
       this.tipodocumento=[];
+      location.href = "/admin/tipodocumento_admin";
     }else{
       alert("No se pudo registrar el tipo de documento");
     }

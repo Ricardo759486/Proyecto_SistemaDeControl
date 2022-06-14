@@ -7,27 +7,33 @@ import {Cuadrilla} from "../../../models/Cuadrilla";
   providedIn: 'root'
 })
 export class MaterialAdminService {
-
+  user : any;
+  id : number;
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/Material/getAll';
-  urlRegistrar = 'http://localhost:8080/Material/deleteMaterial';
-  urlEliminar = 'http://localhost:8080/Material/saveMaterial';
+  urlRegistrar = 'http://localhost:8080/Material/saveMaterial';
+  urlEliminar = 'http://localhost:8080/Material/deleteMaterial';
   urlupdate = 'http://localhost:8080/Material/updateMaterial';
 
   getMaterial(){
     return this.http.get<Material[]>(this.url);
   }
   registerService(material: Material) {
-    return this.http.post<Material>(this.urlRegistrar,material);
+    return this.http.post<Material>(this.urlRegistrar+"/"+this.obteneridAdmin(),material);
   }
 
   deleteMaterial(material: Material) {
-    return this.http.get<Material>(this.urlEliminar+"/"+material.idInventario);
+    return this.http.get<Material>(this.urlEliminar+"/"+material.idInventario+"/"+this.obteneridAdmin());
   }
 
   editarMaterial(material: Material){
-    return this.http.put<Material>(this.urlupdate+"/"+material.idInventario,material);
+    return this.http.put<Material>(this.urlupdate+"/"+material.idInventario+"/"+this.obteneridAdmin(),material);
   }
-
+  obteneridAdmin(){
+    localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.id = this.user.idUsuario;
+    return this.id;
+  }
 }

@@ -6,6 +6,8 @@ import {TipoServicio} from "../../../models/TipoServicio";
   providedIn: 'root'
 })
 export class TablaAdminTiposervicioService {
+  user : any;
+  id : number;
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/TipoServicio/getAll';
@@ -17,14 +19,19 @@ export class TablaAdminTiposervicioService {
     return this.http.get<TipoServicio[]>(this.url);
   }
   deleteTipoServicio(tipoServicio: TipoServicio){
-    return this.http.get<TipoServicio>(this.urleliminar+"/"+tipoServicio.idServicio);
+    return this.http.get<TipoServicio>(this.urleliminar+"/"+tipoServicio.idServicio+"/"+this.obteneridAdmin());
   }
 
   editarProveedor(tipoServicio: TipoServicio){
-    return this.http.put<TipoServicio>(this.urlupdate+"/"+tipoServicio.idServicio,tipoServicio);
+    return this.http.put<TipoServicio>(this.urlupdate+"/"+tipoServicio.idServicio+"/"+this.obteneridAdmin(),tipoServicio);
   }
   registerService(tipoServicio: TipoServicio){
-    return this.http.post<TipoServicio>(this.urlsave,tipoServicio);
+    return this.http.post<TipoServicio>(this.urlsave+"/"+this.obteneridAdmin(),tipoServicio);
   }
-
+  obteneridAdmin(){
+    localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.id = this.user.idUsuario;
+    return this.id;
+  }
 }

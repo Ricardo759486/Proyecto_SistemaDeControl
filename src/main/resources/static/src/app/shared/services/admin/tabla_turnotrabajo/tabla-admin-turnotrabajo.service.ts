@@ -6,7 +6,8 @@ import {TurnoTrabajo} from "../../../models/TurnoTrabajo";
   providedIn: 'root'
 })
 export class TablaAdminTurnotrabajoService {
-
+  user : any;
+  id : number;
   constructor(private http:HttpClient) { }
 
   url = 'http://localhost:8080/TurnoTrabajo/getAll';
@@ -19,14 +20,20 @@ export class TablaAdminTurnotrabajoService {
   }
 
   deleteTurnoTrabajo(turnoTrabajo: TurnoTrabajo){
-    return this.http.get<TurnoTrabajo>(this.urleliminar+"/"+turnoTrabajo.idTurno);
+    return this.http.get<TurnoTrabajo>(this.urleliminar+"/"+turnoTrabajo.idTurno+"/"+this.obteneridAdmin());
   }
 
   registerService(turnoTrabajo: TurnoTrabajo){
-    return this.http.post<TurnoTrabajo>(this.urlsave,turnoTrabajo);
+    return this.http.post<TurnoTrabajo>(this.urlsave+"/"+this.obteneridAdmin(),turnoTrabajo);
   }
   editarTurnoTrabajo(turnoTrabajo: TurnoTrabajo){
-    return this.http.put<TurnoTrabajo>(this.urlupdate+"/"+turnoTrabajo.idTurno,turnoTrabajo);
+    return this.http.put<TurnoTrabajo>(this.urlupdate+"/"+turnoTrabajo.idTurno+"/"+this.obteneridAdmin(),turnoTrabajo);
+  }
+  obteneridAdmin(){
+    localStorage.getItem('user');
+    this.user = JSON.parse(localStorage.getItem('user')??'{}');
+    this.id = this.user.idUsuario;
+    return this.id;
   }
 }
 

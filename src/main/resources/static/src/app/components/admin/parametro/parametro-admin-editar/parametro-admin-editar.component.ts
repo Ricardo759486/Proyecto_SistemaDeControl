@@ -43,6 +43,7 @@ export class ParametroAdminEditarComponent implements OnInit {
   editar_parametro(parametro: Parametro) {
 
     parametro.idParametro = this.parametro.idParametro;
+    parametro.estado = this.parametro.estado;
 
     this.loading=true;
 

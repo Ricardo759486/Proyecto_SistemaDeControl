@@ -10,15 +10,15 @@
   <form [formGroup]="editMaterial" (ngSubmit)="editar_material(editMaterial.value)">
     <mat-form-field>
       <mat-label>Nombre material</mat-label>
-      <input matInput placeholder="Ingrese el nombre del material" formControlName="nombreMaterial">
+      <input matInput placeholder="nombreMaterial" formControlName="nombreMaterial">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Cantidad</mat-label>
-      <input matInput placeholder="Ingrese la cantidad" formControlName="cantidad">
+      <input matInput placeholder="cantidad" formControlName="cantidad">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Costo</mat-label>
-      <input matInput placeholder="Ingrese el costo" formControlName="costo">
+      <input matInput placeholder="costo" formControlName="costo">
     </mat-form-field>
     <div class="container-button">
       <input type="submit" class="mat-flat-button" value="Guardar">
